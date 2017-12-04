@@ -1,7 +1,7 @@
-import random  # This should be on line 1
+"""import random  # This should be on line 1
 
 
-"""print("Hello World")
+print("Hello World")
 
 # Edgar Renteria
 # (This is python 2.7)
@@ -62,7 +62,7 @@ print_age("John", 15)
 
 
 def f(x):
-     return x**3 + 4 * x**2 + 7 * x - 4
+    return x**3 + 4 * x**2 + 7 * x - 4
 
 
 print(f(3))
@@ -73,16 +73,16 @@ print(f(5))
 
 
 def grade_calc(percentage):
-     if percentage >= 90:
-         return "A"
-     if percentage >= 80:
-         return "B"
-     if percentage >= 70:
-         return "C"
-     if percentage >= 60:
-         return "D"
-     if percentage <= 50:
-         return "F"
+    if percentage >= 90:
+        return "A"
+    if percentage >= 80:
+        return "B"
+    if percentage >= 70:
+        return "C"
+    if percentage >= 60:
+        return "D"
+    if percentage <= 50:
+        return "F"
 
 
 print(grade_calc(8))
@@ -103,14 +103,36 @@ for num in range(1000000):
     print(num + 1)
 
 
-# DO NOT RUN!!!
+#DO NOT RUN!!!
 a = 1
 while a < 10:
     print(a)
-    a += 1 """
+    a += 1
 
 
-# random nubers
+# random numbers
 
 
-print(random.randint(0, 1001))
+print(random.randint(0, 1001))"""
+
+
+# Comparisons
+
+print(1 == 1)  # Is 1 equal to 1?
+print(1 != 2)  # is 1 not equal to 2?
+print(10 >= 15)
+print(not False)
+
+# Recasting
+
+c = '1'
+print(c == 1)
+print(int(c) == 1)
+
+# The input command ALWAYS gives a string
+
+# 1) Generate random number
+# 2) Take an input (number) from the user
+# 3) Compare input to generated number
+# 4) Add "Higher" and "lower" statement
+# 5) Add 5 guesses

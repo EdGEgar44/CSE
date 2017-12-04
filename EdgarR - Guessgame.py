@@ -1,6 +1,8 @@
 import random
-guess = 0
 
-num = print(random.radiant(1-50))
+for num in range(1-50):
+    name = input(num + 1)
 
-input=
+print("Hello to Guessgame")
+print("Guess the number. It is from 1-50")
+print(input(num))

@@ -113,7 +113,7 @@ while a < 10:
 # random numbers
 
 
-print(random.randint(0, 1001))"""
+print(random.randint(0, 1001))
 
 
 # Comparisons
@@ -127,7 +127,7 @@ print(not False)
 
 c = '1'
 print(c == 1)
-print(int(c) == 1)
+print(int(c) == 1)"""
 
 # The input command ALWAYS gives a string
 

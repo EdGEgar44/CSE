@@ -27,3 +27,16 @@ def add(number, number2, number3):
 add(6, 3, 5)
 
 # 12.7.17
+
+
+def repeat(string):
+    # or print(string)
+    # or print(string)
+    # and print(string)
+    for x in range(1):
+        print(string)
+
+
+repeat("Hello.")
+
+# 12.8.17

@@ -131,8 +131,4 @@ print(int(c) == 1)"""
 
 # The input command ALWAYS gives a string
 
-# 1) Generate random number
-# 2) Take an input (number) from the user
-# 3) Compare input to generated number
-# 4) Add "Higher" and "lower" statement
 # 5) Add 5 guesses

@@ -40,3 +40,12 @@ def repeat(string):
 repeat("Hello.")
 
 # 12.8.17
+
+
+def date(month, day, year):
+    print(str(month) + "/" + str(day) + "/" + str(year))
+
+
+date(12, 8, 17)
+
+# 12.11.17

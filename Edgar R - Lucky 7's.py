@@ -4,6 +4,10 @@ rounds = 0
 
 money = 15
 
+most_money = 15
+
+left_over_money = 0
+
 while money > 0:
 
     r = random.randint(1, 6)
@@ -13,18 +17,26 @@ while money > 0:
     print("You made a bet of one dollar")
 
     if (r + r2) == 7:
-        money += 5
+        money += 4
         print("You won your bet.")
         print("you gain your money and a bonus")
         print("You know have $ %s " % money)
         rounds += 1
+        print(rounds)
+
+    if money >= most_money:
+        left_over_money = (money - most_money)
+        most_money = left_over_money + most_money
 
     if (r + r2) != 7:
         money -= 1
         print("You lost your bet")
         print("You have  $ %s left." % money)
         rounds += 1
+        print(rounds)
 
 print("You lost all of your money")
 
 print("You did %s rounds." % rounds)
+
+print("The Most money you had was %s." % most_money)

@@ -1,5 +1,7 @@
 import random
 
+stop_at_round = 0
+
 rounds = 0
 
 money = 15
@@ -20,23 +22,22 @@ while money > 0:
         money += 4
         print("You won your bet.")
         print("you gain your money and a bonus")
-        print("You know have $ %s " % money)
+        print("You know have $%s left. " % money)
         rounds += 1
-        print(rounds)
 
     if money >= most_money:
         left_over_money = (money - most_money)
         most_money = left_over_money + most_money
+        stop_at_round = rounds
 
     if (r + r2) != 7:
         money -= 1
         print("You lost your bet")
-        print("You have  $ %s left." % money)
+        print("You have $%s left." % money)
         rounds += 1
-        print(rounds)
 
 print("You lost all of your money")
 
 print("You did %s rounds." % rounds)
 
-print("The Most money you had was %s." % most_money)
+print("The most money you had was $%s. You should have stopped at round %s." % (most_money, stop_at_round))

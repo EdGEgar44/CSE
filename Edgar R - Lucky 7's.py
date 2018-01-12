@@ -42,7 +42,7 @@ print("You did %s rounds." % rounds)
 
 if stop_at_round == 0:
     print("The most money you had was $%s." % most_money)
-    print("You shouldn't even have played this game.")
+    print("You shouldn't even have played this.")
 else:
-    print("The most money you had was $%s." % most_money)
+    print("The most money you had was $%s. " % most_money)
     print("You should have stopped at round %s." % stop_at_round)

@@ -40,4 +40,9 @@ print("You lost all of your money")
 
 print("You did %s rounds." % rounds)
 
-print("The most money you had was $%s. You should have stopped at round %s." % (most_money, stop_at_round))
+if stop_at_round == 0:
+    print("The most money you had was $%s." % most_money)
+    print("You shouldn't even have played this game.")
+else:
+    print("The most money you had was $%s." % most_money)
+    print("You should have stopped at round %s." % stop_at_round)

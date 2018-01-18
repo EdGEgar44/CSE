@@ -112,9 +112,7 @@ while a < 10:
 
 # random numbers
 
-
 print(random.randint(0, 1001))
-
 
 # Comparisons
 
@@ -130,3 +128,37 @@ print(c == 1)
 print(int(c) == 1)"""
 
 # Input random ALWAYS gives out a string
+
+# Lists
+
+the_count = [1, 2, 3, 4, 5]
+
+shopping_list = ["Noodles", "Eggrolls", "Milk", "rise", "soda", "chips"]
+
+print(shopping_list[2])
+
+print(len(shopping_list))
+
+# Going through a list
+
+for item in shopping_list:
+    print(item)
+
+for num in the_count:
+    print(num * 2)
+
+len(shopping_list)  # Gives me a number of the length of the list
+range(0)  # Gives a list of the number 0 trough 2
+range(len(shopping_list))  # A list of EVERY index in a list
+
+for num in range(len(shopping_list)):
+    item = shopping_list[num]
+    print("The item at index %d is %s" % (num, item))
+
+# Turn things into a class
+str1 = "Hello Class!"
+listOne = list(str1)
+print(listOne)
+listOne[11] = '.'
+print(listOne)
+print(" ".join(listOne))

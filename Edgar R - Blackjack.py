@@ -1,5 +1,7 @@
 import random
 
+card_list = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "A", "J", "K", "Q"]
+
 player_One_BlackJack = "False"
 
 dealer_BlackJack = "False"
@@ -8,7 +10,7 @@ print("Welcome to BlackJack.")
 
 while player_One_BlackJack != "True" or dealer_BlackJack != "True":
 
-    dealer_card1 = random.randint(2, 12)
+    dealer_card1 = card_list[random.randint()]
 
     dealer_card2 = random.randint(2, 12)
 
@@ -16,17 +18,17 @@ while player_One_BlackJack != "True" or dealer_BlackJack != "True":
 
     player_one_card2 = random.randint(2, 12)
 
-    if dealer_card2 == 12:
-        dealer_card2 = "A"
+    if dealer_card1 == "J" or "K" or "Q":
+        dealer_card1 = 10
 
-    if dealer_card1 == 12:
-        dealer_card1 = "A"
+    if dealer_card2 == "J" or "K" or "Q":
+        dealer_card2 = 10
 
-    if player_one_card1 == 12:
-        dealer_card1 = "A"
+    if player_one_card1 == "J" or "K" or "Q":
+        dealer_card1 = 10
 
-    if player_one_card2 == 12:
-        player_one_card2 = "A"
+    if player_one_card2 == "J" or "K" or "Q":
+        player_one_card2 = 10
 
     print("Your card %s" % player_one_card1)
 
@@ -80,7 +82,6 @@ while player_One_BlackJack != "True" or dealer_BlackJack != "True":
 
         if new_card == "No":
             print("You are not going to get any more cards.")
-
 
     if player_one_added or dealer_added > 21:
         if player_one_added > 21:

@@ -1,5 +1,5 @@
 """import random  # This should be on line 1
-
+import string
 
 print("Hello World")
 
@@ -115,7 +115,6 @@ while a < 10:
 print(random.randint(0, 1001))
 
 # Comparisons
-
 print(1 == 1)  # Is 1 equal to 1?
 print(1 != 2)  # is 1 not equal to 2?
 print(10 >= 15)
@@ -125,22 +124,17 @@ print(not False)
 
 c = '1'
 print(c == 1)
-print(int(c) == 1)"""
-
+print(int(c) == 1)
+"""
 # Input random ALWAYS gives out a string
 
 # Lists
-
 the_count = [1, 2, 3, 4, 5]
-
 shopping_list = ["Noodles", "Eggrolls", "Milk", "rise", "soda", "chips"]
-
 print(shopping_list[2])
-
 print(len(shopping_list))
 
 # Going through a list
-
 for item in shopping_list:
     print(item)
 
@@ -161,4 +155,25 @@ listOne = list(str1)
 print(listOne)
 listOne[11] = '.'
 print(listOne)
-print(" ".join(listOne))
+print("".join(listOne))
+
+# Add things to a list
+shopping_list.append("cereal")
+print(shopping_list)
+
+# Removing things from a list
+shopping_list.remove("soda")
+print(shopping_list)
+shopping_list.pop(0)
+print(shopping_list)
+
+# the string class
+print(string.ascii_letters)
+print(string.ascii_lowercase)
+print(string.punctuation)
+print(string.digits)
+
+# Dealing with strings
+strTwo = "ThIs iS a VeRY oDd sEnTenCE"
+lowercase = strTwo.lower()
+print(lowercase)

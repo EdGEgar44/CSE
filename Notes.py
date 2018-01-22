@@ -1,5 +1,5 @@
-"""import random  # This should be on line 1
 import string
+"""import random  # This should be on line 1
 
 print("Hello World")
 

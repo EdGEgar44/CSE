@@ -14,28 +14,8 @@
       <file leaf-file-name="Notes.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Notes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2">
-              <caret line="162" column="0" lean-forward="true" selection-start-line="162" selection-start-column="0" selection-end-line="162" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Warpups.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Warpups.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Edgar R - Blackjack.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Edgar R - Blackjack.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="30" column="29" lean-forward="false" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
+            <state relative-caret-position="274">
+              <caret line="157" column="23" lean-forward="true" selection-start-line="157" selection-start-column="23" selection-end-line="157" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -44,11 +24,11 @@
       <file leaf-file-name="Edgar R - Hangman.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Edgar R - Hangman.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+            <state relative-caret-position="206">
+              <caret line="33" column="48" lean-forward="false" selection-start-line="33" selection-start-column="48" selection-end-line="33" selection-end-column="48" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
-                <element signature="e#940#1127#1" expanded="false" />
+                <element signature="e#794#1001#1" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -69,10 +49,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Warpups.py" />
         <option value="$PROJECT_DIR$/EdgarR - Guessgame.py" />
         <option value="$PROJECT_DIR$/Edgar R - Lucky 7's.py" />
         <option value="$PROJECT_DIR$/Edgar R - Blackjack.py" />
+        <option value="$PROJECT_DIR$/Warpups.py" />
         <option value="$PROJECT_DIR$/Notes.py" />
         <option value="$PROJECT_DIR$/Edgar R - Hangman.py" />
       </list>
@@ -99,8 +79,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -112,6 +90,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -130,7 +110,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Edgar R - Hangman">
+  <component name="RunManager" selected="Python.Notes">
     <configuration name="Edgar R - Blackjack" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -225,8 +205,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.Edgar R - Hangman" />
-        <item index="1" class="java.lang.String" itemvalue="Python.Notes" />
+        <item index="0" class="java.lang.String" itemvalue="Python.Notes" />
+        <item index="1" class="java.lang.String" itemvalue="Python.Edgar R - Hangman" />
         <item index="2" class="java.lang.String" itemvalue="Python.Warpups" />
         <item index="3" class="java.lang.String" itemvalue="Python.Edgar R - Blackjack" />
         <item index="4" class="java.lang.String" itemvalue="Python.Edgar R - Lucky 7's" />
@@ -646,35 +626,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Warpups.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+        <state relative-caret-position="274">
+          <caret line="48" column="15" lean-forward="false" selection-start-line="48" selection-start-column="15" selection-end-line="48" selection-end-column="15" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Edgar R - Blackjack.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="30" column="29" lean-forward="false" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
+        <state relative-caret-position="136">
+          <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Notes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2">
-          <caret line="162" column="0" lean-forward="true" selection-start-line="162" selection-start-column="0" selection-end-line="162" selection-end-column="0" />
+        <state relative-caret-position="274">
+          <caret line="157" column="23" lean-forward="true" selection-start-line="157" selection-start-column="23" selection-end-line="157" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Edgar R - Hangman.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+        <state relative-caret-position="206">
+          <caret line="33" column="48" lean-forward="false" selection-start-line="33" selection-start-column="48" selection-end-line="33" selection-end-column="48" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#940#1127#1" expanded="false" />
+            <element signature="e#794#1001#1" expanded="false" />
           </folding>
         </state>
       </provider>

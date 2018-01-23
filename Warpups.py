@@ -47,5 +47,3 @@ def date(month, day, year):
 
 
 date(12, 8, 17)
-
-# 12.11.17

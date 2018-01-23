@@ -1,7 +1,7 @@
 import random
 import string
 
-lose_condition = 10
+guessed_left = 10
 
 player_stop_playing = "False"
 
@@ -14,38 +14,32 @@ uppercase_letters = string.ascii_uppercase
 word_phrase_bank = ["Classwork", "Teenager", "Community", "Blackjack", "NaNi", "Firefox", "Lucky", "Window",
                     "Terraria", "Mr.Wiebe"]
 
-
-def word_finder():
-    print("You guess a letter right. The letter was %s." % word_guessed)
-    if word_guessed == len(word_phrase_bank):
-        word_phrase_bank = "google"
-
-
-def letter_wrong():
-    if wordguess != len(word_phrase_bank):
-        word_phrase_bank = "guess"
+letters_words = ["google"]
 
 
 while player_stop_playing != "True":
-    word_selector = random.choice(word_phrase_bank)
 
-    # word_converter = word_selector.punctuation()
+    play_a_game = input("Do you want to play a game of Hangman?(Yes or no) ")
 
-    # print(word_converter)
+    play_a_game = play_a_game.lower()
 
-    word_guessed = input("Guess the word ")
+    if play_a_game == "yes" and guessed_left >= 0:
 
-    word_guessed = word_guessed.lower()
+        word_selector = random.choice(word_phrase_bank)
 
-    print(word_guessed)
-    name = input("How")
+        range(len(word_selector))
+
+        word_selector = punctuation
+
+        word_guessed = input("Guess the letter")
+
+    guessed_left = 10
 
 """
 A General guide for Hangman
 1. Make a work bank - 10 items
 2. Pick a random item from the list
-3. Hide the word (use *)
+3. Add a guess to the list of letters guessed
 4. Reveal letters already used
 5. Create the win condition
-
 """

@@ -1,7 +1,7 @@
 import random
 import string
 
-guessed_left = 10
+guesses_left = 10
 
 player_stop_playing = "False"
 
@@ -11,10 +11,10 @@ lowercase_letters = string.ascii_lowercase
 
 uppercase_letters = string.ascii_uppercase
 
-word_phrase_bank = ["Classwork", "Teenager", "Community", "Blackjack", "NaNi", "Firefox", "Lucky", "Window",
+word_phrase_bank = ["Classwork", "Train", "Computer", "Blackjack", "NaNi", "Firefox", "Lucky", "Window",
                     "Terraria", "Mr.Wiebe"]
 
-letters_words = ["google"]
+guessed_words = []
 
 
 while player_stop_playing != "True":
@@ -23,15 +23,44 @@ while player_stop_playing != "True":
 
     play_a_game = play_a_game.lower()
 
-    if play_a_game == "yes" and guessed_left >= 0:
+    while play_a_game == "yes" and guesses_left >= 0:
 
         word_selector = random.choice(word_phrase_bank)
 
-        range(len(word_selector))
+        range_of_letter = len(word_selector)
 
-        word_selector = punctuation
+        word_selector_stars = range_of_letter * "*"
 
-        word_guessed = input("Guess the letter")
+        if word_selector == "Mr.Wiebe":
+            word_selector_stars = "**.*****"
+
+        print(word_selector_stars)
+
+        word_selector = word_selector.lower()
+
+        while guesses_left >= 0:
+
+            print("These are the words you have guessed %s " % guessed_words)
+
+            print("You have %s guesses left." % guesses_left)
+
+            word_guessed = input("Guess the letter. ")
+
+            word_guessed = word_guessed.lower()
+
+            if word_guessed != word_selector:
+                word_guessed = guessed_words.append(word_guessed)
+                guesses_left -= 1
+
+            print(guessed_words)
+
+            if word_guessed == word_selector:
+                print("You got it right!")
+
+                print("You have %s guesses left." % guesses_left)
+
+                if guesses_left == 10:
+                    print("You did it in first Try. You must have cheated.")
 
     guessed_left = 10
 

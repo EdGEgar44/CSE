@@ -5,6 +5,8 @@ guesses_left = 10
 
 player_stop_playing = "False"
 
+letters = string.ascii_lowercase
+
 word_phrase_bank = ["Classwork", "Train", "Computer", "Blackjack", "NaNi", "Firefox", "Lucky", "Window",
                     "Terraria", "Mr.Wiebe"]
 
@@ -18,13 +20,13 @@ while player_stop_playing != "True":
 
     word_selector = random.choice(word_phrase_bank)
 
-    word_selector_stars_list = list(word_selector_stars)
-
     while play_a_game == "yes" and guesses_left >= 0:
 
         range_of_letter = len(word_selector)
 
         word_selector_stars = range_of_letter * "*"
+
+        word_selector_stars_list = list(word_selector_stars)
 
         if word_selector == "Mr.Wiebe":
             word_selector_stars = "**.*****"
@@ -48,41 +50,19 @@ while player_stop_playing != "True":
 
             word_guessed = word_guessed.lower()
 
+            print(guessed_words)
+
+            for word_guessed in letters:
+
+
+            if word_guessed == word_selector:
+                if guesses_left == 10:
+                    print("You did it in first Try. You must have cheated.")
+
             if word_guessed != word_selector:
                 word_guessed = guessed_words.append(word_guessed)
                 print("Try again")
                 guesses_left -= 1
-
-            print(guessed_words)
-
-            if word_selector == "classwork" and word_guessed == "c" or "l" or "a" or "s" or "w" or "o" or "r" or "k":
-                print("You got it right!")
-                if word_guessed == "c":
-                    word_selector_stars_list[0] = "c"
-
-                if word_guessed == "l":
-                    word_selector_stars_list[1] = "l"
-
-                if word_selector_stars == "a":
-                    word_selector_stars_list[2] = "a"
-
-                if word_selector_stars == "s":
-                    word_selector_stars_list[3, 4] = "s"
-
-                if word_selector_stars == "w":
-                    word_selector_stars_list[5] = "w"
-
-                if word_selector_stars == "o":
-                    word_selector_stars_list[8] = "o"
-
-                if word_selector_stars == "r":
-                    word_selector_stars_list[7] = "r"
-
-                if word_selector_stars == "k":
-                    word_selector_stars_list[9] = "k"
-
-                if guesses_left == 10:
-                    print("You did it in first Try. You must have cheated.")
 
     guessed_left = 10
 

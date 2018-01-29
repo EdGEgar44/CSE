@@ -18,33 +18,35 @@ while player_stop_playing != "True":
 
     play_a_game = play_a_game.lower()
 
-    word_selector = random.choice(word_phrase_bank)
+    word_selected = random.choice(word_phrase_bank)
 
     while play_a_game == "yes" and guesses_left >= 0:
 
-        range_of_letter = len(word_selector)
+        range_of_letter = len(word_selected)
 
         word_selector_stars = range_of_letter * "*"
 
         word_selector_stars_list = list(word_selector_stars)
 
-        if word_selector == "Mr.Wiebe":
+        if word_selected == "Mr.Wiebe":
             word_selector_stars = "**.*****"
 
-        word_selector = word_selector.lower()
+        word_selected = word_selected.lower()
 
-        word_selector = list(word_selector)
+        word_selected = list(word_selected)
 
         while guesses_left >= 0:
 
             if guessed_words == str([]):
+                print("You have nothing in the list")
+            else:
                 print("These are the words you have guessed %s " % guessed_words)
 
             print("You have %s guesses left." % guesses_left)
 
             print(word_selector_stars)
 
-            print(word_selector)
+            print(word_selected)
 
             word_guessed = input("Guess the letter. ")
 
@@ -52,25 +54,22 @@ while player_stop_playing != "True":
 
             print(guessed_words)
 
-            for word_guessed in letters:
+            for letter in word_guessed:
+                print((word_guessed).join(word_selector_stars))
 
-
-            if word_guessed == word_selector:
+            if word_guessed == word_selected:
                 if guesses_left == 10:
                     print("You did it in first Try. You must have cheated.")
 
-            if word_guessed != word_selector:
+            if word_guessed != word_selected:
                 word_guessed = guessed_words.append(word_guessed)
                 print("Try again")
                 guesses_left -= 1
 
+            guessed_words.append(guessed_words)
+
     guessed_left = 10
 
 """
-A General guide for Hangman
-1. Make a work bank - 10 items
-2. Pick a random item from the list
-3. Add a guess to the list of letters guessed
 4. Reveal letters already used
-5. Create the win condition
 """

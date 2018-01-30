@@ -3,9 +3,9 @@ import string
 
 guesses_left = 10
 
-player_stop_playing = "False"
+alphabet = list(string.ascii_letters)
 
-letters = string.ascii_lowercase
+player_stop_playing = "False"
 
 word_phrase_bank = ["Classwork", "Train", "Computer", "Blackjack", "NaNi", "Firefox", "Lucky", "Window",
                     "Terraria", "Mr.Wiebe"]
@@ -36,11 +36,7 @@ while player_stop_playing != "True":
         word_selected = list(word_selected)
 
         while guesses_left >= 0:
-
-            if guessed_words == str([]):
-                print("You have nothing in the list")
-            else:
-                print("These are the words you have guessed %s " % guessed_words)
+            print("These are the words you have guessed %s " % guessed_words)
 
             print("You have %s guesses left." % guesses_left)
 
@@ -54,10 +50,16 @@ while player_stop_playing != "True":
 
             print(guessed_words)
 
+            output = word_selected
+        while word_guessed != word_selected or guesses_left <= 0:
             for letter in word_guessed:
-                print((word_guessed).join(word_selector_stars))
+                if letter in word_guessed:
+                    output.append(word_guessed)
+                else:
+                    output.append("*")
 
             if word_guessed == word_selected:
+                guesses_left = 0
                 if guesses_left == 10:
                     print("You did it in first Try. You must have cheated.")
 
@@ -65,8 +67,6 @@ while player_stop_playing != "True":
                 word_guessed = guessed_words.append(word_guessed)
                 print("Try again")
                 guesses_left -= 1
-
-            guessed_words.append(guessed_words)
 
     guessed_left = 10
 

@@ -2,9 +2,6 @@ import random
 import string
 
 guesses_left = 10
-
-alphabet = list(string.ascii_letters)
-
 player_stop_playing = "False"
 
 word_phrase_bank = ["Classwork", "Train", "Computer", "Blackjack", "NaNi", "Firefox", "Lucky", "Window",
@@ -12,63 +9,49 @@ word_phrase_bank = ["Classwork", "Train", "Computer", "Blackjack", "NaNi", "Fire
 
 guessed_words = []
 
-while player_stop_playing != "True":
+output = []
 
-    play_a_game = input("Do you want to play a game of Hangman?(Yes or no) ")
+word_selected = random.choice(word_phrase_bank)
 
-    play_a_game = play_a_game.lower()
+word_selected = word_selected.lower()
 
-    word_selected = random.choice(word_phrase_bank)
+print("Lets play Hangman. To play, you just have to guess a letter. You have 10 chances to guess the word.")
 
-    while play_a_game == "yes" and guesses_left >= 0:
+letter_guessed = input("Guess the letter. ")
 
-        range_of_letter = len(word_selected)
+guessed_words.append(letter_guessed)
 
-        word_selector_stars = range_of_letter * "*"
+while guesses_left >= 0:
 
-        word_selector_stars_list = list(word_selector_stars)
+    for letter in word_selected:
+        if letter in letter_guessed:
+            output.append(letter)
+            guesses_left += 1
+        else:
+            output.append("*")
 
-        if word_selected == "Mr.Wiebe":
-            word_selector_stars = "**.*****"
+    hidden_word = " ".join(output)
 
-        word_selected = word_selected.lower()
+    guesses_left -= 1
 
-        word_selected = list(word_selected)
+    print("You have %s guesses left." % guesses_left)
 
-        while guesses_left >= 0:
-            print("These are the words you have guessed %s " % guessed_words)
+    print("These are the words you have guessed %s " % guessed_words)
 
-            print("You have %s guesses left." % guesses_left)
+    print(word_selected)
 
-            print(word_selector_stars)
+    print(hidden_word)
 
-            print(word_selected)
+    asked_letter = input("Guess the letter. ")
 
-            word_guessed = input("Guess the letter. ")
+    guessed_words.append(letter_guessed)
 
-            word_guessed = word_guessed.lower()
+    asked_letter_lower = asked_letter.lower()
 
-            print(guessed_words)
+    correct_word = list(word_selected)
 
-            output = word_selected
-        while word_guessed != word_selected or guesses_left <= 0:
-            for letter in word_guessed:
-                if letter in word_guessed:
-                    output.append(word_guessed)
-                else:
-                    output.append("*")
-
-            if word_guessed == word_selected:
-                guesses_left = 0
-                if guesses_left == 10:
-                    print("You did it in first Try. You must have cheated.")
-
-            if word_guessed != word_selected:
-                word_guessed = guessed_words.append(word_guessed)
-                print("Try again")
-                guesses_left -= 1
-
-    guessed_left = 10
+    if letter_guessed != output:
+        print("Try again")
 
 """
 4. Reveal letters already used

@@ -1,15 +1,13 @@
 import random
-import string
 
 guesses_left = 10
-player_stop_playing = "False"
 
 word_phrase_bank = ["Classwork", "Train", "Computer", "Blackjack", "NaNi", "Firefox", "Lucky", "Window",
-                    "Terraria", "Mr.Wiebe"]
+                    "Terraria", "Minecraft"]
+
+letter_in_words = 0
 
 guessed_words = []
-
-output = []
 
 word_selected = random.choice(word_phrase_bank)
 
@@ -17,42 +15,40 @@ word_selected = word_selected.lower()
 
 print("Lets play Hangman. To play, you just have to guess a letter. You have 10 chances to guess the word.")
 
-letter_guessed = input("Guess the letter. ")
-
-guessed_words.append(letter_guessed)
-
-while guesses_left >= 0:
+while guesses_left > 0:
+    output = []
 
     for letter in word_selected:
-        if letter in letter_guessed:
+        if letter in guessed_words:
             output.append(letter)
             guesses_left += 1
+
         else:
             output.append("*")
 
-    hidden_word = " ".join(output)
+    hidden_word = "".join(output)
 
-    guesses_left -= 1
+    print(hidden_word)
 
     print("You have %s guesses left." % guesses_left)
 
     print("These are the words you have guessed %s " % guessed_words)
 
-    print(word_selected)
+    letter_guessed = input("Guess the letter. ")
 
-    print(hidden_word)
+    guesses_left -= 1
 
-    asked_letter = input("Guess the letter. ")
+    lowercase_guess = letter_guessed.lower()
 
-    guessed_words.append(letter_guessed)
-
-    asked_letter_lower = asked_letter.lower()
+    guessed_words.append(lowercase_guess)
 
     correct_word = list(word_selected)
 
-    if letter_guessed != output:
-        print("Try again")
+    if letter_guessed == word_selected:
+        print("You win.")
+        guesses_left = -0
 
-"""
-4. Reveal letters already used
-"""
+    if output == word_selected:
+        print("You win")
+        exit(0)
+print("Game Over")

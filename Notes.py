@@ -1,4 +1,4 @@
-import string
+# import string
 """import random  # This should be on line 1
 
 print("Hello World")
@@ -125,7 +125,7 @@ print(not False)
 c = '1'
 print(c == 1)
 print(int(c) == 1)
-"""
+
 # Input random ALWAYS gives out a string
 
 # Lists
@@ -177,3 +177,72 @@ print(string.digits)
 strTwo = "ThIs iS a VeRY oDd sEnTenCE"
 lowercase = strTwo.lower()
 print(lowercase)
+"""
+# Dictionaries - Made up of key: value pairs
+dictionary = {'name': 'Lance', 'age': 23, 'height': 5 * 12 + 7}
+
+# access dictionaries
+print(dictionary['name'])
+print(dictionary['age'])
+print(dictionary['height'])
+
+# Adding to a dictionary
+dictionary['weight'] = 280
+print(dictionary)
+larger_dictionary = {
+    'CA': [
+        'Fresno',
+        'sacramento',
+        'Los Angeles'
+    ],
+    'FL': [
+        "Tampa",
+        "Orlando",
+        "Miami"
+    ],
+    'OH': [
+        "Cleveland",
+        "Cincinnati",
+        "Springfield"
+    ]
+}
+print(larger_dictionary['FL'])
+print(larger_dictionary["FL"][2])
+print(larger_dictionary['OH'][1])
+largest_dictionary = {
+    'CA': {
+        'NAME': 'California',
+        'POPULATION': 39250000,
+        'BORDER ST': [
+            'Oregon',
+            'Nevada',
+            'Arizona'
+        ]
+    },
+    'AZ': {
+        'NAME': 'Arizona',
+        'POPULATION': 6931000,
+        'BORDER ST': [
+            'California',
+            'Utah',
+            'Nevada',
+            'New Mexico'
+        ]
+    },
+    'NY': {
+        'NAME': "New York",
+        'POPULATION': 19750000,
+        'BORDER ST': [
+            'Vermont',
+            'Massachusetts',
+            'Connecticut',
+            'Pennsylvania',
+            'New Jersey'
+        ]
+    }
+}
+
+current_node = largest_dictionary['CA']
+print(current_node)
+print(current_node['NAME'])
+print(current_node['POPULATION'])

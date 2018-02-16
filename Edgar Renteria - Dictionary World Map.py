@@ -160,10 +160,10 @@ world_map = {
     },
     'SHRINE_R': {
         'NAME': "Shrine Room",
-        'DESCRIPTION': "You found a room that seems to be a shrine. You see a picture of a boy that seems to be \n"
-                       "around 20 years old. You see food, drinks, and candles that have cobwebs around them. To \n"
-                       "the North is the secret bookshelf door that leads to the corridor and to the South it seems \n"
-                       "to lead outside.",
+        'DESCRIPTION': "You push the bookshelf to find out that it is a hidden door. You found a room that seems to\n"
+                       "be a shrine. You see a picture of a boy that seems to be around 20 years old. You see food, \n"
+                       "drinks, and candles that have cobwebs around them. To the North is the secret bookshelf door \n"
+                       "that leads to the corridor and to the South it seems to lead outside.",
         'PATHS': {
             'NORTH': 'CORRIDOR',
             'SOUTH': 'SOUTH_HOUSE'
@@ -180,12 +180,81 @@ world_map = {
     },
     'DARK_R': {
         'NAME': "The Dark Room",
-        'DESCRIPTION': "You reached a dark room. You can't see anything in the room. You hear scary sounds in the \n"
-                       "room to the North, to the East is the corridor and to the West you hear birds chirping.",
+        'DESCRIPTION': "You reached a dark room. You can't see anything in the room. Yo felt something in the back \n"
+                       "of your leg. It feels like a camera. You hear scary sounds in the room to the North, to the \n"
+                       "East is the corridor and to the West you hear birds chirping.",
         'PATHS': {
             'NORTH': 'SCARY_R',
             'EAST': 'CORRIDOR',
             'WEST': 'WEST_HOUSE'
+        }
+    },
+    'SCARY_R': {
+        'NAME': "Scary Room",
+        'DESCRIPTION': "You enter the scary room  to find that the monitor of a computer was on. It was playing \n"
+                       "scary music from Youtube. You wonder why you they will leave it running. Then you see a key \n"
+                       "that came shooting out of the wall behind a painting. It is a key. A shiny blue key that \n"
+                       "says 'P key 2 KEEP HIDDEN'. You wonder why they didn't take it. To the South is the scary \n"
+                       "room.",
+        'PATHS': {
+            'SOUTH': 'DARK_R'
+        }
+    },
+    'WEST_HOUSE': {
+        'NAME': "West of House",
+        'DESCRIPTION': "You leave the house and reached the west side of the house. You can't go anywhere because \n"
+                       "it is surrounded by bushed and thick trees. The only way you can go is to the dark room to \n"
+                       "the East.",
+        'PATHS': {
+            'EAST': 'DARK_R'
+        }
+    },
+    'WOODWORK_SECTION': {
+        'NAME': "Woodwork section",
+        'DESCRIPTION': " You go to the woodwork section. Their is a lot of wood that has been cut down and but into \n"
+                       "To the South is a Walkway and to the West is the front of the store.",
+        'PATHS': {
+            'SOUTH': 'WALKWAY',
+            'WEST': 'FRONT_STORE'
+        }
+    },
+    'WALKWAY': {
+        'NAME': "Walkway",
+        'DESCRIPTION': "You find yourself in the walkway of the store. You find yourself in a three-section. To the \n"
+                       "North is the woodwork section, to the East is the box room and to the South is the book \n"
+                       "section.",
+        'PATHS': {
+            'NORTH': 'WOODWORK_SECTION',
+            'EAST': 'BOX_R',
+            'SOUTH': 'BOOK_SECTION'
+        }
+    },
+    'BOX_R': {
+        'NAME': "The Box Room",
+        'DESCRIPTION': "You enter the box room that seems to be for employee only. The only thing that is in the \n"
+                       "room are boxes. Boxes. And more boxes. boxes with wood and books. To the East is the Meet \n"
+                       "section and to the West is the walkway.",
+        'PATHS': {
+            'EAST': 'WALKWAY',
+            'WEST': 'MEAT_SECTION'
+        }
+    },
+    'MEAT_SECTION': {
+        'NAME': "Meat Section",
+        'DESCRIPTION': "You reach the meat section of the store. It was all empty but the cow meat section. You \n"
+                       "want to take the meat but you don't because it is stealing. To the South is a room full \n"
+                       "of mirrors and to the West is the box room.",
+        'PATHS': {
+            'SOUTH': 'MIRROR_R',
+            'WEST': 'BOX_R'
+        }
+    },
+    'MIRROR_R': {
+        'NAME': "The Mirror Room",
+        'DESCRIPTION': " ",
+        'PATHS': {
+            'NORTH': 'MEAT_SECTION',
+            'EAST': 'ROOM'
         }
     },
     '': {

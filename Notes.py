@@ -177,7 +177,7 @@ print(string.digits)
 strTwo = "ThIs iS a VeRY oDd sEnTenCE"
 lowercase = strTwo.lower()
 print(lowercase)
-"""
+
 # Dictionaries - Made up of key: value pairs
 dictionary = {'name': 'Lance', 'age': 23, 'height': 5 * 12 + 7}
 
@@ -246,3 +246,19 @@ current_node = largest_dictionary['CA']
 print(current_node)
 print(current_node['NAME'])
 print(current_node['POPULATION'])
+"""
+# Defining functions
+
+
+def hello_world():
+    print("Hello World!")
+
+
+hello_world()
+
+
+def square_it(number):
+    return number ** 2
+
+
+square_it(3)

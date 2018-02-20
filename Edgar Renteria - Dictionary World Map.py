@@ -293,21 +293,17 @@ world_map = {
     'BACK_STORE': {
         'NAME': "Back of Store",
         'DESCRIPTION': "You reached the back of the store. You see a garbage can that is full of trash. You see a \n"
-                       "graffiti that says 'HE CAME'. What that meant was a mystery. ",
+                       "graffiti that says 'HE CAME'. What that meant was a mystery. To the North is the book \n"
+                       "section and to the East is a school House.",
         'PATHS': {
             'NORTH': '',
-            'EAST': '',
-            'SOUTH': '',
-            'WEST': ''
+            'EAST': ''
         }
     },
     'SCHOOL_HOUSE': {
         'NAME': "School House",
         'DESCRIPTION': "",
         'PATHS': {
-            'NORTH': '',
-            'EAST': '',
-            'SOUTH': '',
             'WEST': ''
         }
     },

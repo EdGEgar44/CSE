@@ -108,10 +108,10 @@ world_map = {
     'SIDE_ENTRANCE': {
         'NAME': "Side Entrance of the House",
         'DESCRIPTION': "You have reached the side entrance of the house. You enter the creepy house. To the North \n"
-                       "their is a cupcake factory, to the East is the front of the store, to the South is the \n"
+                       "their is a Oreo cookie factory, to the East is the front of the store, to the South is the \n"
                        "kitchen and to the West is the hallway.",
         'PATHS': {
-            'NORTH': 'FACTORY',
+            'NORTH': 'OREO_FACTORY',
             'EAST': 'FRONT_STORE',
             'SOUTH': 'KITCHEN',
             'WEST': 'HALL'
@@ -296,20 +296,56 @@ world_map = {
                        "graffiti that says 'HE CAME'. What that meant was a mystery. To the North is the book \n"
                        "section and to the East is a school House.",
         'PATHS': {
-            'NORTH': '',
-            'EAST': ''
+            'NORTH': 'BOOK_SECTION',
+            'EAST': 'SCHOOL_HOUSE'
         }
     },
     'SCHOOL_HOUSE': {
         'NAME': "School House",
+        'DESCRIPTION': "You reached the front of a small school house that looks like it was from the 1800's. You \n"
+                       "try to open the door but it is locked. You try to find another way in but their isn't. \n"
+                       "inside seems to be some desk that has a computer that is unreachable. On the screen it \n"
+                       "says 'THE MAP' in big letters. But because it was so far away that you couldn't read what \n"
+                       "was below it. So you leave it light that. To the West is the back of the store.",
+        'PATHS': {
+            'WEST': 'BACK_STORE'
+        }
+    },
+    'OREO_FACTORY': {
+        'NAME': "The Oreo Cookie Factory",
+        'DESCRIPTION': "You reached the ever so popular Oreo cookie factory. You go inside and you find packs among \n"
+                       "packs of double stuffed Oreo's. You grab two packs of double stuffed Oreo's (not that it \n"
+                       "matters) so that you have some on the road. You leave the Oreo factory and you walk out \n"
+                       "the door. Then you notice a pack of mega stuffed oreo's. You take it and you walk back \n"
+                       "outside. To the East is the back of the mall and to the South is the side entrance to a \n"
+                       "scary looking house.",
+        'PATHS': {
+            'EAST': 'BACK_MALL',
+            'SOUTH': 'SIDE_ENTRANCE'
+        }
+    },
+    'FRONT_HOUSE': {
+        'NAME': "The Front of the House",
+        'DESCRIPTION': "You are at the front of the house. You knock on the door to see if anyone is their. No one \n"
+                       "answers so you just open the door. You see that the door isn't unlocked. You open the door, \n"
+                       "enter the house and closed the door. To the North is the parking lot and to the South is the \n"
+                       "hallway.",
+        'PATHS': {
+            'NORTH': 'HALL',
+            'WEST': 'PARKING_LOT'
+        }
+    },
+    'LEFT_MALL': {
+        'NAME': "Left of Mall",
         'DESCRIPTION': "",
         'PATHS': {
-            'WEST': ''
+            'SOUTH': 'ALLEY_WAY',
+            'WEST': 'WALMART'
         }
     },
     '': {
-        'NAME': " ",
-        'DESCRIPTION': " ",
+        'NAME': "",
+        'DESCRIPTION': "",
         'PATHS': {
             'NORTH': '',
             'EAST': '',

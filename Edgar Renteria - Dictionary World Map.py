@@ -338,7 +338,7 @@ world_map = {
     'LEFT_MALL': {
         'NAME': "Left of Mall",
         'DESCRIPTION': "You reach the left side of the mall. You see trash cans that don't have anything. You look \n"
-                       "inside and they ",
+                       "inside and their seems to be a graffiti that says 'He is near'. You get out of the ",
         'PATHS': {
             'SOUTH': 'ALLEY_WAY',
             'WEST': 'WALMART'

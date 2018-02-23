@@ -72,5 +72,5 @@ class Car(object):
         self.passenger = 0
 
 
-my_car = Car("Red", "Tesla", "X", 9001)
+my_car = Car("Red", "Tesla", "X", 9001, 0)
 my_car.go_for_drive(4)

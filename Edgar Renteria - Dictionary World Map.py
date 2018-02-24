@@ -76,7 +76,7 @@ world_map = {
                        "have any intentions their. To the North is a fence that is locked with unbreakable chains \n"
                        "with a lock on a door that doesn't look like a normal key. To the South is Office Depot.",
         'PATHS': {
-            'NORTH': 'NORTHHOUSE',
+            'NORTHE': 'CORRUPTED_S',
             'SOUTH': 'OFFICE_D'
         }
     },
@@ -338,20 +338,114 @@ world_map = {
     'LEFT_MALL': {
         'NAME': "Left of Mall",
         'DESCRIPTION': "You reach the left side of the mall. You see trash cans that don't have anything. You look \n"
-                       "inside and their seems to be a graffiti that says 'He is near'. You get out of the ",
+                       "inside and their seems to be a graffiti that says 'He is near'. You get out of the garbage \n"
+                       "bin and you think for a bit. You wonder why they put that their. To the South is an alley \n"
+                       "and to the West is Walmart.",
         'PATHS': {
-            'SOUTH': 'ALLEY_WAY',
+            'SOUTH': 'ALLEYWAY',
             'WEST': 'WALMART'
         }
     },
-    '': {
-        'NAME': "",
-        'DESCRIPTION': "",
+    'ALLEYWAY': {
+        'NAME': "The Alleyway",
+        'DESCRIPTION': "You reach an alleyway. Their isn't much that is here other than a piece of paper with a \n"
+                       "clown, a bear, a ballerina, and a puppet. You see that it familiar in a way but you couldn't \n"
+                       "place it. To the North is the left of the mall, to the East is a Casino and to the South \n"
+                       "seems to have a garbage truck parked outside.",
         'PATHS': {
-            'NORTH': '',
-            'EAST': '',
-            'SOUTH': '',
-            'WEST': ''
+            'NORTH': 'LEFT_MALL',
+            'EAST': 'CASINO',
+            'SOUTH': 'GARBAGE TRUCK'
+        }
+    },
+    'CASINO': {
+        'NAME': "The Casino",
+        'DESCRIPTION': "You reach the Casino's entrance. You can't enter the casino because you are not 18 years or \n"
+                       "older. So you just wait outside as you hear slot machines ringing to announce the winner and \n"
+                       "hear people talking. To the East is a door that is floating. You don't know how but it is.\n"
+                       "In front of the door has a sign that reads 'you need a key. You that walks and can talk.' \n"
+                       "Have you seen a key that can do that? To the South is a restaurant and to the West is the \n"
+                       "alleyway.",
+        'PATHS': {
+            'EASTtr': 'TELEPORTER_R',
+            'SOUTH': '5_STAR_RESTAURANT',
+            'WEST': 'ALLEYWAY'
+        }
+    },
+    'GARBAGE_TRUCK': {
+        'NAME': "The Garbage Truck",
+        'DESCRIPTION': "You reached the Garbage truck. When you reach their, you see that the passenger seat s open. \n"
+                       "You enter the garbage truck and their seems to be a key of some sort. Their is also a piece \n"
+                       "of paper that has some writing on it. To the North is the alleyway and to the East is a \n"
+                       "restaurant.",
+        'PATHS': {
+            'NORTH': 'ALLEYWAY',
+            'EAST': '5_STAR_RESTAURANT'
+        }
+    },
+    '5_STAR_RESTAURANT': {
+        'NAME': "The 5 star Restaurant",
+        'DESCRIPTION': "You reached the 5 star restaurant. You feel hungry but you put that feeling away since you \n"
+                       "you don't have any money. To the North is a Casino, to the South seems to be a corner and \n"
+                       "to the west is a garbage truck.",
+        'PATHS': {
+            'NORTH': 'CASINO',
+            'SOUTH': 'CORNER',
+            'WEST': 'GARBAGE_TRUCK'
+        }
+    },
+    'CORNER': {
+        'NAME': "The Corner",
+        'DESCRIPTION': "You reached the corner of the 5 star restaurant and you turn. You see a chinese restaurant \n"
+                       "that seems to be abandoned because of its location. You see that the walls are being torn \n"
+                       "by the weather and the windows are broken. To the North is the 5 star restaurant and to the \n"
+                       "West is the chinese restaurant.",
+        'PATHS': {
+            'NORTH': '5_STAR_RESTAURANT',
+            'EAST': 'CHINESE_RESTAURANT'
+        }
+    },
+    'CHINESE_RESTAURANT': {
+        'NAME': "The Abandoned Chinese Restaurant",
+        'DESCRIPTION': "You reached the abandoned chinese restaurant and you go inside. You see that the their was a \n"
+                       "a lot of people that use to go here because of so any tables and chairs. You see burn marks \n"
+                       "on the wall and you wonder if their was a fire. To the West is the corner of the 5 star \n"
+                       "restaurant",
+        'PATHS': {
+            'WEST': 'CORNER'
+        }
+    },
+    'TELEPORTER_R': {
+        'NAME': "The Teleporter Room",
+        'DESCRIPTION': "You enter the door that was floating bit because you hold the key near it stopped floating \n"
+                       "and reached the floor. You put the key in the key hole and the door opens. You take the key \n"
+                       "and you go inside. Inside seems to have a bunch of wire and a pod in the middle. The pod had \n"
+                       "a name. The name was 'The Teleporter 9000'. Their was also a command center but you didn't \n"
+                       "touch it. To the West is the casino.",
+        'PATHS': {
+            'WEST': 'CASINO'
+        }
+    },
+    'SERVER': {
+        'NAME': "The Server",
+        'DESCRIPTION': "You feel dazed because of 'The Teleporter 9000'. You try to walk but you can't. Then you see \n"
+                       "a door to the west that is slightly open. You see blue light flickering true the bottom of \n"
+                       "the door. But then you see that their is a sight that dose not very much glows. It reads \n"
+                       "'YOU SHOULD NOT ENTER. IF YOU ENTER. YOU WILL CRASH THE WORLD AND He WILL COME. IF YOU ENTER \n"
+                       "WITHOUT THE PROPER MATERIALS. YOU WILL DIE. DON'T SAY YOU WEREN'T WORDED'. You wonder if you \n"
+                       "have the pieces.",
+        'PATHS': {
+            'WEST': 'CORRUPTED_S'
+        }
+    },
+    'CORRUPTED_R': {
+        'NAME': "The Corrupted Server",
+        'DESCRIPTION': "When you reach the door you felt a weired feeling when you entered the room. Their was light \n"
+                       "on the walls that wre in a patter like a circuit board. They slowly started to glow red. To \n"
+                       "the North wall is a door that has a sign that reads 'To the Server'. To the East is to the \n"
+                       "server room.",
+        'PATHS': {
+            'EAST': 'SERVER'
         }
     },
 }

@@ -1,5 +1,5 @@
 world_map = {
-    'BACK_MALL': {
+    'D BACK_MALL': {
         'NAME': "Back Of Mall",
         'DESCRIPTION': "You are in the back of the mall. You see Target in the North and the front of a store to the \n"
                        "south.",
@@ -8,7 +8,7 @@ world_map = {
             'SOUTH': 'FRONT_STORE'
         }
     },
-    'FRONT_STORE': {
+    'D FRONT_STORE': {
         'NAME': "The Front of a store",
         'DESCRIPTION': "The store is a convenient store that has been here for a while. To the North is the back of \n"
                        "a mall, to the East is the Woodwork section, and to the West is an entrance to an abandoned \n"
@@ -19,7 +19,7 @@ world_map = {
             'WEST': 'SIDE_ENTRANCE'
         }
     },
-    'TARGET': {
+    'D TARGET': {
         'NAME': "Target",
         'DESCRIPTION': "You have entered Target and walked through. You have triggered the metal detector and was \n"
                        "kicked out of the store. Walmart is in the North, Home Depot is in the East, Office Depot \n"
@@ -31,7 +31,7 @@ world_map = {
             'WEST': 'OFFICE_D'
         }
     },
-    'OFFICE_D': {
+    'D OFFICE_D': {
         'NAME': "Office Depot",
         'DESCRIPTION': "You have entered Office Depot and didn't want to go thought because of what happened with \n"
                        "Target. To the West is Target and to the East is the left of the mall.",
@@ -41,7 +41,7 @@ world_map = {
             'WEST': 'CAR'
         }
     },
-    'CAR': {
+    'D CAR': {
         'NAME': "The Car",
         'DESCRIPTION': "You found your car. But you left your keys in an unknown area, so you can't get in. To the \n"
                        "East is Office Depot and to the West in the Parking lot.",
@@ -50,7 +50,7 @@ world_map = {
             'WEST': 'PARKING'
         }
     },
-    'PARKING': {
+    'D PARKING': {
         'NAME': "Parking Lot",
         'DESCRIPTION': "You have reached the parking lot. Their are a lot of cars in the parking lot to visit the \n"
                        "bat cave. To the North is the bat cave, to the East is were your car is at, to the South is \n"
@@ -62,7 +62,7 @@ world_map = {
             'WEST': 'TRUCK'
         },
     },
-    'TRUCK': {
+    'D TRUCK': {
         'NAME': "Taco Truck",
         'DESCRIPTION': "You smell a the tacos that are in the truck. You want to buy a taco because you are hungry \n"
                        "but you don't have any money. To the East is the parking lot.",
@@ -70,7 +70,7 @@ world_map = {
             'EAST': 'PARKING'
         }
     },
-    'APPLE': {
+    'D APPLE': {
         'NAME': "The Apple Store",
         'DESCRIPTION': "You have reached the famous store from the Apple company. You want to go in but you don't \n"
                        "have any intentions their. To the North is a fence that is locked with unbreakable chains \n"
@@ -80,7 +80,7 @@ world_map = {
             'SOUTH': 'OFFICE_D'
         }
     },
-    'HOME_D': {
+    'D HOME_D': {
         'NAME': "Home Depot",
         'DESCRIPTION': "You have reached Home Depot. You go inside. But nothing in the store that you want. So you \n"
                        "go outside. To the West is Target.",
@@ -88,7 +88,7 @@ world_map = {
             'WEST': 'TARGET'
         }
     },
-    'WALMART': {
+    'D WALMART': {
         'NAME': "Walmart",
         'DESCRIPTION': "You have reached Walmart. You don't want to go inside because it you have nothing to do in \n"
                        "their. To the East is the left of mall and to the West is Target.",
@@ -97,7 +97,7 @@ world_map = {
             'WEST': 'Target'
         }
     },
-    'Cave': {
+    'D Cave': {
         'NAME': "The Bat Cave",
         'DESCRIPTION': "You have reached the bat cave but no one is here. It is strange that no one whn their is a \n"
                        "full parking lot. To the South is the parking lot.",
@@ -105,7 +105,7 @@ world_map = {
             'SOUTH': 'PARKING'
         }
     },
-    'SIDE_ENTRANCE': {
+    'D SIDE_ENTRANCE': {
         'NAME': "Side Entrance of the House",
         'DESCRIPTION': "You have reached the side entrance of the house. You enter the creepy house. To the North \n"
                        "their is a Oreo cookie factory, to the East is the front of the store, to the South is the \n"
@@ -117,7 +117,7 @@ world_map = {
             'WEST': 'HALL'
         }
     },
-    'KITCHEN': {
+    'D KITCHEN': {
         'NAME': "Kitchen",
         'DESCRIPTION': "You have reached the kitchen. You don't see anything but a bunch of cabinets. To the North \n"
                        "is the side entrance of the house and to the West is the living room.",
@@ -126,9 +126,9 @@ world_map = {
             'WEST': 'LIVING_R'
         }
     },
-    'LIVING_R': {
+    'D LIVING_R': {
         'NAME': "Living Room",
-        'DESCRIPTION': "You reached the living room. There seem to be a maze with the couches. You pass the maze. To\n"
+        'DESCRIPTION': "You reached the living room. There seem to be a maze with the couches. You pass the maze. To \n"
                        "the North is the hallway, to the East is the kitchen and to the West is a corridor.",
         'PATHS': {
             'NORTH': 'HALL',
@@ -136,7 +136,7 @@ world_map = {
             'WEST': 'CORRIDOR'
         }
     },
-    'CORRIDOR': {
+    'D CORRIDOR': {
         'NAME': "Left Corridor",
         'DESCRIPTION': "You find yourself in a cross way inside the house. There is a door that is slightly open \n"
                        "that seems to have something bright coming from the room, to the East is the living room, \n"
@@ -149,16 +149,16 @@ world_map = {
             'WEST': 'DARK_R'
         }
     },
-    'TROPHY_R': {
+    'D TROPHY_R': {
         'NAME': "Trophy Room",
-        'DESCRIPTION': " You find yourself in a room filled with trophy's. You see trophy's of Swimming, Cross \n"
+        'DESCRIPTION': "You find yourself in a room filled with trophy's. You see trophy's of Swimming, Cross \n"
                        "Country, Football and Soccer. There are also some posters that are all around the room \n"
                        "that are athletes. All you can go is South to the corridor.",
         'PATHS': {
             'SOUTH': 'CORRIDOR'
         }
     },
-    'SHRINE_R': {
+    'D SHRINE_R': {
         'NAME': "Shrine Room",
         'DESCRIPTION': "You push the bookshelf to find out that it is a hidden door. You found a room that seems to\n"
                        "be a shrine. You see a picture of a boy that seems to be around 20 years old. You see food, \n"

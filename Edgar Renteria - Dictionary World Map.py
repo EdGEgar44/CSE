@@ -169,7 +169,7 @@ world_map = {
             'SOUTH': 'SOUTH_HOUSE'
         }
     },
-    'SOUTH_HOUSE': {
+    'D SOUTH_HOUSE': {
         'NAME': "South of House",
         'DESCRIPTION': "You open the door to the outside and you you see a torch that is just sitting their. It \n"
                        "fills you up with hope just to remember that you are all alone in this town. To the North \n"
@@ -178,7 +178,7 @@ world_map = {
             'NORTH': 'SHRINE_R'
         }
     },
-    'DARK_R': {
+    'D DARK_R': {
         'NAME': "The Dark Room",
         'DESCRIPTION': "You reached a dark room. You can't see anything in the room. Yo felt something in the back \n"
                        "of your leg. It feels like a camera. You hear scary sounds in the room to the North, to the \n"
@@ -189,7 +189,7 @@ world_map = {
             'WEST': 'WEST_HOUSE'
         }
     },
-    'SCARY_R': {
+    'D SCARY_R': {
         'NAME': "Scary Room",
         'DESCRIPTION': "You enter the scary room  to find that the monitor of a computer was on. It was playing \n"
                        "scary music from Youtube. You wonder why you they will leave it running. Then you see a key \n"
@@ -200,7 +200,7 @@ world_map = {
             'SOUTH': 'DARK_R'
         }
     },
-    'WEST_HOUSE': {
+    'D WEST_HOUSE': {
         'NAME': "West of House",
         'DESCRIPTION': "You leave the house and reached the west side of the house. You can't go anywhere because \n"
                        "it is surrounded by bushed and thick trees. The only way you can go is to the dark room to \n"
@@ -209,16 +209,16 @@ world_map = {
             'EAST': 'DARK_R'
         }
     },
-    'WOODWORK_SECTION': {
+    'D WOODWORK_SECTION': {
         'NAME': "Woodwork section",
-        'DESCRIPTION': " You go to the woodwork section. Their is a lot of wood that has been cut down and but into \n"
+        'DESCRIPTION': "You go to the woodwork section. Their is a lot of wood that has been cut down and but into \n"
                        "To the South is a Walkway and to the West is the front of the store.",
         'PATHS': {
             'SOUTH': 'WALKWAY',
             'WEST': 'FRONT_STORE'
         }
     },
-    'WALKWAY': {
+    'D WALKWAY': {
         'NAME': "Walkway",
         'DESCRIPTION': "You find yourself in the walkway of the store. You find yourself in a three-section. To the \n"
                        "North is the woodwork section, to the East is the box room and to the South is the book \n"
@@ -229,7 +229,7 @@ world_map = {
             'SOUTH': 'BOOK_SECTION'
         }
     },
-    'BOX_R': {
+    'D BOX_R': {
         'NAME': "The Box Room",
         'DESCRIPTION': "You enter the box room that seems to be for employee only. The only thing that is in the \n"
                        "room are boxes. Boxes. And more boxes. boxes with wood and books. To the East is the Meet \n"
@@ -239,7 +239,7 @@ world_map = {
             'WEST': 'MEAT_SECTION'
         }
     },
-    'MEAT_SECTION': {
+    'D MEAT_SECTION': {
         'NAME': "Meat Section",
         'DESCRIPTION': "You reach the meat section of the store. It was all empty but the cow meat section. You \n"
                        "want to take the meat but you don't because it is stealing. To the South is a room full \n"
@@ -249,7 +249,7 @@ world_map = {
             'WEST': 'BOX_R'
         }
     },
-    'MIRROR_R': {
+    'D MIRROR_R': {
         'NAME': "Mirror Room",
         'DESCRIPTION': "You have reached the mirror room and all you see is yourself. ou seemed like you have seen \n"
                        "better days. You have baggy clothes and you have shorts. To the North is the meat section \n"
@@ -259,7 +259,7 @@ world_map = {
             'EAST': 'THE_ROOM'
         }
     },
-    'THE_ROOM': {
+    'D THE_ROOM': {
         'NAME': "The Room",
         'DESCRIPTION': "You enter the mysterious room called the room. You can't see a lot of things since the room \n"
                        "is dimly lit. All you can really see is that people have been here. It is all messy as if \n"
@@ -269,7 +269,7 @@ world_map = {
             'WEST': 'MIRROR_R'
         }
     },
-    'BOOK_SECTION': {
+    'D BOOK_SECTION': {
         'NAME': "Book Section",
         'DESCRIPTION': "You reach the book section of the store. You see famous books in the 'Famous book section'. \n"
                        "Their were books from the 'Harry Potter' series and the books series of 'Percy Jackson and \n"
@@ -281,7 +281,7 @@ world_map = {
             'WEST': 'CLOTHING_SECTION'
         }
     },
-    'CLOTHING_SECTION': {
+    'D CLOTHING_SECTION': {
         'NAME': "Clothing Section",
         'DESCRIPTION': "You reach the clothing section. You see lines of clothes missing. The only thing you see \n"
                        "is armor that seems to fit you. It seems to be made out of chain mail armor. To the East \n"
@@ -290,7 +290,7 @@ world_map = {
             'EAST': 'BOOK_SECTION'
         }
     },
-    'BACK_STORE': {
+    'D BACK_STORE': {
         'NAME': "Back of Store",
         'DESCRIPTION': "You reached the back of the store. You see a garbage can that is full of trash. You see a \n"
                        "graffiti that says 'HE CAME'. What that meant was a mystery. To the North is the book \n"
@@ -300,7 +300,7 @@ world_map = {
             'EAST': 'SCHOOL_HOUSE'
         }
     },
-    'SCHOOL_HOUSE': {
+    'D SCHOOL_HOUSE': {
         'NAME': "School House",
         'DESCRIPTION': "You reached the front of a small school house that looks like it was from the 1800's. You \n"
                        "try to open the door but it is locked. You try to find another way in but their isn't. \n"
@@ -311,7 +311,7 @@ world_map = {
             'WEST': 'BACK_STORE'
         }
     },
-    'OREO_FACTORY': {
+    'D OREO_FACTORY': {
         'NAME': "The Oreo Cookie Factory",
         'DESCRIPTION': "You reached the ever so popular Oreo cookie factory. You go inside and you find packs among \n"
                        "packs of double stuffed Oreo's. You grab two packs of double stuffed Oreo's (not that it \n"
@@ -324,7 +324,7 @@ world_map = {
             'SOUTH': 'SIDE_ENTRANCE'
         }
     },
-    'FRONT_HOUSE': {
+    'D FRONT_HOUSE': {
         'NAME': "The Front of the House",
         'DESCRIPTION': "You are at the front of the house. You knock on the door to see if anyone is their. No one \n"
                        "answers so you just open the door. You see that the door isn't unlocked. You open the door, \n"
@@ -335,7 +335,7 @@ world_map = {
             'WEST': 'PARKING_LOT'
         }
     },
-    'LEFT_MALL': {
+    'D LEFT_MALL': {
         'NAME': "Left of Mall",
         'DESCRIPTION': "You reach the left side of the mall. You see trash cans that don't have anything. You look \n"
                        "inside and their seems to be a graffiti that says 'He is near'. You get out of the garbage \n"
@@ -346,7 +346,7 @@ world_map = {
             'WEST': 'WALMART'
         }
     },
-    'ALLEYWAY': {
+    'D ALLEYWAY': {
         'NAME': "The Alleyway",
         'DESCRIPTION': "You reach an alleyway. Their isn't much that is here other than a piece of paper with a \n"
                        "clown, a bear, a ballerina, and a puppet. You see that it familiar in a way but you couldn't \n"
@@ -358,7 +358,7 @@ world_map = {
             'SOUTH': 'GARBAGE TRUCK'
         }
     },
-    'CASINO': {
+    'D CASINO': {
         'NAME': "The Casino",
         'DESCRIPTION': "You reach the Casino's entrance. You can't enter the casino because you are not 18 years or \n"
                        "older. So you just wait outside as you hear slot machines ringing to announce the winner and \n"
@@ -372,7 +372,7 @@ world_map = {
             'WEST': 'ALLEYWAY'
         }
     },
-    'GARBAGE_TRUCK': {
+    'D GARBAGE_TRUCK': {
         'NAME': "The Garbage Truck",
         'DESCRIPTION': "You reached the Garbage truck. When you reach their, you see that the passenger seat s open. \n"
                        "You enter the garbage truck and their seems to be a key of some sort. Their is also a piece \n"
@@ -383,7 +383,7 @@ world_map = {
             'EAST': '5_STAR_RESTAURANT'
         }
     },
-    '5_STAR_RESTAURANT': {
+    'D 5_STAR_RESTAURANT': {
         'NAME': "The 5 star Restaurant",
         'DESCRIPTION': "You reached the 5 star restaurant. You feel hungry but you put that feeling away since you \n"
                        "you don't have any money. To the North is a Casino, to the South seems to be a corner and \n"
@@ -394,7 +394,7 @@ world_map = {
             'WEST': 'GARBAGE_TRUCK'
         }
     },
-    'CORNER': {
+    'D CORNER': {
         'NAME': "The Corner",
         'DESCRIPTION': "You reached the corner of the 5 star restaurant and you turn. You see a chinese restaurant \n"
                        "that seems to be abandoned because of its location. You see that the walls are being torn \n"
@@ -405,7 +405,7 @@ world_map = {
             'EAST': 'CHINESE_RESTAURANT'
         }
     },
-    'CHINESE_RESTAURANT': {
+    'D CHINESE_RESTAURANT': {
         'NAME': "The Abandoned Chinese Restaurant",
         'DESCRIPTION': "You reached the abandoned chinese restaurant and you go inside. You see that the their was a \n"
                        "a lot of people that use to go here because of so any tables and chairs. You see burn marks \n"
@@ -415,7 +415,7 @@ world_map = {
             'WEST': 'CORNER'
         }
     },
-    'TELEPORTER_R': {
+    'D TELEPORTER_R': {
         'NAME': "The Teleporter Room",
         'DESCRIPTION': "You enter the door that was floating bit because you hold the key near it stopped floating \n"
                        "and reached the floor. You put the key in the key hole and the door opens. You take the key \n"
@@ -426,7 +426,7 @@ world_map = {
             'WEST': 'CASINO'
         }
     },
-    'SERVER': {
+    'D SERVER': {
         'NAME': "The Server",
         'DESCRIPTION': "You feel dazed because of 'The Teleporter 9000'. You try to walk but you can't. Then you see \n"
                        "a door to the west that is slightly open. You see blue light flickering true the bottom of \n"
@@ -438,12 +438,20 @@ world_map = {
             'WEST': 'CORRUPTED_S'
         }
     },
-    'CORRUPTED_R': {
+    'D CORRUPTED_R': {
         'NAME': "The Corrupted Server",
         'DESCRIPTION': "When you reach the door you felt a weired feeling when you entered the room. Their was light \n"
                        "on the walls that wre in a patter like a circuit board. They slowly started to glow red. To \n"
                        "the North wall is a door that has a sign that reads 'To the Server'. To the East is to the \n"
                        "server room.",
+        'PATHS': {
+            'NORTH': 'CORRUPTED_SERVER',
+            'EAST': 'SERVER'
+        }
+    },
+    'D CORRUPTED_SERVER_TESTER_ROOM': {
+        'NAME': "The Corrupted Server",
+        'DESCRIPTION': "",
         'PATHS': {
             'EAST': 'SERVER'
         }

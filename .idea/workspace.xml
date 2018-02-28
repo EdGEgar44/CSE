@@ -9,26 +9,6 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file leaf-file-name="Edgar R - World Map OOP.py" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/Edgar R - World Map OOP.py">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="537">
-                    <caret line="96" column="40" lean-forward="false" selection-start-line="96" selection-start-column="40" selection-end-line="96" selection-end-column="40" />
-                    <folding />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="FavoritesManager">
     <favorites_list name="CSE" />
   </component>
@@ -54,11 +34,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Edgar Renteria - Dictionary World Map.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Edgar Renteria - Dictionary World Map.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Edgar Renteria - Dictionary World Map.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="372">
-              <caret line="175" column="44" lean-forward="false" selection-start-line="173" selection-start-column="23" selection-end-line="175" selection-end-column="44" />
+            <state relative-caret-position="240">
+              <caret line="457" column="6" lean-forward="true" selection-start-line="457" selection-start-column="6" selection-end-line="457" selection-end-column="6" />
               <folding>
                 <element signature="e#33#321#0" expanded="false" />
                 <element signature="e#344#803#0" expanded="false" />
@@ -77,7 +57,43 @@
                 <element signature="e#5710#6289#0" expanded="false" />
                 <element signature="e#6309#6723#0" expanded="false" />
                 <element signature="e#6743#7334#0" expanded="false" />
+                <element signature="e#7357#7739#0" expanded="false" />
+                <element signature="e#7757#8250#0" expanded="false" />
+                <element signature="e#8269#8868#0" expanded="false" />
+                <element signature="e#8890#9261#0" expanded="false" />
+                <element signature="e#9289#9641#0" expanded="false" />
+                <element signature="e#9660#10100#0" expanded="false" />
+                <element signature="e#10117#10552#0" expanded="false" />
+                <element signature="e#10576#11007#0" expanded="false" />
+                <element signature="e#11027#11477#0" expanded="false" />
+                <element signature="e#11497#12044#0" expanded="false" />
+                <element signature="e#12068#12668#0" expanded="false" />
+                <element signature="e#12696#13097#0" expanded="false" />
+                <element signature="e#13119#13561#0" expanded="false" />
+                <element signature="e#13585#14258#0" expanded="false" />
+                <element signature="e#14282#15062#0" expanded="false" />
+                <element signature="e#15085#15621#0" expanded="false" />
+                <element signature="e#15642#16183#0" expanded="false" />
+                <element signature="e#16203#16798#0" expanded="false" />
+                <element signature="e#16816#17624#0" expanded="false" />
+                <element signature="e#17649#18190#0" expanded="false" />
+                <element signature="e#18219#18689#0" expanded="false" />
+                <element signature="e#18707#19271#0" expanded="false" />
+                <element signature="e#19301#19812#0" expanded="false" />
+                <element signature="e#19836#20482#0" expanded="false" />
+                <element signature="e#20500#21242#0" expanded="false" />
+                <element signature="e#21265#21810#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Edgar R - World Map OOP.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Edgar R - World Map OOP.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="316">
+              <caret line="245" column="0" lean-forward="true" selection-start-line="245" selection-start-column="0" selection-end-line="245" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -99,13 +115,14 @@
       <list>
         <option value="$PROJECT_DIR$/Edgar R - Pythagorean Theorem.py" />
         <option value="$PROJECT_DIR$/CLASS notes.py" />
-        <option value="$PROJECT_DIR$/Edgar Renteria - Dictionary World Map.py" />
         <option value="$PROJECT_DIR$/Edgar R - World Map OOP.py" />
+        <option value="$PROJECT_DIR$/Edgar Renteria - Dictionary World Map.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
+    <option name="x" value="20" />
+    <option name="y" value="-8" />
     <option name="width" value="1346" />
     <option name="height" value="688" />
   </component>
@@ -279,7 +296,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="14" />
+      <option name="time" value="17" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -644,8 +661,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Edgar Renteria - Dictionary World Map.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="175" column="44" lean-forward="false" selection-start-line="173" selection-start-column="23" selection-end-line="175" selection-end-column="44" />
+        <state relative-caret-position="240">
+          <caret line="457" column="6" lean-forward="true" selection-start-line="457" selection-start-column="6" selection-end-line="457" selection-end-column="6" />
           <folding>
             <element signature="e#33#321#0" expanded="false" />
             <element signature="e#344#803#0" expanded="false" />
@@ -664,14 +681,40 @@
             <element signature="e#5710#6289#0" expanded="false" />
             <element signature="e#6309#6723#0" expanded="false" />
             <element signature="e#6743#7334#0" expanded="false" />
+            <element signature="e#7357#7739#0" expanded="false" />
+            <element signature="e#7757#8250#0" expanded="false" />
+            <element signature="e#8269#8868#0" expanded="false" />
+            <element signature="e#8890#9261#0" expanded="false" />
+            <element signature="e#9289#9641#0" expanded="false" />
+            <element signature="e#9660#10100#0" expanded="false" />
+            <element signature="e#10117#10552#0" expanded="false" />
+            <element signature="e#10576#11007#0" expanded="false" />
+            <element signature="e#11027#11477#0" expanded="false" />
+            <element signature="e#11497#12044#0" expanded="false" />
+            <element signature="e#12068#12668#0" expanded="false" />
+            <element signature="e#12696#13097#0" expanded="false" />
+            <element signature="e#13119#13561#0" expanded="false" />
+            <element signature="e#13585#14258#0" expanded="false" />
+            <element signature="e#14282#15062#0" expanded="false" />
+            <element signature="e#15085#15621#0" expanded="false" />
+            <element signature="e#15642#16183#0" expanded="false" />
+            <element signature="e#16203#16798#0" expanded="false" />
+            <element signature="e#16816#17624#0" expanded="false" />
+            <element signature="e#17649#18190#0" expanded="false" />
+            <element signature="e#18219#18689#0" expanded="false" />
+            <element signature="e#18707#19271#0" expanded="false" />
+            <element signature="e#19301#19812#0" expanded="false" />
+            <element signature="e#19836#20482#0" expanded="false" />
+            <element signature="e#20500#21242#0" expanded="false" />
+            <element signature="e#21265#21810#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Edgar R - World Map OOP.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
-          <caret line="96" column="40" lean-forward="false" selection-start-line="96" selection-start-column="40" selection-end-line="96" selection-end-column="40" />
+        <state relative-caret-position="316">
+          <caret line="245" column="0" lean-forward="true" selection-start-line="245" selection-start-column="0" selection-end-line="245" selection-end-column="0" />
           <folding />
         </state>
       </provider>

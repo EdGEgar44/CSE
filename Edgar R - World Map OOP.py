@@ -95,3 +95,177 @@ south_house = Room("South of House", 'SHRINE_R', None, None, None, None,
                    "You open the door to the outside and you you see a torch that is just sitting their. It \n"
                    "fills you up with hope just to remember that you are all alone in this town. To the North \n"
                    "is the shrine room.")
+
+dark_R = Room("The Dark Room", 'SCARY_R', 'CORRIDOR', None, 'WEST_HOUSE', None,
+              "You reached a dark room. You can't see anything in the room. Yo felt something in the back \n"
+              "of your leg. It feels like a camera. You hear scary sounds in the room to the North, to the \n"
+              "East is the corridor and to the West you hear birds chirping.")
+
+scary_R = Room("Scary Room", None, None, 'DARK_R', None, None,
+               "You enter the scary room  to find that the monitor of a computer was on. It was playing \n"
+               "scary music from Youtube. You wonder why you they will leave it running. Then you see a key \n"
+               "that came shooting out of the wall behind a painting. It is a key. A shiny blue key that \n"
+               "says 'P key 2 KEEP HIDDEN'. You wonder why they didn't take it. To the South is the scary \n"
+               "room.")
+
+west_house = Room("West of House", None, 'DARK_R', None, None, None,
+                  "You leave the house and reached the west side of the house. You can't go anywhere because \n"
+                  "it is surrounded by bushed and thick trees. The only way you can go is to the dark room to \n"
+                  "the East.")
+
+woodwork_section = Room("Woodwork section", None, None, 'WALKWAY', 'FRONT_STORE', None,
+                        "You go to the woodwork section. Their is a lot of wood that has been cut down and but into \n"
+                        "To the South is a Walkway and to the West is the front of the store.")
+
+walkway = Room("Walkway", 'WOODWORK_SECTION', 'BOX_R', 'BOOK_SECTION', None, None,
+               "You find yourself in the walkway of the store. You find yourself in a three-section. To the \n"
+               "North is the woodwork section, to the East is the box room and to the South is the book \n"
+               "section.")
+
+box_R = Room("The Box Room", None, 'WALKWAY', None, 'MEAT_SECTION', None,
+             "You enter the box room that seems to be for employee only. The only thing that is in the \n"
+             "room are boxes. Boxes. And more boxes. boxes with wood and books. To the East is the Meet \n"
+             "section and to the West is the walkway.")
+
+meat_section = Room("Meat Section", None, None, 'MIRROR_R', 'BOX_R', None,
+                    "You reach the meat section of the store. It was all empty but the cow meat section. You \n"
+                    "want to take the meat but you don't because it is stealing. To the South is a room full \n"
+                    "of mirrors and to the West is the box room.")
+
+mirror_R = Room("Mirror Room", 'MEAT_SECTION', 'THE_ROOM', None, None, None,
+                "You have reached the mirror room and all you see is yourself. ou seemed like you have seen \n"
+                "better days. You have baggy clothes and you have shorts. To the North is the meat section \n"
+                "and to the East in a door with a caption 'The Room'")
+
+the_room = Room("The Room", None, None, 'MIRROR_R', None, None,
+                "You enter the mysterious room called the room. You can't see a lot of things since the room \n"
+                "is dimly lit. All you can really see is that people have been here. It is all messy as if \n"
+                "they were looking for something. They probably found it or game up since they was a corner \n"
+                "of the room that was neat and clean. To the West is the Mirror room.")
+
+book_section = Room("Book Section", 'WALKWAY', None, 'BACK_STORE', 'CLOTHING_SECTION', None,
+                    "You reach the book section of the store. You see famous books in the 'Famous book section'. \n"
+                    "Their were books from the 'Harry Potter' series and the books series of 'Percy Jackson and \n"
+                    "the Olympians'. To the North is the Walkway, to the South is a door that is leading outside \n"
+                    "and to the West is the clothing section.")
+
+clothing_section = Room("Clothing Section", None, 'BOOK_SECTION', None, None, None,
+                        "You reach the clothing section. You see lines of clothes missing. The only thing you see \n"
+                        "is armor that seems to fit you. It seems to be made out of chain mail armor. To the East \n"
+                        "is the book section of the store.")
+
+back_store = Room("Back of Store", 'BOOK_SECTION', 'SCHOOL_HOUSE', None, None, None,
+                  "You reached the back of the store. You see a garbage can that is full of trash. You see a \n"
+                  "graffiti that says 'HE CAME'. What that meant was a mystery. To the North is the book \n"
+                  "section and to the East is a school House.")
+
+school_house = Room("School House", None, None, 'BACK_STORE', None, None,
+                    "You reached the front of a small school house that looks like it was from the 1800's. You \n"
+                    "try to open the door but it is locked. You try to find another way in but their isn't. \n"
+                    "inside seems to be some desk that has a computer that is unreachable. On the screen it \n"
+                    "says 'THE MAP' in big letters. But because it was so far away that you couldn't read what \n"
+                    "was below it. So you leave it light that. To the West is the back of the store.")
+
+oreo_factory = Room("The Oreo Cookie Factory", None, 'BACK_MALL', 'SIDE_ENTRANCE', None, None,
+                    "You reached the ever so popular Oreo cookie factory. You go inside and you find packs among \n"
+                    "packs of double stuffed Oreo's. You grab two packs of double stuffed Oreo's (not that it \n"
+                    "matters) so that you have some on the road. You leave the Oreo factory and you walk out \n"
+                    "the door. Then you notice a pack of mega stuffed oreo's. You take it and you walk back \n"
+                    "outside. To the East is the back of the mall and to the South is the side entrance to a \n"
+                    "scary looking house.")
+
+front_house = Room("The Front of the House", 'HALL', None, None, 'PARKING_LOT', None,
+                   "You are at the front of the house. You knock on the door to see if anyone is their. No one \n"
+                   "answers so you just open the door. You see that the door isn't unlocked. You open the door, \n"
+                   "enter the house and closed the door. To the North is the parking lot and to the South is the \n"
+                   "hallway.")
+
+left_mall = Room("Left of Mall", None, None, 'ALLEYWAY', 'WALMART', None,
+                 "You reach the left side of the mall. You see trash cans that don't have anything. You look \n"
+                 "inside and their seems to be a graffiti that says 'He is near'. You get out of the garbage \n"
+                 "bin and you think for a bit. You wonder why they put that their. To the South is an alley \n"
+                 "and to the West is Walmart.")
+
+alleyway = Room("The Alleyway", 'LEFT_MALL', 'CASINO', 'GARBAGE TRUCK', None, None,
+                "You reach an alleyway. Their isn't much that is here other than a piece of paper with a \n"
+                "clown, a bear, a ballerina, and a puppet. You see that it familiar in a way but you couldn't \n"
+                "place it. To the North is the left of the mall, to the East is a Casino and to the South \n"
+                "seems to have a garbage truck parked outside.")
+
+casino = Room("The Casino", None, None, 'RESTAURANT', 'ALLEYWAY', None,
+              "You reach the Casino's entrance. You can't enter the casino because you are not 18 years or \n"
+              "older. So you just wait outside as you hear slot machines ringing to announce the winner and \n"
+              "hear people talking. To the East is a door that is floating. You don't know how but it is.\n"
+              "In front of the door has a sign that reads 'you need a key. You that walks and can talk.' \n"
+              "Have you seen a key that can do that? To the South is a restaurant and to the West is the \n"
+              "alleyway.")
+
+garbage_truck = Room("The Garbage Truck", 'ALLEYWAY', 'STAR_RESTAURANT', None, None, None,
+                     "You reached the Garbage truck. When you reach their, you see that the passenger seat s open. \n"
+                     "You enter the garbage truck and their seems to be a key of some sort. Their is also a piece \n"
+                     "of paper that has some writing on it. To the North is the alleyway and to the East is a \n"
+                     "restaurant.")
+
+restaurant = Room("The 5 star Restaurant", 'CASINO', None, 'CORNER', 'GARBAGE_TRUCK', None,
+                  "You reached the 5 star restaurant. You feel hungry but you put that feeling away since you \n"
+                  "you don't have any money. To the North is a Casino, to the South seems to be a corner and \n"
+                  "to the west is a garbage truck.")
+
+corner = Room("The Corner", 'RESTAURANT', 'CHINESE_RESTAURANT', None, None, None,
+              "You reached the corner of the 5 star restaurant and you turn. You see a chinese restaurant \n"
+              "that seems to be abandoned because of its location. You see that the walls are being torn \n"
+              "by the weather and the windows are broken. To the North is the 5 star restaurant and to the \n"
+              "West is the chinese restaurant.")
+
+chinese_restaurant = Room("The Abandoned Chinese Restaurant", None, None, 'CORNER', None, None,
+                          "You reached the abandoned chinese restaurant and you go inside. You see that the their was"
+                          "\n a lot of people that use to go here because of so any tables and chairs. You see burn "
+                          "marks \n on the wall and you wonder if their was a fire. To the West is the corner of "
+                          "the 5 star \n restaurant")
+
+teleporter_R = Room("The Teleporter Room", None, None, None, 'CASINO', None,
+                    "You enter the door that was floating bit because you hold the key near it stopped floating \n"
+                    "and reached the floor. You put the key in the key hole and the door opens. You take the key \n"
+                    "and you go inside. Inside seems to have a bunch of wire and a pod in the middle. The pod had \n"
+                    "a name. The name was 'The Teleporter 9000'. Their was also a command center but you didn't \n"
+                    "touch it. To the West is the casino.")
+
+server = Room("The Server", None, None, None, 'CORRUPTED_R', None,
+              "You feel dazed because of 'The Teleporter 9000'. You try to walk but you can't. Then you see \n"
+              "a door to the west that is slightly open. You see blue light flickering true the bottom of \n"
+              "the door. But then you see that their is a sight that dose not very much glows. It reads \n"
+              "'YOU SHOULD NOT ENTER. IF YOU ENTER. YOU WILL CRASH THE WORLD AND He WILL COME. IF YOU ENTER \n"
+              "WITHOUT THE PROPER MATERIALS. YOU WILL DIE. DON'T SAY YOU WEREN'T WORDED'. You wonder if you \n"
+              "have the pieces.")
+
+corrupted_server = Room("The Corrupted Server", 'CORRUPTED_R', 'SERVER', None, None, None,
+                        "When you entered the room you felt a weired feeling in your stomach. Their was light on the \n"
+                        "walls that wre in a patter like a circuit board. They slowly started to glow red. To the \n"
+                        "North wall is a door that has a sign that reads 'To the Server'. To the East is to the \n"
+                        "server room.")
+
+corrupted_R = Room("Corrupted Server", 'REFLECTIVE_R', None, 'CORRUPTED_R', None, None,
+                        "You reached the ")
+
+items = ["TR Key", "P Key 1", "P Key 2", "P Key 3", "P Key 4", "Camera", "Paper", "Armor", "Candle", "Torch",
+         "Pickaxe", "Rainbow in a Bottle"]
+
+current_node = world_map['BACK_MALL']
+directions = ['NORTH', 'EAST', 'SOUTH', 'WEST']
+
+while True:
+    print(current_node['NAME'])
+    print()
+    print(current_node['DESCRIPTION'])
+    command = input('>_')
+    if command == 'quit':
+        quit(0)
+    if command in directions:
+        try:
+            name_of_node = current_node['PATHS'][command]
+            current_node = world_map[name_of_node]
+        except KeyError:
+            print("Command not recognize")
+            print()
+    else:
+        print("Command not recognize")

@@ -245,7 +245,53 @@ corrupted_server = Room("The Corrupted Server", 'CORRUPTED_R', 'SERVER', None, N
                         "server room.")
 
 corrupted_R = Room("Corrupted Server", 'REFLECTIVE_R', None, 'CORRUPTED_R', None, None,
-                        "You reached the ")
+                   "You entered the door to the server room. Then you hear alarm bearing. The room turned red. \n"
+                   "Then a speaker spoke, 'The World has been corrupted'.The speaker spoke that over and over. \n"
+                   "Your ears. You try to find the panel for the speaker but it is not here. You must find it in \n"
+                   "order to stop the speaker. To the North is a room filled with mirrors. You don't know why \n"
+                   "their filled with mirrors, but they are. To the South is the corrupted room.")
+
+reflective_R = Room("The Reflective Room", None, None, 'CORRUPTED_SERVER', 'COMPUTER_R', None,
+                    "You enter the reflective room. Since you haven't found the panel to the speaker, you haven't \n"
+                    "turned off the speaker or the blaring red light. So the mirrors is mostly reflecting red \n"
+                    "light. To the South is the corrupted server and to the West is a room filled with complicated \n"
+                    "electronics.")
+
+computer_R = Room()
+
+stone_library = Room()
+
+garden = Room()
+
+castle_kitchen = Room()
+
+magic_library = Room()
+
+waterfall_R = Room()
+
+mine_shaft = Room()
+
+cavern = Room()
+
+looper = Room()
+
+throne_room = Room()
+
+rainbow_R = Room()
+
+blood_moon_R = Room()
+
+section_3 = Room()
+
+castle_entrance = Room()
+
+light_R = Room()
+
+bo_bo = Room()
+
+Forgotten_R = Room()
+
+puzzle_R = Room()
 
 items = ["TR Key", "P Key 1", "P Key 2", "P Key 3", "P Key 4", "Camera", "Paper", "Armor", "Candle", "Torch",
          "Pickaxe", "Rainbow in a Bottle"]

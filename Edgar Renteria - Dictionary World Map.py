@@ -435,25 +435,28 @@ world_map = {
                        "WITHOUT THE PROPER MATERIALS. YOU WILL DIE. DON'T SAY YOU WEREN'T WORDED'. You wonder if you \n"
                        "have the pieces.",
         'PATHS': {
-            'WEST': 'CORRUPTED_S'
+            'WEST': 'CORRUPTED_SERVER'
         }
     },
     'D CORRUPTED_R': {
         'NAME': "The Corrupted Server",
         'DESCRIPTION': "When you reach the door you felt a weired feeling when you entered the room. Their was light \n"
                        "on the walls that wre in a patter like a circuit board. They slowly started to glow red. To \n"
-                       "the North wall is a door that has a sign that reads 'To the Server'. To the East is to the \n"
-                       "server room.",
+                       "the North wall is a door that has a sign that reads 'To the Server Room'. To the East is to the"
+                       "\nserver room.",
         'PATHS': {
             'NORTH': 'CORRUPTED_SERVER',
             'EAST': 'SERVER'
         }
     },
     'D CORRUPTED_SERVER_TESTER_ROOM': {
-        'NAME': "The Corrupted Server",
+        'NAME': "Computer Room",
         'DESCRIPTION': "",
         'PATHS': {
-            'EAST': 'SERVER'
+            'NORTH': 'STONE_LIBRARY',
+            'EAST': 'REFLECTIVE_R',
+            'SOUTH': 'None',
+            'WEST': 'None'
         }
     },
 }

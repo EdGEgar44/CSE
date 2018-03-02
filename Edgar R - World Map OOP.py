@@ -257,59 +257,63 @@ reflective_R = Room("The Reflective Room", None, None, 'CORRUPTED_SERVER', 'COMP
                     "light. To the South is the corrupted server and to the West is a room filled with complicated \n"
                     "electronics.")
 
-computer_R = Room()
+# computer_R = Room()
 
-stone_library = Room()
+# stone_library = Room()
 
-garden = Room()
+# garden = Room()
 
-castle_kitchen = Room()
+# castle_kitchen = Room()
 
-magic_library = Room()
+# magic_library = Room()
 
-waterfall_R = Room()
+# waterfall_R = Room()
 
-mine_shaft = Room()
+# mine_shaft = Room()
 
-cavern = Room()
+# cavern = Room()
 
-looper = Room()
+# looper = Room()
 
-throne_room = Room()
+# throne_room = Room()
 
-rainbow_R = Room()
+# rainbow_R = Room()
 
-blood_moon_R = Room()
+# blood_moon_R = Room()
 
-section_3 = Room()
+# section_3 = Room()
 
-castle_entrance = Room()
+# castle_entrance = Room()
 
-light_R = Room()
+# light_R = Room()
 
-bo_bo = Room()
+# bo_bo = Room()
 
-Forgotten_R = Room()
+# Forgotten_R = Room()
 
-puzzle_R = Room()
+# puzzle_R = Room()
 
 items = ["TR Key", "P Key 1", "P Key 2", "P Key 3", "P Key 4", "Camera", "Paper", "Armor", "Candle", "Torch",
          "Pickaxe", "Rainbow in a Bottle"]
 
-current_node = world_map['BACK_MALL']
-directions = ['NORTH', 'EAST', 'SOUTH', 'WEST']
+current_node = back_mall
+directions = ['north', 'east', 'south', 'west']
+short_directions = ['n', 'e', 's', 'w']
 
 while True:
-    print(current_node['NAME'])
+    print(current_node.name)
     print()
-    print(current_node['DESCRIPTION'])
-    command = input('>_')
+    print(current_node.description)
+    command = input('>_').lower()
     if command == 'quit':
         quit(0)
+    elif command in short_directions:
+        # Looking for which command we typed in
+        pos = short_directions.index(command)
+        command = directions[pos]
     if command in directions:
         try:
-            name_of_node = current_node['PATHS'][command]
-            current_node = world_map[name_of_node]
+            current_node = current_node.move(command)
         except KeyError:
             print("Command not recognize")
             print()

@@ -371,7 +371,7 @@ world_map = {
             'SOUTH': '5_STAR_RESTAURANT',
             'WEST': 'ALLEYWAY'
         }
-    },
+},
     'D GARBAGE_TRUCK': {
         'NAME': "The Garbage Truck",
         'DESCRIPTION': "You reached the Garbage truck. When you reach their, you see that the passenger seat s open. \n"

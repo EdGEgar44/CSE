@@ -257,13 +257,30 @@ reflective_R = Room("The Reflective Room", None, None, 'CORRUPTED_SERVER', 'COMP
                     "light. To the South is the corrupted server and to the West is a room filled with complicated \n"
                     "electronics.")
 
-# computer_R = Room()
+computer_R = Room("Computer Room", 'STONE_LIBRARY', 'REFLECTIVE_R', None, None, None,
+                  "You reach the room filled with computers. You look at one of the computer screens and you \n"
+                  "see that it is a blue screen. The blue screen had text on it. The text says 'The Server is \n"
+                  "corrupted. Restarting in an hour'. To the North is door that is made out of stone. it appears \n"
+                  "to be open. To the East is the room filled with mirrors.")
 
-# stone_library = Room()
+stone_library = Room("STONE_LIBRARY", None, None, 'COMPUTER_R', 'GARDEN', None,
+                     "You open the stone door. When you open the door, you see a huge library made up of stones. \n"
+                     "You wonder why the stone door wasn't even locked. You go down the aile and you see that the \n"
+                     "books are very old yet new. To the South is the computer room and to the West is a garden.")
 
-# garden = Room()
+garden = Room("Garden", None, 'STONE_LIBRARY', None, 'CASTLE_KITCHEN', None,
+              "You reached the garden.The garden is filled with fruit and vegetables.You wonder why they \n"
+              "will leave this beautiful garden with the fruit and vegetables ready to rip. Then you see \n"
+              "their is an automated system at play but it had stopped. It had stopped because the server \n"
+              "is corrupted. To the East is the stone library and to the west is a door with a picture of \n"
+              "a slice of cake on it.")
 
-# castle_kitchen = Room()
+castle_kitchen = Room("Castle Kitchen", 'CASTLE_ENTRANCE', 'GARDEN', 'MAGIC_LIBRARY', 'THRONE_ROOM', None,
+                      "You open the door to the door with the slice of cake on it. You see that it is the kitchen \n"
+                      "for the castle. You see that their is no food or any ingredients anywhere to be seen. You \n"
+                      "feel hungry so you look for the refrigerator. But their isn't any. So you just feel empty \n"
+                      "inside. To the North is the castle entrance, to the East is the garden, to the South is a \n"
+                      "bookshelf that has the work 'magic' on it and to the West are big doors.")
 
 # magic_library = Room()
 
@@ -313,7 +330,7 @@ while True:
         command = directions[pos]
     if command in directions:
         try:
-            current_node = current_node.move(command)
+            current_node = current_node.command
         except KeyError:
             print("Command not recognize")
             print()

@@ -452,13 +452,7 @@ world_map = {
     'D CORRUPTED_SERVER_TESTER_ROOM': {
         'NAME': "Waterfall Room",
         'DESCRIPTION': "You open the Blue door to find out that it is a room with a beautiful waterfall in the \n"
-                       "middle. You ",
-        'PATHS': {
-            'NORTH': 'MAGIC_LIBRARY',
-            'EAST': 'None',
-            'SOUTH': 'MINE_SHAFT',
-            'WEST': 'None'
-        }
+                       "middle. You "
     }
 }
 

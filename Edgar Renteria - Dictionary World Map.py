@@ -450,17 +450,14 @@ world_map = {
         }
     },
     'D CORRUPTED_SERVER_TESTER_ROOM': {
-        'NAME': "Castle Kitchen",
-        'DESCRIPTION': "You open the door to the door with the slice of cake on it. You see that it is the kitchen \n"
-                       "for the castle. You see that their is no food or any ingredients anywhere to be seen. You \n"
-                       "feel hungry so you look for the refrigerator. But their isn't any. So you just feel empty \n"
-                       "inside. To the North is the castle entrance, to the East is the garden, to the South is a \n"
-                       "bookshelf that has the work 'magic' on it and to the West are big doors.",
+        'NAME': "Waterfall Room",
+        'DESCRIPTION': "You open the Blue door to find out that it is a room with a beautiful waterfall in the \n"
+                       "middle. You ",
         'PATHS': {
-            'NORTH': 'CASTLE_ENTRANCE',
-            'EAST': 'GARDEN',
-            'SOUTH': 'MAGIC_LIBRARY',
-            'WEST': 'THRONE_ROOM'
+            'NORTH': 'MAGIC_LIBRARY',
+            'EAST': 'None',
+            'SOUTH': 'MINE_SHAFT',
+            'WEST': 'None'
         }
     }
 }

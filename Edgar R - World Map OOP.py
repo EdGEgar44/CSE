@@ -282,9 +282,13 @@ castle_kitchen = Room("Castle Kitchen", 'CASTLE_ENTRANCE', 'GARDEN', 'MAGIC_LIBR
                       "inside. To the North is the castle entrance, to the East is the garden, to the South is a \n"
                       "bookshelf that has the work 'magic' on it and to the West are big doors.")
 
-# magic_library = Room()
+magic_library = Room("Magic Library", 'KITCHEN', None, 'WATERFALL_R', None, None,
+                     "You found the hidden library. All around you, you feel like something very dark and \n"
+                     "mysterious things are around. Then you see a book started to drift away with a magenta aura. \n"
+                     "Then use see another book but with a yellow aura around it. You don't want to fallow it \n"
+                     "since it can be dangerous. To the North is the kitchen and to the South is a blue door.")
 
-# waterfall_R = Room()
+waterfall_R = Room()
 
 # mine_shaft = Room()
 

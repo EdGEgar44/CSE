@@ -1,6 +1,6 @@
 # Defining a class
 class Shoes(object):
-    def __init__(self, lace_color, lighting, brand):  # TWO underscore before and after
+    def __init__(self, lace_color, lighting, brand):  # TWO underscore before and after init
         # Things a shoe has
         self.lace_color = lace_color
         self.rgb_lighting = lighting

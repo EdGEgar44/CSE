@@ -12,7 +12,6 @@ class Room(object):
         global current_node
         current_node = globals()[getattr(self, direction)]
 
-
 # Initialize Rooms
 BACK_MALL = Room("Back of the Mall", 'TARGET', None, 'FRONT_STORE', None, None,
                  "You are in the back of the mall. You see Target in the North and the front of a store to the \n "
@@ -312,7 +311,13 @@ MAGIC_LIBRARY = Room("Magic Library", 'KITCHEN', None, 'WATERFALL_R', None, None
 
 # FORGOTTEN_R = Room("Forgotten Room", None, None, None, 'BO_BO', None,)
 
-# PUZZLE_R = Room("Puzzle Room", None, None, 'BO_BO', None, None,)
+PUZZLE_R = Room("Puzzle Room", None, None, 'BO_BO', None, None,
+                "You enter the room that Gabe told you not to go their. 'The puzzle will be to hard' he said. You \n"
+                "didn't care because you wanted everything to go back to normal. Then you saw a scroll and so you \n"
+                "oppened it. \n"
+                "The Puzzle: \n"
+                "If you had only one match, and entered a dark room containing an oil lamp, some newspaper, \n"
+                "and some kindling wood, which would you light first?")
 
 # items = ["TR Key", "P Key 1", "P Key 2", "P Key 3", "P Key 4", "Camera", "Paper", "Armor", "Candle", "Torch",
 # "Pickaxe", "Rainbow in a Bottle"]
@@ -321,7 +326,44 @@ current_node = BACK_MALL
 directions = ['north', 'east', 'south', 'west']
 short_directions = ['n', 'e', 's', 'w']
 
+
+class Characters(object):
+    def __init__(self, name, inventory, health, armor, description):
+        self.name = name
+        self.inventory = inventory
+        self.health = health
+        self.armor = armor
+        self.description = description
+
+    def move(self, current_location):
+        current_location = FORGOTTEN_R
+        if current_node == BO_BO:
+            current_location = BO_BO
+            print("You shall not pass. It is I, Gabe, the one that changed the world. If you want to get your family \n"
+                  "and friends and everyone in your world back, you have to get past me.")
+
+    def attack(self, damage, armor, attack_damage):
+        damage = 99
+        if armor >= 1:
+            attack_damage = damage - armor
+            if enemy.armor <= damage:
+                attack_damage = armor - damage
+
+    def attacking(self, target_health):
+        target_health = health - damage
+
+
+enemy = Characters("Gabe", ["pickaxe", "Torch", "Sword", "wallet"], 100, 10,
+                   "The Enemies name is Gabe, he is one of the hardest people to fight. He have killed many people \n"
+                   "for trying to solve the puzzle. They never got to the question so they weren't able to tell \n"
+                   "people the question.")
+
+current_character = Characters("John", ["paper"], 100, 0, "You are yourself. Don't let anyone change that.")
+
 while True:
+    if current_node == PUZZLE_R:
+        command_puzzle =
+
     print(current_node.name)
     print()
     print(current_node.description)
@@ -339,4 +381,7 @@ while True:
             print("Command not recognize")
             print()
     else:
-        print("Command not recognize")
+        if command == 'my description':
+            print(current_character.description)
+        else:
+            print("Command not recognize")

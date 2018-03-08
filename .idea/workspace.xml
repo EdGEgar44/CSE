@@ -17,7 +17,7 @@
       <file leaf-file-name="Notes.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Notes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5032">
+            <state relative-caret-position="955">
               <caret line="296" column="0" lean-forward="false" selection-start-line="296" selection-start-column="0" selection-end-line="296" selection-end-column="0" />
               <folding />
             </state>
@@ -88,21 +88,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Edgar R - Characters.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Edgar R - Characters.py">
+      <file leaf-file-name="Edgar R - World Map OOP.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Edgar R - World Map OOP.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="30" column="28" lean-forward="true" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="28" />
+            <state relative-caret-position="139">
+              <caret line="366" column="28" lean-forward="true" selection-start-line="366" selection-start-column="28" selection-end-line="366" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Edgar R - World Map OOP.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Edgar R - World Map OOP.py">
+      <file leaf-file-name="Edgar R - Characters.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Edgar R - Characters.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1918">
-              <caret line="176" column="50" lean-forward="false" selection-start-line="176" selection-start-column="46" selection-end-line="176" selection-end-column="50" />
+            <state relative-caret-position="187">
+              <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -125,9 +125,9 @@
       <list>
         <option value="$PROJECT_DIR$/Edgar R - Pythagorean Theorem.py" />
         <option value="$PROJECT_DIR$/Edgar Renteria - Dictionary World Map.py" />
-        <option value="$PROJECT_DIR$/Edgar R - World Map OOP.py" />
         <option value="$PROJECT_DIR$/CLASS notes.py" />
         <option value="$PROJECT_DIR$/Edgar R - Characters.py" />
+        <option value="$PROJECT_DIR$/Edgar R - World Map OOP.py" />
       </list>
     </option>
   </component>
@@ -282,7 +282,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29952458" sideWeight="0.5146413" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29952458" sideWeight="0.48535872" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29952458" sideWeight="0.48535872" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24304539" sideWeight="0.5090498" order="2" side_tool="true" content_ui="tabs" />
@@ -329,7 +329,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="21" />
+      <option name="time" value="22" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -669,14 +669,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Notes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5032">
-          <caret line="296" column="0" lean-forward="false" selection-start-line="296" selection-start-column="0" selection-end-line="296" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Edgar Renteria - Dictionary World Map.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="731">
@@ -737,18 +729,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Edgar R - World Map OOP.py">
+    <entry file="file://$PROJECT_DIR$/Notes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1918">
-          <caret line="176" column="50" lean-forward="false" selection-start-line="176" selection-start-column="46" selection-end-line="176" selection-end-column="50" />
+        <state relative-caret-position="955">
+          <caret line="296" column="0" lean-forward="false" selection-start-line="296" selection-start-column="0" selection-end-line="296" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Edgar R - Characters.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="30" column="28" lean-forward="true" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="28" />
+        <state relative-caret-position="187">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Edgar R - World Map OOP.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="366" column="28" lean-forward="true" selection-start-line="366" selection-start-column="28" selection-end-line="366" selection-end-column="28" />
           <folding />
         </state>
       </provider>

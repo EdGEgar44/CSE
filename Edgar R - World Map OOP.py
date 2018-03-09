@@ -307,14 +307,22 @@ MAGIC_LIBRARY = Room("Magic Library", 'KITCHEN', None, 'WATERFALL_R', None, None
 
 # LIGHT_R = Room("Light Room", None, 'BO_BO', None, 'SECTION_3', None,)
 
-# BO_BO = Room("BO Bo", 'PUZZLE_R', 'FORGOTTEN_R', None, 'LIGHT_R', None,)
+BO_BO = Room("Bo Bo's room", 'PUZZLE_R', 'FORGOTTEN_R', None, 'LIGHT_R', None,
+             "You finally reached the door to another room. This room was different. You have never been here \n"
+             "before. Yet it is familiar. On the ceiling you see text that says 'Bo Bo's room'. You wonder who he is \n"
+             "but you don't want to know. To the North is a rope that doesn't look like you can just cut it and to \n"
+             "the West is a the horrible room filed with light.")
 
-# FORGOTTEN_R = Room("Forgotten Room", None, None, None, 'BO_BO', None,)
+FORGOTTEN_R = Room("Forgotten Room", None, None, None, 'BO_BO', None,
+                   "You enter the room that was well hidden. You asked yourself how you knew about it. It doesn't \n"
+                   "matter now. In the room you see a bunch of bookshelves with books. In the room you see a paper \n"
+                   "that someone has writen on it. You don't understand it. But then you see a key. It has 'P KEY' \n"
+                   "written on it. To the West is Bo_BO's room.")
 
 PUZZLE_R = Room("Puzzle Room", None, None, 'BO_BO', None, None,
                 "You enter the room that Gabe told you not to go their. 'The puzzle will be to hard' he said. You \n"
                 "didn't care because you wanted everything to go back to normal. Then you saw a scroll and so you \n"
-                "oppened it. \n"
+                "opened it. \n"
                 "The Puzzle: \n"
                 "If you had only one match, and entered a dark room containing an oil lamp, some newspaper, \n"
                 "and some kindling wood, which would you light first?")
@@ -328,11 +336,12 @@ short_directions = ['n', 'e', 's', 'w']
 
 
 class Characters(object):
-    def __init__(self, name, inventory, health, armor, description):
+    def __init__(self, name, inventory, health, armor, damage, description):
         self.name = name
         self.inventory = inventory
         self.health = health
         self.armor = armor
+        self.damage = damage
         self.description = description
 
     def move(self, current_location):
@@ -342,46 +351,65 @@ class Characters(object):
             print("You shall not pass. It is I, Gabe, the one that changed the world. If you want to get your family \n"
                   "and friends and everyone in your world back, you have to get past me.")
 
-    def attack(self, damage, armor, attack_damage):
-        damage = 99
+    def attacked(self, armor, attack_damage):
         if armor >= 1:
             attack_damage = damage - armor
             if enemy.armor <= damage:
                 attack_damage = armor - damage
 
     def attacking(self, target_health):
-        target_health = health - damage
+        target_health = enemy.health - enemy.damage
 
 
-enemy = Characters("Gabe", ["pickaxe", "Torch", "Sword", "wallet"], 100, 10,
+enemy = Characters("Gabe", ["pickaxe", "Torch", "Sword", "wallet"], 100, 10, 99,
                    "The Enemies name is Gabe, he is one of the hardest people to fight. He have killed many people \n"
                    "for trying to solve the puzzle. They never got to the question so they weren't able to tell \n"
                    "people the question.")
 
-current_character = Characters("John", ["paper"], 100, 0, "You are yourself. Don't let anyone change that.")
+current_character = Characters("John", ["paper"], 100, 0, 99, "You are yourself. Don't let anyone change that.")
+
+moves = 0
+
+end_game = "Once you have thought that the world was so easy, yet you didn't know how hard it was to survive all by \n"\
+           "yourself. You saw yourself in a mirror as the wall changed around you. You couldn't do anything to \n"\
+           "change that. You saw all your friends go by. there were inside the room. Behind a hidden door that you \n"\
+           "didn't see when you first entered.\n"\
+           "Thank you for playing my game. It was easy to make the game but I didn't really know what to do with \n"\
+           "ending. So I decided to do some improve and created this end game text. Hope you enjoyed the game. :)"
 
 while True:
     if current_node == PUZZLE_R:
-        command_puzzle =
-
-    print(current_node.name)
-    print()
-    print(current_node.description)
-    command = input('>_').lower()
-    if command == 'quit':
-        quit(0)
-    elif command in short_directions:
-        # Looking for which command we typed in
-        pos = short_directions.index(command)
-        command = directions[pos]
-    if command in directions:
-        try:
-            current_node.move(command)
-        except KeyError:
-            print("Command not recognize")
-            print()
+        yes_no = input("Are you going to solve the question?(answer with a yes or no) ").lower()
+        if yes_no == "yes":
+            command_puzzle = input("The answer: ").lower()
+            if command_puzzle == "the match" or "match":
+                print("You got it right.")
+                print("It is the match.")
+                print("It took you %s moves" % moves)
+                print(end_game)
+                quit(0)
+        if yes_no == "no":
+            current_node = BO_BO
     else:
-        if command == 'my description':
-            print(current_character.description)
+        print("Your health %s" % current_character.health)
+        print(current_node.name)
+        print()
+        print(current_node.description)
+        command = input('>_').lower()
+        if command == 'quit':
+            quit(0)
+        elif command in short_directions:
+            # Looking for which command we typed in
+            pos = short_directions.index(command)
+            command = directions[pos]
+        if command in directions:
+            try:
+                current_node.move(command)
+            except KeyError:
+                print("Command not recognize")
+                print()
         else:
-            print("Command not recognize")
+            if command == 'my description':
+                print(current_character.description)
+            else:
+                print("Command not recognize")

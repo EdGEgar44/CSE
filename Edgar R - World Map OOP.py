@@ -23,8 +23,8 @@ BACK_MALL = Room("Back of the Mall", 'TARGET', None, 'FRONT_STORE', None, None, 
                  "south.")
 
 FRONT_STORE = Room("Front of Store", 'BACK_MALL', 'WOODWORK_SECTION', None, 'SIDE_ENTRANCE', None, False,
-                   "The store is a convenient store that has been here for a while. To the North is the back of \n a "
-                   "mall, to the East is the Woodwork section, and to the West is an entrance to an abandoned \n "
+                   "The store is a convenient store that has been here for a while. To the North is the back of \n "
+                   "a mall, to the East is the Woodwork section, and to the West is an entrance to an abandoned \n "
                    "house.",
                    "You reached the cashier of the convenient store. To the East is the Woodwork section, and to the \n"
                    "West is an entrance to an abandoned house")
@@ -333,7 +333,7 @@ CORRUPTED_R = Room("Corrupted Server", 'REFLECTIVE_R', None, 'CORRUPTED_R', None
                    "Your ears. You try to find the panel for the speaker but it is not here. You must find it in \n"
                    "order to stop the speaker. To the North is a room filled with mirrors. You don't know why \n"
                    "their filled with mirrors, but they are. To the South is the corrupted room.",
-                   "You entered the anoying room with the load speaker. To the North is a room filled with mirrors. \n"
+                   "You entered the annoying room with the load speaker. To the North is a room filled with mirrors. \n"
                    "You don't know why their filled with mirrors, but they are. To the South is the corrupted room.")
 
 REFLECTIVE_R = Room("The Reflective Room", None, None, 'CORRUPTED_SERVER', 'COMPUTER_R', None, False,
@@ -573,16 +573,16 @@ while True:
         print("health: %s" % current_character.health)
         print(current_node.name)
         print()
-        print(current_node.description)
-        command = input('>_').lower()
         if current_node.again:
+            print(current_node.description_2)
+        else:
+            print(current_node.description)
             current_node.again = True
-            print()
+        command = input('>_').lower()
         if command == 'quit':
             quit(0)
         else:
             if command in short_directions:
-                # Looking for which command we typed in
                 pos = short_directions.index(command)
                 command = directions[pos]
             if command in directions:

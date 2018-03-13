@@ -37,3 +37,39 @@ class KeylessCar(Car):
 test_car.turn_on()
 cool_car = KeylessCar(4, 9002)
 cool_car.turn_on()
+
+
+class Tesla(Car):
+    def __init__(self, seats):
+        super(Tesla, self).__init__(seats, 500)
+
+    def launch(self):
+        print("You launch the car into low or bit.")
+
+
+class Person(object):
+    def __init__(self, name, age, height):
+        self.name = name
+        self.age = age
+        self.height = height
+
+    def work(self):
+        print("%s goes to work" % self.name)
+
+
+class Employee(Person):
+    def __init__(self, name, age, height, annual_salary, job):
+        super(Employee, self).__init__(name, age, height)
+        self.job = job
+        self.annual_salary = annual_salary
+
+    def salary(self):
+        print("Your annual salary is %s dollars." % self.annual_salary)
+
+
+class Programmer(Employee):
+    def __init__(self, name, age, height, annual_salary):
+        super(Programmer, self).__init__(name, age, height, annual_salary, "Programmer")
+
+    def code(self):
+        print("You are now coding.")

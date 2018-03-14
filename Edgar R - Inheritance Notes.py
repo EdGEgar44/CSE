@@ -68,8 +68,9 @@ class Employee(Person):
 
 
 class Programmer(Employee):
-    def __init__(self, name, age, height, annual_salary):
+    def __init__(self, name, age, height, annual_salary, coding):
         super(Programmer, self).__init__(name, age, height, annual_salary, "Programmer")
+        self.coding = coding
 
     def code(self):
         print("You are now coding.")

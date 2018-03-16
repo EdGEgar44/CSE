@@ -491,7 +491,7 @@ PUZZLE_R = Room("Puzzle Room", None, None, 'BO_BO', None, None, False,
                 "If you had only one match, and entered a dark room containing an oil lamp, some newspaper, \n"
                 "and some kindling wood, which would you light first?")
 
-# items = ["TR Key", "P Key 1", "P Key 2", "P Key 3", "P Key 4", "Camera", "Paper", "Armor", "Candle", "Torch",
+# items = ["P Key 1", "P Key 2", "P Key 3", "P Key 4", "Camera", "Paper", "Armor", "Candle", "Torch",
 # "Pickaxe", "Rainbow in a Bottle"]
 
 current_node = BACK_MALL

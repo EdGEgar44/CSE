@@ -15,10 +15,12 @@ class Enchanted(Items):
         super(Enchanted, self).__init__(name, description, durability, drop)
         self.enchanted = enchanted
 
-    def usage(self):
+    def used(self):
         if self.name == "armor of undying":
             print("You have been revived. But your armor is now broken.")
+            current_character.inventory.pop("ARMOR OF UNDYING")
         if self.name == "armor of strength":
+            self.durability = self.durability - 5
             print("Your durability is now %s" % self.durability)
 
 
@@ -33,31 +35,69 @@ class Keys(Items):
             print("You used %s. The door that you opened was %s." % (self.name, self.door))
 
 
-class Edibles(Items):
+class Edible(Items):
     def __init__(self, name, description, durability, drop):
-        super(Edibles, self).__init__(name, description, durability, drop)
+        super(Edible, self).__init__(name, description, durability, drop)
 
     def consume(self):
         print("You consumed %s" % self.name)
 
 
-class Material(Items):
+class Craftable(Items):
     def __init__(self, name, description, durability, drop):
-        super(Material, self).__init__(name, description, durability, drop)
+        super(Craftable, self).__init__(name, description, durability, drop)
 
     def crafting(self):
         if command == "armor of undying":
-            if "cosmonium" in current_character.inventory:
+            if "cosmonium ore" in current_character.inventory:
+                current_character.inventory.append("ARMOR OF UNDYING")
+                print("You have used your cosmonium ore.")
+                print("You have created the ARMOR OF UNDYING. type in 'armor of undying description' in the command \n"
+                      "to see what it does.")
+        if command == "armor of strength":
+            if "strength potion" in current_character.inventory:
+                current_character.inventory.append("ARMOR OF STRENGTH")
+                print("You have used one of your strength potion.")
+                print("You have created the ARMOR OF STRENGTH. type in 'armor of strength' in the command to see \n"
+                      "what it does.")
 
 
 class Armor(Items):
-    def __init__(self, name, description, durability, drop):
+    def __init__(self, name, description, durability, drop, armor):
         super(Armor, self).__init__(name, description, durability, drop)
+        self.armor = armor
+
+    def use(self):
+        print("You put on %s." % self.name)
 
 
 class Weapons(Items):
-    def __init__(self, name, description, durability, drop):
+    def __init__(self, name, description, durability, drop, damage):
         super(Weapons, self).__init__(name, description, durability, drop)
+        self.broke = False
+        self.damage = damage
+
+    def broke(self):
+        if self.durability == 0:
+            self.broke = True
+            print("Your %s broke because it had lost its durability." % self.name)
+            current_character.inventory.pop(self.name)
+
+
+class Potion(Edible):
+    def __init__(self, name, description, durability, drop, ability):
+        super(Potion, self).__init__(name, description, durability, drop)
+        self.ability = ability
+
+    def drink(self):
+        if self.name in current_character.inventory:
+            print("You drank %s." % self.name)
+            current_character.inventory.pop(self.name)
+            print("You know have %s affect." % self.ability)
+
+
+class Food(Edible):
+
 
 
 class Characters(object):

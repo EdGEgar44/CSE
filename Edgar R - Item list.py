@@ -9,6 +9,10 @@ class Items(object):
         self.drop = True
         print("You dropped %s." % self.name)
 
+    def pick_up(self):
+        self.drop = False
+        print("You picked up %s" % self.name)
+
 
 class Enchanted(Items):
     def __init__(self, name, description, durability, enchanted, drop):
@@ -97,7 +101,57 @@ class Potion(Edible):
 
 
 class Food(Edible):
+    def __init__(self, name, description, durability, heal, drop):
+        super(Food, self).__init__(name, description, durability, drop)
+        self.heal = heal
 
+    def heal(self):
+        if current_character.health == 100:
+            print("Why you trying to heal yourself if you have all your health. Are you hungry?")
+        else:
+            if current_character.health >= 50:
+                print("You used %s. You are now maxed out in health.")
+                current_character.inventory.pop(self.name)
+            else:
+                print("You need to have less than 50 health in order to use this item.")
+
+
+class Lowhealth(Food):
+    def __init__(self, name, description, durability, heal, drop):
+        super(Lowhealth, self).__init__(name, description, durability, heal, drop)
+
+
+class Maxhealth(Food):
+    def __init__(self, name, description, durability, heal, drop):
+        super(Maxhealth, self).__init__(name, description, durability, heal, drop)
+
+
+class Helmet(Armor):
+    def __init__(self, name, description, durability, drop, armor):
+        super(Helmet, self).__init__(name, description, durability, drop, armor)
+
+
+class Breastplate(Armor):
+    def __init__(self, name, description, durability, drop, armor):
+        super(Breastplate, self).__init__(name, description, durability, drop, armor)
+
+
+class Leggings(Armor):
+    def __init__(self, name, description, durability, drop, armor):
+        super(Leggings, self).__init__(name, description, durability, drop, armor)
+
+
+class Healthpot(Potion):
+    def __init__(self, name, description, durability, drop, ability, heal):
+        super(Healthpot, self).__init__(name, description, durability, drop, ability)
+        self.heal = heal
+
+    def healing(self):
+        if current_character.health <= 90:
+            if (self.heal + current_character) < 100:
+                current_character.health = current_character.health + self.heal
+            else:
+                print("You dn't want to want to over heal do you.")
 
 
 class Characters(object):

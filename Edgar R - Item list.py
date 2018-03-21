@@ -28,9 +28,9 @@ class Enchanted(Items):
             print("Your durability is now %s" % self.durability)
 
 
-class Keys(Items):
+class Key(Items):
     def __init__(self, name, description, durability, door, drop, door_number):
-        super(Keys, self).__init__(name, description, durability, drop)
+        super(Key, self).__init__(name, description, durability, drop)
         self.door = door
         self.door_number = door_number
 
@@ -89,8 +89,9 @@ class Weapons(Items):
 
 
 class Potion(Edible):
-    def __init__(self, name, description, durability, drop, ability):
+    def __init__(self, name, description, durability, drop, duration, ability):
         super(Potion, self).__init__(name, description, durability, drop)
+        self.duration = duration
         self.ability = ability
 
     def drink(self):
@@ -142,8 +143,8 @@ class Leggings(Armor):
 
 
 class Healthpot(Potion):
-    def __init__(self, name, description, durability, drop, ability, heal):
-        super(Healthpot, self).__init__(name, description, durability, drop, ability)
+    def __init__(self, name, description, durability, drop, duration, ability, heal):
+        super(Healthpot, self).__init__(name, description, durability, drop, duration, ability)
         self.heal = heal
 
     def healing(self):
@@ -152,6 +153,28 @@ class Healthpot(Potion):
                 current_character.health = current_character.health + self.heal
             else:
                 print("You dn't want to want to over heal do you.")
+
+
+class Strengthpot(Potion):
+    def __init__(self, name, description, durability, duration, drop, ability, strength):
+        super(Strengthpot, self).__init__(name, description, durability, duration, drop, ability)
+        self.strength = strength
+
+    def strength(self):
+        current_character.inventory.pop(self.name)
+        print("You now have strength for %s seconds." % self.duration)
+        current_character.damage = current_character.damage + self.strength
+
+
+class Resistancepot(Potion):
+    def __init__(self, name, description, durability, drop, duration, ability, armor):
+        super(Resistancepot, self).__init__(name, description, durability, drop, duration, ability)
+        self.armor = armor
+
+    def armor_gain(self):
+        current_character.inventory.pop(self.name)
+        print("You now have resistance for %s seconds." % self.duration)
+        current_character.armor = current_character.armor + self.armor
 
 
 class Characters(object):
@@ -196,6 +219,18 @@ enemy = Characters("Gabe", ["pickaxe", "Torch", "Sword", "wallet"], 100, 10, 20,
 
 current_character = Characters("John", ["5 Bags of Beans"], 100, 0, 10, False, "You are yourself. Don't let "
                                "anyone change that.", None)
+
+tr_Key = Key("TR Key", "The TR Key seems to open a door that is locked. Which door that can be is unknown.", None,
+             'teleporter_R', True, 0)
+
+p_key_1 = Key("P Key #1", "The first key seems to not be the only key.", None, 'puzzle_R', True, 1)
+
+p_key_2 = Key("P Key #2", "The second key seems to not be the only key.", None, 'puzzle_R', True, 1)
+
+p_key_3 = Key("P Key #3", "The third key seems o not be the only key.", None, 'puzzle_R', True, 1)
+
+p_key_4 = Key("P Key #4", "The Last key seems to not be the only key. Their is a note in the back. It reads 'You \n"
+                          "must have all of the keys in order to be in the puzzle room.'", None, 'puzzle_R', True, 1)
 
 current_node = BACK_MALL
 directions = ['north', 'east', 'south', 'west']

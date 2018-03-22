@@ -17,7 +17,7 @@
       <file leaf-file-name="Notes.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Notes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2346">
+            <state relative-caret-position="17">
               <caret line="138" column="15" lean-forward="false" selection-start-line="138" selection-start-column="15" selection-end-line="138" selection-end-column="15" />
               <folding />
             </state>
@@ -37,28 +37,48 @@
       <file leaf-file-name="Edgar R - Inheritance Notes.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Edgar R - Inheritance Notes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="986">
-              <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+            <state relative-caret-position="187">
+              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Edgar R - World Map OOP.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Edgar R - World Map OOP.py">
+      <file leaf-file-name="Edgar R - CYAG.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Edgar R - CYAG.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="607">
-              <caret line="511" column="0" lean-forward="false" selection-start-line="511" selection-start-column="0" selection-end-line="511" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="381">
+              <caret line="763" column="0" lean-forward="true" selection-start-line="763" selection-start-column="0" selection-end-line="763" selection-end-column="0" />
+              <folding>
+                <element signature="e#24#500#0" expanded="false" />
+                <element signature="e#533#1547#0" expanded="false" />
+                <element signature="e#1574#1943#0" expanded="false" />
+                <element signature="e#1973#2515#0" expanded="false" />
+                <element signature="e#2539#2895#0" expanded="false" />
+                <element signature="e#2922#3121#0" expanded="false" />
+                <element signature="e#3151#4133#0" expanded="false" />
+                <element signature="e#4159#4386#0" expanded="false" />
+                <element signature="e#4414#4832#0" expanded="false" />
+                <element signature="e#4861#5312#0" expanded="false" />
+                <element signature="e#5339#5959#0" expanded="false" />
+                <element signature="e#5989#6134#0" expanded="false" />
+                <element signature="e#6164#6309#0" expanded="false" />
+                <element signature="e#6337#6481#0" expanded="false" />
+                <element signature="e#6514#6663#0" expanded="false" />
+                <element signature="e#6693#6839#0" expanded="false" />
+                <element signature="e#6871#7360#0" expanded="false" />
+                <element signature="e#7394#7833#0" expanded="false" />
+                <element signature="e#7869#8303#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Edgar R - Item list.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Edgar R - Item list.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Edgar R - Item list.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="87">
-              <caret line="233" column="0" lean-forward="true" selection-start-line="233" selection-start-column="0" selection-end-line="233" selection-end-column="0" />
+            <state relative-caret-position="-493">
+              <caret line="197" column="43" lean-forward="false" selection-start-line="197" selection-start-column="43" selection-end-line="197" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -88,6 +108,7 @@
         <option value="$PROJECT_DIR$/Edgar R - Characters.py" />
         <option value="$PROJECT_DIR$/Edgar R - World Map OOP.py" />
         <option value="$PROJECT_DIR$/Edgar R - Item list.py" />
+        <option value="$PROJECT_DIR$/Edgar R - CYAG.py" />
       </list>
     </option>
   </component>
@@ -113,6 +134,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -124,8 +147,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -293,21 +314,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Edgar R - Lucky 7's.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Notes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2227">
-          <caret line="131" column="40" lean-forward="false" selection-start-line="131" selection-start-column="40" selection-end-line="131" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Warpups.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="867">
@@ -609,6 +615,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Edgar R - Dictionary World Map.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Edgar R - World Map OOP.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="581" column="29" lean-forward="true" selection-start-line="581" selection-start-column="29" selection-end-line="581" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Edgar R - Inheritance Notes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Notes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="138" column="15" lean-forward="false" selection-start-line="138" selection-start-column="15" selection-end-line="138" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/CLASS notes.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1292">
@@ -617,35 +655,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Edgar R - Inheritance Notes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
-          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Notes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2346">
-          <caret line="138" column="15" lean-forward="false" selection-start-line="138" selection-start-column="15" selection-end-line="138" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Edgar R - World Map OOP.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="607">
-          <caret line="511" column="0" lean-forward="false" selection-start-line="511" selection-start-column="0" selection-end-line="511" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Edgar R - Item list.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="233" column="0" lean-forward="true" selection-start-line="233" selection-start-column="0" selection-end-line="233" selection-end-column="0" />
+        <state relative-caret-position="-493">
+          <caret line="197" column="43" lean-forward="false" selection-start-line="197" selection-start-column="43" selection-end-line="197" selection-end-column="43" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Edgar R - CYAG.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="763" column="0" lean-forward="true" selection-start-line="763" selection-start-column="0" selection-end-line="763" selection-end-column="0" />
+          <folding>
+            <element signature="e#24#500#0" expanded="false" />
+            <element signature="e#533#1547#0" expanded="false" />
+            <element signature="e#1574#1943#0" expanded="false" />
+            <element signature="e#1973#2515#0" expanded="false" />
+            <element signature="e#2539#2895#0" expanded="false" />
+            <element signature="e#2922#3121#0" expanded="false" />
+            <element signature="e#3151#4133#0" expanded="false" />
+            <element signature="e#4159#4386#0" expanded="false" />
+            <element signature="e#4414#4832#0" expanded="false" />
+            <element signature="e#4861#5312#0" expanded="false" />
+            <element signature="e#5339#5959#0" expanded="false" />
+            <element signature="e#5989#6134#0" expanded="false" />
+            <element signature="e#6164#6309#0" expanded="false" />
+            <element signature="e#6337#6481#0" expanded="false" />
+            <element signature="e#6514#6663#0" expanded="false" />
+            <element signature="e#6693#6839#0" expanded="false" />
+            <element signature="e#6871#7360#0" expanded="false" />
+            <element signature="e#7394#7833#0" expanded="false" />
+            <element signature="e#7869#8303#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

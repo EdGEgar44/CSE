@@ -196,7 +196,6 @@ class Characters(object):
                 self.damage = self.damage
         if self.weapon:
             self.damage = self.damage * 2.5
-
     def attacking(self):
         if self.armor >= 1:
             self.damage = self.damage - self.armor

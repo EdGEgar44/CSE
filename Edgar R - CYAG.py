@@ -47,11 +47,12 @@ class Characters(object):
 
 
 class Item(object):
-    def __init__(self, name, description, durability, drop):
+    def __init__(self, name, description, durability, drop, amount):
         self.name = name
         self.description = description
         self.durability = durability
         self.drop = drop
+        self.amount = amount
 
     def drop(self):
         self.drop = True
@@ -63,8 +64,8 @@ class Item(object):
 
 
 class Enchanted(Item):
-    def __init__(self, name, description, durability, enchanted, drop):
-        super(Enchanted, self).__init__(name, description, durability, drop)
+    def __init__(self, name, description, durability, enchanted, drop, amount):
+        super(Enchanted, self).__init__(name, description, durability, drop, amount)
         self.enchanted = enchanted
 
     def used(self):
@@ -77,8 +78,8 @@ class Enchanted(Item):
 
 
 class Key(Item):
-    def __init__(self, name, description, durability, door, drop, door_number):
-        super(Key, self).__init__(name, description, durability, drop)
+    def __init__(self, name, description, durability, door, drop, door_number, amount):
+        super(Key, self).__init__(name, description, durability, drop, amount)
         self.door = door
         self.door_number = door_number
 
@@ -88,16 +89,16 @@ class Key(Item):
 
 
 class Edible(Item):
-    def __init__(self, name, description, durability, drop):
-        super(Edible, self).__init__(name, description, durability, drop)
+    def __init__(self, name, description, durability, drop, amount):
+        super(Edible, self).__init__(name, description, durability, drop, amount)
 
     def consume(self):
         print("You consumed %s" % self.name)
 
 
 class Craftable(Item):
-    def __init__(self, name, description, durability, drop):
-        super(Craftable, self).__init__(name, description, durability, drop)
+    def __init__(self, name, description, durability, drop, amount):
+        super(Craftable, self).__init__(name, description, durability, drop, amount)
 
     def crafting(self):
         if command == "armor of undying":
@@ -116,8 +117,8 @@ class Craftable(Item):
 
 
 class Armor(Item):
-    def __init__(self, name, description, durability, drop, armor):
-        super(Armor, self).__init__(name, description, durability, drop)
+    def __init__(self, name, description, durability, drop, armor, amount):
+        super(Armor, self).__init__(name, description, durability, drop, amount)
         self.armor = armor
 
     def use(self):
@@ -125,8 +126,9 @@ class Armor(Item):
 
 
 class Weapons(Item):
-    def __init__(self, name, description, durability, drop, damage):
-        super(Weapons, self).__init__(name, description, durability, drop)
+    def __init__(self, name, description, durability, drop, damage, ability, amount):
+        super(Weapons, self).__init__(name, description, durability, drop, amount)
+        self.ability = ability
         self.broke = False
         self.damage = damage
 
@@ -138,8 +140,8 @@ class Weapons(Item):
 
 
 class Potion(Edible):
-    def __init__(self, name, description, durability, drop, duration, ability):
-        super(Potion, self).__init__(name, description, durability, drop)
+    def __init__(self, name, description, durability, drop, duration, ability, amount):
+        super(Potion, self).__init__(name, description, durability, drop, amount)
         self.duration = duration
         self.ability = ability
 
@@ -151,8 +153,8 @@ class Potion(Edible):
 
 
 class Food(Edible):
-    def __init__(self, name, description, durability, heal, drop):
-        super(Food, self).__init__(name, description, durability, drop)
+    def __init__(self, name, description, durability, heal, drop, amount):
+        super(Food, self).__init__(name, description, durability, drop, amount)
         self.heal = heal
 
     def heal(self):
@@ -167,33 +169,33 @@ class Food(Edible):
 
 
 class Lowhealth(Food):
-    def __init__(self, name, description, durability, heal, drop):
-        super(Lowhealth, self).__init__(name, description, durability, heal, drop)
+    def __init__(self, name, description, durability, heal, drop, amount):
+        super(Lowhealth, self).__init__(name, description, durability, heal, drop, amount)
 
 
 class Maxhealth(Food):
-    def __init__(self, name, description, durability, heal, drop):
-        super(Maxhealth, self).__init__(name, description, durability, heal, drop)
+    def __init__(self, name, description, durability, heal, drop, amount):
+        super(Maxhealth, self).__init__(name, description, durability, heal, drop, amount)
 
 
 class Helmet(Armor):
-    def __init__(self, name, description, durability, drop, armor):
-        super(Helmet, self).__init__(name, description, durability, drop, armor)
+    def __init__(self, name, description, durability, drop, armor, amount):
+        super(Helmet, self).__init__(name, description, durability, drop, armor, amount)
 
 
 class Breastplate(Armor):
-    def __init__(self, name, description, durability, drop, armor):
-        super(Breastplate, self).__init__(name, description, durability, drop, armor)
+    def __init__(self, name, description, durability, drop, armor, amount):
+        super(Breastplate, self).__init__(name, description, durability, drop, armor, amount)
 
 
 class Leggings(Armor):
-    def __init__(self, name, description, durability, drop, armor):
-        super(Leggings, self).__init__(name, description, durability, drop, armor)
+    def __init__(self, name, description, durability, drop, armor, amount):
+        super(Leggings, self).__init__(name, description, durability, drop, armor, amount)
 
 
 class Healthpot(Potion):
-    def __init__(self, name, description, durability, drop, duration, ability, heal):
-        super(Healthpot, self).__init__(name, description, durability, drop, duration, ability)
+    def __init__(self, name, description, durability, drop, duration, ability, heal, amount):
+        super(Healthpot, self).__init__(name, description, durability, drop, duration, ability, amount)
         self.heal = heal
 
     def healing(self):
@@ -205,8 +207,8 @@ class Healthpot(Potion):
 
 
 class Strengthpot(Potion):
-    def __init__(self, name, description, durability, duration, drop, ability, strength):
-        super(Strengthpot, self).__init__(name, description, durability, duration, drop, ability)
+    def __init__(self, name, description, durability, duration, drop, ability, strength, amount):
+        super(Strengthpot, self).__init__(name, description, durability, duration, drop, ability, amount)
         self.strength = strength
 
     def strength(self):
@@ -216,14 +218,35 @@ class Strengthpot(Potion):
 
 
 class Resistancepot(Potion):
-    def __init__(self, name, description, durability, drop, duration, ability, armor):
-        super(Resistancepot, self).__init__(name, description, durability, drop, duration, ability)
+    def __init__(self, name, description, durability, drop, duration, ability, armor, amount):
+        super(Resistancepot, self).__init__(name, description, durability, drop, duration, ability, amount)
         self.armor = armor
 
     def armor_gain(self):
         current_character.inventory.pop(self.name)
         print("You now have resistance for %s seconds." % self.duration)
         current_character.armor = current_character.armor + self.armor
+
+
+class Sword(Weapons):
+    def __init__(self, name, description, durability, drop, damage, ability, amount):
+        super(Sword, self).__init__(name, description, durability, drop, damage, ability, amount)
+
+
+class Bow(Weapons):
+    def __init__(self, name, description, durability, drop, damage, distance, ability, amount):
+        super(Bow, self).__init__(name, description, durability, drop, damage, ability, amount)
+        self.distance = distance
+
+
+class Ammo(Item):
+    def __init__(self, name, description, durability, drop, amount):
+        super(Ammo, self).__init__(name, description, durability, drop, amount)
+
+
+class EnchantBook(Enchanted):
+    def __init__(self, name, description, durability, enchanted, drop, amount):
+        super(EnchantBook, self).__init__(name, description, durability, enchanted, drop, amount)
 
 
 # Initialize Rooms
@@ -722,45 +745,64 @@ enemy = Characters("Gabe", ["pickaxe", "Torch", "Sword", "wallet"], 100, 10, 20,
                     "to solve the puzzle.", "You have defeated me. You may solve the riddle. But be worn. If you \n"
                     "don't solve it within your third try, you will die. So be worn."])
 
-current_character = Characters("John", ["Beans"], 100, 0, 10, False, "You are yourself. Don't let "
+current_character = Characters("John", ["Beans \n"], 100, 0, 10, False, "You are yourself. Don't let "
                                "anyone change that.", None)
 
-tr_Key = Key("TR Key", "The TR Key seems to open a door that is locked. Which door that can be is unknown.", None,
-             'teleporter_R', True, 0)
+tr_key = Key("TR Key \n", "The TR Key seems to open a door that is locked. Which door that can be is unknown.", None,
+             'teleporter_R', True, 0, 1)
 
-p_key_1 = Key("P Key #1", "The first key seems to not be the only key.", None, 'puzzle_R', True, 1)
+p_key_1 = Key("P Key #1 \n", "The first key seems to not be the only key.", None, 'puzzle_R', True, 1, 1)
 
-p_key_2 = Key("P Key #2", "The second key seems to not be the only key.", None, 'puzzle_R', True, 1)
+p_key_2 = Key("P Key #2 \n", "The second key seems to not be the only key.", None, 'puzzle_R', True, 1, 1)
 
-p_key_3 = Key("P Key #3", "The third key seems o not be the only key.", None, 'puzzle_R', True, 1)
+p_key_3 = Key("P Key #3 \n", "The third key seems o not be the only key.", None, 'puzzle_R', True, 1, 1)
 
-p_key_4 = Key("P Key #4", "The Last key seems to not be the only key. Their is a note in the back. It reads 'You \n"
-                          "must have all of the keys in order to be in the puzzle room.'", None, 'puzzle_R', True, 1)
+p_key_4 = Key("P Key #4 \n", "The Last key seems to not be the only key. Their is a note in the back. It reads 'You \n"
+              "must have all of the keys in order to be in the puzzle room.'", None, 'puzzle_R', True, 1, 1)
 
-armor_of_undying = Armor("ARMOR OF UNDYING", "The armor of undying will revive you when you die. But when the armor \n"
-                         "revives you, it will break and you will not have the armor anymore.", 1, True, 20)
+armor_of_undying = Armor("ARMOR OF \n", "The armor of undying will revive you when you die. But when the armor \n"
+                         "revives you, it will break and you will not have the armor anymore.", 1, True, 20, 1)
 
-armor_of_strength = Armor("ARMOR OF STRENGTH", "The armor of strength will give you extra damage. But when you \n"
-                          "attack, you will lose 5% of your base health(100).", 250, True, 35)
+armor_of_strength = Armor("ARMOR OF STRENGTH \n", "The armor of strength will give you extra damage. But when you \n"
+                          "attack, you will lose 5% of your base health(100).", 250, True, 35, 1)
 
-candle = Item("candle", "This candle can be use so that you can burn something. But what?", 1, True)
+candle = Item("candle \n", "This candle can be use so that you can burn something. But what?", 1, True, 1)
 
-torch = Item("torch", "This torch can be used to burn something. But what?", 1, True)
+torch = Item("torch \n", "This torch can be used to burn something. But what?", 1, True, 1)
 
-pickaxe = Item("a diamond pickaxe", "This item seams to be used to mine hard to get materials. Which material it is \n"
-               "unknown. Maybe you will find it somewhere.", 1, True)
+pickaxe = Item("a diamond pickaxe \n", "This item seams to be used to mine hard to get materials. Which material it is"
+                                       "\n unknown. Maybe you will find it somewhere.", 1, True, 1)
 
-rainbow_in_a_bottle = Healthpot("rainbow in a bottle", "The rainbow in the bottle fills you up with warmth. It is \n"
-                                "almost as if it can heal you. ", 999, True, 0, "heal", 20)
+rainbow_in_a_bottle = Healthpot("rainbow in a bottle \n", "The rainbow in the bottle fills you up with warmth. It is \n"
+                                "almost as if it can heal you.", 5, True, 0, "heal", 20, 1)
 
-paper_with_writing = Item("paper", "The piece of paper that you found has writing in it. it reads 'You Must find \n"
+paper_with_writing = Item("paper \n", "The piece of paper that you found has writing in it. it reads 'You Must find \n"
                           "the puzzle room. if you don't we will never escApe. who ever you are, you Must \n"
                           "find us. We are Trapped. we Can't find tHe exit. you must pass the test in order \n"
-                          "to free us. hope you are come quickly. we are running out of food.'")
+                          "to free us. hope you are come quickly. we are running out of food.'", 1, True, 1)
 
-camera = Item("camera", "You look at the camera. You wonder if they are any photos inside it.", 1, True)
+camera = Item("camera \n", "You look at the camera. You wonder if they are any photos inside it.", 1, True, 1)
 
-raw_potato = Healthpot("raw potato", "You can eat this raw potato. But it looks so weird.", 1, True, 0, "heal", 5)
+raw_potato = Healthpot("raw potato \n", "You can eat this raw potato. But it looks so weird.", 1, True, 0, "heal", 5, 1)
+
+dull_sword = Sword("dull sword \n", "This sword is dull.", 100, True, 8, None, 1)
+
+sharp_sword = Sword("sharp sword \n", "This sword is so sharp, it can cut stone.", 50, True, 73, None, 1)
+
+magical_sword = Sword("MAGICAL SWORD \n", "This sword seems magical. It is glowing with a purple glow.", 230, True, 99,
+                      'Burn', 1)
+
+broken_bow = Bow("broken bow \n", "The bow is broken. you can use it but it might now do a lot of damage.", 14, True,
+                 11, 13, 1)
+
+x_bow = Bow("x-bow \n", "You have a cross bar.", 300, True, 46, 38, 1)
+
+metal_bow = Bow("metal bow \n", "The bow has been reinforced with iron.", 200, True, 73, 74, 1)
+
+legendary_bow = Bow("LEGENDARY BOW", "This bow is a reinforced bow that has 3 enchantments with it.", 999, True, 300,
+                    235, ['strength', 'unbreakable', 'fire frost'], 1)
+
+strength_book = EnchantBook("STRENGTH BOOK", "This book ")
 
 current_node = BACK_MALL
 directions = ['north', 'east', 'south', 'west']

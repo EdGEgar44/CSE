@@ -1,49 +1,6 @@
-class Room(object):
-    def __init__(self, name, north, east, south, west, item, repeat, description, description_2):
-        self.name = name
-        self.description = description
-        self.description_2 = description_2
-        self.item = item
-        self.north = north
-        self.east = east
-        self.south = south
-        self.west = west
-        self.again = repeat
+import random
 
-    def move(self, direction):
-        global current_node
-        current_node = globals()[getattr(self, direction)]
-
-
-class Characters(object):
-    def __init__(self, name, inventory, health, armor, damage, weapon, description, diologue):
-        self.name = name
-        self.inventory = inventory
-        self.health = health
-        self.armor = armor
-        self.damage = damage
-        self.description = description
-        self.diologue = diologue
-        self.weapon = weapon
-
-    def attacked(self):
-        if self.armor >= 1:
-            self.damage = self.damage - self.armor
-            if self.armor <= enemy.damage:
-                self.damage = self.armor - enemy.damage
-                self.damage = self.damage
-        if self.weapon:
-            self.damage = self.damage * 2.5
-
-    def attacking(self):
-        if self.armor >= 1:
-            self.damage = self.damage - self.armor
-            if self.armor <= enemy.damage:
-                self.damage = self.armor - enemy.damage
-                self.damage = self.damage
-        if self.weapon:
-            self.damage = self.damage * 2.5
-        enemy.health = enemy.health - enemy.damage
+# Classes
 
 
 class Item(object):
@@ -117,9 +74,10 @@ class Craftable(Item):
 
 
 class Armor(Item):
-    def __init__(self, name, description, durability, drop, armor, amount):
+    def __init__(self, name, description, durability, drop, armor, amount, craftable):
         super(Armor, self).__init__(name, description, durability, drop, amount)
         self.armor = armor
+        self.craftable = craftable
 
     def use(self):
         print("You put on %s." % self.name)
@@ -178,21 +136,6 @@ class Maxhealth(Food):
         super(Maxhealth, self).__init__(name, description, durability, heal, drop, amount)
 
 
-class Helmet(Armor):
-    def __init__(self, name, description, durability, drop, armor, amount):
-        super(Helmet, self).__init__(name, description, durability, drop, armor, amount)
-
-
-class Breastplate(Armor):
-    def __init__(self, name, description, durability, drop, armor, amount):
-        super(Breastplate, self).__init__(name, description, durability, drop, armor, amount)
-
-
-class Leggings(Armor):
-    def __init__(self, name, description, durability, drop, armor, amount):
-        super(Leggings, self).__init__(name, description, durability, drop, armor, amount)
-
-
 class Healthpot(Potion):
     def __init__(self, name, description, durability, drop, duration, ability, heal, amount):
         super(Healthpot, self).__init__(name, description, durability, drop, duration, ability, amount)
@@ -247,6 +190,155 @@ class Ammo(Item):
 class EnchantBook(Enchanted):
     def __init__(self, name, description, durability, enchanted, drop, amount):
         super(EnchantBook, self).__init__(name, description, durability, enchanted, drop, amount)
+
+
+class Characters(object):
+    def __init__(self, name, inventory, health, armor, damage, weapon, description, diologue):
+        self.name = name
+        self.inventory = inventory
+        self.health = health
+        self.armor = armor
+        self.damage = damage
+        self.description = description
+        self.diologue = diologue
+        self.weapon = weapon
+
+    def attacked(self):
+        if self.armor >= 1:
+            self.damage = self.damage - self.armor
+            if self.armor <= enemy.damage:
+                self.damage = self.armor - enemy.damage
+                self.damage = self.damage
+        if self.weapon:
+            self.damage = self.damage * 2.5
+
+    def attacking(self):
+        if self.armor >= 1:
+            self.damage = self.damage - self.armor
+            if self.armor <= enemy.damage:
+                self.damage = self.armor - enemy.damage
+                self.damage = self.damage
+        if self.weapon:
+            self.damage = self.damage * 2.5
+        enemy.health = enemy.health - enemy.damage
+
+
+class Room(object):
+    def __init__(self, name, north, east, south, west, item, repeat, description, description_2):
+        self.name = name
+        self.description = description
+        self.description_2 = description_2
+        self.item = item
+        self.north = north
+        self.east = east
+        self.south = south
+        self.west = west
+        self.again = repeat
+
+    def move(self, direction):
+        global current_node
+        current_node = globals()[getattr(self, direction)]
+
+
+# Keys
+tr_key = Key("TR Key \n", "The TR Key seems to open a door that is locked. Which door that can be is unknown.", None,
+             'teleporter_R', True, 0, 1)
+
+p_key_1 = Key("P Key #1 \n", "The first key seems to not be the only key.", None, 'puzzle_R', True, 1, 1)
+
+p_key_2 = Key("P Key #2 \n", "The second key seems to not be the only key.", None, 'puzzle_R', True, 1, 1)
+
+p_key_3 = Key("P Key #3 \n", "The third key seems o not be the only key.", None, 'puzzle_R', True, 1, 1)
+
+p_key_4 = Key("P Key #4 \n", "The Last key seems to not be the only key. Their is a note in the back. It reads 'You \n"
+              "must have all of the keys in order to be in the puzzle room.'", None, 'puzzle_R', True, 1, 1)
+
+# Armor
+leather_armor = Armor("leather armor \n", "This armor type is the weakest armor possible.", 20, True, 30, 1, False)
+
+wood_armor = Armor("wooden armor \n", "This armor is made complete made of flexible wood.", 30, True, 35, 1, True)
+
+iron_armor = Armor("iron armor \n", "This armor is made of iron bars.", 45, True, 50, 1, True)
+
+gold_armor = Armor("gold armor \n", "This armor is made of gold bars. It is extremely heavy and it doesn't block a \n"
+                   "lot of hits.", 35, True, 15, 1, True)
+
+diamond_armor = Armor("diamond armor \n", "This armor is made from diamonds.", 150, True, 85, 1, True)
+
+armor_of_undying = Armor("ARMOR OF \n", "The armor of undying will revive you when you die. But when the armor \n"
+                         "revives you, it will break and you will not have the armor anymore.", 1, True, 20, 1, True)
+
+armor_of_strength = Armor("ARMOR OF STRENGTH \n", "The armor of strength will give you extra damage. But when you \n"
+                          "attack, you will lose 5% of your base health(100).", 250, True, 35, 1, True)
+
+# Extras
+candle = Item("candle \n", "This candle can be use so that you can burn something. But what?", 1, True, 1)
+
+torch = Item("torch \n", "This torch can be used to burn something. But what?", 1, True, 1)
+
+pickaxe = Item("a diamond pickaxe \n", "This item seams to be used to mine hard to get materials. Which material it is"
+               "\n unknown. Maybe you will find it somewhere.", 1, True, 1)
+
+rainbow_in_a_bottle = Healthpot("rainbow in a bottle \n", "The rainbow in the bottle fills you up with warmth. It is \n"
+                                "almost as if it can heal you.", 5, True, 0, "heal", 20, 1)
+
+paper_with_writing = Item("paper \n", "The piece of paper that you found has writing in it. it reads 'You Must find \n"
+                          "the puzzle room. if you don't we will never escApe. who ever you are, you Must \n"
+                          "find us. We are Trapped. we Can't find tHe exit. you must pass the test in order \n"
+                          "to free us. hope you are come quickly. we are running out of food.'", 1, True, 1)
+
+camera = Item("camera \n", "You look at the camera. You wonder if they are any photos inside it.", 1, True, 1)
+
+raw_potato = Healthpot("raw potato \n", "You can eat this raw potato. But it looks so weird.", 1, True, 0, "heal", 5, 1)
+
+# Weapons
+dull_sword = Sword("dull sword \n", "This sword is dull.", 100, True, 8, None, 1)
+
+sharp_sword = Sword("sharp sword \n", "This sword is so sharp, it can cut stone.", 50, True, 73, None, 1)
+
+magical_sword = Sword("MAGICAL SWORD \n", "This sword seems magical. It is glowing with a purple glow.", 230, True, 99,
+                      'Burn', 1)
+
+broken_bow = Bow("broken bow \n", "The bow is broken. you can use it but it might now do a lot of damage.", 14, True,
+                 11, 13, None, 1)
+
+x_bow = Bow("x-bow \n", "You have a cross bar.", 300, True, 46, 38, 'strength', 1)
+
+metal_bow = Bow("metal bow \n", "The bow has been reinforced with iron.", 200, True, 73, 74, 'strength', 1)
+
+legendary_bow = Bow("LEGENDARY BOW \n", "This bow is a reinforced bow that has 3 enchantments with it.", 999, True, 300,
+                    235, ['strength', 'unbreakable', 'fire_frost'], 1)
+
+# Enchanted Books
+strength_book = EnchantBook("STRENGTH BOOK \n", "This book gives an item more damage.", 1, 'strength', True, 1)
+
+unbreakable_book = EnchantBook("UNBREAKABLE BOOK \n", "This book gives an item more durability", 1, 'unbreakable', True,
+                               1)
+
+fire_frost_book = EnchantBook("FIRE FROST BOOK", "This book gives an item more damage and makes half of the sword on \n"
+                              "fire and the other frozen. When you hit an enemy, they will either burn or they would \n"
+                              "freeze. If the enemy has burn, they would lose 10% of their health when it is their \n"
+                              "turn. If the item also has strength, the burn will do 20% of their health. If the \n"
+                              "enemy has been frozen. They will lose 2 turns.", 1, 'fire_frost', True, 1)
+
+# Potions
+
+# Ammo
+
+# Food
+
+# Characters
+enemy = Characters("Gabe", ["pickaxe", "Torch", "Sword", "wallet"], 100, 10, 20, False,
+                   "The Enemies name is Gabe, he is one of the hardest people to fight. He have killed many people \n"
+                   "for trying to solve the puzzle. They never got to the question so they weren't able to tell \n"
+                   "people the question.",
+                   ["It is I, Gabe, the one that changed the world. If you want to get your family and friends and \n"
+                    "everyone in your world back, you have to get past me.", "In order to solve you family, you need \n"
+                    "to solve the puzzle.", "You have defeated me. You may solve the riddle. But be worn. If you \n"
+                    "don't solve it within your third try, you will die. So be worn."])
+
+current_character = Characters("John", ["Beans \n"], 100, 0, 10, False, "You are yourself. Don't let "
+                               "anyone change that.", None)
 
 
 # Initialize Rooms
@@ -735,74 +827,6 @@ end_game = "Once you have thought that the world was so easy, yet you didn't kno
 
 print("You can end the game mid game by writing down 'quit' and entered it.")
 
-
-enemy = Characters("Gabe", ["pickaxe", "Torch", "Sword", "wallet"], 100, 10, 20, False,
-                   "The Enemies name is Gabe, he is one of the hardest people to fight. He have killed many people \n"
-                   "for trying to solve the puzzle. They never got to the question so they weren't able to tell \n"
-                   "people the question.",
-                   ["It is I, Gabe, the one that changed the world. If you want to get your family and friends and \n"
-                    "everyone in your world back, you have to get past me.", "In order to solve you family, you need \n"
-                    "to solve the puzzle.", "You have defeated me. You may solve the riddle. But be worn. If you \n"
-                    "don't solve it within your third try, you will die. So be worn."])
-
-current_character = Characters("John", ["Beans \n"], 100, 0, 10, False, "You are yourself. Don't let "
-                               "anyone change that.", None)
-
-tr_key = Key("TR Key \n", "The TR Key seems to open a door that is locked. Which door that can be is unknown.", None,
-             'teleporter_R', True, 0, 1)
-
-p_key_1 = Key("P Key #1 \n", "The first key seems to not be the only key.", None, 'puzzle_R', True, 1, 1)
-
-p_key_2 = Key("P Key #2 \n", "The second key seems to not be the only key.", None, 'puzzle_R', True, 1, 1)
-
-p_key_3 = Key("P Key #3 \n", "The third key seems o not be the only key.", None, 'puzzle_R', True, 1, 1)
-
-p_key_4 = Key("P Key #4 \n", "The Last key seems to not be the only key. Their is a note in the back. It reads 'You \n"
-              "must have all of the keys in order to be in the puzzle room.'", None, 'puzzle_R', True, 1, 1)
-
-armor_of_undying = Armor("ARMOR OF \n", "The armor of undying will revive you when you die. But when the armor \n"
-                         "revives you, it will break and you will not have the armor anymore.", 1, True, 20, 1)
-
-armor_of_strength = Armor("ARMOR OF STRENGTH \n", "The armor of strength will give you extra damage. But when you \n"
-                          "attack, you will lose 5% of your base health(100).", 250, True, 35, 1)
-
-candle = Item("candle \n", "This candle can be use so that you can burn something. But what?", 1, True, 1)
-
-torch = Item("torch \n", "This torch can be used to burn something. But what?", 1, True, 1)
-
-pickaxe = Item("a diamond pickaxe \n", "This item seams to be used to mine hard to get materials. Which material it is"
-                                       "\n unknown. Maybe you will find it somewhere.", 1, True, 1)
-
-rainbow_in_a_bottle = Healthpot("rainbow in a bottle \n", "The rainbow in the bottle fills you up with warmth. It is \n"
-                                "almost as if it can heal you.", 5, True, 0, "heal", 20, 1)
-
-paper_with_writing = Item("paper \n", "The piece of paper that you found has writing in it. it reads 'You Must find \n"
-                          "the puzzle room. if you don't we will never escApe. who ever you are, you Must \n"
-                          "find us. We are Trapped. we Can't find tHe exit. you must pass the test in order \n"
-                          "to free us. hope you are come quickly. we are running out of food.'", 1, True, 1)
-
-camera = Item("camera \n", "You look at the camera. You wonder if they are any photos inside it.", 1, True, 1)
-
-raw_potato = Healthpot("raw potato \n", "You can eat this raw potato. But it looks so weird.", 1, True, 0, "heal", 5, 1)
-
-dull_sword = Sword("dull sword \n", "This sword is dull.", 100, True, 8, None, 1)
-
-sharp_sword = Sword("sharp sword \n", "This sword is so sharp, it can cut stone.", 50, True, 73, None, 1)
-
-magical_sword = Sword("MAGICAL SWORD \n", "This sword seems magical. It is glowing with a purple glow.", 230, True, 99,
-                      'Burn', 1)
-
-broken_bow = Bow("broken bow \n", "The bow is broken. you can use it but it might now do a lot of damage.", 14, True,
-                 11, 13, 1)
-
-x_bow = Bow("x-bow \n", "You have a cross bar.", 300, True, 46, 38, 1)
-
-metal_bow = Bow("metal bow \n", "The bow has been reinforced with iron.", 200, True, 73, 74, 1)
-
-legendary_bow = Bow("LEGENDARY BOW", "This bow is a reinforced bow that has 3 enchantments with it.", 999, True, 300,
-                    235, ['strength', 'unbreakable', 'fire frost'], 1)
-
-strength_book = EnchantBook("STRENGTH BOOK", "This book ")
 
 current_node = BACK_MALL
 directions = ['north', 'east', 'south', 'west']

@@ -183,8 +183,10 @@ class Bow(Weapons):
 
 
 class Ammo(Item):
-    def __init__(self, name, description, durability, drop, amount):
+    def __init__(self, name, description, durability, drop, amount, weapon, ability):
         super(Ammo, self).__init__(name, description, durability, drop, amount)
+        self.weapon = weapon
+        self.ability = ability
 
 
 class EnchantBook(Enchanted):
@@ -193,7 +195,7 @@ class EnchantBook(Enchanted):
 
 
 class Characters(object):
-    def __init__(self, name, inventory, health, armor, damage, weapon, description, diologue):
+    def __init__(self, name, inventory, health, armor, damage, weapon, description, diologue, intruder):
         self.name = name
         self.inventory = inventory
         self.health = health
@@ -202,6 +204,7 @@ class Characters(object):
         self.description = description
         self.diologue = diologue
         self.weapon = weapon
+        self.intruder = intruder
 
     def attacked(self):
         if self.armor >= 1:
@@ -241,89 +244,141 @@ class Room(object):
 
 
 # Keys
-tr_key = Key("TR Key \n", "The TR Key seems to open a door that is locked. Which door that can be is unknown.", None,
-             'teleporter_R', True, 0, 1)
+tr_key = Key("TR Key \n",
+             "The TR Key seems to open a door that is locked. Which door that can be is unknown.", None, 'teleporter_R',
+             True, 0, 1)
 
-p_key_1 = Key("P Key #1 \n", "The first key seems to not be the only key.", None, 'puzzle_R', True, 1, 1)
+p_key_1 = Key("P Key #1 \n",
+              "The first key seems to not be the only key.", None, 'puzzle_R', True, 1, 1)
 
-p_key_2 = Key("P Key #2 \n", "The second key seems to not be the only key.", None, 'puzzle_R', True, 1, 1)
+p_key_2 = Key("P Key #2 \n",
+              "The second key seems to not be the only key.", None, 'puzzle_R', True, 1, 1)
 
-p_key_3 = Key("P Key #3 \n", "The third key seems o not be the only key.", None, 'puzzle_R', True, 1, 1)
+p_key_3 = Key("P Key #3 \n",
+              "The third key seems o not be the only key.", None, 'puzzle_R', True, 1, 1)
 
-p_key_4 = Key("P Key #4 \n", "The Last key seems to not be the only key. Their is a note in the back. It reads 'You \n"
-              "must have all of the keys in order to be in the puzzle room.'", None, 'puzzle_R', True, 1, 1)
+p_key_4 = Key("P Key #4 \n",
+              "The Last key seems to not be the only key. Their is a note in the back. It reads 'You must have all \n"
+              "of the keys in order to be in the puzzle room.'", None, 'puzzle_R', True, 1, 1)
 
 # Armor
-leather_armor = Armor("leather armor \n", "This armor type is the weakest armor possible.", 20, True, 30, 1, False)
+leather_armor = Armor("leather armor \n",
+                      "This armor type is the weakest armor possible.", 20, True, 30, 1, False)
 
-wood_armor = Armor("wooden armor \n", "This armor is made complete made of flexible wood.", 30, True, 35, 1, True)
+wood_armor = Armor("wooden armor \n",
+                   "This armor is made complete made of flexible wood.", 30, True, 35, 1, True)
 
-iron_armor = Armor("iron armor \n", "This armor is made of iron bars.", 45, True, 50, 1, True)
+iron_armor = Armor("iron armor \n",
+                   "This armor is made of iron bars.", 45, True, 50, 1, True)
 
-gold_armor = Armor("gold armor \n", "This armor is made of gold bars. It is extremely heavy and it doesn't block a \n"
-                   "lot of hits.", 35, True, 15, 1, True)
+gold_armor = Armor("gold armor \n",
+                   "This armor is made of gold bars. It is extremely heavy and it doesn't block a lot of hits.", 35,
+                   True, 15, 1, True)
 
-diamond_armor = Armor("diamond armor \n", "This armor is made from diamonds.", 150, True, 85, 1, True)
+diamond_armor = Armor("diamond armor \n",
+                      "This armor is made from diamonds.", 150, True, 85, 1, True)
 
-armor_of_undying = Armor("ARMOR OF \n", "The armor of undying will revive you when you die. But when the armor \n"
-                         "revives you, it will break and you will not have the armor anymore.", 1, True, 20, 1, True)
+armor_of_undying = Armor("ARMOR OF UNDYING \n",
+                         "The armor of undying will revive you when you die. But when the armor revives you, it will \n"
+                         "break and you will not have the armor anymore.", 1, True, 20, 1, True)
 
-armor_of_strength = Armor("ARMOR OF STRENGTH \n", "The armor of strength will give you extra damage. But when you \n"
-                          "attack, you will lose 5% of your base health(100).", 250, True, 35, 1, True)
+armor_of_strength = Armor("ARMOR OF STRENGTH \n",
+                          "The armor of strength will give you extra damage. But when you attack, you will lose 5% \n"
+                          "of your base health(100).", 250, True, 35, 1, True)
 
 # Extras
-candle = Item("candle \n", "This candle can be use so that you can burn something. But what?", 1, True, 1)
+candle = Item("candle \n",
+              "This candle can be use so that you can burn something. But what?", 1, True, 1)
 
-torch = Item("torch \n", "This torch can be used to burn something. But what?", 1, True, 1)
+torch = Item("torch \n",
+             "This torch can be used to burn something. But what?", 1, True, 1)
 
-pickaxe = Item("a diamond pickaxe \n", "This item seams to be used to mine hard to get materials. Which material it is"
-               "\n unknown. Maybe you will find it somewhere.", 1, True, 1)
+pickaxe = Item("a diamond pickaxe \n",
+               "This item seams to be used to mine hard to get materials. Which material it is unknown. Maybe you \n"
+               "will find it somewhere.", 1, True, 1)
 
-rainbow_in_a_bottle = Healthpot("rainbow in a bottle \n", "The rainbow in the bottle fills you up with warmth. It is \n"
-                                "almost as if it can heal you.", 5, True, 0, "heal", 20, 1)
+rainbow_in_a_bottle = Healthpot("rainbow in a bottle \n",
+                                "The rainbow in the bottle fills you up with warmth. It is almost as if it can heal \n"
+                                "you.", 5, True, 0, "heal", 20, 1)
 
-paper_with_writing = Item("paper \n", "The piece of paper that you found has writing in it. it reads 'You Must find \n"
-                          "the puzzle room. if you don't we will never escApe. who ever you are, you Must \n"
-                          "find us. We are Trapped. we Can't find tHe exit. you must pass the test in order \n"
-                          "to free us. hope you are come quickly. we are running out of food.'", 1, True, 1)
+paper_with_writing = Item("paper \n",
+                          "The piece of paper that you found has writing in it. it reads 'You Must find the puzzle \n"
+                          "room. if you don't we will never escApe. who ever you are, you Must find us. We are \n"
+                          "Trapped. we Can't find tHe exit. you must pass the test in order to free us. hope you are \n"
+                          "come quickly. we are running out of food.'", 1, True, 1)
 
-camera = Item("camera \n", "You look at the camera. You wonder if they are any photos inside it.", 1, True, 1)
+camera = Item("camera \n",
+              "You look at the camera. You wonder if they are any photos inside it.", 1, True, 1)
 
-raw_potato = Healthpot("raw potato \n", "You can eat this raw potato. But it looks so weird.", 1, True, 0, "heal", 5, 1)
+raw_potato = Healthpot("raw potato \n",
+                       "You can eat this raw potato. But it looks so weird.", 1, True, 0, "heal", 5, 1)
 
 # Weapons
-dull_sword = Sword("dull sword \n", "This sword is dull.", 100, True, 8, None, 1)
+dull_sword = Sword("dull sword \n",
+                   "This sword is dull.", 100, True, 8, None, 1)
 
-sharp_sword = Sword("sharp sword \n", "This sword is so sharp, it can cut stone.", 50, True, 73, None, 1)
+sharp_sword = Sword("sharp sword \n",
+                    "This sword is so sharp, it can cut stone.", 50, True, 73, None, 1)
 
-magical_sword = Sword("MAGICAL SWORD \n", "This sword seems magical. It is glowing with a purple glow.", 230, True, 99,
-                      'Burn', 1)
+magical_sword = Sword("MAGICAL SWORD \n",
+                      "This sword seems magical. It is glowing with a purple glow.", 230, True, 99, 'Burn', 1)
 
-broken_bow = Bow("broken bow \n", "The bow is broken. you can use it but it might now do a lot of damage.", 14, True,
-                 11, 13, None, 1)
+broken_bow = Bow("broken bow \n",
+                 "The bow is broken. you can use it but it might now do a lot of damage.", 14, True, 11, 13, None, 1)
 
-x_bow = Bow("x-bow \n", "You have a cross bar.", 300, True, 46, 38, 'strength', 1)
+x_bow = Bow("x-bow \n",
+            "You have a cross bar.", 300, True, 46, 38, 'strength', 1)
 
-metal_bow = Bow("metal bow \n", "The bow has been reinforced with iron.", 200, True, 73, 74, 'strength', 1)
+metal_bow = Bow("metal bow \n",
+                "The bow has been reinforced with iron.", 200, True, 73, 74, 'strength', 1)
 
-legendary_bow = Bow("LEGENDARY BOW \n", "This bow is a reinforced bow that has 3 enchantments with it.", 999, True, 300,
-                    235, ['strength', 'unbreakable', 'fire_frost'], 1)
+legendary_bow = Bow("LEGENDARY BOW \n",
+                    "This bow is a reinforced bow that has 3 enchantments with it.", 999, True, 300, 235,
+                    ['strength', 'unbreakable', 'fire_frost'], 1)
 
 # Enchanted Books
-strength_book = EnchantBook("STRENGTH BOOK \n", "This book gives an item more damage.", 1, 'strength', True, 1)
+strength_book = EnchantBook("strength book \n",
+                            "This book gives an item more damage.", 1, 'strength', True, 1)
 
-unbreakable_book = EnchantBook("UNBREAKABLE BOOK \n", "This book gives an item more durability", 1, 'unbreakable', True,
-                               1)
+unbreakable_book = EnchantBook("unbreakable book \n",
+                               "This book gives an item more durability", 1, 'unbreakable', True, 1)
 
-fire_frost_book = EnchantBook("FIRE FROST BOOK", "This book gives an item more damage and makes half of the sword on \n"
-                              "fire and the other frozen. When you hit an enemy, they will either burn or they would \n"
-                              "freeze. If the enemy has burn, they would lose 10% of their health when it is their \n"
-                              "turn. If the item also has strength, the burn will do 20% of their health. If the \n"
-                              "enemy has been frozen. They will lose 2 turns.", 1, 'fire_frost', True, 1)
+fire_frost_book = EnchantBook("FIRE FROST BOOK \n",
+                              "This book gives an item more damage and makes half of the sword on fire and the other \n"
+                              "frozen. When you hit an enemy, they will either burn or they would freeze. If the \n"
+                              "enemy has burn, they would lose 10% of their health when it is their turn. If the \n"
+                              "item also has strength, the burn will do 20% of their health. If the enemy has been \n"
+                              "frozen. They will lose 2 turns.", 1, 'fire_frost', True, 1)
 
 # Potions
+weak_health_potion = Potion("weak health potion \n",
+                            "This health potion gives you 20 health back.", 1, True, 1, 'health', 1)
+
+strong_health_potion = Potion("strong health potion \n",
+                              "This health potion gives you 50 health back.", 1, True, 1, 'health', 1)
+
+strength_potion = Potion("strength potion \n",
+                         "This strength potion gives you an attack boost for 30 moves.", 1, True, 30, 'strength', 1)
+
+poison_potion = Potion("POISON IN A BOTTLE \n",
+                       "This potion can be thrown and will poison the enemy. The poison will not kill the enemy. The \n"
+                       "enemy will do less damage and will have less health", 1, True, 1, 'poison', 1)
 
 # Ammo
+wooden_arrow = Ammo("wooden arrow \n",
+                    "This ammo is used for bows. The arrow isn't the strongest but it is the easiest to craft. Can \n"
+                    "be used for the broken bow and the metal bow.", 1, True, 1, ['broken_bow', 'metal_bow'], None)
+metal_arrow = Ammo("metal arrow \n",
+                   "This ammo is used for bows. The arrow is the strongest that you can craft. Can be used for metal \n"
+                   "bows only", 1, True, 1, 'metal_bow', None)
+
+normal_crossbow_bolt = Ammo("normal crossbow bolt \n",
+                            "This ammo is used for an x-bow. It isn't the only ammo for the x-bow.", 1, True, 1,
+                            'x_bow', None)
+
+explosive_crossbow_bolt = Ammo("EXPLOSIVE CROSS BOLT  \n",
+                               "This ammo is used only for an x-bow. This bolt explodes on impact and does more \n"
+                               "damage on impact.", 1, True, 1, 'x-bow', None)
 
 # Food
 
@@ -335,10 +390,10 @@ enemy = Characters("Gabe", ["pickaxe", "Torch", "Sword", "wallet"], 100, 10, 20,
                    ["It is I, Gabe, the one that changed the world. If you want to get your family and friends and \n"
                     "everyone in your world back, you have to get past me.", "In order to solve you family, you need \n"
                     "to solve the puzzle.", "You have defeated me. You may solve the riddle. But be worn. If you \n"
-                    "don't solve it within your third try, you will die. So be worn."])
+                    "don't solve it within your third try, you will die. So be worn."], False)
 
 current_character = Characters("John", ["Beans \n"], 100, 0, 10, False, "You are yourself. Don't let "
-                               "anyone change that.", None)
+                               "anyone change that.", None, False)
 
 
 # Initialize Rooms
@@ -862,7 +917,7 @@ while True:
             print(current_node.description)
             current_node.again = True
         command = input('>_').lower()
-        if command == 'quit':
+        if command == 'quit' or 'end':
             quit(0)
         else:
             if command in short_directions:

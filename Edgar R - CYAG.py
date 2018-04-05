@@ -195,7 +195,7 @@ class EnchantBook(Enchanted):
 
 
 class Characters(object):
-    def __init__(self, name, inventory, health, armor, damage, weapon, description, diologue, intruder):
+    def __init__(self, name, inventory, health, armor, damage, weapon, description, diologue, enemies=None):
         self.name = name
         self.inventory = inventory
         self.health = health
@@ -204,26 +204,12 @@ class Characters(object):
         self.description = description
         self.diologue = diologue
         self.weapon = weapon
-        self.intruder = intruder
+        self.enemies = enemies
 
     def attacked(self):
-        if self.armor >= 1:
-            self.damage = self.damage - self.armor
-            if self.armor <= enemy.damage:
-                self.damage = self.armor - enemy.damage
-                self.damage = self.damage
-        if self.weapon:
-            self.damage = self.damage * 2.5
 
     def attacking(self):
-        if self.armor >= 1:
-            self.damage = self.damage - self.armor
-            if self.armor <= enemy.damage:
-                self.damage = self.armor - enemy.damage
-                self.damage = self.damage
-        if self.weapon:
-            self.damage = self.damage * 2.5
-        enemy.health = enemy.health - enemy.damage
+
 
 
 class Room(object):
@@ -310,8 +296,8 @@ paper_with_writing = Item("paper \n",
 camera = Item("camera \n",
               "You look at the camera. You wonder if they are any photos inside it.", 1, True, 1)
 
-raw_potato = Healthpot("raw potato \n",
-                       "You can eat this raw potato. But it looks so weird.", 1, True, 0, "heal", 5, 1)
+firework = Item("firework",
+                "Its a firework. It goes BOOM.", 1, True, 1)
 
 # Weapons
 dull_sword = Sword("dull sword \n",
@@ -376,25 +362,44 @@ normal_crossbow_bolt = Ammo("normal crossbow bolt \n",
                             "This ammo is used for an x-bow. It isn't the only ammo for the x-bow.", 1, True, 1,
                             'x_bow', None)
 
-explosive_crossbow_bolt = Ammo("EXPLOSIVE CROSS BOLT  \n",
+explosive_crossbow_bolt = Ammo("EXPLOSIVE X-BOW BOLT  \n",
                                "This ammo is used only for an x-bow. This bolt explodes on impact and does more \n"
                                "damage on impact.", 1, True, 1, 'x-bow', None)
 
+electric_crossbow_bolt = Ammo("ELECTRIC X-BOW BOLT \n",
+                              "This ammo is used only for an x-bow. This bolt will electrocute the enemy.", 1, True,
+                              1, 'x-bow', None)
+
 # Food
+raw_potato = Food("raw potato \n",
+                  "You can eat this raw potato. But it looks so weird.", 1, 5, True, 1)
+
+cooked_potato = Food("cooked potato \n",
+                     "This potato is cooked.", 1, 15, True, 1)
+
+potato_chip = Food("potato chips",
+                   "Its a bag of chips.", 1, 20, True, 1)
+
+raw_meat = Food("raw meat",
+                "This is a piece of raw meat from an unknown creature.", 1, 30, True, 1)
+
+unicorn_meat = Food("UNICORN MEAT",
+                    "Despite its name, it is not from a unicorn. It is just called that because it is extremely rare.\n"
+                    "Tho it is does have a little bit of a rainbow color. But it is just food dye.",
+                    1, 80, True, 1)
 
 # Characters
-enemy = Characters("Gabe", ["pickaxe", "Torch", "Sword", "wallet"], 100, 10, 20, False,
-                   "The Enemies name is Gabe, he is one of the hardest people to fight. He have killed many people \n"
-                   "for trying to solve the puzzle. They never got to the question so they weren't able to tell \n"
-                   "people the question.",
-                   ["It is I, Gabe, the one that changed the world. If you want to get your family and friends and \n"
-                    "everyone in your world back, you have to get past me.", "In order to solve you family, you need \n"
-                    "to solve the puzzle.", "You have defeated me. You may solve the riddle. But be worn. If you \n"
-                    "don't solve it within your third try, you will die. So be worn."], False)
+gabe = Characters("Gabe", ["pickaxe", "Torch", "Sword", "wallet"], 100, 10, 20, False,
+                  "The Enemies name is Gabe, he is one of the hardest people to fight. He have killed many people \n"
+                  "for trying to solve the puzzle. They never got to the question so they weren't able to tell \n"
+                  "people the question.",
+                  ["It is I, Gabe, the one that changed the world. If you want to get your family and friends and \n"
+                   "everyone in your world back, you have to get past me.", "In order to solve you family, you need \n"
+                   "to solve the puzzle.", "You have defeated me. You may solve the riddle. But be worn. If you \n"
+                   "don't solve it within your third try, you will die. So be worn."], False)
 
 current_character = Characters("John", ["Beans \n"], 100, 0, 10, False, "You are yourself. Don't let "
                                "anyone change that.", None, False)
-
 
 # Initialize Rooms
 BACK_MALL = Room("Back of the Mall", 'TARGET', None, 'FRONT_STORE', None, None, False,
@@ -866,7 +871,7 @@ PUZZLE_R = Room("Puzzle Room", None, None, 'BO_BO', None, None, False,
                 "opened it. \n"
                 "The Puzzle: \n"
                 "If you had only one match, and entered a dark room containing an oil lamp, some newspaper, \n"
-                "and some kindling wood, which would you light first?",
+                "and some kindling wood, which would you light first? \n",
                 "Are you going to solve the puzzle? if you are, here is the puzzle. \n"
                 "The Puzzle: \n"
                 "If you had only one match, and entered a dark room containing an oil lamp, some newspaper, \n"
@@ -890,7 +895,10 @@ short_directions = ['n', 'e', 's', 'w']
 moves = 0
 
 commands_possible = ["jump", "use", "armor", "attack", "drop", "description", "durability", "inventory", "how to play",
-                     "heal", "ability", "craft"]
+                     "heal", "ability", "craft", "attack enemy"]
+
+def others():
+    print("What I item would you like to use to %s?" % command)
 
 while True:
     if current_node == PUZZLE_R:
@@ -933,4 +941,8 @@ while True:
                 if command == 'my description':
                     print(current_character.description)
                 else:
-                    print("Command not recognize")
+                    print("Command not recognized")
+            if command in commands_possible:
+                others()
+            else:
+                print("Command not recognized")

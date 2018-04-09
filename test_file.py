@@ -32,6 +32,31 @@ class Characters(object):
             self.hostile.health = self.hostile.health - self.hostile.damage
 
 
+class Item(object):
+    def __init__(self, name, description, durability, drop, amount):
+        self.name = name
+        self.description = description
+        self.durability = durability
+        self.drop = drop
+        self.amount = amount
+
+    def drop(self):
+        self.drop = True
+        print("You dropped %s." % self.name)
+
+    def pick_up(self):
+        self.drop = False
+        print("You picked up %s" % self.name)
+
+
+class Edible(Item):
+    def __init__(self, name, description, durability, drop, amount):
+        super(Edible, self).__init__(name, description, durability, drop, amount)
+
+    def consume(self):
+        print("You consumed %s" % self.name)
+
+
 class Food(Edible):
     def __init__(self, name, description, durability, heal, drop, amount):
         super(Food, self).__init__(name, description, durability, drop, amount)
@@ -65,7 +90,7 @@ class Item(object):
         print("You picked up %s" % self.name)
 
 
-current_character = Characters("John", ["Beans \n"], 100, 0, 10, False,
+current_character = Characters("John", ["beans \n"], 100, 0, 10, False,
                                "You are yourself. Don't let anyone change that.", None, False, True)
 
 raw_potato = Food("raw potato \n",
@@ -74,6 +99,8 @@ raw_potato = Food("raw potato \n",
 test = True
 
 while test:
-    grab = input(">_")
+    grab = input(">_").lower()
     if grab == "grab raw potato":
-        
+        current_character.inventory.append(raw_potato.name)
+        raw_potato.drop = False
+        print("".join(current_character.inventory))

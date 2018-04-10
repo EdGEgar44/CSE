@@ -90,17 +90,40 @@ class Item(object):
         print("You picked up %s" % self.name)
 
 
+class Potion(Edible):
+    def __init__(self, name, description, durability, drop, duration, ability, amount):
+        super(Potion, self).__init__(name, description, durability, drop, amount)
+        self.duration = duration
+        self.ability = ability
+
+    def drink(self):
+        if self.name in current_character.inventory:
+            print("You drank %s." % self.name)
+            current_character.inventory.pop(self.name)
+            print("You know have %s affect." % self.ability)
+
+
 current_character = Characters("John", ["beans \n"], 100, 0, 10, False,
                                "You are yourself. Don't let anyone change that.", None, False, True)
 
 raw_potato = Food("raw potato \n",
                   "You can eat this raw potato. But it looks so weird.", 1, 5, True, 1)
 
+weak_health_potion = Potion("weak health potion \n",
+                            "This health potion gives you 20 health back.", 1, True, 1, 'health', 1)
+
 test = True
+
+item = ['raw potato', 'weak health potion']
 
 while test:
     grab = input(">_").lower()
-    if grab == "grab raw potato":
-        current_character.inventory.append(raw_potato.name)
-        raw_potato.drop = False
-        print("".join(current_character.inventory))
+    if grab == "durability":
+        durability_info = input("which tool do you want to know the durability? ")
+        if durability_info in current_character.inventory:
+            inventory_len = len(current_character.inventory)
+            print("The durability of %s is %s" % (durability_info, inventory_len))
+        else:
+            print("Command not valid")
+    else:
+        print("Command not recognized")

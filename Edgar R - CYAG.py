@@ -926,7 +926,7 @@ short_directions = ['n', 'e', 's', 'w']
 
 moves = 0
 
-commands_possible = ["jump", "use", "armor", "attack", "drop", "description", "durability", "inventory", "how to play",
+commands_possible = ["D jump", "D use", "D armor", "D attack damage", "D drop", "D description", "durability", "inventory", "how to play",
                      "heal", "ability", "craft", "attack enemy", "grab"]
 
 
@@ -937,13 +937,33 @@ def others():
         if len(current_character.inventory) != 0:
             print("What")
     if command == "grab":
-        grab = input("What Item will you wan to grab? ")
+        grab = input("What item do you want to grab? ")
         if grab in current_node.item:
             print("You grabbed %s." % grab)
             current_character.inventory.append(grab)
+            print()
+            print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+            print("Your Inventory:")
             print("".join(current_character.inventory))
+            print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
         else:
             print("Command not recognized")
+    if command == "armor":
+        print(current_character.armor)
+    if command == "attack damage":
+        print(current_character.damage)
+    if command == "drop":
+        drop = input("What item do you want to drop? ")
+        if drop in current_character.inventory:
+            print("You dropped %s" % drop)
+            current_node.item.append(drop)
+            current_character.inventory.pop(drop)
+    if command == "description":
+        print(current_character.description)
+    if command == "durability":
+        durability_info = input("which tool do you want to know the durability? ")
+        if durability_info in current_character.inventory:
+            print("The durability of %s is %s" % (durability_info, current_character.inventory.durability))
 
 
 while current_character.alive:
@@ -989,5 +1009,7 @@ while current_character.alive:
                 others()
             else:
                 print("command not recognized")
-
     moves += 1
+print("You have died.")
+print("You died on move %s" % moves)
+print("good luck next time.")

@@ -227,6 +227,12 @@ class Characters(object):
                 self.damage = self.damage * 2.5
             self.hostile.health = self.hostile.health - self.hostile.damage
 
+    def diologue(self):
+        if self.alive:
+            length = len(self.diologue)
+            diologue = random.randint(length)
+            print(diologue)
+
 
 class Room(object):
     def __init__(self, name, north, east, south, west, item, repeat, description, description_2, stayed, enemies=None):
@@ -248,106 +254,109 @@ class Room(object):
 
 
 # Keys
-tr_key = Key("TR Key \n",
+tr_key = Key("TR Key",
              "The TR Key seems to open a door that is locked. Which door that can be is unknown.", None, 'teleporter_R',
              True, 0, 1)
 
-p_key_1 = Key("P Key #1 \n",
+p_key_1 = Key("P Key #1",
               "The first key seems to not be the only key.", None, 'puzzle_R', True, 1, 1)
 
-p_key_2 = Key("P Key #2 \n",
+p_key_2 = Key("P Key #2",
               "The second key seems to not be the only key.", None, 'puzzle_R', True, 1, 1)
 
-p_key_3 = Key("P Key #3 \n",
+p_key_3 = Key("P Key #3",
               "The third key seems o not be the only key.", None, 'puzzle_R', True, 1, 1)
 
-p_key_4 = Key("P Key #4 \n",
+p_key_4 = Key("P Key #4",
               "The Last key seems to not be the only key. Their is a note in the back. It reads 'You must have all \n"
               "of the keys in order to be in the puzzle room.'", None, 'puzzle_R', True, 1, 1)
 
 # Armor
-leather_armor = Armor("leather armor \n",
+leather_armor = Armor("leather armor",
                       "This armor type is the weakest armor possible.", 20, True, 30, 1, False)
 
-wood_armor = Armor("wooden armor \n",
+wood_armor = Armor("wooden armor",
                    "This armor is made complete made of flexible wood.", 30, True, 35, 1, True)
 
-iron_armor = Armor("iron armor \n",
+iron_armor = Armor("iron armor",
                    "This armor is made of iron bars.", 45, True, 50, 1, True)
 
-gold_armor = Armor("gold armor \n",
+gold_armor = Armor("gold armor",
                    "This armor is made of gold bars. It is extremely heavy and it doesn't block a lot of hits.", 35,
                    True, 15, 1, True)
 
-diamond_armor = Armor("diamond armor \n",
+diamond_armor = Armor("diamond armor",
                       "This armor is made from diamonds.", 150, True, 85, 1, True)
 
-armor_of_undying = Armor("ARMOR OF UNDYING \n",
+armor_of_undying = Armor("ARMOR OF UNDYING",
                          "The armor of undying will revive you when you die. But when the armor revives you, it will \n"
                          "break and you will not have the armor anymore.", 1, True, 20, 1, True)
 
-armor_of_strength = Armor("ARMOR OF STRENGTH \n",
+armor_of_strength = Armor("ARMOR OF STRENGTH",
                           "The armor of strength will give you extra damage. But when you attack, you will lose 5% \n"
                           "of your base health(100).", 250, True, 35, 1, True)
 
 # Extras
-candle = Item("candle \n",
+candle = Item("candle",
               "This candle can be use so that you can burn something. But what?", 1, True, 1)
 
-torch = Item("torch \n",
+torch = Item("torch",
              "This torch can be used to burn something. But what?", 1, True, 1)
 
-pickaxe = Item("a diamond pickaxe \n",
+pickaxe = Item("a diamond pickaxe",
                "This item seams to be used to mine hard to get materials. Which material it is unknown. Maybe you \n"
                "will find it somewhere.", 1, True, 1)
 
-rainbow_in_a_bottle = Healthpot("rainbow in a bottle \n",
+rainbow_in_a_bottle = Healthpot("rainbow in a bottle",
                                 "The rainbow in the bottle fills you up with warmth. It is almost as if it can heal \n"
                                 "you.", 5, True, 0, "heal", 20, 1)
 
-paper_with_writing = Item("paper \n",
+paper_with_writing = Item("paper",
                           "The piece of paper that you found has writing in it. it reads 'You Must find the puzzle \n"
                           "room. if you don't we will never escApe. who ever you are, you Must find us. We are \n"
                           "Trapped. we Can't find tHe exit. you must pass the test in order to free us. hope you are \n"
                           "come quickly. we are running out of food.'", 1, True, 1)
 
-camera = Item("camera \n",
+camera = Item("camera",
               "You look at the camera. You wonder if they are any photos inside it.", 1, True, 1)
 
 firework = Item("firework",
                 "Its a firework. It goes BOOM.", 1, True, 1)
 
+wallet = Item("wallet",
+              "It is a wallet with some money in it. But you don't even need it.", 1, False, 1)
+
 # Weapons
-dull_sword = Sword("dull sword \n",
+dull_sword = Sword("dull sword",
                    "This sword is dull.", 100, True, 8, None, 1)
 
-sharp_sword = Sword("sharp sword \n",
+sharp_sword = Sword("sharp sword",
                     "This sword is so sharp, it can cut stone.", 50, True, 73, None, 1)
 
-magical_sword = Sword("MAGICAL SWORD \n",
+magical_sword = Sword("MAGICAL SWORD",
                       "This sword seems magical. It is glowing with a purple glow.", 230, True, 99, 'Burn', 1)
 
-broken_bow = Bow("broken bow \n",
+broken_bow = Bow("broken bow",
                  "The bow is broken. you can use it but it might now do a lot of damage.", 14, True, 11, 13, None, 1)
 
-x_bow = Bow("x-bow \n",
+x_bow = Bow("x-bow",
             "You have a cross bar.", 300, True, 46, 38, 'strength', 1)
 
-metal_bow = Bow("metal bow \n",
+metal_bow = Bow("metal bow",
                 "The bow has been reinforced with iron.", 200, True, 73, 74, 'strength', 1)
 
-legendary_bow = Bow("LEGENDARY BOW \n",
+legendary_bow = Bow("LEGENDARY BOW",
                     "This bow is a reinforced bow that has 3 enchantments with it.", 999, True, 300, 235,
                     ['strength', 'unbreakable', 'fire_frost'], 1)
 
 # Enchanted Books
-strength_book = EnchantBook("strength book \n",
+strength_book = EnchantBook("strength book",
                             "This book gives an item more damage.", 1, 'strength', True, 1)
 
-unbreakable_book = EnchantBook("unbreakable book \n",
+unbreakable_book = EnchantBook("unbreakable book",
                                "This book gives an item more durability", 1, 'unbreakable', True, 1)
 
-fire_frost_book = EnchantBook("FIRE FROST BOOK \n",
+fire_frost_book = EnchantBook("FIRE FROST BOOK",
                               "This book gives an item more damage and makes half of the sword on fire and the other \n"
                               "frozen. When you hit an enemy, they will either burn or they would freeze. If the \n"
                               "enemy has burn, they would lose 10% of their health when it is their turn. If the \n"
@@ -355,44 +364,44 @@ fire_frost_book = EnchantBook("FIRE FROST BOOK \n",
                               "frozen. They will lose 2 turns.", 1, 'fire_frost', True, 1)
 
 # Potions
-weak_health_potion = Potion("weak health potion \n",
+weak_health_potion = Potion("weak health potion",
                             "This health potion gives you 20 health back.", 1, True, 1, 'health', 1)
 
-strong_health_potion = Potion("strong health potion \n",
+strong_health_potion = Potion("strong health potion",
                               "This health potion gives you 50 health back.", 1, True, 1, 'health', 1)
 
-strength_potion = Potion("strength potion \n",
+strength_potion = Potion("strength potion",
                          "This strength potion gives you an attack boost for 30 moves.", 1, True, 30, 'strength', 1)
 
-poison_potion = Potion("POISON IN A BOTTLE \n",
+poison_potion = Potion("POISON IN A BOTTLE",
                        "This potion can be thrown and will poison the enemy. The poison will not kill the enemy. The \n"
                        "enemy will do less damage and will have less health", 1, True, 1, 'poison', 1)
 
 # Ammo
-wooden_arrow = Ammo("wooden arrow \n",
+wooden_arrow = Ammo("wooden arrow",
                     "This ammo is used for bows. The arrow isn't the strongest but it is the easiest to craft. Can \n"
                     "be used for the broken bow and the metal bow.", 1, True, 1, ['broken_bow', 'metal_bow'], None)
-metal_arrow = Ammo("metal arrow \n",
+metal_arrow = Ammo("metal arrow",
                    "This ammo is used for bows. The arrow is the strongest that you can craft. Can be used for metal \n"
                    "bows only", 1, True, 1, 'metal_bow', None)
 
-normal_crossbow_bolt = Ammo("normal crossbow bolt \n",
+normal_crossbow_bolt = Ammo("normal crossbow bolt",
                             "This ammo is used for an x-bow. It isn't the only ammo for the x-bow.", 1, True, 1,
                             'x_bow', None)
 
-explosive_crossbow_bolt = Ammo("EXPLOSIVE X-BOW BOLT  \n",
+explosive_crossbow_bolt = Ammo("EXPLOSIVE X-BOW BOLT ",
                                "This ammo is used only for an x-bow. This bolt explodes on impact and does more \n"
                                "damage on impact.", 1, True, 1, 'x-bow', None)
 
-electric_crossbow_bolt = Ammo("ELECTRIC X-BOW BOLT \n",
+electric_crossbow_bolt = Ammo("ELECTRIC X-BOW BOLT",
                               "This ammo is used only for an x-bow. This bolt will electrocute the enemy.", 1, True,
                               1, 'x-bow', None)
 
 # Food
-raw_potato = Food("raw potato \n",
+raw_potato = Food("raw potato",
                   "You can eat this raw potato. But it looks so weird.", 1, 5, True, 1)
 
-cooked_potato = Food("cooked potato \n",
+cooked_potato = Food("cooked potato",
                      "This potato is cooked.", 1, 15, True, 1)
 
 potato_chip = Food("potato chips",
@@ -407,7 +416,7 @@ unicorn_meat = Food("UNICORN MEAT",
                     1, 80, True, 1)
 
 # Characters
-gabe = Characters("Gabe", ["pickaxe", "Torch", "Sword", "wallet"], 100, 10, 20, False,
+gabe = Characters("Gabe", [pickaxe, torch, Sword, wallet], 100, 10, 20, False,
                   "The Enemies name is Gabe, he is one of the hardest people to fight. He have killed many people \n"
                   "for trying to solve the puzzle. They never got to the question so they weren't able to tell \n"
                   "people the question.",
@@ -416,7 +425,7 @@ gabe = Characters("Gabe", ["pickaxe", "Torch", "Sword", "wallet"], 100, 10, 20, 
                    "to solve the puzzle.", "You have defeated me. You may solve the riddle. But be worn. If you \n"
                    "don't solve it within your third try, you will die. So be worn."], False, True)
 
-current_character = Characters("John", ["Beans \n"], 100, 0, 10, False,
+current_character = Characters("John", [raw_potato], 100, 0, 10, False,
                                "You are yourself. Don't let anyone change that.", None, False, True)
 
 # Initialize Rooms
@@ -926,8 +935,8 @@ short_directions = ['n', 'e', 's', 'w']
 
 moves = 0
 
-commands_possible = ["D jump", "D use", "D armor", "D attack damage", "D drop", "D description", "durability", "inventory", "how to play",
-                     "heal", "ability", "craft", "attack enemy", "grab"]
+commands_possible = ["jump", "use", "armor", "attack damage", "drop", "description", "commands possible", "inventory",
+                     "how to play",| "ability", "craft", "attack enemy", "grab"]
 
 
 def others():
@@ -944,7 +953,7 @@ def others():
             print()
             print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
             print("Your Inventory:")
-            print("".join(current_character.inventory))
+            print("\n".join(current_character.inventory))
             print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
         else:
             print("Command not recognized")
@@ -960,10 +969,21 @@ def others():
             current_character.inventory.pop(drop)
     if command == "description":
         print(current_character.description)
-    if command == "durability":
-        durability_info = input("which tool do you want to know the durability? ")
-        if durability_info in current_character.inventory:
-            print("The durability of %s is %s" % (durability_info, current_character.inventory.durability))
+    if command == "inventory":
+        print()
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+        print("Your Inventory:")
+        print("\n".join(current_character.inventory))
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+    if command == "how to play":
+        print("How to play: \n"
+              "You move around using North(N), East(E), South(S), and West(W). You can use commands possible to see \n"
+              "a list of possible commands. The end goal is to find out why you are the only one in the current world.")
+    if command == "commands possible":
+        print(", ".join(commands_possible))
+    if command == "heal":
+        print("\n".join(current_character.inventory))
+        heal = input("What would you like to use to heal? ")
 
 
 while current_character.alive:

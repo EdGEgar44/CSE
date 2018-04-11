@@ -17,18 +17,18 @@
       <file leaf-file-name="Notes.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Notes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
+            <state relative-caret-position="2346">
               <caret line="138" column="15" lean-forward="false" selection-start-line="138" selection-start-column="15" selection-end-line="138" selection-end-column="15" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Edgar R - CYAG.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Edgar R - CYAG.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Edgar R - CYAG.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="428">
-              <caret line="1015" column="0" lean-forward="true" selection-start-line="1015" selection-start-column="0" selection-end-line="1015" selection-end-column="0" />
+            <state relative-caret-position="150">
+              <caret line="939" column="0" lean-forward="true" selection-start-line="939" selection-start-column="0" selection-end-line="939" selection-end-column="0" />
               <folding>
                 <element signature="e#487#1045#0" expanded="false" />
                 <element signature="e#1069#1441#0" expanded="false" />
@@ -36,6 +36,7 @@
                 <element signature="e#1713#2711#0" expanded="false" />
                 <element signature="e#2737#3026#0" expanded="false" />
                 <element signature="e#3054#3528#0" expanded="false" />
+                <element signature="e#3557#4024#0" expanded="false" />
                 <element signature="e#4051#4687#0" expanded="false" />
                 <element signature="e#4717#4878#0" expanded="false" />
                 <element signature="e#4908#5069#0" expanded="false" />
@@ -46,18 +47,18 @@
                 <element signature="e#6813#7033#0" expanded="false" />
                 <element signature="e#7058#7279#0" expanded="false" />
                 <element signature="e#7316#7489#0" expanded="false" />
-                <element signature="e#7522#8716#0" expanded="false" />
-                <element signature="e#8743#9304#0" expanded="false" />
+                <element signature="e#7522#8878#0" expanded="false" />
+                <element signature="e#8905#9466#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_file.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="test_file.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_file.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="481">
-              <caret line="129" column="0" lean-forward="true" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
+              <caret line="121" column="18" lean-forward="false" selection-start-line="121" selection-start-column="18" selection-end-line="121" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -151,7 +152,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test_file">
+  <component name="RunManager" selected="Python.Edgar R - CYAG">
     <configuration name="CLASS notes" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -246,8 +247,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.test_file" />
-        <item index="1" class="java.lang.String" itemvalue="Python.Edgar R - CYAG" />
+        <item index="0" class="java.lang.String" itemvalue="Python.Edgar R - CYAG" />
+        <item index="1" class="java.lang.String" itemvalue="Python.test_file" />
         <item index="2" class="java.lang.String" itemvalue="Python.Inheritance Notes" />
         <item index="3" class="java.lang.String" itemvalue="Python.Edgar R - World Map OOP" />
         <item index="4" class="java.lang.String" itemvalue="Python.CLASS notes" />
@@ -281,10 +282,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24304539" sideWeight="0.49095023" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29952458" sideWeight="0.5146413" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29952458" sideWeight="0.48535872" order="2" side_tool="false" content_ui="tabs" />
@@ -298,7 +301,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -314,7 +316,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="29" />
+      <option name="time" value="30" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -633,16 +635,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Notes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
+        <state relative-caret-position="2346">
           <caret line="138" column="15" lean-forward="false" selection-start-line="138" selection-start-column="15" selection-end-line="138" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_file.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="481">
+          <caret line="121" column="18" lean-forward="false" selection-start-line="121" selection-start-column="18" selection-end-line="121" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Edgar R - CYAG.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="1015" column="0" lean-forward="true" selection-start-line="1015" selection-start-column="0" selection-end-line="1015" selection-end-column="0" />
+        <state relative-caret-position="150">
+          <caret line="939" column="0" lean-forward="true" selection-start-line="939" selection-start-column="0" selection-end-line="939" selection-end-column="0" />
           <folding>
             <element signature="e#487#1045#0" expanded="false" />
             <element signature="e#1069#1441#0" expanded="false" />
@@ -650,6 +660,7 @@
             <element signature="e#1713#2711#0" expanded="false" />
             <element signature="e#2737#3026#0" expanded="false" />
             <element signature="e#3054#3528#0" expanded="false" />
+            <element signature="e#3557#4024#0" expanded="false" />
             <element signature="e#4051#4687#0" expanded="false" />
             <element signature="e#4717#4878#0" expanded="false" />
             <element signature="e#4908#5069#0" expanded="false" />
@@ -660,17 +671,9 @@
             <element signature="e#6813#7033#0" expanded="false" />
             <element signature="e#7058#7279#0" expanded="false" />
             <element signature="e#7316#7489#0" expanded="false" />
-            <element signature="e#7522#8716#0" expanded="false" />
-            <element signature="e#8743#9304#0" expanded="false" />
+            <element signature="e#7522#8878#0" expanded="false" />
+            <element signature="e#8905#9466#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_file.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="129" column="0" lean-forward="true" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>

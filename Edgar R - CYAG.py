@@ -53,26 +53,6 @@ class Edible(Item):
         print("You consumed %s" % self.name)
 
 
-class Craftable(Item):
-    def __init__(self, name, description, durability, drop, amount):
-        super(Craftable, self).__init__(name, description, durability, drop, amount)
-
-    def crafting(self):
-        if command == "armor of undying":
-            if "cosmonium ore" in current_character.inventory:
-                current_character.inventory.append("ARMOR OF UNDYING")
-                print("You have used your cosmonium ore.")
-                print(
-                    "You have created the ARMOR OF UNDYING. type in 'armor of undying description' in the command \n"
-                    "to see what it does.")
-        if command == "armor of strength":
-            if "strength potion" in current_character.inventory:
-                current_character.inventory.append("ARMOR OF STRENGTH")
-                print("You have used one of your strength potion.")
-                print("You have created the ARMOR OF STRENGTH. type in 'armor of strength' in the command to see \n"
-                      "what it does.")
-
-
 class Armor(Item):
     def __init__(self, name, description, durability, drop, armor, amount, craftable):
         super(Armor, self).__init__(name, description, durability, drop, amount)
@@ -313,9 +293,10 @@ rainbow_in_a_bottle = Healthpot("rainbow in a bottle",
 
 paper_with_writing = Item("paper",
                           "The piece of paper that you found has writing in it. it reads 'You Must find the puzzle \n"
-                          "room. if you don't we will never escApe. who ever you are, you Must find us. We are \n"
+                          "room. if you don't we will never escApe. who ever you are, you Must find us. we are \n"
                           "Trapped. we Can't find tHe exit. you must pass the test in order to free us. hope you are \n"
-                          "come quickly. we are running out of food.'", 1, True, 1)
+                          "come quickly. we are running out of food. You must also craft the legendary armor of \n"
+                          "undying. That is if you are worth it. You can craft it using cosmonium ingots.'", 1, True, 1)
 
 camera = Item("camera",
               "You look at the camera. You wonder if they are any photos inside it.", 1, True, 1)
@@ -391,11 +372,12 @@ normal_crossbow_bolt = Ammo("normal crossbow bolt",
 
 explosive_crossbow_bolt = Ammo("EXPLOSIVE X-BOW BOLT ",
                                "This ammo is used only for an x-bow. This bolt explodes on impact and does more \n"
-                               "damage on impact.", 1, True, 1, 'x-bow', None)
+                               "damage on impact.", 1, True, 1, 'x-bow', '')
 
 electric_crossbow_bolt = Ammo("ELECTRIC X-BOW BOLT",
-                              "This ammo is used only for an x-bow. This bolt will electrocute the enemy.", 1, True,
-                              1, 'x-bow', None)
+                              "This ammo is used only for an x-bow. This bolt will electrocute the enemy. The \n"
+                              "electricity of the bolt will also spread around the area if they are more than one \n"
+                              "enemy in the room.", 1, True, 1, 'x-bow', 'electric chain')
 
 # Food
 raw_potato = Food("raw potato",
@@ -929,17 +911,40 @@ end_game = "Once you have thought that the world was so easy, yet you didn't kno
 print("You can end the game mid game by writing down 'quit' and entered it.")
 
 
-current_node = BACK_MALL
+current_node = PUZZLE_R
+
 directions = ['north', 'east', 'south', 'west']
+
 short_directions = ['n', 'e', 's', 'w']
+
+finished_the_game = False
 
 moves = 0
 
 commands_possible = ["jump", "H use", "armor", "grab", "attack damage", "drop", "description", "commands possible",
                      "inventory", "how to play", "H information", "craft", "attack enemy", "H main weapon"]
 
+craftable = ["iron armor", "gold armor", "diamond armor", "armor of undying", "armor of strength", "metal bow",
+             "legendary bow", "wooden arrow", "metal arrow", "normal crossbow bolt", "explosive crossbow bolt",
+             "electric crossbow bolt"]
 
-def others():
+
+if command == "armor of undying":
+            if "cosmonium ore" in current_character.inventory:
+                current_character.inventory.append("ARMOR OF UNDYING")
+                print("You have used your cosmonium ore.")
+                print(
+                    "You have created the ARMOR OF UNDYING. type in 'armor of undying description' in the command \n"
+                    "to see what it does.")
+        if command == "armor of strength":
+            if "strength potion" in current_character.inventory:
+                current_character.inventory.append("ARMOR OF STRENGTH")
+                print("You have used one of your strength potion.")
+                print("You have created the ARMOR OF STRENGTH. type in 'armor of strength' in the command to see \n"
+                      "what it does.")
+
+
+def other_command():
     if command == "jump":
         print("Whoosh.")
     if command == "use":
@@ -960,7 +965,11 @@ def others():
     if command == "armor":
         print("" % current_character.armor)
     if command == "attack damage":
+        print()
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+        print("Your Attack Damage:")
         print(current_character.damage)
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     if command == "drop":
         drop = input("What item do you want to drop? ")
         if drop in current_character.inventory:
@@ -970,11 +979,13 @@ def others():
         else:
             print("You don't have that item to drop.")
     if command == "description":
+        print()
         print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-        print("Description:")
+        print("Your Description:")
         print(current_character.description)
         print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     if command == "inventory":
+        print()
         print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
         print("Your Inventory:")
         print("\n".join(current_character.inventory))
@@ -988,12 +999,27 @@ def others():
     if command == "information":
         info = input("Which item will you like to get the information about? ")
         if info in current_character.inventory:
+            print()
             print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
             print("%s information:" % info)
             print(info)
             print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
         else:
             print("The item you entered is either doesn't exist or isn't in your inventory.")
+    if command == "craft":
+        if command == "armor of undying":
+            if "cosmonium ore" in current_character.inventory:
+                current_character.inventory.append("ARMOR OF UNDYING")
+                print("You have used your cosmonium ore.")
+                print(
+                    "You have created the ARMOR OF UNDYING. type in 'armor of undying description' in the command \n"
+                    "to see what it does.")
+        if command == "armor of strength":
+            if "strength potion" in current_character.inventory:
+                current_character.inventory.append("ARMOR OF STRENGTH")
+                print("You have used one of your strength potion.")
+                print("You have created the ARMOR OF STRENGTH. type in 'armor of strength' in the command to see \n"
+                      "what it does.")
 
 
 while current_character.alive:
@@ -1006,11 +1032,7 @@ while current_character.alive:
                 print("It is the match.")
                 print("It took you %s moves" % moves)
                 print(end_game)
-                end_game_now = input("Do you want to end the game now? ").lower()
-                if end_game_now == "Yes":
-                    quit(0)
-        if yes_no == "no":
-            current_node = BO_BO
+                finished_the_game = True
         else:
             print("command not recognized")
     else:
@@ -1032,14 +1054,19 @@ while current_character.alive:
             if command in directions:
                 try:
                     current_node.move(command)
+                    moves += 1
                 except KeyError:
                     print("Command not recognize")
                     print()
             if command in commands_possible:
-                others()
+                other_command()
             else:
                 print("command not recognized")
-    moves += 1
-print("You have died.")
-print("You died on move %s" % moves)
-print("good luck next time.")
+                print()
+if not current_character.alive:
+    print("You have died.")
+    print("You died on move %s" % moves)
+    print("good luck next time.")
+else:
+    print("you have lived")
+    print("You finished the game with %s moves.")

@@ -935,13 +935,13 @@ short_directions = ['n', 'e', 's', 'w']
 
 moves = 0
 
-commands_possible = ["jump", "use", "armor", "attack damage", "drop", "description", "commands possible", "inventory",
-                     "how to play",| "ability", "craft", "attack enemy", "grab"]
+commands_possible = ["jump", "H use", "armor", "grab", "attack damage", "drop", "description", "commands possible",
+                     "inventory", "how to play", "H information", "craft", "attack enemy", "H main weapon"]
 
 
 def others():
     if command == "jump":
-        print("Whoosh. You jumped.")
+        print("Whoosh.")
     if command == "use":
         if len(current_character.inventory) != 0:
             print("What")
@@ -956,9 +956,9 @@ def others():
             print("\n".join(current_character.inventory))
             print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
         else:
-            print("Command not recognized")
+            print("Their is nothing to take.")
     if command == "armor":
-        print(current_character.armor)
+        print("" % current_character.armor)
     if command == "attack damage":
         print(current_character.damage)
     if command == "drop":
@@ -967,10 +967,14 @@ def others():
             print("You dropped %s" % drop)
             current_node.item.append(drop)
             current_character.inventory.pop(drop)
+        else:
+            print("You don't have that item to drop.")
     if command == "description":
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+        print("Description:")
         print(current_character.description)
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     if command == "inventory":
-        print()
         print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
         print("Your Inventory:")
         print("\n".join(current_character.inventory))
@@ -981,9 +985,15 @@ def others():
               "a list of possible commands. The end goal is to find out why you are the only one in the current world.")
     if command == "commands possible":
         print(", ".join(commands_possible))
-    if command == "heal":
-        print("\n".join(current_character.inventory))
-        heal = input("What would you like to use to heal? ")
+    if command == "information":
+        info = input("Which item will you like to get the information about? ")
+        if info in current_character.inventory:
+            print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+            print("%s information:" % info)
+            print(info)
+            print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+        else:
+            print("The item you entered is either doesn't exist or isn't in your inventory.")
 
 
 while current_character.alive:

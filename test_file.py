@@ -118,12 +118,5 @@ item = ['raw potato', 'weak health potion']
 
 while test:
     grab = input(">_").lower()
-    if grab == "durability":
-        durability_info = input("which tool do you want to know the durability? ")
-        if durability_info in current_character.inventory:
-            inventory_len = len(current_character.inventory)
-            print("The durability of %s is %s" % (durability_info, inventory_len))
-        else:
-            print("Command not valid")
-    else:
-        print("Command not recognized")
+    if grab == "":
+        print("Who")

@@ -54,10 +54,10 @@ class Edible(Item):
 
 
 class Armor(Item):
-    def __init__(self, name, description, durability, drop, armor, amount, craftable):
+    def __init__(self, name, description, durability, drop, armor, amount, creatable):
         super(Armor, self).__init__(name, description, durability, drop, amount)
         self.armor = armor
-        self.craftable = craftable
+        self.creatable = creatable
 
     def use(self):
         print("You put on %s." % self.name)
@@ -252,6 +252,10 @@ p_key_4 = Key("P Key #4",
               "of the keys in order to be in the puzzle room.'", None, 'puzzle_R', True, 1, 1)
 
 # Armor
+beginner_armor = Armor("beginner armor",
+                       "This armor is what you start of with at the beginning of the ga- I mean you start of with.",
+                       2000, False, 10, 1, False)
+
 leather_armor = Armor("leather armor",
                       "This armor type is the weakest armor possible.", 20, True, 30, 1, False)
 
@@ -307,6 +311,20 @@ firework = Item("firework",
 wallet = Item("wallet",
               "It is a wallet with some money in it. But you don't even need it.", 1, False, 1)
 
+# Materials
+iron_bar = Item("iron bar",
+                "This material is used to craft armor and weapons.", 1, True, 1)
+
+gold_bar = Item("gold bar",
+                "This material is used to craft armor and weapons.", 1, True, 1)
+
+diamond = Item("diamond",
+               "This material is used to craft very strong armor and complex electronics.", 1, True, 1)
+
+cosmonium_ore = Item("COSMONIUM ORE",
+                     "This material is very hard to find. It is harder than diamond and has the power to revive you. \n"
+                     "You use this material for complex armor and weapons that heal.", 9, True, 1)
+
 # Weapons
 dull_sword = Sword("dull sword",
                    "This sword is dull.", 100, True, 8, None, 1)
@@ -315,7 +333,7 @@ sharp_sword = Sword("sharp sword",
                     "This sword is so sharp, it can cut stone.", 50, True, 73, None, 1)
 
 magical_sword = Sword("MAGICAL SWORD",
-                      "This sword seems magical. It is glowing with a purple glow.", 230, True, 99, 'Burn', 1)
+                      "This sword seems magical. It is glowing with a purple glow.", 230, True, 99, ['heal', 'burn'], 1)
 
 broken_bow = Bow("broken bow",
                  "The bow is broken. you can use it but it might now do a lot of damage.", 14, True, 11, 13, None, 1)
@@ -921,11 +939,13 @@ finished_the_game = False
 
 moves = 0
 
+current_armor_on = beginner_armor
+
 commands_possible = ["jump", "H use", "armor", "grab", "attack damage", "drop", "description", "commands possible",
                      "inventory", "how to play", "H information", "craft", "attack enemy", "H main weapon",
-                     "put on armor"]
+                     "H put on armor"]
 
-craftable = ["D iron armor", "gold armor", "diamond armor", "armor of undying", "armor of strength", "metal bow",
+craftable = ["D iron armor", "gold armor", "diamond armor", "D armor of undying", "D armor of strength", "metal bow",
              "legendary bow", "wooden arrow", "metal arrow", "normal crossbow bolt", "explosive crossbow bolt",
              "electric crossbow bolt"]
 
@@ -951,9 +971,15 @@ def crafting():
         if "iron bar" in current_character.inventory:
             current_character.inventory.append("iron armor")
             current_character.inventory.pop("iron bar")
-            print("You no longer have the iron bar.")
-            print("You have crafted iron armor. type in 'iron armor'in the command to see what it does.")
+            print("You no longer have the iron bars.")
+            print("You have crafted iron armor. Type in 'iron armor'in the command to see what it does and its stats.")
     if command == "golden armor":
+        if "gold bar" in current_character.inventory:
+            current_character.inventory.append("golden armor")
+            current_character.inventory.pop("gold bar")
+            print("You no longer have the golden bars.")
+            print("You have crafted golden armor. Type in 'golden armor' in the command to see what it does and its \n"
+                  "stats.")
 
 
 def other_command():
@@ -1026,9 +1052,9 @@ def other_command():
             else:
                 print("You cannot craft this item.")
     if command == "put on armor":
-        if ["golden armor", "iron armor", "ARMOR OF UNDYING", "ARMOR OF STRENGTH", "leather armor", "diamond armor",
-            "wood armor"] in current_character.inventory:
-            armor_on = input("What armor would you like to put on your character? ")
+        armor_on = input("What armor would you like to put on your character? ")
+        if armor_on in current_character.inventory:
+            current_armor_on = armor_on
 
 
 while current_character.alive:

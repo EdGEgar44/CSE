@@ -64,10 +64,11 @@ class Armor(Item):
 
 
 class Weapons(Item):
-    def __init__(self, name, description, durability, drop, damage, ability, amount):
+    def __init__(self, name, description, durability, drop, damage, ability, crafted, amount):
         super(Weapons, self).__init__(name, description, durability, drop, amount)
         self.ability = ability
         self.broke = False
+        self.crafted = crafted
         self.damage = damage
 
     def broke(self):
@@ -152,14 +153,21 @@ class Resistancepot(Potion):
 
 
 class Sword(Weapons):
-    def __init__(self, name, description, durability, drop, damage, ability, amount):
-        super(Sword, self).__init__(name, description, durability, drop, damage, ability, amount)
+    def __init__(self, name, description, durability, drop, damage, ability, crafted, amount):
+        super(Sword, self).__init__(name, description, durability, drop, damage, ability, crafted, amount)
 
 
 class Bow(Weapons):
-    def __init__(self, name, description, durability, drop, damage, distance, ability, amount):
-        super(Bow, self).__init__(name, description, durability, drop, damage, ability, amount)
+    def __init__(self, name, description, durability, drop, damage, distance, ability, crafted, amount):
+        super(Bow, self).__init__(name, description, durability, drop, damage, ability, crafted, amount)
         self.distance = distance
+
+
+class Staff(Weapons):
+    def __init__(self, name, description, durability, drop, damage, ability, enchantment, armor, crafted, amount):
+        super(Staff, self).__init__(name, description, durability, drop, damage, ability, crafted, amount)
+        self.enchantment = enchantment
+        self.armor = armor
 
 
 class Ammo(Item):
@@ -327,26 +335,40 @@ cosmonium_ore = Item("COSMONIUM ORE",
 
 # Weapons
 dull_sword = Sword("dull sword",
-                   "This sword is dull.", 100, True, 8, None, 1)
+                   "This sword is dull.", 100, True, 8, None, False, 1)
 
 sharp_sword = Sword("sharp sword",
-                    "This sword is so sharp, it can cut stone.", 50, True, 73, None, 1)
+                    "This sword is so sharp, it can cut stone.", 50, True, 73, None, True, 1)
 
 magical_sword = Sword("MAGICAL SWORD",
-                      "This sword seems magical. It is glowing with a purple glow.", 230, True, 99, ['heal', 'burn'], 1)
+                      "This sword seems magical. It is glowing with a purple glow.", 230, True, 99, ['heal', 'burn'],
+                      True,1)
 
 broken_bow = Bow("broken bow",
-                 "The bow is broken. you can use it but it might now do a lot of damage.", 14, True, 11, 13, None, 1)
+                 "The bow is broken. you can use it but it might now do a lot of damage.", 14, True, 11, 13, None,
+                 False, 1)
 
 x_bow = Bow("x-bow",
-            "You have a cross bar.", 300, True, 46, 38, 'strength', 1)
+            "You have a cross bar.", 300, True, 46, 38, 'strength', False, 1)
 
 metal_bow = Bow("metal bow",
-                "The bow has been reinforced with iron.", 200, True, 73, 74, 'strength', 1)
+                "The bow has been reinforced with iron.", 200, True, 73, 74, 'strength', True, 1)
 
 legendary_bow = Bow("LEGENDARY BOW",
                     "This bow is a reinforced bow that has 3 enchantments with it.", 999, True, 300, 235,
-                    ['strength', 'unbreakable', 'fire_frost'], 1)
+                    ['strength', 'unbreakable', 'fire_frost'], True, 1)
+
+staff_of_healing = Staff("staff of healing",
+                         "This staff is used to heal yourself.", 50, True, 0, 'heal', 'heals player', 0, True, 1)
+
+staff_of_armor = Staff("staff of armor",
+                       "This staff is used so that you can give yourself armor.", 50, True, 0, 'armor giver',
+                       'armor giver', 30, True, 1)
+
+staff_of_emerged_power = Staff("STAFF OF EMERGED POWER",
+                               "This staff can one shot anything in the game. But it only has one durability. So use \n"
+                               "it wisely.", 1, True, 999999999999999999999999999999999999999999999999999999,
+                               'One shot', 'kill all', 0, True, 1)
 
 # Enchanted Books
 strength_book = EnchantBook("strength book",
@@ -425,7 +447,7 @@ gabe = Characters("Gabe", [pickaxe, torch, Sword, wallet], 100, 10, 20, False,
                    "to solve the puzzle.", "You have defeated me. You may solve the riddle. But be worn. If you \n"
                    "don't solve it within your third try, you will die. So be worn."], False, True)
 
-current_character = Characters("John", [raw_potato], 100, 0, 10, False,
+current_character = Characters("John", ['raw_potato'], 100, 0, 10, False,
                                "You are yourself. Don't let anyone change that.", None, False, True)
 
 # Initialize Rooms
@@ -929,7 +951,7 @@ end_game = "Once you have thought that the world was so easy, yet you didn't kno
 print("You can end the game mid game by writing down 'quit' and entered it.")
 
 
-current_node = PUZZLE_R
+current_node = BACK_MALL
 
 directions = ['north', 'east', 'south', 'west']
 
@@ -1027,7 +1049,6 @@ def other_command():
         print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
         print("Your Inventory:")
         print("\n".join(current_character.inventory))
-        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     if command == "how to play":
         print("How to play: \n"
               "You move around using North(N), East(E), South(S), and West(W). You can use commands possible to see \n"
@@ -1051,13 +1072,9 @@ def other_command():
                 crafting()
             else:
                 print("You cannot craft this item.")
-    if command == "put on armor":
-        armor_on = input("What armor would you like to put on your character? ")
-        if armor_on in current_character.inventory:
-            current_armor_on = armor_on
 
 
-while current_character.alive:
+while current_character.alive or finished_the_game is True:
     if current_node == PUZZLE_R:
         yes_no = input("Are you going to solve the question?(answer with a yes or no) ").lower()
         if yes_no == "yes":
@@ -1068,10 +1085,13 @@ while current_character.alive:
                 print("It took you %s moves" % moves)
                 print(end_game)
                 finished_the_game = True
-        else:
-            print("command not recognized")
+            else:
+                print("Command not recognized")
+        if yes_no == "no":
+            current_node = BO_BO
     else:
-        print("health: %s" % current_character.health)
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+        print("HEALTH: %s" % current_character.health)
         print(current_node.name)
         print()
         if current_node.again:
@@ -1096,8 +1116,8 @@ while current_character.alive:
             if command in commands_possible:
                 other_command()
             else:
-                print("command not recognized")
                 print()
+                print("command not recognized")
 if not current_character.alive:
     print("You have died.")
     print("You died on move %s" % moves)

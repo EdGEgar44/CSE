@@ -310,6 +310,18 @@ paper_with_writing = Item("paper",
                           "come quickly. we are running out of food. You must also craft the legendary armor of \n"
                           "undying. That is if you are worth it. You can craft it using cosmonium ingots.'", 1, True, 1)
 
+staff_of_armor_blueprint = Item("staff of armor blueprint",
+                                "This piece of paper has a blueprint for the staff of armor. You need 10 sticks, \n"
+                                "a diamond, and a ", 1, True, 1)
+
+staff_of_emerged_power_blueprint = Item("staff of emerged power blueprint",
+                                        "This is a piece of paper has a blueprint for the staff of emerged power. \n"
+                                        "You need 10 sticks, 5 diamonds, and a cosmonium ingot.", 1, True, 1)
+
+staff_of_healing_blueprint = Item("staff of healing blueprint",
+                                  "This is a piece of paper has a blueprint for the staff of healing. You need \n"
+                                  "10 sticks, 2 diamonds, and 4 cosmonium ingots.", 1, True, 1)
+
 camera = Item("camera",
               "You look at the camera. You wonder if they are any photos inside it.", 1, True, 1)
 
@@ -331,7 +343,18 @@ diamond = Item("diamond",
 
 cosmonium_ore = Item("COSMONIUM ORE",
                      "This material is very hard to find. It is harder than diamond and has the power to revive you. \n"
-                     "You use this material for complex armor and weapons that heal.", 9, True, 1)
+                     "You need to craft the cosmonium ingot.", 9, True, 1)
+
+cosmonium_ingot = Item("COSMONIUM INGOT",
+                       "This material is hard to craft. It can be used to craft legendary or to craft unstable items.",
+                       2, True, 1)
+
+wood = Item("wood",
+            "This material is the weakest material. it can be used to make sticks. One wood makes 4 sticks",
+            1, True, 1)
+
+sticks = Item("sticks",
+              "This material is used to make items that need a wooden handle.", 1, True, 1)
 
 # Weapons
 dull_sword = Sword("dull sword",
@@ -342,7 +365,7 @@ sharp_sword = Sword("sharp sword",
 
 magical_sword = Sword("MAGICAL SWORD",
                       "This sword seems magical. It is glowing with a purple glow.", 230, True, 99, ['heal', 'burn'],
-                      True,1)
+                      True, 1)
 
 broken_bow = Bow("broken bow",
                  "The bow is broken. you can use it but it might now do a lot of damage.", 14, True, 11, 13, None,
@@ -412,7 +435,7 @@ normal_crossbow_bolt = Ammo("normal crossbow bolt",
 
 explosive_crossbow_bolt = Ammo("EXPLOSIVE X-BOW BOLT ",
                                "This ammo is used only for an x-bow. This bolt explodes on impact and does more \n"
-                               "damage on impact.", 1, True, 1, 'x-bow', '')
+                               "damage on impact.", 1, True, 1, 'x-bow', 'explode')
 
 electric_crossbow_bolt = Ammo("ELECTRIC X-BOW BOLT",
                               "This ammo is used only for an x-bow. This bolt will electrocute the enemy. The \n"
@@ -516,7 +539,7 @@ WALMART = Room("Walmart", None, 'LEFT_MALL', None, 'Target', None, False,
                "You are now outside of walmart. To the East is the left of mall and to the West is Target.", False,
                None)
 
-CAVE = Room("The Bat Cave", None, None, 'PARKING', None, None, False,
+CAVE = Room("The Bat Cave", None, None, 'PARKING', None, ["staff_of_armor_blueprint"], False,
             "You have reached the bat cave but no one is here. It is strange that no one whn their is a \n"
             "full parking lot. To the South is the parking lot.",
             "You are now outside of the cave. You still wonder why this is a wonderful cave to visit if they are so \n"
@@ -602,7 +625,7 @@ WEST_HOUSE = Room("West of House", None, 'DARK_R', None, None, None, False,
                   "the East.",
                   "You are now in the west of the house. You can only go to the East.", False, None)
 
-WOODWORK_SECTION = Room("Woodwork section", None, None, 'WALKWAY', 'FRONT_STORE', None, False,
+WOODWORK_SECTION = Room("Woodwork section", None, None, 'WALKWAY', 'FRONT_STORE', "wood", False,
                         "You go to the woodwork section. Their is a lot of wood that has been cut down and but into \n"
                         "To the South is a Walkway and to the West is the front of the store.",
                         "You are now in the woodwork section. To the South is a Walkway and to the West is the front \n"
@@ -969,7 +992,8 @@ commands_possible = ["jump", "H use", "armor", "grab", "attack damage", "drop", 
 
 craftable = ["D iron armor", "gold armor", "diamond armor", "D armor of undying", "D armor of strength", "metal bow",
              "legendary bow", "wooden arrow", "metal arrow", "normal crossbow bolt", "explosive crossbow bolt",
-             "electric crossbow bolt"]
+             "electric crossbow bolt", "staff of healing", "staff of emerged power", "staff of power", "sticks",
+             "cosmonium ingot", "magical sword"]
 
 
 def crafting():

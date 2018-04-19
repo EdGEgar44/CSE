@@ -11,27 +11,11 @@ class Item(object):
         self.drop = drop
         self.amount = amount
 
-    def drop(self):
-        self.drop = True
-        print("You dropped %s." % self.name)
-
-    def pick_up(self):
-        self.drop = False
-        print("You picked up %s" % self.name)
-
 
 class Enchanted(Item):
     def __init__(self, name, description, durability, enchanted, drop, amount):
         super(Enchanted, self).__init__(name, description, durability, drop, amount)
         self.enchanted = enchanted
-
-    def used(self):
-        if self.name == "armor of undying":
-            print("You have been revived. But your armor is now broken.")
-            current_character.inventory.pop("ARMOR OF UNDYING")
-        if self.name == "armor of strength":
-            self.durability = self.durability - 5
-            print("Your durability is now %s" % self.durability)
 
 
 class Key(Item):
@@ -40,17 +24,10 @@ class Key(Item):
         self.door = door
         self.door_number = door_number
 
-    def use(self):
-        if self.door_number == 1:
-            print("You used %s. The door that you opened was %s." % (self.name, self.door))
-
 
 class Edible(Item):
     def __init__(self, name, description, durability, drop, amount):
         super(Edible, self).__init__(name, description, durability, drop, amount)
-
-    def consume(self):
-        print("You consumed %s" % self.name)
 
 
 class Armor(Item):
@@ -58,9 +35,6 @@ class Armor(Item):
         super(Armor, self).__init__(name, description, durability, drop, amount)
         self.armor = armor
         self.creatable = creatable
-
-    def use(self):
-        print("You put on %s." % self.name)
 
 
 class Weapons(Item):
@@ -84,27 +58,11 @@ class Potion(Edible):
         self.duration = duration
         self.ability = ability
 
-    def drink(self):
-        if self.name in current_character.inventory:
-            print("You drank %s." % self.name)
-            current_character.inventory.pop(self.name)
-            print("You know have %s affect." % self.ability)
-
 
 class Food(Edible):
     def __init__(self, name, description, durability, heal, drop, amount):
         super(Food, self).__init__(name, description, durability, drop, amount)
         self.heal = heal
-
-    def heal(self):
-        if current_character.health == 100:
-            print("Why you trying to heal yourself if you have all your health. Are you hungry?")
-        else:
-            if current_character.health >= 50:
-                print("You used %s. You are now maxed out in health.")
-                current_character.inventory.pop(self.name)
-            else:
-                print("You need to have less than 50 health in order to use this item.")
 
 
 class Lowhealth(Food):
@@ -122,34 +80,17 @@ class Healthpot(Potion):
         super(Healthpot, self).__init__(name, description, durability, drop, duration, ability, amount)
         self.heal = heal
 
-    def healing(self):
-        if current_character.health <= 90:
-            if (self.heal + current_character) < 100:
-                current_character.health = current_character.health + self.heal
-            else:
-                print("You dn't want to want to over heal do you.")
-
 
 class Strengthpot(Potion):
     def __init__(self, name, description, durability, duration, drop, ability, strength, amount):
         super(Strengthpot, self).__init__(name, description, durability, duration, drop, ability, amount)
         self.strength = strength
 
-    def strength(self):
-        current_character.inventory.pop(self.name)
-        print("You now have strength for %s seconds." % self.duration)
-        current_character.damage = current_character.damage + self.strength
-
 
 class Resistancepot(Potion):
     def __init__(self, name, description, durability, drop, duration, ability, armor, amount):
         super(Resistancepot, self).__init__(name, description, durability, drop, duration, ability, amount)
         self.armor = armor
-
-    def armor_gain(self):
-        current_character.inventory.pop(self.name)
-        print("You now have resistance for %s seconds." % self.duration)
-        current_character.armor = current_character.armor + self.armor
 
 
 class Sword(Weapons):
@@ -183,7 +124,8 @@ class EnchantBook(Enchanted):
 
 
 class Characters(object):
-    def __init__(self, name, inventory, health, armor, damage, weapon, description, diologue, hostile, alive):
+    def __init__(self, name, inventory, health, armor, damage, ranged_weapon, melee, description, diologue, hostile,
+                 alive, armor_type):
         self.name = name
         self.inventory = inventory
         self.health = health
@@ -191,9 +133,11 @@ class Characters(object):
         self.damage = damage
         self.description = description
         self.diologue = diologue
-        self.weapon = weapon
+        self.ranged_weapon = ranged_weapon
+        self.melee = melee
         self.hostile = hostile
         self.alive = alive
+        self.armor_type = armor_type
 
     def attacked(self):
         if self.armor >= 1:
@@ -201,7 +145,7 @@ class Characters(object):
             if self.armor <= self.hostile.damage:
                 self.damage = self.armor - self.hostile.damage
                 self.damage = self.damage
-        if self.weapon:
+        if self.ranged_weapon:
             self.damage = self.damage * 2.5
 
     def attacking(self):
@@ -211,7 +155,7 @@ class Characters(object):
                 if self.armor <= self.hostile.damage:
                     self.damage = self.armor - self.hostile.damage
                     self.damage = self.damage
-            if self.weapon:
+            if self.ranged_weapon:
                 self.damage = self.damage * 2.5
             self.hostile.health = self.hostile.health - self.hostile.damage
 
@@ -330,6 +274,9 @@ firework = Item("firework",
 
 wallet = Item("wallet",
               "It is a wallet with some money in it. But you don't even need it.", 1, False, 1)
+
+armor_glue = Item("armor glue",
+                  "This item can help make better armor.", 1, False, 1)
 
 # Materials
 iron_bar = Item("iron bar",
@@ -461,20 +408,21 @@ unicorn_meat = Food("UNICORN MEAT",
                     1, 80, True, 1)
 
 # Characters
-gabe = Characters("Gabe", [pickaxe, torch, Sword, wallet], 100, 10, 20, False,
+gabe = Characters("Gabe", ["pickaxe", "torch", "wallet"], 100, 10, 20, "sword", "pickaxe",
                   "The Enemies name is Gabe, he is one of the hardest people to fight. He have killed many people \n"
                   "for trying to solve the puzzle. They never got to the question so they weren't able to tell \n"
-                  "people the question.",
-                  ["It is I, Gabe, the one that changed the world. If you want to get your family and friends and \n"
-                   "everyone in your world back, you have to get past me.", "In order to solve you family, you need \n"
-                   "to solve the puzzle.", "You have defeated me. You may solve the riddle. But be worn. If you \n"
-                   "don't solve it within your third try, you will die. So be worn."], False, True)
+                  "people the question.", ["It is I, Gabe, the one that changed the world. If you want to get your "
+                                           "family and friends and \n everyone in your world back, you have to get "
+                                           "past me.", "In order to solve you family, you need \n to solve the "
+                                           "puzzle.", "You have defeated me. You may solve the riddle. But be worn. "
+                                           "If you \n don't solve it within your third try, you will die. So be worn."],
+                  False, True, "golden armor")
 
-current_character = Characters("John", ['raw_potato'], 100, 0, 10, False,
-                               "You are yourself. Don't let anyone change that.", None, False, True)
+current_character = Characters("John", ['raw potato'], 100, 0, 10, "dull sword", "pickaxe",
+                               "You are yourself. Don't let anyone change that.", None, False, True, "beginner armor")
 
 # Initialize Rooms
-BACK_MALL = Room("Back of the Mall", 'TARGET', None, 'FRONT_STORE', None, ['raw_potato'], False,
+BACK_MALL = Room("Back of the Mall", 'TARGET', None, 'FRONT_STORE', None, ["raw potato"], False,
                  "You are in the back of the mall. You wonder were you are and how you got here. You see Target to \n"
                  "North and the front of a store to the south.",
                  "You are in the back of the mall. You see Target in the North and the front of a store to the \n "
@@ -986,11 +934,11 @@ moves = 0
 
 current_armor_on = beginner_armor
 
-commands_possible = ["jump", "H use", "armor", "grab", "attack damage", "drop", "description", "commands possible",
+commands_possible = ["jump", "H use", "armor info", "grab", "attack damage", "drop", "description", "commands possible",
                      "inventory", "how to play", "H information", "craft", "attack enemy", "H main weapon",
                      "H put on armor"]
 
-craftable = ["D iron armor", "gold armor", "diamond armor", "D armor of undying", "D armor of strength", "metal bow",
+craftable = ["iron armor", "gold armor", "diamond armor", "armor of undying", "armor of strength", "metal bow",
              "legendary bow", "wooden arrow", "metal arrow", "normal crossbow bolt", "explosive crossbow bolt",
              "electric crossbow bolt", "staff of healing", "staff of emerged power", "staff of power", "sticks",
              "cosmonium ingot", "magical sword"]
@@ -1026,6 +974,19 @@ def crafting():
             print("You no longer have the golden bars.")
             print("You have crafted golden armor. Type in 'golden armor' in the command to see what it does and its \n"
                   "stats.")
+    if command == "diamond armor":
+        if "diamond" and "armor glue" in current_character.inventory:
+            current_character.inventory.append("diamond_armor")
+            current_character.inventory.pop("diamond")
+            current_character.inventory.pop("armor glue")
+            print("You made diamond armor. But the glue still needs to dry. ou no longer have the 10 diamonds and \n"
+                  "the armor glue bottle.")
+    if command == "metal bow":
+        if "iron bar" and "broken bow" in current_character.inventory:
+            current_character.inventory.append("metal bow")
+            current_character.inventory.pop("iron bar")
+            current_character.inventory.pop("broken bow")
+            print("Yo made a metal bow. You no longer have the 4 iron bars and the broken bow.")
 
 
 def other_command():
@@ -1046,14 +1007,13 @@ def other_command():
             print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
         else:
             print("Their is nothing to take.")
-    if command == "armor":
-        print("" % current_character.armor)
+    if command == "armor info":
+        print("Your current armor: \n %s" % current_character.armor_type)
+        print("You have %s armor." % current_character.armor)
     if command == "attack damage":
         print()
-        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
         print("Your Attack Damage:")
         print(current_character.damage)
-        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     if command == "drop":
         drop = input("What item do you want to drop? ")
         if drop in current_character.inventory:
@@ -1115,7 +1075,9 @@ while current_character.alive or finished_the_game is True:
             current_node = BO_BO
     else:
         print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+        print("MOVES: %s" % moves)
         print("HEALTH: %s" % current_character.health)
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
         print(current_node.name)
         print()
         if current_node.again:
@@ -1137,15 +1099,16 @@ while current_character.alive or finished_the_game is True:
                 except KeyError:
                     print("Command not recognize")
                     print()
-            if command in commands_possible:
-                other_command()
             else:
-                print()
-                print("command not recognized")
+                if command in commands_possible:
+                    other_command()
+                else:
+                    print()
+                    print("command not recognized")
 if not current_character.alive:
     print("You have died.")
     print("You died on move %s" % moves)
     print("good luck next time.")
 else:
     print("you have lived")
-    print("You finished the game with %s moves.")
+    print("You finished the game with %s moves." % moves)

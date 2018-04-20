@@ -232,6 +232,9 @@ armor_of_strength = Armor("ARMOR OF STRENGTH",
                           "The armor of strength will give you extra damage. But when you attack, you will lose 5% \n"
                           "of your base health(100).", 250, True, 35, 1, True)
 
+armor_shell = Armor("armor shell",
+                    "This armor shell is used so that you can make armor.", 1, True, 1, 1, True)
+
 # Extras
 candle = Item("candle",
               "This candle can be use so that you can burn something. But what?", 1, True, 1)
@@ -275,8 +278,8 @@ firework = Item("firework",
 wallet = Item("wallet",
               "It is a wallet with some money in it. But you don't even need it.", 1, False, 1)
 
-armor_glue = Item("armor glue",
-                  "This item can help make better armor.", 1, False, 1)
+armor_glue = Item("bottle of armor glue",
+                  "This item can help make better armor.", 100, False, 1)
 
 # Materials
 iron_bar = Item("iron bar",
@@ -938,55 +941,68 @@ commands_possible = ["jump", "H use", "armor info", "grab", "attack damage", "dr
                      "inventory", "how to play", "H information", "craft", "attack enemy", "H main weapon",
                      "H put on armor"]
 
-craftable = ["iron armor", "gold armor", "diamond armor", "armor of undying", "armor of strength", "metal bow",
+craftable = ["iron armor", "gold armor", "diamond armor", "armor of undying", "armor of strength", "metal bow |",
              "legendary bow", "wooden arrow", "metal arrow", "normal crossbow bolt", "explosive crossbow bolt",
              "electric crossbow bolt", "staff of healing", "staff of emerged power", "staff of power", "sticks",
-             "cosmonium ingot", "magical sword"]
+             "cosmonium ingot", "magical sword", "armor shell"]
 
 
 def crafting():
     if command == "armor of undying":
-        if "cosmonium ore" in current_character.inventory:
+        if "cosmonium ore" and "armor shell" in current_character.inventory:
             current_character.inventory.append("ARMOR OF UNDYING")
-            print("You have used your cosmonium ore.")
+            current_character.inventory.pop("cosmonium ore")
+            current_character.inventory.pop("armor shell")
+            print("You have used your cosmonium ore and your armor shell.")
             print("You have created the ARMOR OF UNDYING. type in 'armor of undying description' in the command \n"
                   "to see what it does.")
+        else:
+            print("You don't have enough cosmonium ore or an armor shell.")
     if command == "armor of strength":
-        if "strength potion" and "iron armor" in current_character.inventory:
+        if "strength potion" and "iron armor" and "armor shell" in current_character.inventory:
             current_character.inventory.append("ARMOR OF STRENGTH")
             current_character.inventory.pop("strength potion")
             current_character.inventory.pop("iron armor")
-            print("You have used one of your strength potion.")
-            print("You have created the ARMOR OF STRENGTH. type in 'armor of strength' in the command to see \n"
-                  "what it does.")
+            print("You have used one of your strength potion, iron armor, and armor shell.")
+            print("You have created the ARMOR OF STRENGTH. For more info, type 'armor of strength' in the command")
         else:
-            print("You don't have either a strength potion or iron armor.")
+            print("You don't have a strength potion, an iron armor, and an armor shell.")
     if command == "iron armor":
-        if "iron bar" in current_character.inventory:
+        if "iron bar" and "armor shell" in current_character.inventory:
             current_character.inventory.append("iron armor")
             current_character.inventory.pop("iron bar")
-            print("You no longer have the iron bars.")
+            current_character.inventory.pop("armor shell")
+            print("You no longer have the iron bars and the armor shell.")
             print("You have crafted iron armor. Type in 'iron armor'in the command to see what it does and its stats.")
+        else:
+            print("You don't have enough iron bars and/or an armor shell.")
     if command == "golden armor":
         if "gold bar" in current_character.inventory:
             current_character.inventory.append("golden armor")
             current_character.inventory.pop("gold bar")
             print("You no longer have the golden bars.")
-            print("You have crafted golden armor. Type in 'golden armor' in the command to see what it does and its \n"
-                  "stats.")
+            print("You have crafted golden armor. For more info, type 'golden armor' in the command.")
     if command == "diamond armor":
         if "diamond" and "armor glue" in current_character.inventory:
             current_character.inventory.append("diamond_armor")
             current_character.inventory.pop("diamond")
             current_character.inventory.pop("armor glue")
             print("You made diamond armor. But the glue still needs to dry. ou no longer have the 10 diamonds and \n"
-                  "the armor glue bottle.")
+                  "the bottle of armor glue. For more info, type 'diamond armor' in the command.")
     if command == "metal bow":
         if "iron bar" and "broken bow" in current_character.inventory:
             current_character.inventory.append("metal bow")
-            current_character.inventory.pop("iron bar")
             current_character.inventory.pop("broken bow")
-            print("Yo made a metal bow. You no longer have the 4 iron bars and the broken bow.")
+            current_character.inventory.pop("iron bar")
+            print("You made a metal bow. You no longer have the 4 iron bars and the broken bow. For more info, type \n"
+                  "'metal bow' in the command.")
+    if command == "legendary bow":
+        if "metal bow" and "cosmonium ingot" in current_character.inventory:
+            current_character.inventory.append("LEGENDARY BOW")
+            current_character.inventory.pop("metal bow")
+            current_character.inventory.pop("cosmonium ingot")
+            print("You made a legendary item. You made the legendary bow. You no longer have the iron bow and the 3 \n"
+                  "cosmonium ingot. For more info, type 'legendary bow' in the command.")
 
 
 def other_command():
@@ -1050,12 +1066,7 @@ def other_command():
         else:
             print("The item you entered is either doesn't exist or isn't in your inventory.")
     if command == "craft":
-        if command == "armor of undying":
-            craft = input("What would you like to craft? ")
-            if craft in craftable:
-                crafting()
-            else:
-                print("You cannot craft this item.")
+        crafting()
 
 
 while current_character.alive or finished_the_game is True:

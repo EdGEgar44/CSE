@@ -281,6 +281,15 @@ wallet = Item("wallet",
 armor_glue = Item("bottle of armor glue",
                   "This item can help make better armor.", 100, False, 1)
 
+bolt_head__piece_blueprint = Item("bolt head blueprint",
+                           "This is a blueprint to build a bolt head.", 1, True, 1)
+
+bolt_head_piece = Item("bolt head piece",
+                 "This item will help make crossbow bolts.", 1, True, 1)
+
+gunpowder = Item("gunpowder",
+                 "This item will help make crossbow bolts.", 1, True, 1)
+
 # Materials
 iron_bar = Item("iron bar",
                 "This material is used to craft armor and weapons.", 1, True, 1)
@@ -944,9 +953,9 @@ commands_possible = ["jump", "H use", "armor info", "grab", "attack damage", "dr
                      "H put on armor"]
 
 craftable = ["iron armor", "gold armor", "diamond armor", "armor of undying", "armor of strength", "metal bow |",
-             "legendary bow", "wooden arrow", "metal arrow", "normal crossbow bolt", "explosive crossbow bolt",
-             "electric crossbow bolt", "staff of healing", "staff of emerged power", "staff of power", "sticks",
-             "cosmonium ingot", "magical sword", "armor shell"]
+             "legendary bow", "wooden arrow", "metal arrow", "bolt head piece", "normal crossbow bolt",
+             "explosive crossbow bolt", "electric crossbow bolt", "staff of healing", "staff of emerged power",
+             "staff of power", "sticks", "cosmonium ingot", "magical sword", "armor shell"]
 
 
 def crafting():
@@ -1027,8 +1036,10 @@ def crafting():
                 current_character.inventory.pop("stone")
                 print("You no longer %s sticks and stone" % possible_wa)
                 print("You crafted %s wooden arrows. For more info, type 'inventory' and then 'wooden arrow' in the \n"
-                      "command.")
+                      "command." % possible_wa)
                 crafted += 1
+            else:
+                print("You are asking for more than what you can craft.")
     if item_crafting == "metal arrow":
         if "iron bar" and "sticks" in current_character.inventory:
             metal_arrow_amount = input("How many metal arrows do you want to craft? ")
@@ -1045,10 +1056,48 @@ def crafting():
                 current_character.inventory.pop("stone")
                 print("You no longer have %s sticks and metal bars." % possible_ma)
                 print("You crafted %s metal arrows. For more info, type 'inventory' and then 'metal arrow' in the \n"
-                      "command.")
+                      "command." % possible_ma)
                 crafted += 1
+            else:
+                print("You are asking for more than what you can craft.")
+    if item_crafting == "bolt head piece":
+        if "iron bar" and "bolt head piece" in current_character.inventory:
+            bolt_head_piece_amount = input("How many bolt head pieces do you want to craft? ")
+            possible_bhp = iron_bar.amount
+            if bolt_head_piece_amount <= possible_bhp:
+                current_character.inventory.append("bolt head piece")
+                current_character.inventory.pop("iron bar")
+                print("You no longer have %s iron bars." % possible_bhp)
+                print("You crafted %s bolt heads. For more info, type 'inventory' and then 'bolt head' in the "
+                      "command." % possible_bhp)
+                crafted += 1
+            else:
+                print("You are asking for more than what you can craft.")
     if item_crafting == "normal crossbow bolt":
-        if ""
+        if "bolt head piece" and "sticks" in current_character.inventory:
+            normal_crossbow_bolt_amount = input("How many normal crossbow bolt do you want to craft? ")
+            amount_ncb_1 = bolt_head_piece.amount - sticks.amount
+            amount_ncb_2 = sticks.amount - bolt_head_piece.amount
+            possible_ncb = 0
+            if amount_ncb_1 > 0:
+                possible_ncb = sticks.amount
+            if amount_ncb_2 > 0:
+                possible_ncb = bolt_head_piece.amount
+            if possible_ncb <= normal_crossbow_bolt_amount:
+                current_character.inventory.append("normal crossbow bolt")
+                current_character.inventory.pop("bolt head piece")
+                current_character.inventory.pop("sticks")
+                print("You no longer have %s sticks and bolt head pieces." % possible_ncb)
+                print("You craft %s normal crossbow bolt. For more info, type 'inventory' and then \n"
+                      "'normal crossbow bolt' in the command.")
+                crafted += 1
+            else:
+                print("You are asking for more than what you can craft.")
+    if item_crafting == "explosive crossbow bolt":
+        if "normal crossbow bolt" and "gunpowder" in current_character.inventory:
+            explosive_crossbow_bolt.amount = input("How many explosive crossbow bolt do you want to craft? ")
+            amount_ecb_1 = explosive_crossbow_bolt.amount - gunpowder.amount
+            amount_ecb_2 = gunpowder.amount - explosive_crossbow_bolt.amount
 
 
 def other_command():

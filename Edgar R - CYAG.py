@@ -282,13 +282,22 @@ armor_glue = Item("bottle of armor glue",
                   "This item can help make better armor.", 100, False, 1)
 
 bolt_head__piece_blueprint = Item("bolt head blueprint",
-                           "This is a blueprint to build a bolt head.", 1, True, 1)
+                                  "This is a blueprint to build a bolt head.", 1, True, 1)
 
 bolt_head_piece = Item("bolt head piece",
-                 "This item will help make crossbow bolts.", 1, True, 1)
+                       "This item will help make crossbow bolts.", 1, True, 1)
 
 gunpowder = Item("gunpowder",
                  "This item will help make crossbow bolts.", 1, True, 1)
+
+battery = Item("battery",
+               "This item is used to make items or weapons have an electric conduct.", 100, True, 1)
+
+charger = Item("charger",
+               "This item is to charge up the durability of the battery.", 200, True, 1)
+
+wire = Item("wire",
+            "This item is used to craft batteries.", 1, True, 1)
 
 # Materials
 iron_bar = Item("iron bar",
@@ -955,7 +964,7 @@ commands_possible = ["jump", "H use", "armor info", "grab", "attack damage", "dr
 craftable = ["iron armor", "gold armor", "diamond armor", "armor of undying", "armor of strength", "metal bow |",
              "legendary bow", "wooden arrow", "metal arrow", "bolt head piece", "normal crossbow bolt",
              "explosive crossbow bolt", "electric crossbow bolt", "staff of healing", "staff of emerged power",
-             "staff of power", "sticks", "cosmonium ingot", "magical sword", "armor shell"]
+             "staff of power", "sticks", "cosmonium ingot", "magical sword", "armor shell", "battery"]
 
 
 def crafting():
@@ -1095,9 +1104,42 @@ def crafting():
                 print("You are asking for more than what you can craft.")
     if item_crafting == "explosive crossbow bolt":
         if "normal crossbow bolt" and "gunpowder" in current_character.inventory:
-            explosive_crossbow_bolt.amount = input("How many explosive crossbow bolt do you want to craft? ")
+            explosive_crossbow_bolt_amount = input("How many explosive crossbow bolt do you want to craft? ")
             amount_ecb_1 = explosive_crossbow_bolt.amount - gunpowder.amount
             amount_ecb_2 = gunpowder.amount - explosive_crossbow_bolt.amount
+            possible_ecb = 0
+            if amount_ecb_1 > 0:
+                possible_ecb = gunpowder.amount
+            if amount_ecb_2 > 0:
+                possible_ecb = explosive_crossbow_bolt.amount
+            if possible_ecb <= explosive_crossbow_bolt_amount:
+                current_character.inventory.append("EXPLOSIVE CROSSBOW BOLT")
+                current_character.inventory.pop("normal crossbow bolt")
+                current_character.inventory.pop("gunpowder")
+                print("You no longer have %s normal crossbow bolt and gunpowder." % possible_ecb)
+                print("You crafted %s legendary explosive crossbow bolt. For more info, type 'inventory' and then \n"
+                      "'EXPLOSIVE X-BOW BOLT' in the command." % possible_ecb)
+                crafted += 1
+            else:
+                print("You are asking for more than what you can craft.")
+    if item_crafting == "electric crossbow bolt":
+        if "normal crossbow bolt" and "battery" in current_character.inventory:
+            electric_crossbow_bolt_amount = input("How many electric crossbow bolt do you want to craft? ")
+            amount_excb_1 = normal_crossbow_bolt.amount - battery.amount
+            amount_excb_2 = battery.amount - normal_crossbow_bolt.amount
+            possible_excb = 0
+            if amount_excb_1 > 0:
+                possible_excb = battery.amount
+            if amount_excb_2 > 0:
+                possible_excb = normal_crossbow_bolt.amount
+            if possible_excb <= electric_crossbow_bolt_amount:
+                current_character.inventory.append("ELECTRIC CROSSBOW BOLT")
+                current_character.inventory.pop("normal crossbow bolt")
+                current_character.inventory.pop("battery")
+                print("You no longer have %s normal crossbow bolt and battery power." % possible_excb)
+                print("You crafted %s legendary electric crossbow bolt. For more info, type 'inventory' and then \n"
+                      "'ELECTRIC CROSSBOW BOLT' in the command" % possible_excb)
+                crafted += 1
 
 
 def other_command():

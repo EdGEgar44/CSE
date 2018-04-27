@@ -124,10 +124,11 @@ class EnchantBook(Enchanted):
 
 
 class Characters(object):
-    def __init__(self, name, inventory, health, armor, damage, ranged_weapon, melee, description, diologue, hostile,
-                 alive, armor_type):
+    def __init__(self, name, inventory, blueprint, health, armor, damage, ranged_weapon, melee, description, diologue,
+                 hostile, alive, armor_type):
         self.name = name
         self.inventory = inventory
+        self.blueprint = blueprint
         self.health = health
         self.armor = armor
         self.damage = damage
@@ -432,7 +433,7 @@ unicorn_meat = Food("UNICORN MEAT",
                     1, 80, True, 1)
 
 # Characters
-gabe = Characters("Gabe", ["pickaxe", "torch", "wallet"], 100, 10, 20, "sword", "pickaxe",
+gabe = Characters("Gabe", ["pickaxe", "torch", "wallet"], None, 100, 10, 20, "sword", "pickaxe",
                   "The Enemies name is Gabe, he is one of the hardest people to fight. He have killed many people \n"
                   "for trying to solve the puzzle. They never got to the question so they weren't able to tell \n"
                   "people the question.",
@@ -441,7 +442,7 @@ gabe = Characters("Gabe", ["pickaxe", "torch", "wallet"], 100, 10, 20, "sword", 
                    "to solve the puzzle.", "You have defeated me. You may solve the riddle. But be worn. If you \n "
                    "don't solve it within your third try, you will die. So be worn."], False, True, "golden armor")
 
-current_character = Characters("John", ['raw potato'], 100, 0, 10, "dull sword", "pickaxe",
+current_character = Characters("John", ['raw potato'], [], 100, 0, 10, "dull sword", "pickaxe",
                                "You are yourself. Don't let anyone change that.", None, False, True, "beginner armor")
 
 # Initialize Rooms
@@ -959,7 +960,7 @@ current_armor_on = beginner_armor
 
 commands_possible = ["jump", "H use", "armor info", "grab", "attack damage", "drop", "description", "commands possible",
                      "inventory", "how to play", "H information", "craft", "attack enemy", "H main weapon",
-                     "H put on armor"]
+                     "H put on armor", "blueprints"]
 
 craftable = ["iron armor", "gold armor", "diamond armor", "armor of undying", "armor of strength", "metal bow |",
              "legendary bow", "wooden arrow", "metal arrow", "bolt head piece", "normal crossbow bolt",
@@ -1140,6 +1141,25 @@ def crafting():
                 print("You crafted %s legendary electric crossbow bolt. For more info, type 'inventory' and then \n"
                       "'ELECTRIC CROSSBOW BOLT' in the command" % possible_excb)
                 crafted += 1
+            else:
+                print("You are asking for more than what you can craft.")
+    if item_crafting == "staff of healing":
+        if "staff of healing blueprint" in current_character.blueprint:
+            if "staff of healing" in current_character.inventory:
+                if "sticks" and "cosmonium" in current_character.inventory:
+                    current_character.inventory.append("staff of healing")
+                    current_character.inventory.pop("sticks")
+                    current_character.inventory.pop("cosmonium")
+                    print("You no longer have 10 sticks and 10 cosmonium ingots.")
+                    print("You crafted a legendary item. You crafted the staff of healing. For more info, type in \n"
+                          "'inventory' and then 'staff of healing' in the command.")
+                    crafted += 1
+                else:
+                    print("You are asking for more than what you can craft.")
+            else:
+                print("You already have this item in your inventory. You can only craft it once.")
+        else:
+            print("You do not have the blueprint.")
 
 
 def other_command():

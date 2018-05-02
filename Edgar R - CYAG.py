@@ -944,7 +944,12 @@ end_game = "Once you have thought that the world was so easy, yet you didn't kno
            "change that. You saw all your friends go by. there were inside the room. Behind a hidden door that you \n"\
            "didn't see when you first entered.\n"\
            "Thank you for playing my game. It was easy to make the game but I didn't really know what to do with \n"\
-           "ending. So I decided to do some improve and created this end game text. Hope you enjoyed the game. :)"
+           "ending. So I decided to do some improve and created this end game text. Hope you enjoyed the game. :) \n" \
+           "   \n" \
+           "T-pose on them \n" \
+           "___0___ \n" \
+           "   |    \n" \
+           "  / \     " \
 
 print("You can end the game mid game by writing down 'quit' and entered it.")
 
@@ -973,323 +978,380 @@ craftable = ["iron armor", "gold armor", "diamond armor", "armor of undying", "a
 
 def crafting():
     crafted = 0
-    item_crafting = input("What do you want to craft? ")
-    if item_crafting == "armor of undying":
-        if "paper with writing" in current_character.blueprint:
-            if "cosmonium ingot" and "armor shell" in current_character.inventory:
-                current_character.inventory.append("ARMOR OF UNDYING")
-                current_character.inventory.pop("cosmonium ore")
-                current_character.inventory.pop("armor shell")
-                print("You have used your cosmonium ore and your armor shell.")
-                print("You have created the ARMOR OF UNDYING. type in 'armor of undying description' in the command \n"
-                      "to see what it does.")
+    item_crafting = None
+    while crafted != 1 or item_crafting == "cancel":
+        item_crafting = input("What do you want to craft?(To cancel, type cancel). ")
+        if item_crafting == "armor of undying":
+            if "paper with writing" in current_character.blueprint:
+                if "armor of undying" not in current_character.inventory:
+                    if "cosmonium ingot" and "armor shell" in current_character.inventory:
+                        if cosmonium_ingot.amount >= 10 and armor_shell.amount >= 15:
+                            current_character.inventory.append("ARMOR OF UNDYING")
+                            armor_of_undying.amount =+ 1
+                            cosmonium_ore.amount -= 10
+                            if cosmonium_ore.amount == 0:
+                                current_character.inventory.pop("cosmonium ore")
+                                print("You no longer have cosmonium ores in your inventory.")
+                            armor_shell.amount -= 15
+                            if armor_shell.amount == 0:
+                                current_character.inventory.pop("armor shell")
+                                print("You no longer have armor shells in your inventory.")
+                            print("You have used 10 cosmonium ore and 15 armor shell.")
+                            print("You have created the ARMOR OF UNDYING. type in 'armor of undying description' in "
+                                  "the \n"
+                                  "command.")
+                            crafted += 1
+                        else:
+                            print("You don't have enough materials for this item.")
+                    else:
+                        print("You don't have the materials for this item.")
+                else:
+                    print("You already have this item.")
+            else:
+                print("You don't have the paper with writing.")
+        if item_crafting == "armor of strength":
+            if "strength potion" and "iron armor" and "armor shell" in current_character.inventory:
+                if armor_shell.amount >= 5:
+                    current_character.inventory.append("ARMOR OF STRENGTH")
+                    armor_of_strength.amount += 1
+                    strength_potion.amount -= 1
+                    if strength_potion.amount == 0:
+                        current_character.inventory.pop("strength potion")
+                        print("You no longer have strength potions in your inventory.")
+                    iron_armor.amount -= 1
+                    if iron_armor.amount == 0:
+                        current_character.inventory.pop("iron armor")
+                        print("You no longer have iron armor in your inventory.")
+                    armor_shell.amount -= 5
+                    if armor_shell.amount == 0:
+                        current_character.inventory.pop("armor shell")
+                        print("You no longer have armor shells in your inventory.")
+                    print("You have used one of your strength potion, iron armor, and 5 armor shell.")
+                    print("You have created the ARMOR OF STRENGTH. For more info, type 'armor of strength' in the "
+                          "command")
+                    crafted += 1
+            else:
+                print("You don't have the materials for this item.")
+        if item_crafting == "iron armor":
+            if "iron bar" and "armor shell" in current_character.inventory:
+                if iron_bar.amount >= 5 and armor_shell.amount >= 10:
+                    current_character.inventory.append("iron armor")
+                    iron_armor.amount =+ 1
+                    iron_bar.amount -= 5
+                    if iron_bar.amount == 0:
+                        current_character.inventory.pop("iron bar")
+                        print("You no longer have iron bars in your inventory.")
+                    armor_shell.amount -= 10
+                    if armor_shell.amount == 0:
+                        current_character.inventory.pop("armor shell")
+                        print("You no longer have armor shells in your inventory.")
+                    print("You no longer have 5 iron bars and 10 armor shell.")
+                    print("You have crafted iron armor. Type in 'iron armor'in the command to see what it does and its "
+                          "stats.")
+                    crafted += 1
+                else:
+                    print("You don't have enough materials.")
+            else:
+                print("You don't have the materials for this item.")
+        if item_crafting == "golden armor":
+            if "gold bar" in current_character.inventory:
+                if gold_bar.amount
+                current_character.inventory.append("golden armor")
+                current_character.inventory.pop("gold bar")
+                print("You no longer have the golden bars.")
+                print("You have crafted golden armor. For more info, type 'golden armor' in the command.")
                 crafted += 1
             else:
                 print("You don't have the materials for this item.")
-        else:
-            print("You don't have the paper with writing.")
-    if item_crafting == "armor of strength":
-        if "strength potion" and "iron armor" and "armor shell" in current_character.inventory:
-            current_character.inventory.append("ARMOR OF STRENGTH")
-            current_character.inventory.pop("strength potion")
-            current_character.inventory.pop("iron armor")
-            print("You have used one of your strength potion, iron armor, and armor shell.")
-            print("You have created the ARMOR OF STRENGTH. For more info, type 'armor of strength' in the command")
-            crafted += 1
-        else:
-            print("You don't have the materials for this item.")
-    if item_crafting == "iron armor":
-        if "iron bar" and "armor shell" in current_character.inventory:
-            current_character.inventory.append("iron armor")
-            current_character.inventory.pop("iron bar")
-            current_character.inventory.pop("armor shell")
-            print("You no longer have the iron bars and the armor shell.")
-            print("You have crafted iron armor. Type in 'iron armor'in the command to see what it does and its stats.")
-            crafted += 1
-        else:
-            print("You don't have the materials for this item.")
-    if item_crafting == "golden armor":
-        if "gold bar" in current_character.inventory:
-            current_character.inventory.append("golden armor")
-            current_character.inventory.pop("gold bar")
-            print("You no longer have the golden bars.")
-            print("You have crafted golden armor. For more info, type 'golden armor' in the command.")
-            crafted += 1
-        else:
-            print("You don't have the materials for this item.")
-    if item_crafting == "diamond armor":
-        if "diamond" and "armor glue" in current_character.inventory:
-            current_character.inventory.append("diamond_armor")
-            current_character.inventory.pop("diamond")
-            current_character.inventory.pop("armor glue")
-            print("You no longer have 10 diamonds and the bottle of armor glue.")
-            print("You crafted diamond armor. But the glue still needs to dry. For more info, type 'inventory' and \n"
-                  "then 'diamond armor' in the command.")
-            crafted += 1
-        else:
-            print("You don't have the materials for this item.")
-    if item_crafting == "metal bow":
-        if "iron bar" and "broken bow" in current_character.inventory:
-            current_character.inventory.append("metal bow")
-            current_character.inventory.pop("broken bow")
-            current_character.inventory.pop("iron bar")
-            print("You no longer have the broken bow and 4 iron bars.")
-            print("You have a metal bow. For more info, type 'inventory' and then 'metal bow' in the command.")
-            crafted += 1
-        else:
-            print("You don't have the materials for this item.")
-    if item_crafting == "legendary bow":
-        if "metal bow" and "cosmonium ingot" in current_character.inventory:
-            current_character.inventory.append("LEGENDARY BOW")
-            current_character.inventory.pop("metal bow")
-            current_character.inventory.pop("cosmonium ingot")
-            print("You no longer have the iron bar and the 3 cosmonium ingots.")
-            print("You made a legendary item. You made the legendary bow. For more info, type 'inventory' and then \n"
-                  "'legendary bow' in the command.")
-            crafted += 1
-        else:
-            print("You don't have the materials for this item.")
-    if item_crafting == "wooden arrow":
-        if "sticks" and "stone" in current_character.inventory:
-            wooden_arrow_amount = input("How many do you want to craft? ")
-            amount_wa_1 = sticks.amount - stone.amount
-            amount_wa_2 = stone.amount - sticks.amount
-            possible_wa = 0
-            if amount_wa_1 > 0:
-                possible_wa = stone.amount
-            if amount_wa_2 > 0:
-                possible_wa = sticks.amount
-            if possible_wa <= wooden_arrow_amount:
-                current_character.inventory.append("wooden arrow")
-                current_character.inventory.pop("sticks")
-                current_character.inventory.pop("stone")
-                print("You no longer %s sticks and stone" % possible_wa)
-                print("You crafted %s wooden arrows. For more info, type 'inventory' and then 'wooden arrow' in the \n"
-                      "command." % possible_wa)
+        if item_crafting == "diamond armor":
+            if "diamond" and "armor glue" in current_character.inventory:
+                current_character.inventory.append("diamond_armor")
+                current_character.inventory.pop("diamond")
+                current_character.inventory.pop("armor glue")
+                print("You no longer have 10 diamonds and the bottle of armor glue.")
+                print("You crafted diamond armor. But the glue still needs to dry. For more info, type 'inventory' "
+                      "and \n"
+                      "then 'diamond armor' in the command.")
                 crafted += 1
             else:
-                print("You are asking for more than what you can craft.")
-        else:
-            print("You don't have the materials for this item.")
-    if item_crafting == "metal arrow":
-        if "iron bar" and "sticks" in current_character.inventory:
-            metal_arrow_amount = input("How many metal arrows do you want to craft? ")
-            amount_ma_1 = iron_bar.amount - sticks.amount
-            amount_ma_2 = sticks.amount - iron_bar.amount
-            possible_ma = 0
-            if amount_ma_1 > 0:
-                possible_ma = sticks.amount
-            if amount_ma_2 > 0:
-                possible_ma = iron_bar.amount
-            if possible_ma <= metal_arrow_amount:
-                current_character.inventory.append("metal arrow")
-                current_character.inventory.pop("sticks")
-                current_character.inventory.pop("stone")
-                print("You no longer have %s sticks and metal bars." % possible_ma)
-                print("You crafted %s metal arrows. For more info, type 'inventory' and then 'metal arrow' in the \n"
-                      "command." % possible_ma)
-                crafted += 1
-            else:
-                print("You are asking for more than what you can craft.")
-        else:
-            print("You don't have the materials for this item.")
-    if item_crafting == "bolt head piece":
-        if "iron bar" and "bolt head piece" in current_character.inventory:
-            bolt_head_piece_amount = input("How many bolt head pieces do you want to craft? ")
-            possible_bhp = iron_bar.amount
-            if bolt_head_piece_amount <= possible_bhp:
-                current_character.inventory.append("bolt head piece")
+                print("You don't have the materials for this item.")
+        if item_crafting == "metal bow":
+            if "iron bar" and "broken bow" in current_character.inventory:
+                current_character.inventory.append("metal bow")
+                current_character.inventory.pop("broken bow")
                 current_character.inventory.pop("iron bar")
-                print("You no longer have %s iron bars." % possible_bhp)
-                print("You crafted %s bolt heads. For more info, type 'inventory' and then 'bolt head' in the "
-                      "command." % possible_bhp)
+                print("You no longer have the broken bow and 4 iron bars.")
+                print("You have a metal bow. For more info, type 'inventory' and then 'metal bow' in the command.")
                 crafted += 1
             else:
-                print("You are asking for more than what you can craft.")
-        else:
-            print("You don't have the materials for this item.")
-    if item_crafting == "normal crossbow bolt":
-        if "bolt head piece" and "sticks" in current_character.inventory:
-            normal_crossbow_bolt_amount = input("How many normal crossbow bolt do you want to craft? ")
-            amount_ncb_1 = bolt_head_piece.amount - sticks.amount
-            amount_ncb_2 = sticks.amount - bolt_head_piece.amount
-            possible_ncb = 0
-            if amount_ncb_1 > 0:
-                possible_ncb = sticks.amount
-            if amount_ncb_2 > 0:
-                possible_ncb = bolt_head_piece.amount
-            if possible_ncb <= normal_crossbow_bolt_amount:
-                current_character.inventory.append("normal crossbow bolt")
-                current_character.inventory.pop("bolt head piece")
-                current_character.inventory.pop("sticks")
-                print("You no longer have %s sticks and bolt head pieces." % possible_ncb)
-                print("You craft %s normal crossbow bolt. For more info, type 'inventory' and then \n"
-                      "'normal crossbow bolt' in the command.")
+                print("You don't have the materials for this item.")
+        if item_crafting == "legendary bow":
+            if "metal bow" and "cosmonium ingot" in current_character.inventory:
+                current_character.inventory.append("LEGENDARY BOW")
+                current_character.inventory.pop("metal bow")
+                current_character.inventory.pop("cosmonium ingot")
+                print("You no longer have the iron bar and the 3 cosmonium ingots.")
+                print("You made a legendary item. You made the legendary bow. For more info, type 'inventory' and "
+                      "then \n"
+                      "'legendary bow' in the command.")
                 crafted += 1
             else:
-                print("You are asking for more than what you can craft.")
-        else:
-            print("You don't have the materials for this item.")
-    if item_crafting == "explosive crossbow bolt":
-        if "normal crossbow bolt" and "gunpowder" in current_character.inventory:
-            explosive_crossbow_bolt_amount = input("How many explosive crossbow bolt do you want to craft? ")
-            amount_ecb_1 = explosive_crossbow_bolt.amount - gunpowder.amount
-            amount_ecb_2 = gunpowder.amount - explosive_crossbow_bolt.amount
-            possible_ecb = 0
-            if amount_ecb_1 > 0:
-                possible_ecb = gunpowder.amount
-            if amount_ecb_2 > 0:
-                possible_ecb = explosive_crossbow_bolt.amount
-            if possible_ecb <= explosive_crossbow_bolt_amount:
-                current_character.inventory.append("EXPLOSIVE CROSSBOW BOLT")
-                current_character.inventory.pop("normal crossbow bolt")
-                current_character.inventory.pop("gunpowder")
-                print("You no longer have %s normal crossbow bolt and gunpowder." % possible_ecb)
-                print("You crafted %s legendary explosive crossbow bolt. For more info, type 'inventory' and then \n"
-                      "'EXPLOSIVE X-BOW BOLT' in the command." % possible_ecb)
-                crafted += 1
-            else:
-                print("You are asking for more than what you can craft.")
-        else:
-            print("You don't have the materials for this item.")
-    if item_crafting == "electric crossbow bolt":
-        if "normal crossbow bolt" and "battery" in current_character.inventory:
-            electric_crossbow_bolt_amount = input("How many electric crossbow bolt do you want to craft? ")
-            amount_excb_1 = normal_crossbow_bolt.amount - battery.amount
-            amount_excb_2 = battery.amount - normal_crossbow_bolt.amount
-            possible_excb = 0
-            if amount_excb_1 > 0:
-                possible_excb = battery.amount
-            if amount_excb_2 > 0:
-                possible_excb = normal_crossbow_bolt.amount
-            if possible_excb <= electric_crossbow_bolt_amount:
-                current_character.inventory.append("ELECTRIC CROSSBOW BOLT")
-                current_character.inventory.pop("normal crossbow bolt")
-                current_character.inventory.pop("battery")
-                print("You no longer have %s normal crossbow bolt and battery power." % possible_excb)
-                print("You crafted %s legendary electric crossbow bolt. For more info, type 'inventory' and then \n"
-                      "'ELECTRIC CROSSBOW BOLT' in the command" % possible_excb)
-                crafted += 1
-            else:
-                print("You are asking for more than what you can craft.")
-        else:
-            print("You don't have the materials for this item.")
-    if item_crafting == "staff of healing":
-        if "staff of healing blueprint" in current_character.blueprint:
-            if "STAFF OF HEALING" not in current_character.inventory:
-                if "sticks" and "cosmonium ingot" in current_character.inventory:
-                    current_character.inventory.append("staff of healing")
+                print("You don't have the materials for this item.")
+        if item_crafting == "wooden arrow":
+            if "sticks" and "stone" in current_character.inventory:
+                wooden_arrow_amount = input("How many do you want to craft? ")
+                amount_wa_1 = sticks.amount - stone.amount
+                amount_wa_2 = stone.amount - sticks.amount
+                possible_wa = 0
+                if amount_wa_1 > 0:
+                    possible_wa = stone.amount
+                if amount_wa_2 > 0:
+                    possible_wa = sticks.amount
+                if possible_wa <= wooden_arrow_amount:
+                    current_character.inventory.append("wooden arrow")
                     current_character.inventory.pop("sticks")
-                    current_character.inventory.pop("cosmonium")
-                    print("You no longer have 10 sticks and 10 cosmonium ingots.")
-                    print("You crafted a legendary item. You crafted the staff of healing. For more info, type in \n"
-                          "'inventory' and then 'staff of healing' in the command.")
+                    current_character.inventory.pop("stone")
+                    print("You no longer %s sticks and stone" % possible_wa)
+                    print("You crafted %s wooden arrows. For more info, type 'inventory' and then 'wooden arrow' in "
+                          "the \n"
+                          "command." % possible_wa)
                     crafted += 1
                 else:
-                    print("You don't have the materials for this item.")
+                    print("You are asking for more than what you can craft.")
             else:
-                print("You already have this item in your inventory. You can only craft it once.")
-        else:
-            print("You do not have the blueprint.")
-    if item_crafting == "staff of emerged power":
-        if "staff of emerged power blueprint" in current_character.blueprint:
-            if "STAFF OF EMERGED POWER" not in current_character.inventory:
-                if "sticks" and "cosmonium ingot" in current_character.inventory:
-                    current_character.inventory.append("STAFF OF EMERGED POWER")
+                print("You don't have the materials for this item.")
+        if item_crafting == "metal arrow":
+            if "iron bar" and "sticks" in current_character.inventory:
+                metal_arrow_amount = input("How many metal arrows do you want to craft? ")
+                amount_ma_1 = iron_bar.amount - sticks.amount
+                amount_ma_2 = sticks.amount - iron_bar.amount
+                possible_ma = 0
+                if amount_ma_1 > 0:
+                    possible_ma = sticks.amount
+                if amount_ma_2 > 0:
+                    possible_ma = iron_bar.amount
+                if possible_ma <= metal_arrow_amount:
+                    current_character.inventory.append("metal arrow")
                     current_character.inventory.pop("sticks")
-                    current_character.inventory.pop("cosmonium ingot")
-                    print("You no longer have 10 sticks and 15 cosmonium ingots.")
-                    print("You crafted a legendary item. You crafted the staff of emerged power. For more info, type \n"
-                          "in 'inventory' and then 'staff of emerged power' in the command.")
+                    current_character.inventory.pop("stone")
+                    print("You no longer have %s sticks and metal bars." % possible_ma)
+                    print("You crafted %s metal arrows. For more info, type 'inventory' and then 'metal arrow' in "
+                          "the \n"
+                          "command." % possible_ma)
                     crafted += 1
                 else:
-                    print("You don't have the materials for this item.")
+                    print("You are asking for more than what you can craft.")
             else:
-                print("You already have this item in your inventory. You can only have craft it once.")
-        else:
-            print("You do not have a blueprint.")
-    if item_crafting == "staff of power":
-        if "staff of power blueprint" in current_character.blueprint:
-            if "STAFF OF POWER" in current_character.inventory:
-                if "sticks" and "armor shell" in current_character.inventory:
-                    current_character.inventory.append("STAFF OF POWER")
-                    current_character.inventory.pop("sticks")
-                    current_character.inventory.pop("armor shell")
-                    print("You no longer have 10 sticks and 10 armor shells.")
-                    print("You crafted a legendary item. You crafted the STAFF OF POWER. For more info, type in \n"
-                          "'inventory' and then 'staff of power' in the command.")
+                print("You don't have the materials for this item.")
+        if item_crafting == "bolt head piece":
+            if "iron bar" and "bolt head piece" in current_character.inventory:
+                bolt_head_piece_amount = input("How many bolt head pieces do you want to craft? ")
+                possible_bhp = iron_bar.amount
+                if bolt_head_piece_amount <= possible_bhp:
+                    current_character.inventory.append("bolt head piece")
+                    current_character.inventory.pop("iron bar")
+                    print("You no longer have %s iron bars." % possible_bhp)
+                    print("You crafted %s bolt heads. For more info, type 'inventory' and then 'bolt head' in the \n"
+                          "command." % possible_bhp)
                     crafted += 1
                 else:
-                    print("You don't have the materials for this item.")
+                    print("You are asking for more than what you can craft.")
             else:
-                print("You already have this item in your inventory. You can only have craft it once.")
-    if item_crafting == "sticks":
-        if "wood" in current_character.inventory:
-            sticks_amount = input("How many sticks do you want to craft? (Reminder: You must times the amount of \n"
-                                  "wood you are going to use with 4). ")
-            wood_used = sticks_amount / 4
-            possible_s = wood.amount
-            if possible_s <= sticks_amount:
-                current_character.inventory.append("sticks")
-                current_character.inventory.pop("wood")
-                print("You no longer have %s wood." % wood_used)
-                print("You crafted %s sticks. For more info, type in 'inventory' and then 'sticks' in the command." %
-                      possible_s)
-                crafted += 1
+                print("You don't have the materials for this item.")
+        if item_crafting == "normal crossbow bolt":
+            if "bolt head piece" and "sticks" in current_character.inventory:
+                normal_crossbow_bolt_amount = input("How many normal crossbow bolt do you want to craft? ")
+                amount_ncb_1 = bolt_head_piece.amount - sticks.amount
+                amount_ncb_2 = sticks.amount - bolt_head_piece.amount
+                possible_ncb = 0
+                if amount_ncb_1 > 0:
+                    possible_ncb = sticks.amount
+                if amount_ncb_2 > 0:
+                    possible_ncb = bolt_head_piece.amount
+                if possible_ncb <= normal_crossbow_bolt_amount:
+                    current_character.inventory.append("normal crossbow bolt")
+                    current_character.inventory.pop("bolt head piece")
+                    current_character.inventory.pop("sticks")
+                    print("You no longer have %s sticks and bolt head pieces." % possible_ncb)
+                    print("You craft %s normal crossbow bolt. For more info, type 'inventory' and then \n"
+                          "'normal crossbow bolt' in the command." % possible_ncb)
+                    crafted += 1
+                else:
+                    print("You are asking for more than what you can craft.")
             else:
-                print("You are asking for more than what you can craft.")
-        else:
-            print("You don't have the materials for this item.")
-    if item_crafting == "cosmonium ingot":
-        if "cosmonium ore" in current_character.inventory:
-            cosmonium_ingot_amount = input("How many cosmonium ingots do you want to craft? (Reminder: You must \n"
-                                           "times the amount of cosmonium ore you are going to use with 2). ")
-            cosmonium_ore_used = cosmonium_ingot_amount / 2
-            possible_ci = cosmonium_ore.amount
-            if possible_ci <= cosmonium_ingot_amount:
-                current_character.inventory.append("cosmonium ingot")
-                current_character.blueprint.pop("cosmonium ore")
-                print("You no longer have %s cosmonium ore." % cosmonium_ore_used)
-                print("You crafted %s cosmonium ingots. For more info, type in 'inventory' and then \n"
-                      "'cosmonium ingot' in the command." % possible_ci)
+                print("You don't have the materials for this item.")
+        if item_crafting == "explosive crossbow bolt":
+            if "normal crossbow bolt" and "gunpowder" in current_character.inventory:
+                explosive_crossbow_bolt_amount = input("How many explosive crossbow bolt do you want to craft? ")
+                amount_ecb_1 = explosive_crossbow_bolt.amount - gunpowder.amount
+                amount_ecb_2 = gunpowder.amount - explosive_crossbow_bolt.amount
+                possible_ecb = 0
+                if amount_ecb_1 > 0:
+                    possible_ecb = gunpowder.amount
+                if amount_ecb_2 > 0:
+                    possible_ecb = explosive_crossbow_bolt.amount
+                if possible_ecb <= explosive_crossbow_bolt_amount:
+                    current_character.inventory.append("EXPLOSIVE CROSSBOW BOLT")
+                    current_character.inventory.pop("normal crossbow bolt")
+                    current_character.inventory.pop("gunpowder")
+                    print("You no longer have %s normal crossbow bolt and gunpowder." % possible_ecb)
+                    print("You crafted %s legendary explosive crossbow bolt. For more info, type 'inventory' and "
+                          "then \n"
+                          "'EXPLOSIVE X-BOW BOLT' in the command." % possible_ecb)
+                    crafted += 1
+                else:
+                    print("You are asking for more than what you can craft.")
             else:
-                print("You are asking for more than what you can craft.")
-        else:
-            print("You don't have the material for this item.")
-    if item_crafting == "magical sword":
-        if "magical stone" and "stone sword" in current_character.inventory:
-            current_character.inventory.append("magical sword")
-            current_character.inventory.pop("magical stone")
-            current_character.inventory.pop("stone sword")
-            print("You no longer have a magical stone sword and a stone sword.")
-            print("You crafted a magical sword. For more info, type 'inventory' and then 'magical sword' in the \n"
-                  "command.")
-        else:
-            print("You don't have the materials for this item.")
-    if item_crafting == "armor shell":
-        if "iron bar" in current_character.inventory:
-            armor_shell_amount = input("How many armor shells do you want to craft? ")
-            possible_as = iron_bar.amount
-            if possible_as <= armor_shell_amount:
-                current_character.inventory.append("armor shell")
-                current_character.inventory.pop("iron bar")
-                print("You no longer have %s iron bars." % possible_as)
-                print("You crafted %s armor shells. For more info, type in 'inventory' and then 'armor shell' in the \n"
+                print("You don't have the materials for this item.")
+        if item_crafting == "electric crossbow bolt":
+            if "normal crossbow bolt" and "battery" in current_character.inventory:
+                electric_crossbow_bolt_amount = input("How many electric crossbow bolt do you want to craft? ")
+                amount_excb_1 = normal_crossbow_bolt.amount - battery.amount
+                amount_excb_2 = battery.amount - normal_crossbow_bolt.amount
+                possible_excb = 0
+                if amount_excb_1 > 0:
+                    possible_excb = battery.amount
+                if amount_excb_2 > 0:
+                    possible_excb = normal_crossbow_bolt.amount
+                if possible_excb <= electric_crossbow_bolt_amount:
+                    current_character.inventory.append("ELECTRIC CROSSBOW BOLT")
+                    current_character.inventory.pop("normal crossbow bolt")
+                    current_character.inventory.pop("battery")
+                    print("You no longer have %s normal crossbow bolt and battery power." % possible_excb)
+                    print("You crafted %s legendary electric crossbow bolt. For more info, type 'inventory' and then \n"
+                          "'ELECTRIC CROSSBOW BOLT' in the command" % possible_excb)
+                    crafted += 1
+                else:
+                    print("You are asking for more than what you can craft.")
+            else:
+                print("You don't have the materials for this item.")
+        if item_crafting == "staff of healing":
+            if "staff of healing blueprint" in current_character.blueprint:
+                if "STAFF OF HEALING" not in current_character.inventory:
+                    if "sticks" and "cosmonium ingot" in current_character.inventory:
+                        current_character.inventory.append("staff of healing")
+                        current_character.inventory.pop("sticks")
+                        current_character.inventory.pop("cosmonium")
+                        print("You no longer have 10 sticks and 10 cosmonium ingots.")
+                        print("You crafted a legendary item. You crafted the staff of healing. For more info, type "
+                              "in \n"
+                              "'inventory' and then 'staff of healing' in the command.")
+                        crafted += 1
+                    else:
+                        print("You don't have the materials for this item.")
+                else:
+                    print("You already have this item in your inventory. You can only craft it once.")
+            else:
+                print("You do not have the blueprint.")
+        if item_crafting == "staff of emerged power":
+            if "staff of emerged power blueprint" in current_character.blueprint:
+                if "STAFF OF EMERGED POWER" not in current_character.inventory:
+                    if "sticks" and "cosmonium ingot" in current_character.inventory:
+                        current_character.inventory.append("STAFF OF EMERGED POWER")
+                        current_character.inventory.pop("sticks")
+                        current_character.inventory.pop("cosmonium ingot")
+                        print("You no longer have 10 sticks and 15 cosmonium ingots.")
+                        print("You crafted a legendary item. You crafted the staff of emerged power. For more info, "
+                              "type \n"
+                              "in 'inventory' and then 'staff of emerged power' in the command.")
+                        crafted += 1
+                    else:
+                        print("You don't have the materials for this item.")
+                else:
+                    print("You already have this item in your inventory. You can only have craft it once.")
+            else:
+                print("You do not have a blueprint.")
+        if item_crafting == "staff of power":
+            if "staff of power blueprint" in current_character.blueprint:
+                if "STAFF OF POWER" in current_character.inventory:
+                    if "sticks" and "armor shell" in current_character.inventory:
+                        current_character.inventory.append("STAFF OF POWER")
+                        current_character.inventory.pop("sticks")
+                        current_character.inventory.pop("armor shell")
+                        print("You no longer have 10 sticks and 10 armor shells.")
+                        print("You crafted a legendary item. You crafted the STAFF OF POWER. For more info, type in \n"
+                              "'inventory' and then 'staff of power' in the command.")
+                        crafted += 1
+                    else:
+                        print("You don't have the materials for this item.")
+                else:
+                    print("You already have this item in your inventory. You can only have craft it once.")
+        if item_crafting == "sticks":
+            if "wood" in current_character.inventory:
+                sticks_amount = input("How many sticks do you want to craft? (Reminder: You must tell how many wood "
+                                      "you \n"
+                                      "want to use). ")
+                wood_used = sticks_amount
+                possible_s = wood.amount
+                if possible_s <= sticks_amount:
+                    current_character.inventory.append("sticks")
+                    current_character.inventory.pop("wood")
+                    print("You no longer have %s wood." % wood_used)
+                    print("You crafted %s sticks. For more info, type in 'inventory' and then 'sticks' in the "
+                          "command." % possible_s)
+                    crafted += 1
+                else:
+                    print("You are asking for more than what you can craft.")
+            else:
+                print("You don't have the materials for this item.")
+        if item_crafting == "cosmonium ingot":
+            if "cosmonium ore" in current_character.inventory:
+                cosmonium_ingot_amount = input("How many cosmonium ingots do you want to craft? (Reminder: You must \n"
+                                               "tell how many cosmonium ore you are going to use). ")
+                cosmonium_ore_used = cosmonium_ingot_amount
+                possible_ci = cosmonium_ore.amount
+                if possible_ci <= cosmonium_ingot_amount:
+                    current_character.inventory.append("cosmonium ingot")
+                    current_character.blueprint.pop("cosmonium ore")
+                    print("You no longer have %s cosmonium ore." % cosmonium_ore_used)
+                    print("You crafted %s cosmonium ingots. For more info, type in 'inventory' and then \n"
+                          "'cosmonium ingot' in the command." % possible_ci)
+                else:
+                    print("You are asking for more than what you can craft.")
+            else:
+                print("You don't have the material for this item.")
+        if item_crafting == "magical sword":
+            if "magical stone" and "stone sword" in current_character.inventory:
+                current_character.inventory.append("magical sword")
+                current_character.inventory.pop("magical stone")
+                current_character.inventory.pop("stone sword")
+                print("You no longer have a magical stone sword and a stone sword.")
+                print("You crafted a magical sword. For more info, type 'inventory' and then 'magical sword' in the \n"
                       "command.")
             else:
-                print("You are asking for more than what you can craft.")
-        else:
-            print("You don't have the material for this item.")
-    if item_crafting == "battery":
-        if "gunpowder" and "armor shell" in current_character.inventory:
-            firework_amount = input("How many fireworks do you want to craft? ")
-            amount_f_1 = gunpowder.amount - armor_shell.amount
-            amount_f_2 = armor_shell.amount - gunpowder.amount
-            possible_f = 0
-            if amount_f_1 > 0:
-                possible_f = armor_shell.amount
-            if amount_f_2 > 0:
-                possible_f = gunpowder.amount
+                print("You don't have the materials for this item.")
+        if item_crafting == "armor shell":
+            if "iron bar" in current_character.inventory:
+                armor_shell_amount = input("How many armor shells do you want to craft? ")
+                possible_as = iron_bar.amount
+                if possible_as <= armor_shell_amount:
+                    current_character.inventory.append("armor shell")
+                    current_character.inventory.pop("iron bar")
+                    print("You no longer have %s iron bars." % possible_as)
+                    print("You crafted %s armor shells. For more info, type in 'inventory' and then 'armor shell' in "
+                          "the \n"
+                          "command.")
+                else:
+                    print("You are asking for more than what you can craft.")
+            else:
+                print("You don't have the material for this item.")
+        if item_crafting == "battery":
+            if "gunpowder" and "armor shell" in current_character.inventory:
+                firework_amount = input("How many fireworks do you want to craft? ")
+                amount_f_1 = gunpowder.amount - armor_shell.amount
+                amount_f_2 = armor_shell.amount - gunpowder.amount
+                possible_f = 0
+                if amount_f_1 > 0:
+                    possible_f = armor_shell.amount
+                if amount_f_2 > 0:
+                    possible_f = gunpowder.amount
+                if possible_f <= firework_amount:
+                    current_character.inventory.append("firework")
+                    current_character.inventory.pop("gunpowder")
+                    current_character.inventory.pop("armor shell")
+                    print("You no longer have %s gunpowder and armor shell." % possible_f)
+                    print("You crafted %s fireworks. For more info, type 'inventory' and then 'firework' in the "
+                          "command." % possible_f)
 
 
 def other_command():

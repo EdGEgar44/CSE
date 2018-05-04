@@ -1036,7 +1036,7 @@ def crafting():
             if "iron bar" and "armor shell" in current_character.inventory:
                 if iron_bar.amount >= 5 and armor_shell.amount >= 10:
                     current_character.inventory.append("iron armor")
-                    iron_armor.amount =+ 1
+                    iron_armor.amount += 1
                     iron_bar.amount -= 5
                     if iron_bar.amount == 0:
                         current_character.inventory.pop("iron bar")
@@ -1045,7 +1045,7 @@ def crafting():
                     if armor_shell.amount == 0:
                         current_character.inventory.pop("armor shell")
                         print("You no longer have armor shells in your inventory.")
-                    print("You no longer have 5 iron bars and 10 armor shell.")
+                    print("You no longer have 5 iron bars and 10 armor shells.")
                     print("You have crafted iron armor. Type in 'iron armor'in the command to see what it does and its "
                           "stats.")
                     crafted += 1
@@ -1053,26 +1053,40 @@ def crafting():
                     print("You don't have enough materials.")
             else:
                 print("You don't have the materials for this item.")
-        if item_crafting == "golden armor":
-            if "gold bar" in current_character.inventory:
-                if gold_bar.amount
-                current_character.inventory.append("golden armor")
-                current_character.inventory.pop("gold bar")
-                print("You no longer have the golden bars.")
-                print("You have crafted golden armor. For more info, type 'golden armor' in the command.")
-                crafted += 1
+        if item_crafting == "gold armor":
+            if "gold bar" and "armor shell" in current_character.inventory:
+                if gold_bar.amount >= 5 and armor_shell.amount >= 10:
+                    current_character.inventory.append("gold armor")
+                    gold_armor.amount += 1
+                    gold_bar.amount -= 5
+                    if gold_bar.amount == 0:
+                        current_character.inventory.pop("gold bar")
+                        print("You no longer have gold bars in your inventory.")
+                    armor_shell.amount -= 10
+                    if armor_shell.amount == 0:
+                        current_character.inventory.pop("armor shell")
+                        print("You no longer have armor shells in your inventory.")
+                    print("You no longer have 5 gold bars and 10 armor shells.")
+                    print("You have crafted golden armor. For more info, type 'inventory' and then 'gold armor' in the"
+                          " command.")
+                    crafted += 1
             else:
                 print("You don't have the materials for this item.")
         if item_crafting == "diamond armor":
-            if "diamond" and "armor glue" in current_character.inventory:
-                current_character.inventory.append("diamond_armor")
-                current_character.inventory.pop("diamond")
-                current_character.inventory.pop("armor glue")
-                print("You no longer have 10 diamonds and the bottle of armor glue.")
-                print("You crafted diamond armor. But the glue still needs to dry. For more info, type 'inventory' "
-                      "and \n"
-                      "then 'diamond armor' in the command.")
-                crafted += 1
+            if "diamond" and "armor glue" and "armor shell" in current_character.inventory:
+                if diamond.amount >= 5 and armor_shell.amount >= 10:
+                    current_character.inventory.append("diamond_armor")
+                    diamond_armor.amount += 1
+                    diamond.amount -= 5
+                    if diamond.amount == 0:
+                        current_character.inventory.pop("diamond")
+                        print("You don't have diamonds in your inventory.")
+                    armor_glue.amount-
+                    print("You no longer have 10 diamonds and the bottle of armor glue.")
+                    print("You crafted diamond armor. But the glue still needs to dry. For more info, type 'inventory' "
+                          "and \n"
+                          "then 'diamond armor' in the command.")
+                    crafted += 1
             else:
                 print("You don't have the materials for this item.")
         if item_crafting == "metal bow":

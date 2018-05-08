@@ -370,36 +370,37 @@ staff_of_emerged_power = Staff("STAFF OF EMERGED POWER",
 
 # Enchanted Books
 strength_book = EnchantBook("strength book",
-                            "This book gives an item more damage.", 1, 'strength', True, 1)
+                            "This book gives an item more damage.", 1, "strength", True, 1)
 
 unbreakable_book = EnchantBook("unbreakable book",
-                               "This book gives an item more durability", 1, 'unbreakable', True, 1)
+                               "This book gives an item more durability", 1, "unbreakable", True, 1)
 
 fire_frost_book = EnchantBook("FIRE FROST BOOK",
                               "This book gives an item more damage and makes half of the sword on fire and the other \n"
                               "frozen. When you hit an enemy, they will either burn or they would freeze. If the \n"
                               "enemy has burn, they would lose 10% of their health when it is their turn. If the \n"
                               "item also has strength, the burn will do 20% of their health. If the enemy has been \n"
-                              "frozen. They will lose 2 turns.", 1, 'fire_frost', True, 1)
+                              "frozen. They will lose 2 turns.", 1, "fire frost", True, 1)
 
 # Potions
 weak_health_potion = Potion("weak health potion",
-                            "This health potion gives you 20 health back.", 1, True, 1, 'health', 1)
+                            "This health potion gives you 20 health back.", 1, True, 1, "health", 1)
 
 strong_health_potion = Potion("strong health potion",
-                              "This health potion gives you 50 health back.", 1, True, 1, 'health', 1)
+                              "This health potion gives you 50 health back.", 1, True, 1, "health", 1)
 
 strength_potion = Potion("strength potion",
-                         "This strength potion gives you an attack boost for 30 moves.", 1, True, 30, 'strength', 1)
+                         "This strength potion gives you an attack boost for 30 moves.", 1, True, 30, "strength", 1)
 
 poison_potion = Potion("POISON IN A BOTTLE",
                        "This potion can be thrown and will poison the enemy. The poison will not kill the enemy. The \n"
-                       "enemy will do less damage and will have less health", 1, True, 1, 'poison', 1)
+                       "enemy will do less damage and will have less health", 1, True, 1, "poison", 1)
 
 # Ammo
 wooden_arrow = Ammo("wooden arrow",
                     "This ammo is used for bows. The arrow isn't the strongest but it is the easiest to craft. Can \n"
                     "be used for the broken bow and the metal bow.", 1, True, 1, ['broken_bow', 'metal_bow'], None)
+
 metal_arrow = Ammo("metal arrow",
                    "This ammo is used for bows. The arrow is the strongest that you can craft. Can be used for metal \n"
                    "bows only", 1, True, 1, 'metal_bow', None)
@@ -445,7 +446,7 @@ gabe = Characters("Gabe", ["pickaxe", "torch", "wallet"], None, 100, 10, 20, "sw
                    "to solve the puzzle.", "You have defeated me. You may solve the riddle. But be worn. If you \n "
                    "don't solve it within your third try, you will die. So be worn."], False, True, "golden armor")
 
-current_character = Characters("John", ['raw potato'], [None], 100, 0, 10, "broken bow", "pickaxe",
+current_character = Characters("John", ['raw potato'], [None], 100, 0, 10, "broken bow", None,
                                "You are yourself. Don't let anyone change that.", None, False, True, "beginner armor")
 
 # Initialize Rooms
@@ -469,7 +470,7 @@ TARGET = Room("Target", 'WALMART', 'HOME_D', 'BACK_MALL', 'OFFICE_D', [], False,
               "You are now in front of Target. Walmart is to the North, Home Depot is in the East, Office Depot is \n"
               "to the West, and to the South is the back of the mall.", False, None)
 
-OFFICE_D = Room("Office Depot", 'BANANA', 'HOME_D', None, 'CAR', [], False,
+OFFICE_D = Room("Office Depot", 'BANANA', 'HOME_D', None, 'CAR', ["wire"], False,
                 "You have entered Office Depot and didn't want to go thought because of what happened with Target. \n"
                 "To the West is Target and to the East is the left of the mall.",
                 "You are outside of Office Depot. To the West is Target and to the East is the left of the mall.",
@@ -514,7 +515,7 @@ WALMART = Room("Walmart", None, 'LEFT_MALL', None, 'Target', [], False,
                "You are now outside of walmart. To the East is the left of mall and to the West is Target.", False,
                None)
 
-CAVE = Room("The Bat Cave", None, None, 'PARKING', None, ["staff of armor blueprint", "tr key"], False,
+CAVE = Room("The Bat Cave", None, None, 'PARKING', None, ["staff of emerged power blueprint", "tr key"], False,
             "You have reached the bat cave but no one is here. It is strange that no one whn their is a \n"
             "full parking lot. To the South is the parking lot.",
             "You are now outside of the cave. You still wonder why this is a wonderful cave to visit if they are so \n"
@@ -564,7 +565,7 @@ TROPHY_R = Room("Trophy Room", None, None, 'CORRIDOR', None, [], False,
                 "that are athletes. All you can go is to the South.",
                 "You reached the room that is filled with the trophy's. All you can go is to the South.", False, None)
 
-SHRINE_R = Room("Shrine Room", 'CORRIDOR', None, 'SOUTH_HOUSE', None, [], False,
+SHRINE_R = Room("Shrine Room", 'CORRIDOR', None, 'SOUTH_HOUSE', None, ["candle"], False,
                 "You push the bookshelf to find out that it is a hidden door. You found a room that seems to\n"
                 "be a shrine. You see a picture of a boy that seems to be around 20 years old. You see food, \n"
                 "drinks, and candles that have cobwebs around them. To the North is the secret bookshelf door \n"
@@ -572,13 +573,13 @@ SHRINE_R = Room("Shrine Room", 'CORRIDOR', None, 'SOUTH_HOUSE', None, [], False,
                 "You enter the somewhat creepy shrine room. To the North is the secret bookshelf door that leads to \n"
                 "the corridor and to the South it seems to lead outside.", False, None)
 
-SOUTH_HOUSE = Room("South of House", 'SHRINE_R', None, None, None, [], False,
+SOUTH_HOUSE = Room("South of House", 'SHRINE_R', None, None, None, ["torch"], False,
                    "You open the door to the outside and you you see a torch that is just sitting their. It \n"
                    "fills you up with hope just to remember that you are all alone in this town. To the North \n"
                    "is the shrine room.",
                    "You reached the south part of the house. To the North is the shrine room.", False, None)
 
-DARK_R = Room("The Dark Room", 'SCARY_R', 'CORRIDOR', None, 'WEST_HOUSE', [], False,
+DARK_R = Room("The Dark Room", 'SCARY_R', 'CORRIDOR', None, 'WEST_HOUSE', ["camera"], False,
               "You reached a dark room. You can't see anything in the room. Yo felt something in the back \n"
               "of your leg. It feels like a camera. You hear scary sounds in the room to the North, to the \n"
               "East is the corridor and to the West you hear birds chirping.",
@@ -621,7 +622,7 @@ BOX_R = Room("The Box Room", None, 'MEAT_SECTION', None, 'WALKWAY', [], False,
              "You enter the room filled with boxes. To the East is the Meet section and to the West is the walkway.",
              False, None)
 
-MEAT_SECTION = Room("Meat Section", None, None, 'MIRROR_R', 'BOX_R', [], False,
+MEAT_SECTION = Room("Meat Section", None, None, 'MIRROR_R', 'BOX_R', ["gunpowder"], False,
                     "You reach the meat section of the store. It was all empty but the cow meat section. You \n"
                     "want to take the meat but you don't because it is stealing. To the South is a room full \n"
                     "of mirrors and to the West is the box room.",
@@ -635,7 +636,7 @@ MIRROR_R = Room("Mirror Room", 'MEAT_SECTION', 'THE_ROOM', None, None, [], False
                 "You enter the room that is filled with mirrors. To the North is the meat section and to the East \n"
                 "in a door with a caption 'The Room'.", False, None)
 
-THE_ROOM = Room("The Room", None, None, None, 'MIRROR_R', [], False,
+THE_ROOM = Room("The Room", None, None, None, 'MIRROR_R', ["bolt head piece blueprint"], False,
                 "You enter the mysterious room called the room. You can't see a lot of things since the room \n"
                 "is dimly lit. All you can really see is that people have been here. It is all messy as if \n"
                 "they were looking for something. They probably found it or game up since they was a corner \n"
@@ -650,7 +651,8 @@ BOOK_SECTION = Room("Book Section", 'WALKWAY', None, 'BACK_STORE', 'CLOTHING_SEC
                     "You entered the book section of the store. To the North is the Walkway, to the South is a door \n"
                     "that is leading outside and to the West is the clothing section.", False, None)
 
-CLOTHING_SECTION = Room("Clothing Section", None, 'BOOK_SECTION', None, None, [], False,
+CLOTHING_SECTION = Room("Clothing Section", None, 'BOOK_SECTION', None, None,
+                        ["leather armor", "staff of armor blueprint"], False,
                         "You reach the clothing section. You see lines of clothes missing. The only thing you see \n"
                         "is armor that seems to fit you. It seems to be made out of chain mail armor. To the East \n"
                         "is the book section of the store.",
@@ -697,7 +699,7 @@ LEFT_MALL = Room("Left of Mall", None, None, 'ALLEYWAY', 'WALMART', ["p key 3"],
                  "You are now in the left side of the mall. To the South is the alley way and to the West is Walmart",
                  False, None)
 
-ALLEYWAY = Room("The Alleyway", 'LEFT_MALL', 'CASINO', 'GARBAGE TRUCK', None, [], False,
+ALLEYWAY = Room("The Alleyway", 'LEFT_MALL', 'CASINO', 'GARBAGE TRUCK', None, ["unbreakable book"], False,
                 "You reach an alleyway. Their isn't much that is here other than a piece of paper with a \n"
                 "clown, a bear, a ballerina, and a puppet. You see that it familiar in a way but you couldn't \n"
                 "place it. To the North is the left of the mall, to the East is a Casino and to the South \n"
@@ -715,7 +717,8 @@ CASINO = Room("The Casino", None, None, 'RESTAURANT', 'ALLEYWAY', [], False,
               "You are outside of the casino. To the South is a restaurant and to the West is the alleyway.", False,
               None)
 
-GARBAGE_TRUCK = Room("The Garbage Truck", 'ALLEYWAY', 'STAR_RESTAURANT', None, None, [], False,
+GARBAGE_TRUCK = Room("The Garbage Truck", 'ALLEYWAY', 'STAR_RESTAURANT', None, None,
+                     ["paper with writing", "armor glue"], False,
                      "You reached the Garbage truck. When you reach their, you see that the passenger seat s open. \n"
                      "You enter the garbage truck and their seems to be a key of some sort. Their is also a piece \n"
                      "of paper that has some writing on it. To the North is the alleyway and to the East is a \n"
@@ -797,7 +800,7 @@ COMPUTER_R = Room("Computer Room", 'STONE_LIBRARY', 'REFLECTIVE_R', None, None, 
                   "You entered the room filled with computers. To the North is door that is made out of stone. it \n"
                   "appears to be open. To the East is the room filled with mirrors.", False, None)
 
-STONE_LIBRARY = Room("STONE_LIBRARY", None, None, 'COMPUTER_R', 'GARDEN', [], False,
+STONE_LIBRARY = Room("STONE_LIBRARY", None, None, 'COMPUTER_R', 'GARDEN', ["iron bar"], False,
                      "You open the stone door. When you open the door, you see a huge library made up of stones. \n"
                      "You wonder why the stone door wasn't even locked. You go down the aile and you see that the \n"
                      "books are very old yet new. To the South is the computer room and to the West is a garden.",
@@ -823,7 +826,7 @@ CASTLE_KITCHEN = Room("Castle Kitchen", 'CASTLE_ENTRANCE', 'GARDEN', 'MAGIC_LIBR
                       "garden, to the South is a bookshelf that has the work 'magic' on it and to the West are \n"
                       "big doors.", False, None)
 
-MAGIC_LIBRARY = Room("Magic Library", 'KITCHEN', None, 'WATERFALL_R', None, [], False,
+MAGIC_LIBRARY = Room("Magic Library", 'KITCHEN', None, 'WATERFALL_R', None, ["cosmonium ore", "fire frost book"], False,
                      "You found the hidden library. All around you, you feel like something very dark and \n"
                      "mysterious things are around. Then you see a book started to drift away with a magenta aura. \n"
                      "Then use see another book but with a yellow aura around it. You don't want to fallow it \n"
@@ -831,7 +834,7 @@ MAGIC_LIBRARY = Room("Magic Library", 'KITCHEN', None, 'WATERFALL_R', None, [], 
                      "You are now in the library with the books that can fly. To the North is the kitchen and to \n"
                      "the South is a blue door.", False, None)
 
-WATERFALL_R = Room("Waterfall Room", 'MAGIC_LIBRARY', None, 'MINE_SHAFT', None, [], False,
+WATERFALL_R = Room("Waterfall Room", 'MAGIC_LIBRARY', None, 'MINE_SHAFT', None, ["staff of healing blueprint"], False,
                    "You enter the peaceful room with a waterfall. You wonder how such beauty is in a place such \n"
                    "like this. In the Room you see that a rainbow is trying to for but is sucked up from a tube in \n"
                    "the ceiling. It seems to be going to another place from the tube. To the North is the magic \n"
@@ -839,7 +842,8 @@ WATERFALL_R = Room("Waterfall Room", 'MAGIC_LIBRARY', None, 'MINE_SHAFT', None, 
                    "You entered the room with the beautiful water fall that seems to be out of place. To the North \n"
                    "is the magic library and to the South is the Mine shaft.", False, None)
 
-MINE_SHAFT = Room("The Mine Shaft", 'WATERFALL_R', None, None, 'CAVERN', ["Pickaxe"], False,
+MINE_SHAFT = Room("The Mine Shaft", 'WATERFALL_R', None, None, 'CAVERN',
+                  ["pickaxe", "diamond", "gold bar", "strength book"], False,
                   "You have reached a mine shaft. You wonder why a place like this would even have a mine shaft \n"
                   "since it can randomly generate whatever it wants. Wait, you didn't know that? Oh well. The only \n"
                   "thing some what ordinary is that a pickaxe is here. To the North is the peaceful waterfall room \n"
@@ -847,14 +851,14 @@ MINE_SHAFT = Room("The Mine Shaft", 'WATERFALL_R', None, None, 'CAVERN', ["Picka
                   "Why did you come back to the mine if their really isn't anything here for you. To the North is \n"
                   "the peaceful waterfall room and to the West is a deeper part of the mine shaft.", False, None)
 
-CAVERN = Room("Cavern", 'LOOPER', 'MINE_SHAFT', None, None, [], False,
+CAVERN = Room("Cavern", 'LOOPER', 'MINE_SHAFT', None, None, ["stone"], False,
               "You are now in the deeper part of the mine shaft. All that is around you is rock and some minerals. \n"
               "To the North is what look like a way out of the mine shaft and to the East is the mine shaft that \n"
-              "had the pickaxe.",
+              "has the pickaxe.",
               "You are now in the cavern with rock all around you. To the North is what look like a way out of the \n"
               "mine shaft and to the East is the mine shaft that had the pickaxe.", False, None)
 
-LOOPER = Room("The Looper", None, 'THRONE_R', 'CAVERN', 'RAINBOW_R', [], False,
+LOOPER = Room("The Looper", None, 'THRONE_R', 'CAVERN', 'RAINBOW_R', ["dull sword"], False,
               "You are now in a room that is filled with side way eights. Then you remembered that side way eights \n"
               "is the infinity sign. Then you see that their is a neon sign that says 'The lopper'. To the East is \n"
               "a throne room, to the South is the cavern and to the West is a door that has rainbows all over the \n"
@@ -862,7 +866,7 @@ LOOPER = Room("The Looper", None, 'THRONE_R', 'CAVERN', 'RAINBOW_R', [], False,
               "You are back to the Looper room. This sounds ironic. Does it to you? To the East is a throne room, \n"
               "to the South is the cavern and to the West is a door that has rainbows all over the door.", False, None)
 
-THRONE_R = Room("Throne Room", None, 'CASTLE_KITCHEN', None, 'LOOPER', [], False,
+THRONE_R = Room("Throne Room", None, 'CASTLE_KITCHEN', None, 'LOOPER', ["magical stone"], False,
                 "You entered the throne room that is in the castle. You see that their is someone on one of the \n"
                 "thrones. He looked like a king. But the way acted. he didn't seem like a king. To the East is \n"
                 "the kitchen and to the West is the room that leads to somewhere else.",
@@ -870,7 +874,7 @@ THRONE_R = Room("Throne Room", None, 'CASTLE_KITCHEN', None, 'LOOPER', [], False
                 "kill the king.). To the East is the kitchen and to the West is the room that leads to somewhere else.",
                 False, None)
 
-RAINBOW_R = Room("Rainbow Room", None, 'BLOOD_MOON_R', 'LOOPER', None, ["p key 4"], False,
+RAINBOW_R = Room("Rainbow Room", None, 'BLOOD_MOON_R', 'LOOPER', None, ["p key 4", "rainbow in a bottle"], False,
                  "You have entered the room that has a bunch of rainbows. But they were in jars. They shouldn't be \n"
                  "in jars. Then you see that their is a pipe on the ceiling that seems to be the one that transports \n"
                  "the rainbow into this room. To the East is a door that you can't see into it and to the West is \n"
@@ -879,7 +883,7 @@ RAINBOW_R = Room("Rainbow Room", None, 'BLOOD_MOON_R', 'LOOPER', None, ["p key 4
                  "come back? To the East is a door that you can't see into it and to the West is a room that has an \n"
                  "8 on it.", False, None)
 
-BLOOD_MOON_R = Room("Blood Moon Room", None, 'SECTION_3', None, 'RAINBOW_R', [], False,
+BLOOD_MOON_R = Room("Blood Moon Room", None, 'SECTION_3', None, 'RAINBOW_R', ["x-bow"], False,
                     "You enter the room that was dark inside. But as soon as you came in. You were able to see that \n"
                     "their was a blood moon on the ceiling. 'How is this possible?' you asked yourself. To the East \n"
                     "is a hallway that you can go to in 3 directions and to the West is a room with a rainbow door.",

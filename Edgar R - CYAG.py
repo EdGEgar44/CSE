@@ -977,7 +977,8 @@ commands_possible = ["jump", "H use", "armor info", "grab", "attack damage", "dr
 craftable = ["iron armor", "gold armor", "diamond armor", "armor of undying", "armor of strength", "metal bow |",
              "legendary bow", "wooden arrow", "metal arrow", "bolt head piece", "normal crossbow bolt",
              "explosive crossbow bolt", "electric crossbow bolt", "staff of healing", "staff of emerged power",
-             "staff of power", "sticks", "cosmonium ingot", "magical sword", "armor shell", "battery", "firework"]
+             "staff of power", "sticks", "cosmonium ingot", "magical sword", "armor shell", "battery", "firework",
+             "cooked potato"]
 
 
 def crafting():
@@ -1034,6 +1035,8 @@ def crafting():
                     print("You have created the ARMOR OF STRENGTH. For more info, type 'armor of strength' in the "
                           "command")
                     crafted += 1
+                else:
+                    print("You don't have enough materials for this item.")
             else:
                 print("You don't have the materials for this item.")
         if item_crafting == "iron armor":
@@ -1074,6 +1077,8 @@ def crafting():
                     print("You have crafted golden armor. For more info, type 'inventory' and then 'gold armor' in the"
                           " command.")
                     crafted += 1
+                else:
+                    print("You don't have enough materials for this item.")
             else:
                 print("You don't have the materials for this item.")
         if item_crafting == "diamond armor":
@@ -1094,6 +1099,8 @@ def crafting():
                           "and \n"
                           "then 'diamond armor' in the command.")
                     crafted += 1
+                else:
+                    print("You don't have enough materials for this item.")
             else:
                 print("You don't have the materials for this item.")
         if item_crafting == "metal bow":
@@ -1352,11 +1359,33 @@ def crafting():
                     print("You crafted %s armor shells. For more info, type in 'inventory' and then 'armor shell' in "
                           "the \n"
                           "command.")
+                    crafted += 1
                 else:
                     print("You are asking for more than what you can craft.")
             else:
                 print("You don't have the material for this item.")
         if item_crafting == "battery":
+            if "wire" and "armor shell" in current_character.inventory:
+                if wire.amount >= 10 and armor_shell.amount >= 5:
+                    current_character.inventory.append("battery")
+                    battery.amount += 1
+                    wire.amount -= 10
+                    if wire.amount == 0:
+                        current_character.inventory.pop("wire")
+                        print("You no longer have any wires in your inventory.")
+                    armor_shell.amount -= 5
+                    if armor_shell.amount == 0:
+                        current_character.inventory.pop("armor shell")
+                        print("You no longer have any armor shells in your inventory.")
+                    print("You no longer have 10 wires and 5 armor shell ")
+                    print("You crafted a battery. For more info, type in 'inventory' and then 'battery' in the "
+                          "command.")
+                    crafted += 1
+                else:
+                    print("You don't have enough materials for this item.")
+            else:
+                print("You don't have the materials to craft this item.")
+        if item_crafting == "firework":
             if "gunpowder" and "armor shell" in current_character.inventory:
                 firework_amount = input("How many fireworks do you want to craft? ")
                 amount_f_1 = gunpowder.amount - armor_shell.amount
@@ -1373,6 +1402,26 @@ def crafting():
                     print("You no longer have %s gunpowder and armor shell." % possible_f)
                     print("You crafted %s fireworks. For more info, type 'inventory' and then 'firework' in the "
                           "command." % possible_f)
+                    crafted += 1
+        if item_crafting == "cooked potato":
+            if "raw potato" and "torch" in current_character.inventory:
+                cooked_potato_amount = input("Home many cooked potatoes do you want to craft? ")
+                possible_cp = raw_potato.amount
+                if possible_cp <= cooked_potato_amount:
+                    if "cooked potato" not in current_character.inventory:
+                        current_character.inventory.append("cooked potato")
+                        cooked_potato.amount += cooked_potato_amount
+                    else:
+                        cooked_potato.amount += cooked_potato_amount
+                    print("Yo no longer have %s raw potato" % possible_cp)
+                    print("You crafted %s cooked potatoes. For more info, type 'inventory' and then 'cooked potato' \n"
+                          "in the command.")
+                    crafted += 1
+                else:
+                    print("You are asking for more than what you can do.")
+            else:
+                print("You don't have the materials for this item.")
+    crafted -= 1
 
 
 def other_command():

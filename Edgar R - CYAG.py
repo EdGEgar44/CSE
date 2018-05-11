@@ -437,7 +437,7 @@ unicorn_meat = Food("UNICORN MEAT",
                     1, 80, True, 1)
 
 # Characters
-gabe = Characters("Gabe", ["pickaxe", "torch", "wallet"], None, 100, 10, 20, "sword", "pickaxe",
+Gabe = Characters("Gabe", ["pickaxe", "torch", "wallet"], None, 100, 10, 20, "sword", "pickaxe",
                   "The Enemies name is Gabe, he is one of the hardest people to fight. He have killed many people \n"
                   "for trying to solve the puzzle. They never got to the question so they weren't able to tell \n"
                   "people the question.",
@@ -448,6 +448,20 @@ gabe = Characters("Gabe", ["pickaxe", "torch", "wallet"], None, 100, 10, 20, "sw
 
 current_character = Characters("John", ['raw potato'], [None], 100, 0, 10, "broken bow", None,
                                "You are yourself. Don't let anyone change that.", None, False, True, "beginner armor")
+
+# Bosses
+Stick_boss = Characters("THE STICK BOSS", None, None, 999999, 99, 30, None, None,
+                        "This boss is the stick boss. It is supper hard. It only has one weakness. You can only \n"
+                        "attack it if you make it mad.", None, False, True, None)
+
+Dog_boss = Characters("THE DOG BOSS", None, None, 200, 40, 10, None, None,
+                      "This boss is some-what hard. It has one weakness.", None, True, True, None)
+
+Witch_boss = Characters("WITCH BOSS", None, None, 400, 45, 20, None, None,
+                        "This boss is harder than the Dog boss. But easier than the boss boss. It doesn't have a \n"
+                        "weakness. You just got to fight it.", None, True, True, None)
+
+#Enemies
 
 # Initialize Rooms
 BACK_MALL = Room("Back of the Mall", 'TARGET', None, 'FRONT_STORE', None, ["raw potato"], False,
@@ -1191,10 +1205,18 @@ def crafting():
                 if amount_ma_2 > 0:
                     possible_ma = iron_bar.amount
                 if possible_ma <= metal_arrow_amount:
-                    current_character.inventory.append("metal arrow")
-                    current_character.inventory.pop("sticks")
-                    current_character.inventory.pop("stone")
-                    print("You no longer have %s sticks and metal bars." % possible_ma)
+                    if "metal arrow" not in current_character.inventory:
+                        current_character.inventory.append("metal arrow")
+                    metal_arrow.amount += possible_ma
+                    sticks.amount -= metal_arrow_amount
+                    if sticks.amount == 0:
+                        current_character.inventory.pop("sticks")
+                        print("You no longer have sticks in your inventory.")
+                    iron_bar.amount -= metal_arrow_amount
+                    if iron_bar.amount == 0:
+                        current_character.inventory.pop("iron bar")
+                        print("You no longer have iron bars in your inventory.")
+                    print("You no longer have %s sticks and iron bars." % possible_ma)
                     print("You crafted %s metal arrows. For more info, type 'inventory' and then 'metal arrow' in "
                           "the \n"
                           "command." % possible_ma)
@@ -1205,17 +1227,26 @@ def crafting():
                 print("You don't have the materials for this item.")
         if item_crafting == "bolt head piece":
             if "iron bar" and "bolt head piece" in current_character.inventory:
-                bolt_head_piece_amount = input("How many bolt head pieces do you want to craft? ")
-                possible_bhp = iron_bar.amount
-                if bolt_head_piece_amount <= possible_bhp:
-                    current_character.inventory.append("bolt head piece")
-                    current_character.inventory.pop("iron bar")
-                    print("You no longer have %s iron bars." % possible_bhp)
-                    print("You crafted %s bolt heads. For more info, type 'inventory' and then 'bolt head' in the \n"
-                          "command." % possible_bhp)
-                    crafted += 1
+                if "bolt head piece blueprint" in current_character.blueprint:
+                    bolt_head_piece_amount = input("How many bolt head pieces do you want to craft? ")
+                    possible_bhp = iron_bar.amount
+                    if bolt_head_piece_amount <= possible_bhp:
+                        if "bolt head piece" not in current_character.inventory:
+                            current_character.inventory.append("bolt head piece")
+                        bolt_head_piece.amount += bolt_head_piece_amount
+                        iron_bar.amount -= bolt_head_piece_amount
+                        if iron_bar.amount == 0:
+                            current_character.inventory.pop("iron bar")
+                            print("You no longer have iron bars in your inventory.")
+                        print("You no longer have %s iron bars." % possible_bhp)
+                        print("You crafted %s bolt heads. For more info, type 'inventory' and then 'bolt head' in "
+                              "the \n"
+                              "command." % possible_bhp)
+                        crafted += 1
+                    else:
+                        print("You are asking for more than what you can craft.")
                 else:
-                    print("You are asking for more than what you can craft.")
+                    print("You don't have the bolt head piece blueprint.")
             else:
                 print("You don't have the materials for this item.")
         if item_crafting == "normal crossbow bolt":
@@ -1229,9 +1260,17 @@ def crafting():
                 if amount_ncb_2 > 0:
                     possible_ncb = bolt_head_piece.amount
                 if possible_ncb <= normal_crossbow_bolt_amount:
-                    current_character.inventory.append("normal crossbow bolt")
-                    current_character.inventory.pop("bolt head piece")
-                    current_character.inventory.pop("sticks")
+                    if "normal crossbow bolt" not in current_character.inventory:
+                        current_character.inventory.append("normal crossbow bolt")
+                    normal_crossbow_bolt.amount += possible_ncb
+                    bolt_head_piece.amount -= normal_crossbow_bolt_amount
+                    if bolt_head_piece.amount == 0:
+                        current_character.inventory.pop("bolt head piece")
+                        print("You no longer have bolt head pieces in your inventory.")
+                    sticks.amount -= normal_crossbow_bolt_amount
+                    if sticks.amount == 0:
+                        current_character.inventory.pop("sticks")
+                        print("You no longer have sticks in your inventory.")
                     print("You no longer have %s sticks and bolt head pieces." % possible_ncb)
                     print("You craft %s normal crossbow bolt. For more info, type 'inventory' and then \n"
                           "'normal crossbow bolt' in the command." % possible_ncb)

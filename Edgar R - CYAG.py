@@ -476,7 +476,7 @@ tree_army = Characters("tree army", None, None, 100, 30, 50, None, None,
 wonbers = Characters("wonbers", None, None, 100, 50, 70, None, None,
                      "This is a wonbers. They do a lot of damage.", None, True, True, None)
 
-    # Initialize Rooms
+# Initialize Rooms
 BACK_MALL = Room("Back of the Mall", 'TARGET', None, 'FRONT_STORE', None, ["raw potato"], False,
                  "You are in the back of the mall. You wonder were you are and how you got here. You see Target to \n"
                  "North and the front of a store to the south.",
@@ -1034,7 +1034,8 @@ def crafting():
                         else:
                             print("You don't have enough materials for this item.")
                     else:
-                        print("You don't have the materials for this item.")
+                        print("You don't have the materials for this item. You either don't have 10 cosnomium ore or \n"
+                              "15 armor shells.")
                 else:
                     print("You already have this item.")
             else:
@@ -1060,7 +1061,7 @@ def crafting():
                     print("You have created the ARMOR OF STRENGTH. For more info, type 'armor of strength' in the "
                           "command")
                 else:
-                    print("You don't have enough materials for this item.")
+                    print("You don't have enough materials for this item. You don't have 5 armor shell.")
             else:
                 print("You don't have the materials for this item.")
         if item_crafting == "iron armor":
@@ -1080,7 +1081,8 @@ def crafting():
                     print("You have crafted iron armor. Type in 'iron armor'in the command to see what it does and its "
                           "stats.")
                 else:
-                    print("You don't have enough materials.")
+                    print("You don't have enough materials for this item. You either don't have 5 iron bars or 10 \n"
+                          "armor shells.")
             else:
                 print("You don't have the materials for this item.")
         if item_crafting == "gold armor":
@@ -1100,7 +1102,8 @@ def crafting():
                     print("You have crafted golden armor. For more info, type 'inventory' and then 'gold armor' in the"
                           " command.")
                 else:
-                    print("You don't have enough materials for this item.")
+                    print("You don't have enough materials for this item. You either don't have 5 gold bars or 10 \n"
+                          "armor shells.")
             else:
                 print("You don't have the materials for this item.")
         if item_crafting == "diamond armor":
@@ -1121,7 +1124,8 @@ def crafting():
                           "and \n"
                           "then 'diamond armor' in the command.")
                 else:
-                    print("You don't have enough materials for this item.")
+                    print("You don't have enough materials for this item. You either don't have 5 diamonds or 10 \n"
+                          "armor shells.")
             else:
                 print("You don't have the materials for this item.")
         if item_crafting == "metal bow":
@@ -1197,7 +1201,7 @@ def crafting():
                 else:
                     print("You are asking for more than what you can craft.")
             else:
-                print("You don't have the materials for this item.")
+                print("You don't have the materials for this item. You either don't have sticks or stones.")
         if item_crafting == "metal arrow":
             if "iron bar" and "sticks" in current_character.inventory:
                 metal_arrow_amount = input("How many metal arrows do you want to craft? ")
@@ -1227,7 +1231,7 @@ def crafting():
                 else:
                     print("You are asking for more than what you can craft.")
             else:
-                print("You don't have the materials for this item.")
+                print("You don't have the materials for this item. You either don't have iron bars or sticks.")
         if item_crafting == "bolt head piece":
             if "iron bar" and "bolt head piece" in current_character.inventory:
                 if "bolt head piece blueprint" in current_character.blueprint:
@@ -1250,7 +1254,8 @@ def crafting():
                 else:
                     print("You don't have the bolt head piece blueprint.")
             else:
-                print("You don't have the materials for this item.")
+                print("You don't have the materials for this item. You either don't have iron bars or bolt head "
+                      "pieces.")
         if item_crafting == "normal crossbow bolt":
             if "bolt head piece" and "sticks" in current_character.inventory:
                 normal_crossbow_bolt_amount = input("How many normal crossbow bolt do you want to craft? ")
@@ -1279,7 +1284,7 @@ def crafting():
                 else:
                     print("You are asking for more than what you can craft.")
             else:
-                print("You don't have the materials for this item.")
+                print("You don't have the materials for this item. You either dont have bolt head pieces or sticks.")
         if item_crafting == "explosive crossbow bolt":
             if "normal crossbow bolt" and "gunpowder" in current_character.inventory:
                 explosive_crossbow_bolt_amount = input("How many explosive crossbow bolt do you want to craft? ")
@@ -1309,7 +1314,8 @@ def crafting():
                 else:
                     print("You are asking for more than what you can craft.")
             else:
-                print("You don't have the materials for this item.")
+                print("You don't have the materials for this item. You either don't have normal crossbow bolt or \n"
+                      "gunpowder.")
         if item_crafting == "electric crossbow bolt":
             if "normal crossbow bolt" and "battery" in current_character.inventory:
                 electric_crossbow_bolt_amount = input("How many electric crossbow bolt do you want to craft? ")
@@ -1321,27 +1327,43 @@ def crafting():
                 if amount_excb_2 > 0:
                     possible_excb = normal_crossbow_bolt.amount
                 if possible_excb <= electric_crossbow_bolt_amount:
-                    current_character.inventory.append("ELECTRIC CROSSBOW BOLT")
-                    current_character.inventory.pop("normal crossbow bolt")
-                    current_character.inventory.pop("battery")
+                    if "electric crossbow bolt" not in current_character.inventory:
+                        current_character.inventory.append("ELECTRIC CROSSBOW BOLT")
+                    electric_crossbow_bolt.amount += electric_crossbow_bolt_amount
+                    normal_crossbow_bolt.amount -= electric_crossbow_bolt_amount
+                    if normal_crossbow_bolt.amount == 0:
+                        current_character.inventory.pop("normal crossbow bolt")
+                        print("You no longer have normal crossbow bolt in your inventory.")
+                    battery.amount -= electric_crossbow_bolt_amount
+                    if battery.amount == 0:
+                        print("You no longer have battery power.")
                     print("You no longer have %s normal crossbow bolt and battery power." % possible_excb)
                     print("You crafted %s legendary electric crossbow bolt. For more info, type 'inventory' and then \n"
                           "'ELECTRIC CROSSBOW BOLT' in the command" % possible_excb)
                 else:
                     print("You are asking for more than what you can craft.")
             else:
-                print("You don't have the materials for this item.")
+                print("You don't have the materials for this item. You either don't have normal crossbow bolts or \n"
+                      "battery power.")
         if item_crafting == "staff of healing":
             if "staff of healing blueprint" in current_character.blueprint:
                 if "STAFF OF HEALING" not in current_character.inventory:
                     if "sticks" and "cosmonium ingot" in current_character.inventory:
-                        current_character.inventory.append("staff of healing")
-                        current_character.inventory.pop("sticks")
-                        current_character.inventory.pop("cosmonium")
-                        print("You no longer have 10 sticks and 10 cosmonium ingots.")
-                        print("You crafted a legendary item. You crafted the staff of healing. For more info, type "
-                              "in \n"
-                              "'inventory' and then 'staff of healing' in the command.")
+                        if sticks.amount >= 10 and cosmonium_ingot.amount >= 5:
+                            current_character.inventory.append("staff of healing")
+                            staff_of_healing.amount += 1
+                            sticks.amount -= 10
+                            if sticks.amount == 0:
+                                current_character.inventory.pop("sticks")
+                                print("You no longer have sticks in your inventory.")
+                            cosmonium_ingot.amount -= 5
+                            if cosmonium_ingot.amount == 0:
+                                current_character.inventory.pop("cosmonium ingots")
+                                print("You no longer have cosmonium ingots in your inventory.")
+                            print("You no longer have 10 sticks and 10 cosmonium ingots.")
+                            print("You crafted a legendary item. You crafted the staff of healing. For more info, type "
+                                  "in \n"
+                                  "'inventory' and then 'staff of healing' in the command.")
                     else:
                         print("You don't have the materials for this item.")
                 else:

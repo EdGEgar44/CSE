@@ -4,44 +4,45 @@ import random
 
 
 class Item(object):
-    def __init__(self, name, description, durability, drop, amount):
+    def __init__(self, name, description, durability, base_durability, drop, amount):
         self.name = name
         self.description = description
         self.durability = durability
+        self.base_durability = base_durability
         self.drop = drop
         self.amount = amount
 
 
 class Enchanted(Item):
-    def __init__(self, name, description, durability, enchanted, drop, amount):
-        super(Enchanted, self).__init__(name, description, durability, drop, amount)
+    def __init__(self, name, description, durability, base_durability, enchanted, drop, amount):
+        super(Enchanted, self).__init__(name, description, durability, base_durability, drop, amount)
         self.enchanted = enchanted
 
 
 class Key(Item):
-    def __init__(self, name, description, durability, door, drop, door_number, amount):
-        super(Key, self).__init__(name, description, durability, drop, amount)
+    def __init__(self, name, description, durability, base_durability, door, drop, door_number, amount):
+        super(Key, self).__init__(name, description, durability, base_durability, drop, amount)
         self.door = door
         self.door_number = door_number
 
 
 class Edible(Item):
-    def __init__(self, name, description, durability, drop, amount):
-        super(Edible, self).__init__(name, description, durability, drop, amount)
+    def __init__(self, name, description, durability, base_durability, drop, amount):
+        super(Edible, self).__init__(name, description, durability, base_durability, drop, amount)
 
 
 class Armor(Item):
-    def __init__(self, name, description, durability, drop, armor, amount, creatable):
-        super(Armor, self).__init__(name, description, durability, drop, amount)
+    def __init__(self, name, description, durability, base_durability, drop, armor, amount, creatable):
+        super(Armor, self).__init__(name, description, durability, base_durability, drop, amount)
         self.armor = armor
         self.creatable = creatable
 
 
 class Weapons(Item):
-    def __init__(self, name, description, durability, base_durability, drop, damage, ability, crafted, amount):
-        super(Weapons, self).__init__(name, description, durability, drop, amount)
+    def __init__(self, name, description, durability, base_durability, drop, damage, ability, crafted,
+                 amount):
+        super(Weapons, self).__init__(name, description, durability, base_durability, drop, amount)
         self.ability = ability
-        self.base_durability = base_durability
         self.crafted = crafted
         self.damage = damage
 
@@ -49,43 +50,45 @@ class Weapons(Item):
 
 
 class Potion(Edible):
-    def __init__(self, name, description, durability, drop, duration, ability, amount):
-        super(Potion, self).__init__(name, description, durability, drop, amount)
+    def __init__(self, name, description, durability, base_durability, drop, duration, ability, amount):
+        super(Potion, self).__init__(name, description, durability, base_durability, drop, amount)
         self.duration = duration
         self.ability = ability
 
 
 class Food(Edible):
-    def __init__(self, name, description, durability, heal, drop, amount):
-        super(Food, self).__init__(name, description, durability, drop, amount)
+    def __init__(self, name, description, durability, base_durability, heal, drop, amount):
+        super(Food, self).__init__(name, description, durability, base_durability, drop, amount)
         self.heal = heal
 
 
 class Lowhealth(Food):
-    def __init__(self, name, description, durability, heal, drop, amount):
-        super(Lowhealth, self).__init__(name, description, durability, heal, drop, amount)
+    def __init__(self, name, description, durability, base_durability, heal, drop, amount):
+        super(Lowhealth, self).__init__(name, description, durability, base_durability, heal, drop, amount)
 
 
 class Maxhealth(Food):
-    def __init__(self, name, description, durability, heal, drop, amount):
-        super(Maxhealth, self).__init__(name, description, durability, heal, drop, amount)
+    def __init__(self, name, description, durability, base_durability, heal, drop, amount):
+        super(Maxhealth, self).__init__(name, description, durability, base_durability, heal, drop, amount)
 
 
 class Healthpot(Potion):
-    def __init__(self, name, description, durability, drop, duration, ability, heal, amount):
-        super(Healthpot, self).__init__(name, description, durability, drop, duration, ability, amount)
+    def __init__(self, name, description, durability, base_durability, drop, duration, ability, heal, amount):
+        super(Healthpot, self).__init__(name, description, durability, base_durability, drop, duration, ability, amount)
         self.heal = heal
 
 
 class Strengthpot(Potion):
-    def __init__(self, name, description, durability, duration, drop, ability, strength, amount):
-        super(Strengthpot, self).__init__(name, description, durability, duration, drop, ability, amount)
+    def __init__(self, name, description, durability, base_durability, duration, drop, ability, strength, amount):
+        super(Strengthpot, self).__init__(name, description, durability, base_durability, duration, drop, ability,
+                                          amount)
         self.strength = strength
 
 
 class Resistancepot(Potion):
-    def __init__(self, name, description, durability, drop, duration, ability, armor, amount):
-        super(Resistancepot, self).__init__(name, description, durability, drop, duration, ability, amount)
+    def __init__(self, name, description, durability, base_durability, drop, duration, ability, armor, amount):
+        super(Resistancepot, self).__init__(name, description, durability, base_durability, drop, duration, ability,
+                                            amount)
         self.armor = armor
 
 
@@ -114,15 +117,15 @@ class Staff(Weapons):
 
 
 class Ammo(Item):
-    def __init__(self, name, description, durability, drop, amount, weapon, ability):
-        super(Ammo, self).__init__(name, description, durability, drop, amount)
+    def __init__(self, name, description, durability, base_durability, drop, amount, weapon, ability):
+        super(Ammo, self).__init__(name, description, durability, base_durability, drop, amount)
         self.weapon = weapon
         self.ability = ability
 
 
 class EnchantBook(Enchanted):
-    def __init__(self, name, description, durability, enchanted, drop, amount):
-        super(EnchantBook, self).__init__(name, description, durability, enchanted, drop, amount)
+    def __init__(self, name, description, durability, base_durability, enchanted, drop, amount):
+        super(EnchantBook, self).__init__(name, description, durability, base_durability, enchanted, drop, amount)
 
 
 class Characters(object):
@@ -191,152 +194,153 @@ class Room(object):
 
 # Keys
 tr_key = Key("TR Key",
-             "The TR Key seems to open a door that is locked. Which door that can be is unknown.", None, 'teleporter_R',
-             True, 0, 1)
+             "The TR Key seems to open a door that is locked. Which door that can be is unknown.", None, None,
+             'teleporter_R', True, 0, 1)
 
 p_key_1 = Key("P Key #1",
-              "The first key seems to not be the only key.", None, 'puzzle_R', True, 1, 1)
+              "The first key seems to not be the only key.", None, None, 'puzzle_R', True, 1, 1)
 
 p_key_2 = Key("P Key #2",
-              "The second key seems to not be the only key.", None, 'puzzle_R', True, 1, 1)
+              "The second key seems to not be the only key.", None, None, 'puzzle_R', True, 1, 1)
 
 p_key_3 = Key("P Key #3",
-              "The third key seems o not be the only key.", None, 'puzzle_R', True, 1, 1)
+              "The third key seems o not be the only key.", None, None, 'puzzle_R', True, 1, 1)
 
 p_key_4 = Key("P Key #4",
               "The Last key seems to not be the only key. Their is a note in the back. It reads 'You must have all \n"
-              "of the keys in order to be in the puzzle room.'", None, 'puzzle_R', True, 1, 1)
+              "of the keys in order to be in the puzzle room.'", None, None, 'puzzle_R', True, 1, 1)
 
 # Armor
 beginner_armor = Armor("beginner armor",
                        "This armor is what you start of with at the beginning of the ga- I mean you start of with.",
-                       2000, False, 10, 1, False)
+                       2000, 2000, False, 10, 1, False)
 
 leather_armor = Armor("leather armor",
-                      "This armor type is the weakest armor possible.", 20, True, 30, 0, False)
+                      "This armor type is the weakest armor possible.", 20, 20, True, 30, 0, False)
 
 wood_armor = Armor("wooden armor",
-                   "This armor is made complete made of flexible wood.", 30, True, 35, 0, True)
+                   "This armor is made complete made of flexible wood.", 30, 30, True, 35, 0, True)
 
 iron_armor = Armor("iron armor",
-                   "This armor is made of iron bars.", 45, True, 50, 0, True)
+                   "This armor is made of iron bars.", 45, 45, True, 50, 0, True)
 
 gold_armor = Armor("gold armor",
-                   "This armor is made of gold bars. It is extremely heavy and it doesn't block a lot of hits.", 35,
+                   "This armor is made of gold bars. It is extremely heavy and it doesn't block a lot of hits.", 35, 35,
                    True, 15, 0, True)
 
 diamond_armor = Armor("diamond armor",
-                      "This armor is made from diamonds.", 150, True, 85, 0, True)
+                      "This armor is made from diamonds.", 150, 150, True, 85, 0, True)
 
 armor_of_undying = Armor("ARMOR OF UNDYING",
                          "The armor of undying will revive you when you die. But when the armor revives you, it will \n"
-                         "break and you will not have the armor anymore.", 1, True, 20, 0, True)
+                         "break and you will not have the armor anymore.", 1, 1, True, 20, 0, True)
 
 armor_of_strength = Armor("ARMOR OF STRENGTH",
                           "The armor of strength will give you extra damage. But when you attack, you will lose 5% \n"
-                          "of your base health(100).", 250, True, 35, 0, True)
+                          "of your base health(100).", 250, 250, True, 35, 0, True)
 
 armor_shell = Armor("armor shell",
-                    "This armor shell is used so that you can make armor.", 1, True, 1, 0, True)
+                    "This armor shell is used so that you can make armor.", 1, 1, True, 1, 0, True)
 
 # Extras
 candle = Item("candle",
-              "This candle can be use so that you can burn something. But what?", 1, True, 1)
+              "This candle can be use so that you can burn something. But what?", 1, 1, True, 1)
 
 torch = Item("torch",
-             "This torch can be used to burn something. But what?", 1, True, 1)
+             "This torch can be used to burn something. But what?", 1, 1, True, 1)
 
 pickaxe = Item("a diamond pickaxe",
                "This item seams to be used to mine hard to get materials. Which material it is unknown. Maybe you \n"
-               "will find it somewhere.", 1, True, 1)
+               "will find it somewhere.", 1, 1, True, 1)
 
 rainbow_in_a_bottle = Healthpot("rainbow in a bottle",
                                 "The rainbow in the bottle fills you up with warmth. It is almost as if it can heal \n"
-                                "you.", 5, True, 0, "heal", 20, 1)
+                                "you.", 5, 5, True, 0, "heal", 20, 1)
 
 paper_with_writing = Item("paper with writing",
                           "The piece of paper that you found has writing in it. it reads 'You Must find the puzzle \n"
                           "room. if you don't we will never escApe. who ever you are, you Must find us. we are \n"
                           "Trapped. we Can't find tHe exit. you must pass the test in order to free us. hope you are \n"
                           "come quickly. we care running out of food. You must also craft the legendary armor of \n"
-                          "undying. That is if you are worth it. You can craft it using cosmonium ingots.'", 1, True, 1)
+                          "undying. That is if you are worth it. You can craft it using cosmonium ingots.'", 1, 1, True,
+                          1)
 
 staff_of_armor_blueprint = Item("staff of armor blueprint",
                                 "This piece of paper has a blueprint for the staff of armor. You need 10 sticks, \n"
-                                "a diamond, and a ", 1, True, 1)
+                                "a diamond, and a ", 1, 1, True, 1)
 
 staff_of_emerged_power_blueprint = Item("staff of emerged power blueprint",
                                         "This is a piece of paper has a blueprint for the staff of emerged power. \n"
-                                        "You need 10 sticks, 5 diamonds, and a cosmonium ingot.", 1, True, 1)
+                                        "You need 10 sticks, 5 diamonds, and a cosmonium ingot.", 1, 1, True, 1)
 
 staff_of_healing_blueprint = Item("staff of healing blueprint",
                                   "This is a piece of paper has a blueprint for the staff of healing. You need \n"
-                                  "10 sticks, 2 diamonds, and 4 cosmonium ingots.", 1, True, 1)
+                                  "10 sticks, 2 diamonds, and 4 cosmonium ingots.", 1, 1, True, 1)
 
 camera = Item("camera",
-              "You look at the camera. You wonder if they are any photos inside it.", 1, True, 1)
+              "You look at the camera. You wonder if they are any photos inside it.", 1, 1, True, 1)
 
 firework = Item("firework",
-                "Its a firework. It goes BOOM.", 1, True, 0)
+                "Its a firework. It goes BOOM.", 1, 1, True, 0)
 
 wallet = Item("wallet",
-              "It is a wallet with some money in it. But you don't even need it.", 1, True, 1)
+              "It is a wallet with some money in it. But you don't even need it.", 1, 1, True, 1)
 
 armor_glue = Item("bottle of armor glue",
-                  "This item can help make better armor.", 100, True, 200)
+                  "This item can help make better armor.", 100, 100, True, 200)
 
 bolt_head_piece_blueprint = Item("bolt head blueprint",
-                                 "This is a blueprint to build a bolt head.", 1, True, 1)
+                                 "This is a blueprint to build a bolt head.", 1, 1, True, 1)
 
 bolt_head_piece = Item("bolt head piece",
-                       "This item will help make crossbow bolts.", 1, True, 0)
+                       "This item will help make crossbow bolts.", 1, 1, True, 0)
 
 gunpowder = Item("gunpowder",
-                 "This item will help make crossbow bolts.", 1, True, 300)
+                 "This item will help make crossbow bolts.", 1, 1, True, 300)
 
 battery = Item("battery",
-               "This item is used to make items or weapons have an electric conduct.", 100, True, 0)
+               "This item is used to make items or weapons have an electric conduct.", 100, 100, True, 0)
 
 charger = Item("charger",
-               "This item is to charge up the durability of the battery.", 200, True, 0)
+               "This item is to charge up the durability of the battery.", 200, 200, True, 0)
 
 wire = Item("wire",
-            "This item is used to craft batteries.", 1, True, 10)
+            "This item is used to craft batteries.", 1, 1, True, 10)
 
 # Materials
 iron_bar = Item("iron bar",
-                "This material is used to craft armor and weapons.", 1, True, 60)
+                "This material is used to craft armor and weapons.", 1, 1, True, 60)
 
 gold_bar = Item("gold bar",
-                "This material is used to craft armor and weapons.", 1, True, 50)
+                "This material is used to craft armor and weapons.", 1, 1, True, 50)
 
 diamond = Item("diamond",
-               "This material is used to craft very strong armor and complex electronics.", 1, True, 40)
+               "This material is used to craft very strong armor and complex electronics.", 1, 1, True, 40)
 
 cosmonium_ore = Item("COSMONIUM ORE",
                      "This material is very hard to find. It is harder than diamond and has the power to revive you. \n"
-                     "You need to craft the cosmonium ingot.", 9, True, 50)
+                     "You need to craft the cosmonium ingot.", 9, 9, True, 50)
 
 cosmonium_ingot = Item("COSMONIUM INGOT",
                        "This material is hard to craft. It can be used to craft legendary or to craft unstable items.",
-                       2, True, 0)
+                       2, 2, True, 0)
 
 wood = Item("wood",
-            "This material is the weakest material. it can be used to make sticks. One wood makes 4 sticks",
-            1, True, 39)
+            "This material is the weakest material. it can be used to make sticks. One wood makes 4 sticks", 1, 1, True,
+            39)
 
 sticks = Item("sticks",
-              "This material is used to make items that need a wooden handle.", 1, True, 0)
+              "This material is used to make items that need a wooden handle.", 1, 1, True, 0)
 
 stone = Item("stone",
-             "This material is used to make stone parts.", 1, True, 15)
+             "This material is used to make stone parts.", 1, 1, True, 15)
 
 sharpening_stone = Item("sharpening stone",
                         "This stone is used so that you can sharpen tools. Has a small chance of giving durability \n"
-                        "to the tool", 40, True, 0)
+                        "to the tool", 40, 40, True, 0)
 
 magical_stone = Item("magical stone",
-                     "This material is used to make magical items.", 1, True, 5)
+                     "This material is used to make magical items.", 1, 1, True, 5)
 
 # Weapons
 dull_sword = Sword("dull sword",
@@ -380,71 +384,89 @@ staff_of_emerged_power = Staff("STAFF OF EMERGED POWER",
 
 # Enchanted Books
 strength_book = EnchantBook("strength book",
-                            "This book gives an item more damage.", 1, "strength", True, 1)
+                            "This book gives an item more damage.", 1, 1, "strength", True, 1)
 
 unbreakable_book = EnchantBook("unbreakable book",
-                               "This book gives an item more durability", 1, "unbreakable", True, 1)
+                               "This book gives an item more durability", 1, 1, "unbreakable", True, 1)
 
 fire_frost_book = EnchantBook("FIRE FROST BOOK",
                               "This book gives an item more damage and makes half of the sword on fire and the other \n"
                               "frozen. When you hit an enemy, they will either burn or they would freeze. If the \n"
                               "enemy has burn, they would lose 10% of their health when it is their turn. If the \n"
                               "item also has strength, the burn will do 20% of their health. If the enemy has been \n"
-                              "frozen. They will lose 2 turns.", 1, "fire frost", True, 1)
+                              "frozen. They will lose 2 turns.", 1, 1, "fire frost", True, 1)
 
 # Potions
 weak_health_potion = Potion("weak health potion",
-                            "This health potion gives you 20 health back.", 1, True, 1, "health", 0)
+                            "This health potion gives you 20 health back.", 1, 1, True, 1, "health", 0)
 
 strong_health_potion = Potion("strong health potion",
-                              "This health potion gives you 50 health back.", 1, True, 1, "health", 0)
+                              "This health potion gives you 50 health back.", 1, 1, True, 1, "health", 0)
 
 strength_potion = Potion("strength potion",
-                         "This strength potion gives you an attack boost for 30 moves.", 1, True, 30, "strength", 0)
+                         "This strength potion gives you an attack boost for 30 moves.", 1, 1, True, 30, "strength", 0)
 
 poison_potion = Potion("POISON IN A BOTTLE",
                        "This potion can be thrown and will poison the enemy. The poison will not kill the enemy. The \n"
-                       "enemy will do less damage and will have less health", 1, True, 1, "poison", 0)
+                       "enemy will do less damage and will have less health", 1, 1, True, 1, "poison", 0)
 
 # Ammo
 wooden_arrow = Ammo("wooden arrow",
                     "This ammo is used for bows. The arrow isn't the strongest but it is the easiest to craft. Can \n"
-                    "be used for the broken bow and the metal bow.", 1, True, 1, ['broken_bow', 'metal_bow'], None)
+                    "be used for the broken bow and the metal bow.", 1, 1, True, 1, ['broken_bow', 'metal_bow'], None)
 
 metal_arrow = Ammo("metal arrow",
                    "This ammo is used for bows. The arrow is the strongest that you can craft. Can be used for metal \n"
-                   "bows only", 1, True, 1, 'metal_bow', None)
+                   "bows only", 1, 1, True, 1, 'metal_bow', None)
 
 normal_crossbow_bolt = Ammo("normal crossbow bolt",
-                            "This ammo is used for an x-bow. It isn't the only ammo for the x-bow.", 1, True, 1,
+                            "This ammo is used for an x-bow. It isn't the only ammo for the x-bow.", 1, 1, True, 1,
                             'x_bow', None)
 
 explosive_crossbow_bolt = Ammo("EXPLOSIVE X-BOW BOLT ",
                                "This ammo is used only for an x-bow. This bolt explodes on impact and does more \n"
-                               "damage on impact.", 1, True, 1, 'x-bow', 'explode')
+                               "damage on impact.", 1, 1, True, 1, 'x-bow', 'explode')
 
 electric_crossbow_bolt = Ammo("ELECTRIC X-BOW BOLT",
                               "This ammo is used only for an x-bow. This bolt will electrocute the enemy. The \n"
                               "electricity of the bolt will also spread around the area if they are more than one \n"
-                              "enemy in the room.", 1, True, 1, 'x-bow', 'electric chain')
+                              "enemy in the room.", 1, 1, True, 1, 'x-bow', 'electric chain')
 
 # Food
 raw_potato = Food("raw potato",
-                  "You can eat this raw potato. But it looks so weird.", 1, 5, True, 1)
+                  "You can eat this raw potato. But it looks so weird.", 1, 1, 5, True, 1)
 
 cooked_potato = Food("cooked potato",
-                     "This potato is cooked.", 1, 15, True, 1)
+                     "This potato is cooked.", 1, 1, 15, True, 1)
 
 potato_chip = Food("potato chips",
-                   "Its a bag of chips.", 1, 20, True, 1)
+                   "Its a bag of chips.", 1, 1, 20, True, 1)
 
 raw_meat = Food("raw meat",
-                "This is a piece of raw meat from an unknown creature.", 1, 30, True, 1)
+                "This is a piece of raw meat from an unknown creature.", 1, 1, 30, True, 0)
 
 unicorn_meat = Food("UNICORN MEAT",
                     "Despite its name, it is not from a unicorn. It is just called that because it is extremely rare.\n"
-                    "Tho it is does have a little bit of a rainbow color. But it is just food dye.",
-                    1, 80, True, 1)
+                    "Tho it is does have a little bit of a rainbow color. But it is just food dye.", 1, 1, 80, True, 1)
+
+# Brewing items
+glass_bottle = Item("empty glass bottle",
+                    "This is a bottle made of glass.", 1, 1, True, 0)
+
+sham_pow = Item("sham-Pow",
+                "This is a good cleaning rag.", 90, 90, True, 1)
+
+dirty_glass_bottle = Item("dirty glass bottle",
+                          "This is a used glass bottle.", 1, 1, True, 0)
+
+heal_flower = Item("heal flower",
+                   "This flower has the power to heal.", 1, 1, True, 1)
+
+power_stone = Item("power stone",
+                   "This stone has the power to give someone strength.", 1, 1, True, 0)
+
+elf_leaf = Item("elf leaf",
+                "this leaf has the power to give someone poison.", 1, 1, True, 0)
 
 # Characters
 Gabe = Characters("Gabe", ["pickaxe", "torch", "wallet"], None, 100, 10, 20, "sword", "pickaxe", None,
@@ -1656,7 +1678,15 @@ def crafting():
 def alchemist_crafting():
     potion_crafting = False
     print("".join(alchemy))
-    potion_crafting = input("What potion are you going to brew? ")
+    potion_crafting = input("What potion are you going to brew? ").lower()
+    if potion_crafting == "weak health potion":
+
+    if potion_crafting == "strong health potion":
+
+    if potion_crafting == "strength potion":
+
+    if potion_crafting == "poison potion":
+
 
 
 def other_command():
@@ -1734,7 +1764,7 @@ def other_command():
         print(current_character.blueprint)
         print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     if command == "alchemist craft":
-
+        alchemist_crafting()
     if command == "use fireworks":
         if firework.amount > 0:
             firework.amount -= 1

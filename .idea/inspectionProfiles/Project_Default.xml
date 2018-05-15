@@ -1,0 +1,34 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="RegExpAnonymousGroup" enabled="false" level="WARNING" enabled_by_default="false">
+      <scope name="Problems" level="WARNING" enabled="false" />
+    </inspection_tool>
+    <inspection_tool class="RegExpDuplicateAlternationBranch" enabled="true" level="WARNING" enabled_by_default="true">
+      <scope name="Problems" level="WARNING" enabled="true" />
+    </inspection_tool>
+    <inspection_tool class="RegExpEmptyAlternationBranch" enabled="true" level="WARNING" enabled_by_default="true">
+      <scope name="Problems" level="WARNING" enabled="true" />
+    </inspection_tool>
+    <inspection_tool class="RegExpEscapedMetaCharacter" enabled="true" level="INFORMATION" enabled_by_default="true">
+      <scope name="Problems" level="INFORMATION" enabled="true" />
+    </inspection_tool>
+    <inspection_tool class="RegExpOctalEscape" enabled="true" level="INFORMATION" enabled_by_default="true">
+      <scope name="Problems" level="INFORMATION" enabled="true" />
+    </inspection_tool>
+    <inspection_tool class="RegExpRedundantEscape" enabled="true" level="WARNING" enabled_by_default="true">
+      <scope name="Problems" level="WARNING" enabled="true" />
+    </inspection_tool>
+    <inspection_tool class="RegExpRepeatedSpace" enabled="true" level="WARNING" enabled_by_default="true">
+      <scope name="Problems" level="WARNING" enabled="true" />
+    </inspection_tool>
+    <inspection_tool class="RegExpSingleCharAlternation" enabled="true" level="WARNING" enabled_by_default="true">
+      <scope name="Problems" level="WARNING" enabled="true" />
+    </inspection_tool>
+    <inspection_tool class="SpellCheckingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="processCode" value="true" />
+      <option name="processLiterals" value="true" />
+      <option name="processComments" value="true" />
+    </inspection_tool>
+  </profile>
+</component>

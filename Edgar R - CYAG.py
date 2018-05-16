@@ -339,6 +339,9 @@ sharpening_stone = Item("sharpening stone",
                         "This stone is used so that you can sharpen tools. Has a small chance of giving durability \n"
                         "to the tool", 40, 40, True, 0)
 
+sand = Item("sand",
+            "This is sand.", 1, 1, True, 0)
+
 magical_stone = Item("magical stone",
                      "This material is used to make magical items.", 1, 1, True, 5)
 
@@ -450,6 +453,9 @@ unicorn_meat = Food("UNICORN MEAT",
                     "Tho it is does have a little bit of a rainbow color. But it is just food dye.", 1, 1, 80, True, 1)
 
 # Brewing items
+glass = Item("glass",
+             "This is sand that has been heated up to see thorough.", 1, 1, True, 0)
+
 glass_bottle = Item("empty glass bottle",
                     "This is a bottle made of glass.", 1, 1, True, 0)
 
@@ -468,6 +474,8 @@ power_stone = Item("power stone",
 elf_leaf = Item("elf leaf",
                 "this leaf has the power to give someone poison.", 1, 1, True, 0)
 
+broken_bottle = Item("broken bottle",
+                  "This is a broken bottle that has broken when you tried to make a potion.", 1, 1, True, 0)
 # Characters
 Gabe = Characters("Gabe", ["pickaxe", "torch", "wallet"], None, 100, 10, 20, "sword", "pickaxe", None,
                   "The Enemies name is Gabe, he is one of the hardest people to fight. He have killed many people \n"
@@ -478,7 +486,7 @@ Gabe = Characters("Gabe", ["pickaxe", "torch", "wallet"], None, 100, 10, 20, "sw
                    "to solve the puzzle.", "You have defeated me. You may solve the riddle. But be worn. If you \n "
                    "don't solve it within your third try, you will die. So be worn."], False, True, "golden armor")
 
-current_character = Characters("John", ['raw potato'], [None], 100, 0, 10, "broken bow", None, None,
+current_character = Characters("John", [None], [None], 100, 0, 10, "broken bow", None, None,
                                "You are yourself. Don't let anyone change that.", None, False, True, "beginner armor")
 
 # Bosses
@@ -588,7 +596,7 @@ SIDE_ENTRANCE = Room("Side Entrance of the House", 'OREO_FACTORY', 'FRONT_STORE'
                      "East is the front of the store, to the South is the kitchen and to the West is the hallway.",
                      False, None)
 
-KITCHEN = Room("Kitchen", 'SIDE ENTRANCE', None, None, 'LIVING_R', [], False,
+KITCHEN = Room("Kitchen", 'SIDE ENTRANCE', None, None, 'LIVING_R', ["potato chip"], False,
                "You have reached the kitchen. You don't see anything but a bunch of cabinets. To the North \n"
                "is the side entrance of the house and to the West is the living room.",
                "You enter the kitchen of the creepy house. To the North is the side entrance of the house and to the \n"
@@ -681,7 +689,7 @@ BOX_R = Room("The Box Room", None, 'MEAT_SECTION', None, 'WALKWAY', [], False,
              "You enter the room filled with boxes. To the East is the Meet section and to the West is the walkway.",
              False, None)
 
-MEAT_SECTION = Room("Meat Section", None, None, 'MIRROR_R', 'BOX_R', ["gunpowder"], False,
+MEAT_SECTION = Room("Meat Section", None, None, 'MIRROR_R', 'BOX_R', ["gunpowder", "raw meat"], False,
                     "You reach the meat section of the store. It was all empty but the cow meat section. You \n"
                     "want to take the meat but you don't because it is stealing. To the South is a room full \n"
                     "of mirrors and to the West is the box room.",
@@ -933,7 +941,8 @@ THRONE_R = Room("Throne Room", None, 'CASTLE_KITCHEN', None, 'LOOPER', ["magical
                 "kill the king.). To the East is the kitchen and to the West is the room that leads to somewhere else.",
                 False, None)
 
-RAINBOW_R = Room("Rainbow Room", None, 'BLOOD_MOON_R', 'LOOPER', None, ["p key 4", "rainbow in a bottle"], False,
+RAINBOW_R = Room("Rainbow Room", None, 'BLOOD_MOON_R', 'LOOPER', None,
+                 ["p key 4", "rainbow in a bottle", "unicorn meat"], False,
                  "You have entered the room that has a bunch of rainbows. But they were in jars. They shouldn't be \n"
                  "in jars. Then you see that their is a pipe on the ceiling that seems to be the one that transports \n"
                  "the rainbow into this room. To the East is a door that you can't see into it and to the West is \n"
@@ -1037,7 +1046,7 @@ craftable = ["iron armor", "gold armor", "diamond armor", "armor of undying", "a
              "legendary bow", "wooden arrow", "metal arrow", "bolt head piece", "normal crossbow bolt",
              "explosive crossbow bolt", "electric crossbow bolt", "staff of healing", "staff of emerged power",
              "staff of power", "sticks", "cosmonium ingot", "magical sword", "armor shell", "battery", "firework",
-             "cooked potato", "sharp sword", "sharpening stone"]
+             "cooked potato", "sharp sword", "sharpening stone", "glass", "glass bottle"]
 
 alchemy = ["weak health potion", "strong health potion", "strength potion", "poison potion"]
 
@@ -1618,7 +1627,7 @@ def crafting():
                       "inventory.")
         if item_crafting == "cooked potato":
             if "raw potato" and "torch" in current_character.inventory:
-                cooked_potato_amount = input("Home many cooked potatoes do you want to craft? ")
+                cooked_potato_amount = input("How much raw potato do you want to use to make cooked potato? ")
                 possible_cp = raw_potato.amount
                 if possible_cp <= cooked_potato_amount:
                     if "cooked potato" not in current_character.inventory:
@@ -1628,7 +1637,7 @@ def crafting():
                     if raw_potato.amount == 0:
                         current_character.inventory.pop("raw potato")
                         print("You no longer have raw potatoes.")
-                    print("Yo no longer have %s raw potato" % possible_cp)
+                    print("Yo no longer have %s raw potato" % cooked_potato_amount)
                     print("You crafted %s cooked potatoes. For more info, type 'inventory' and then 'cooked potato' in "
                           "the command." % cooked_potato_amount)
                 else:
@@ -1656,7 +1665,7 @@ def crafting():
         if item_crafting == "sharpening stone":
             if "stone" in current_character.inventory:
                 if stone.amount >= 2:
-                    if sharpening_stone not in current_character:
+                    if "sharpening_stone" not in current_character:
                         sharpening_stone.amount += 2
                         stone.amount -= 2
                         if stone.amount == 0:
@@ -1670,7 +1679,41 @@ def crafting():
                 else:
                     print("You don't have enough stones.")
             else:
-                print("You don't have the materials for this item.")
+                print("You don't have the materials for this item. You don't have stone.")
+        if item_crafting == "glass":
+            if "sand" in current_character.inventory:
+                glass_amount = input("How much sand do you want to use to make glass? ")
+                possible_s = sand.amount
+                if possible_s >= glass_amount:
+                    if "sand" not in current_character.inventory:
+                        current_character.inventory.append("glass")
+                    glass_made = glass_amount * 3
+                    glass.amount = glass_amount * 3
+                    sand.amount -= glass_amount
+                    if sand.amount == 0:
+                        current_character.inventory.pop("sand")
+                        print("You no longer have sand in your inventory.")
+                    print("You no longer have %s sand." % glass_amount)
+                    print("You crafted %s glass. For more info, type 'inventory' and then 'glass' in the command"
+                          % glass_made)
+                else:
+                    print("You are asking for more than what you can craft.")
+            else:
+                print("You don't have the materials for this item. You need sand.")
+        if item_crafting == "glass bottle":
+            if "glass" in current_character.inventory:
+                glass_bottle_amount = input("How much glass do you want to craft to make glass bottle? ")
+                possible_gb = glass.amount
+                if possible_gb <= glass_bottle_amount:
+                    if "glass bottle" not in current_character.inventory:
+                        current_character.inventory.append("glass bottle")
+                    glass_bottle.amount += glass_bottle_amount
+                    glass.amount -= glass_bottle_amount
+                    if glass.amount == 0:
+                        current_character.inventory.pop("glass")
+                        print("You no longer have glass in your inventory.")
+                    print("You no longer have %s glass." % glass_bottle_amount)
+                    print("You crafted %s glass_bottle. ")
         if item_crafting not in craftable:
             print("This item does not exist. Please try again.")
 
@@ -1680,7 +1723,7 @@ def alchemist_crafting():
     print("".join(alchemy))
     potion_crafting = input("What potion are you going to brew? ").lower()
     if potion_crafting == "weak health potion":
-
+        if "glass" and ""
     if potion_crafting == "strong health potion":
 
     if potion_crafting == "strength potion":

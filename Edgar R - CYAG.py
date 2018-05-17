@@ -1713,7 +1713,12 @@ def crafting():
                         current_character.inventory.pop("glass")
                         print("You no longer have glass in your inventory.")
                     print("You no longer have %s glass." % glass_bottle_amount)
-                    print("You crafted %s glass_bottle. ")
+                    print("You crafted %s glass bottle. For more info, tye 'inventory' and then 'glass bottle' in the "
+                          "command." % glass_bottle_amount)
+                else:
+                    print("You are trying to craft more than what you can do.")
+            else:
+                print("You do not have the materials for this item. You do not have glass.")
         if item_crafting not in craftable:
             print("This item does not exist. Please try again.")
 
@@ -1723,13 +1728,59 @@ def alchemist_crafting():
     print("".join(alchemy))
     potion_crafting = input("What potion are you going to brew? ").lower()
     if potion_crafting == "weak health potion":
-        if "glass" and ""
+        if "glass bottle" and "heal flower" in current_character.inventory:
+            if heal_flower.amount >= 2:
+                if "weak health potion" not in current_character.inventory:
+                    current_character.inventory.append("weak health potion")
+                weak_health_potion.amount += 1
+                glass_bottle.amount -= 1
+                if glass_bottle.amount == 0:
+                    current_character.inventory.pop("glass bottle")
+                    print("You no longer have glass bottles in your inventory.")
+                heal_flower.amount -= 2
+                if heal_flower.amount == 0:
+                    current_character.inventory.pop("heal flower")
+                    print("You no longer have heal flowers in your inventory.")
+                print("You no longer have a glass bottle and 2 heal flowers.")
+                print("You crafted a weak health potion. For more info, type 'inventory' and then 'weak health potion' "
+                      "in the \n"
+                      "command.")
+            else:
+                print("you don't have enough materials for this item. You do not have 2 heal flowers.")
+        else:
+            print("You do not have the items to craft this item. You either don't have a glass bottle or heal flowers.")
     if potion_crafting == "strong health potion":
-
+        if "glass bottle" and "heal flower" in current_character.inventory:
+            if heal_flower.amount >= 5:
+                if "strong health potion" not in current_character.inventory:
+                    current_character.inventory.append("strong health potion")
+                strong_health_potion.amount += 1
+                glass_bottle.amount -= 1
+                if glass_bottle.amount == 0:
+                    current_character.inventory.pop("glass bottle")
+                    print("You no longer have glass bottles in your inventory.")
+                heal_flower.amount -= 5
+                if heal_flower.amount == 0:
+                    current_character.inventory.pop("heal flower")
+                    print("You no longer have heal flowers in your inventory.")
+                print("you no longer have a glass bottle and 5 flowers.")
+                print("You crafted a strong health potion. For more info, type 'inventory' and then 'strong health "
+                      "potion' in \n"
+                      "the command.")
+            else:
+                print("You don't have enough materials. You need 5 heal flowers.")
+        else:
+            print("You don't have the materials for this item. You either don't have a glass bottle or heal flowers.")
     if potion_crafting == "strength potion":
-
+        if "glass bottle" and "power stone" in current_character.inventory:
+            if "strength potion" not in current_character.inventory:
+                current_character.inventory.append("strength potion")
+            strength_potion.amount += 1
+            glass_bottle.amount -= 1
+            if glass_bottle.amount == 0:
+                current_character.inventory.pop("glass bottle")
+                print("You no longer have glass bottles in your inventory.")
     if potion_crafting == "poison potion":
-
 
 
 def other_command():

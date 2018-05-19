@@ -1050,7 +1050,7 @@ current_armor_on = beginner_armor
 
 commands_possible = ["jump", "H use", "armor info", "grab", "attack damage", "drop", "description", "commands possible",
                      "inventory", "how to play", "craft", "attack enemy", "H main weapon", "H put on armor",
-                     "blueprints", "Need2Doalchemist craft", "use firework", "Dofarm", "Domine"]
+                     "blueprints", "alchemist craft", "use firework", "farm", "mine"]
 
 craftable = ["iron armor", "gold armor", "diamond armor", "armor of undying", "armor of strength", "metal bow |",
              "legendary bow", "wooden arrow", "metal arrow", "bolt head piece", "normal crossbow bolt",
@@ -1063,7 +1063,7 @@ alchemy = ["weak health potion", "strong health potion", "strength potion", "poi
 
 farm = [sand, elf_leaf, wood, heal_flower]
 
-mine = []
+mine = [uncut_diamond, cosmonium_ore, iron_ore, gold_ore, stone]
 
 
 def crafting():
@@ -1472,19 +1472,19 @@ def crafting():
                 print("You do not have a blueprint.")
         if item_crafting == "staff of armor":
             if staff_of_armor in current_character.blueprint:
-                if "STAFF OF ARMOR" not in current_character.inventory:
-                    if "sticks" and "armor shell" in current_character.inventory:
+                if staff_of_armor not in current_character.inventory:
+                    if sticks and armor_shell in current_character.inventory:
                         if not staff_of_armor.one_crafted:
                             if sticks.amount >= 10 and armor_shell.amount >= 10:
-                                current_character.inventory.append("STAFF OF POWER")
+                                current_character.inventory.append(staff_of_armor)
                                 staff_of_armor.amount += 1
                                 sticks.amount -= 10
                                 if sticks.amount == 0:
-                                    current_character.inventory.pop("sticks")
+                                    current_character.inventory.pop(sticks)
                                     print("You no longer have sticks in your inventory.")
                                 armor_shell.amount -= 10
                                 if armor_shell.amount == 0:
-                                    current_character.inventory.pop("armor shell")
+                                    current_character.inventory.pop(armor_shell)
                                     print("You no longer have armor shells in your inventory.")
                                 print("You no longer have 10 sticks and 10 armor shells.")
                                 print("You crafted a legendary item. You crafted the STAFF OF POWER. For more info, "
@@ -1665,13 +1665,13 @@ def crafting():
                 else:
                     print("You cannot craft something that is already in your inventory.")
         if item_crafting == "sharpening stone":
-            if "stone" in current_character.inventory:
+            if stone in current_character.inventory:
                 if stone.amount >= 2:
-                    if "sharpening_stone" not in current_character:
+                    if sharpening_stone not in current_character:
                         sharpening_stone.amount += 2
                         stone.amount -= 2
                         if stone.amount == 0:
-                            current_character.inventory.pop("stone")
+                            current_character.inventory.pop(stone)
                             print("You no longer have stone in your inventory.")
                         print("You no longer have 2 normal stones.")
                         print("You crafted a sharpening stone. for more info, type 'inventory' in the command.")
@@ -1682,17 +1682,17 @@ def crafting():
             else:
                 print("You don't have the materials for this item. You don't have stone.")
         if item_crafting == "glass":
-            if "sand" in current_character.inventory:
+            if sand in current_character.inventory:
                 glass_amount = input("How much sand do you want to use to make glass? ")
                 possible_s = sand.amount
                 if possible_s >= glass_amount:
-                    if "sand" not in current_character.inventory:
-                        current_character.inventory.append("glass")
+                    if glass not in current_character.inventory:
+                        current_character.inventory.append(glass)
                     glass_made = glass_amount * 3
                     glass.amount = glass_amount * 3
                     sand.amount -= glass_amount
                     if sand.amount == 0:
-                        current_character.inventory.pop("sand")
+                        current_character.inventory.pop(sand)
                         print("You no longer have sand in your inventory.")
                     print("You no longer have %s sand." % glass_amount)
                     print("You crafted %s glass. For more info, type 'inventory' in the command." % glass_made)
@@ -1701,16 +1701,16 @@ def crafting():
             else:
                 print("You don't have the materials for this item. You need sand.")
         if item_crafting == "glass bottle":
-            if "glass" in current_character.inventory:
+            if glass in current_character.inventory:
                 glass_bottle_amount = input("How much glass do you want to craft to make glass bottle? ")
                 possible_gb = glass.amount
                 if possible_gb <= glass_bottle_amount:
-                    if "glass bottle" not in current_character.inventory:
-                        current_character.inventory.append("glass bottle")
+                    if glass_bottle not in current_character.inventory:
+                        current_character.inventory.append(glass_bottle)
                     glass_bottle.amount += glass_bottle_amount
                     glass.amount -= glass_bottle_amount
                     if glass.amount == 0:
-                        current_character.inventory.pop("glass")
+                        current_character.inventory.pop(glass)
                         print("You no longer have glass in your inventory.")
                     print("You no longer have %s glass." % glass_bottle_amount)
                     print("You crafted %s glass bottle. For more info, type 'inventory' in the "
@@ -1872,7 +1872,10 @@ def other_command():
         print("Your current armor: \n %s" % current_character.armor_type)
         print("You have %s armor." % current_character.armor)
     if command == "grab":
-        grab = input("What item do you want to grab? ")
+        print("Items in current location:")
+        for item in current_node.item:
+            print(item.name)
+        grab = input("What item do you want to grab? ").lower()
         if grab in current_node.item:
             print("You grabbed %s." % grab)
             if grab[:10] == "blueprint: ":
@@ -1959,8 +1962,14 @@ def other_command():
         if current_node == MINE_SHAFT:
             if pickaxe in current_character.mining_equipment:
                 mine_item = random.randint(mine)
-                mine_amount = random.randint(1, 5)
-                current_character.inventory.append(mine_item)
+                mine_amount = random.randint(1, 20)
+                got_it_1 = random.randint(1, 6)
+                got_it_2 = random.randint(1, 6)
+                got_it = got_it_1 + got_it_2
+                if got_it == 7:
+                    current_character.inventory.append(mine_item)
+                else:
+                    current_character.inventory.append(stone)
                 mine_item.amount += mine_amount
                 if mine_amount == 1:
                     print("You mined %s of %s." % (mine_amount, mine_item))

@@ -257,7 +257,7 @@ rainbow_in_a_bottle = Healthpot("rainbow in a bottle",
                                 "The rainbow in the bottle fills you up with warmth. It is almost as if it can heal \n"
                                 "you.", 5, 5, True, 0, "heal", 20, 1)
 
-paper_with_writing = Item("paper with writing",
+paper_with_writing = Item("blueprint: paper with writing",
                           "The piece of paper that you found has writing in it. it reads 'You Must find the puzzle \n"
                           "room. if you don't we will never escApe. who ever you are, you Must find us. we are \n"
                           "Trapped. we Can't find tHe exit. you must pass the test in order to free us. hope you are \n"
@@ -265,15 +265,15 @@ paper_with_writing = Item("paper with writing",
                           "undying. That is if you are worth it. You can craft it using cosmonium ingots.'", 1, 1, True,
                           1)
 
-staff_of_armor_blueprint = Item("staff of armor blueprint",
+staff_of_armor_blueprint = Item("blueprint: staff of armor",
                                 "This piece of paper has a blueprint for the staff of armor. You need 10 sticks, \n"
                                 "a diamond, and a ", 1, 1, True, 1)
 
-staff_of_emerged_power_blueprint = Item("staff of emerged power blueprint",
+staff_of_emerged_power_blueprint = Item("blueprint: staff of emerged power",
                                         "This is a piece of paper has a blueprint for the staff of emerged power. \n"
                                         "You need 10 sticks, 5 diamonds, and a cosmonium ingot.", 1, 1, True, 1)
 
-staff_of_healing_blueprint = Item("staff of healing blueprint",
+staff_of_healing_blueprint = Item("Blueprint: staff of healing",
                                   "This is a piece of paper has a blueprint for the staff of healing. You need \n"
                                   "10 sticks, 2 diamonds, and 4 cosmonium ingots.", 1, 1, True, 1)
 
@@ -289,7 +289,7 @@ wallet = Item("wallet",
 armor_glue = Item("bottle of armor glue",
                   "This item can help make better armor.", 100, 100, True, 200)
 
-bolt_head_piece_blueprint = Item("bolt head blueprint",
+bolt_head_piece_blueprint = Item("blueprint: bolt head",
                                  "This is a blueprint to build a bolt head.", 1, 1, True, 1)
 
 bolt_head_piece = Item("bolt head piece",
@@ -308,14 +308,23 @@ wire = Item("wire",
             "This item is used to craft batteries.", 1, 1, True, 10)
 
 # Materials
+iron_ore = Item("iron ore",
+                "This material is used to make iron bars.", 1, 1, True, 0)
+
 iron_bar = Item("iron bar",
-                "This material is used to craft armor and weapons.", 1, 1, True, 60)
+                "This material is used to craft armor and weapons.", 1, 1, True, 0)
+
+gold_ore = Item("gold ore",
+                "This material is used to make gold bars.", 1, 1, True, 0)
 
 gold_bar = Item("gold bar",
-                "This material is used to craft armor and weapons.", 1, 1, True, 50)
+                "This material is used to craft armor and weapons.", 1, 1, True, 0)
+
+uncut_diamond = Item("uncut diamond",
+                     "This material is used to make diamonds.", 1, 1, True, 0)
 
 diamond = Item("diamond",
-               "This material is used to craft very strong armor and complex electronics.", 1, 1, True, 40)
+               "This material is used to craft very strong armor and complex electronics.", 1, 1, True, 0)
 
 cosmonium_ore = Item("COSMONIUM ORE",
                      "This material is very hard to find. It is harder than diamond and has the power to revive you. \n"
@@ -517,7 +526,7 @@ wonbers = Characters("wonbers", None, None, 100, 50, 70, None, None, None,
                      "This is a wonbers. They do a lot of damage.", None, True, True, None)
 
 # Initialize Rooms
-BACK_MALL = Room("Back of the Mall", 'TARGET', None, 'FRONT_STORE', None, ["raw potato"], False,
+BACK_MALL = Room("Back of the Mall", 'TARGET', None, 'FRONT_STORE', None, [raw_potato], False,
                  "You are in the back of the mall. You wonder were you are and how you got here. You see Target to \n"
                  "North and the front of a store to the south.",
                  "You are in the back of the mall. You see Target in the North and the front of a store to the \n "
@@ -537,7 +546,7 @@ TARGET = Room("Target", 'WALMART', 'HOME_D', 'BACK_MALL', 'OFFICE_D', [], False,
               "You are now in front of Target. Walmart is to the North, Home Depot is in the East, Office Depot is \n"
               "to the West, and to the South is the back of the mall.", False, None)
 
-OFFICE_D = Room("Office Depot", 'BANANA', 'HOME_D', None, 'CAR', ["wire"], False,
+OFFICE_D = Room("Office Depot", 'BANANA', 'HOME_D', None, 'CAR', [wire], False,
                 "You have entered Office Depot and didn't want to go thought because of what happened with Target. \n"
                 "To the West is Target and to the East is the left of the mall.",
                 "You are outside of Office Depot. To the West is Target and to the East is the left of the mall.",
@@ -582,7 +591,7 @@ WALMART = Room("Walmart", None, 'LEFT_MALL', None, 'Target', [], False,
                "You are now outside of walmart. To the East is the left of mall and to the West is Target.", False,
                None)
 
-CAVE = Room("The Bat Cave", None, None, 'PARKING', None, ["staff of emerged power blueprint", "tr key"], False,
+CAVE = Room("The Bat Cave", None, None, 'PARKING', None, [staff_of_emerged_power_blueprint, tr_key], False,
             "You have reached the bat cave but no one is here. It is strange that no one whn their is a \n"
             "full parking lot. To the South is the parking lot.",
             "You are now outside of the cave. You still wonder why this is a wonderful cave to visit if they are so \n"
@@ -596,7 +605,7 @@ SIDE_ENTRANCE = Room("Side Entrance of the House", 'OREO_FACTORY', 'FRONT_STORE'
                      "East is the front of the store, to the South is the kitchen and to the West is the hallway.",
                      False, None)
 
-KITCHEN = Room("Kitchen", 'SIDE ENTRANCE', None, None, 'LIVING_R', ["potato chip"], False,
+KITCHEN = Room("Kitchen", 'SIDE ENTRANCE', None, None, 'LIVING_R', [potato_chip], False,
                "You have reached the kitchen. You don't see anything but a bunch of cabinets. To the North \n"
                "is the side entrance of the house and to the West is the living room.",
                "You enter the kitchen of the creepy house. To the North is the side entrance of the house and to the \n"
@@ -632,7 +641,7 @@ TROPHY_R = Room("Trophy Room", None, None, 'CORRIDOR', None, [], False,
                 "that are athletes. All you can go is to the South.",
                 "You reached the room that is filled with the trophy's. All you can go is to the South.", False, None)
 
-SHRINE_R = Room("Shrine Room", 'CORRIDOR', None, 'SOUTH_HOUSE', None, ["candle"], False,
+SHRINE_R = Room("Shrine Room", 'CORRIDOR', None, 'SOUTH_HOUSE', None, [candle], False,
                 "You push the bookshelf to find out that it is a hidden door. You found a room that seems to\n"
                 "be a shrine. You see a picture of a boy that seems to be around 20 years old. You see food, \n"
                 "drinks, and candles that have cobwebs around them. To the North is the secret bookshelf door \n"
@@ -640,13 +649,13 @@ SHRINE_R = Room("Shrine Room", 'CORRIDOR', None, 'SOUTH_HOUSE', None, ["candle"]
                 "You enter the somewhat creepy shrine room. To the North is the secret bookshelf door that leads to \n"
                 "the corridor and to the South it seems to lead outside.", False, None)
 
-SOUTH_HOUSE = Room("South of House", 'SHRINE_R', None, None, None, ["torch"], False,
+SOUTH_HOUSE = Room("South of House", 'SHRINE_R', None, None, None, [torch], False,
                    "You open the door to the outside and you you see a torch that is just sitting their. It \n"
                    "fills you up with hope just to remember that you are all alone in this town. To the North \n"
                    "is the shrine room.",
                    "You reached the south part of the house. To the North is the shrine room.", False, None)
 
-DARK_R = Room("The Dark Room", 'SCARY_R', 'CORRIDOR', None, 'WEST_HOUSE', ["camera"], False,
+DARK_R = Room("The Dark Room", 'SCARY_R', 'CORRIDOR', None, 'WEST_HOUSE', [camera], False,
               "You reached a dark room. You can't see anything in the room. Yo felt something in the back \n"
               "of your leg. It feels like a camera. You hear scary sounds in the room to the North, to the \n"
               "East is the corridor and to the West you hear birds chirping.",
@@ -654,7 +663,7 @@ DARK_R = Room("The Dark Room", 'SCARY_R', 'CORRIDOR', None, 'WEST_HOUSE', ["came
               "hear scary sounds in the room to the North, to the East is the corridor and to the West you hear \n"
               "birds chirping.", False, None)
 
-SCARY_R = Room("Scary Room", None, None, 'DARK_R', None, ["p key 2"], False,
+SCARY_R = Room("Scary Room", None, None, 'DARK_R', None, [p_key_2], False,
                "You enter the scary room  to find that the monitor of a computer was on. It was playing \n"
                "scary music from Youtube. You wonder why you they will leave it running. Then you see a key \n"
                "that came shooting out of the wall behind a painting. It is a key. A shiny blue key that \n"
@@ -668,7 +677,7 @@ WEST_HOUSE = Room("West of House", None, 'DARK_R', None, None, [], False,
                   "the East.",
                   "You are now in the west of the house. You can only go to the East.", False, None)
 
-WOODWORK_SECTION = Room("Woodwork section", None, None, 'WALKWAY', 'FRONT_STORE', ["wood"], False,
+WOODWORK_SECTION = Room("Woodwork section", None, None, 'WALKWAY', 'FRONT_STORE', [], False,
                         "You go to the woodwork section. Their is a lot of wood that has been cut down and but into \n"
                         "To the South is a Walkway and to the West is the front of the store.",
                         "You are now in the woodwork section. To the South is a Walkway and to the West is the front \n"
@@ -689,7 +698,7 @@ BOX_R = Room("The Box Room", None, 'MEAT_SECTION', None, 'WALKWAY', [], False,
              "You enter the room filled with boxes. To the East is the Meet section and to the West is the walkway.",
              False, None)
 
-MEAT_SECTION = Room("Meat Section", None, None, 'MIRROR_R', 'BOX_R', ["gunpowder", "raw meat"], False,
+MEAT_SECTION = Room("Meat Section", None, None, 'MIRROR_R', 'BOX_R', [gunpowder, raw_meat], False,
                     "You reach the meat section of the store. It was all empty but the cow meat section. You \n"
                     "want to take the meat but you don't because it is stealing. To the South is a room full \n"
                     "of mirrors and to the West is the box room.",
@@ -703,7 +712,7 @@ MIRROR_R = Room("Mirror Room", 'MEAT_SECTION', 'THE_ROOM', None, None, [], False
                 "You enter the room that is filled with mirrors. To the North is the meat section and to the East \n"
                 "in a door with a caption 'The Room'.", False, None)
 
-THE_ROOM = Room("The Room", None, None, None, 'MIRROR_R', ["bolt head piece blueprint"], False,
+THE_ROOM = Room("The Room", None, None, None, 'MIRROR_R', [bolt_head_piece_blueprint], False,
                 "You enter the mysterious room called the room. You can't see a lot of things since the room \n"
                 "is dimly lit. All you can really see is that people have been here. It is all messy as if \n"
                 "they were looking for something. They probably found it or game up since they was a corner \n"
@@ -758,7 +767,7 @@ FRONT_HOUSE = Room("The Front of the House", 'HALL', None, None, 'PARKING_LOT', 
                    "You are now in front of the scary house. To the North is what looks like a parking lot and to \n"
                    "the south is a hallway.", False, None)
 
-LEFT_MALL = Room("Left of Mall", None, None, 'ALLEYWAY', 'WALMART', ["p key 3"], False,
+LEFT_MALL = Room("Left of Mall", None, None, 'ALLEYWAY', 'WALMART', [p_key_3], False,
                  "You reach the left side of the mall. You see trash cans that don't have anything. You look \n"
                  "inside and their seems to be a graffiti that says 'He is near'. You get out of the garbage \n"
                  "bin and you think for a bit. You wonder why they put that their. To the South is an alley \n"
@@ -766,7 +775,7 @@ LEFT_MALL = Room("Left of Mall", None, None, 'ALLEYWAY', 'WALMART', ["p key 3"],
                  "You are now in the left side of the mall. To the South is the alley way and to the West is Walmart",
                  False, None)
 
-ALLEYWAY = Room("The Alleyway", 'LEFT_MALL', 'CASINO', 'GARBAGE TRUCK', None, ["unbreakable book"], False,
+ALLEYWAY = Room("The Alleyway", 'LEFT_MALL', 'CASINO', 'GARBAGE TRUCK', None, [unbreakable_book], False,
                 "You reach an alleyway. Their isn't much that is here other than a piece of paper with a \n"
                 "clown, a bear, a ballerina, and a puppet. You see that it familiar in a way but you couldn't \n"
                 "place it. To the North is the left of the mall, to the East is a Casino and to the South \n"
@@ -785,7 +794,7 @@ CASINO = Room("The Casino", None, None, 'RESTAURANT', 'ALLEYWAY', [], False,
               None)
 
 GARBAGE_TRUCK = Room("The Garbage Truck", 'ALLEYWAY', 'STAR_RESTAURANT', None, None,
-                     ["paper with writing", "armor glue"], False,
+                     [paper_with_writing, armor_glue], False,
                      "You reached the Garbage truck. When you reach their, you see that the passenger seat s open. \n"
                      "You enter the garbage truck and their seems to be a key of some sort. Their is also a piece \n"
                      "of paper that has some writing on it. To the North is the alleyway and to the East is a \n"
@@ -867,7 +876,7 @@ COMPUTER_R = Room("Computer Room", 'STONE_LIBRARY', 'REFLECTIVE_R', None, None, 
                   "You entered the room filled with computers. To the North is door that is made out of stone. it \n"
                   "appears to be open. To the East is the room filled with mirrors.", False, None)
 
-STONE_LIBRARY = Room("STONE_LIBRARY", None, None, 'COMPUTER_R', 'GARDEN', ["iron bar"], False,
+STONE_LIBRARY = Room("STONE_LIBRARY", None, None, 'COMPUTER_R', 'GARDEN', [], False,
                      "You open the stone door. When you open the door, you see a huge library made up of stones. \n"
                      "You wonder why the stone door wasn't even locked. You go down the aile and you see that the \n"
                      "books are very old yet new. To the South is the computer room and to the West is a garden.",
@@ -893,7 +902,7 @@ CASTLE_KITCHEN = Room("Castle Kitchen", 'CASTLE_ENTRANCE', 'GARDEN', 'MAGIC_LIBR
                       "garden, to the South is a bookshelf that has the work 'magic' on it and to the West are \n"
                       "big doors.", False, None)
 
-MAGIC_LIBRARY = Room("Magic Library", 'KITCHEN', None, 'WATERFALL_R', None, ["cosmonium ore", "fire frost book"], False,
+MAGIC_LIBRARY = Room("Magic Library", 'KITCHEN', None, 'WATERFALL_R', None, [fire_frost_book], False,
                      "You found the hidden library. All around you, you feel like something very dark and \n"
                      "mysterious things are around. Then you see a book started to drift away with a magenta aura. \n"
                      "Then use see another book but with a yellow aura around it. You don't want to fallow it \n"
@@ -901,7 +910,8 @@ MAGIC_LIBRARY = Room("Magic Library", 'KITCHEN', None, 'WATERFALL_R', None, ["co
                      "You are now in the library with the books that can fly. To the North is the kitchen and to \n"
                      "the South is a blue door.", False, None)
 
-WATERFALL_R = Room("Waterfall Room", 'MAGIC_LIBRARY', None, 'MINE_SHAFT', None, ["staff of healing blueprint"], False,
+WATERFALL_R = Room("Waterfall Room", 'MAGIC_LIBRARY', None, 'MINE_SHAFT', None, [staff_of_emerged_power_blueprint],
+                   False,
                    "You enter the peaceful room with a waterfall. You wonder how such beauty is in a place such \n"
                    "like this. In the Room you see that a rainbow is trying to for but is sucked up from a tube in \n"
                    "the ceiling. It seems to be going to another place from the tube. To the North is the magic \n"
@@ -910,7 +920,7 @@ WATERFALL_R = Room("Waterfall Room", 'MAGIC_LIBRARY', None, 'MINE_SHAFT', None, 
                    "is the magic library and to the South is the Mine shaft.", False, None)
 
 MINE_SHAFT = Room("The Mine Shaft", 'WATERFALL_R', None, None, 'CAVERN',
-                  ["pickaxe", "diamond", "gold bar", "strength book"], False,
+                  [pickaxe, strength_book], False,
                   "You have reached a mine shaft. You wonder why a place like this would even have a mine shaft \n"
                   "since it can randomly generate whatever it wants. Wait, you didn't know that? Oh well. The only \n"
                   "thing some what ordinary is that a pickaxe is here. To the North is the peaceful waterfall room \n"
@@ -918,14 +928,14 @@ MINE_SHAFT = Room("The Mine Shaft", 'WATERFALL_R', None, None, 'CAVERN',
                   "Why did you come back to the mine if their really isn't anything here for you. To the North is \n"
                   "the peaceful waterfall room and to the West is a deeper part of the mine shaft.", False, None)
 
-CAVERN = Room("Cavern", 'LOOPER', 'MINE_SHAFT', None, None, ["stone"], False,
+CAVERN = Room("Cavern", 'LOOPER', 'MINE_SHAFT', None, None, [], False,
               "You are now in the deeper part of the mine shaft. All that is around you is rock and some minerals. \n"
               "To the North is what look like a way out of the mine shaft and to the East is the mine shaft that \n"
               "has the pickaxe.",
               "You are now in the cavern with rock all around you. To the North is what look like a way out of the \n"
               "mine shaft and to the East is the mine shaft that had the pickaxe.", False, None)
 
-LOOPER = Room("The Looper", None, 'THRONE_R', 'CAVERN', 'RAINBOW_R', ["dull sword"], False,
+LOOPER = Room("The Looper", None, 'THRONE_R', 'CAVERN', 'RAINBOW_R', [dull_sword], False,
               "You are now in a room that is filled with side way eights. Then you remembered that side way eights \n"
               "is the infinity sign. Then you see that their is a neon sign that says 'The lopper'. To the East is \n"
               "a throne room, to the South is the cavern and to the West is a door that has rainbows all over the \n"
@@ -933,7 +943,7 @@ LOOPER = Room("The Looper", None, 'THRONE_R', 'CAVERN', 'RAINBOW_R', ["dull swor
               "You are back to the Looper room. This sounds ironic. Does it to you? To the East is a throne room, \n"
               "to the South is the cavern and to the West is a door that has rainbows all over the door.", False, None)
 
-THRONE_R = Room("Throne Room", None, 'CASTLE_KITCHEN', None, 'LOOPER', ["magical stone"], False,
+THRONE_R = Room("Throne Room", None, 'CASTLE_KITCHEN', None, 'LOOPER', [magical_stone], False,
                 "You entered the throne room that is in the castle. You see that their is someone on one of the \n"
                 "thrones. He looked like a king. But the way acted. he didn't seem like a king. To the East is \n"
                 "the kitchen and to the West is the room that leads to somewhere else.",
@@ -942,7 +952,7 @@ THRONE_R = Room("Throne Room", None, 'CASTLE_KITCHEN', None, 'LOOPER', ["magical
                 False, None)
 
 RAINBOW_R = Room("Rainbow Room", None, 'BLOOD_MOON_R', 'LOOPER', None,
-                 ["p key 4", "rainbow in a bottle", "unicorn meat"], False,
+                 [p_key_4, rainbow_in_a_bottle, unicorn_meat], False,
                  "You have entered the room that has a bunch of rainbows. But they were in jars. They shouldn't be \n"
                  "in jars. Then you see that their is a pipe on the ceiling that seems to be the one that transports \n"
                  "the rainbow into this room. To the East is a door that you can't see into it and to the West is \n"
@@ -951,7 +961,7 @@ RAINBOW_R = Room("Rainbow Room", None, 'BLOOD_MOON_R', 'LOOPER', None,
                  "come back? To the East is a door that you can't see into it and to the West is a room that has an \n"
                  "8 on it.", False, None)
 
-BLOOD_MOON_R = Room("Blood Moon Room", None, 'SECTION_3', None, 'RAINBOW_R', ["x-bow"], False,
+BLOOD_MOON_R = Room("Blood Moon Room", None, 'SECTION_3', None, 'RAINBOW_R', [x_bow], False,
                     "You enter the room that was dark inside. But as soon as you came in. You were able to see that \n"
                     "their was a blood moon on the ceiling. 'How is this possible?' you asked yourself. To the East \n"
                     "is a hallway that you can go to in 3 directions and to the West is a room with a rainbow door.",
@@ -990,7 +1000,7 @@ BO_BO = Room("Bo Bo's room", 'PUZZLE_R', 'FORGOTTEN_R', None, 'LIGHT_R', [], Fal
              "You entered Bo Bo's room. To the North is a room and to the West is a the horrible room filed with \n"
              "light.", False, None)
 
-FORGOTTEN_R = Room("Forgotten Room", None, None, None, 'BO_BO', ["p key 1"], False,
+FORGOTTEN_R = Room("Forgotten Room", None, None, None, 'BO_BO', [p_key_1], False,
                    "You enter the room that was well hidden. You asked yourself how you knew about it. It doesn't \n"
                    "matter now. In the room you see a bunch of bookshelves with books. In the room you see a paper \n"
                    "that someone has writen on it. You don't understand it. But then you see a key. It has 'P KEY' \n"
@@ -1039,16 +1049,21 @@ moves = 0
 current_armor_on = beginner_armor
 
 commands_possible = ["jump", "H use", "armor info", "grab", "attack damage", "drop", "description", "commands possible",
-                     "inventory", "how to play", "H information", "craft", "attack enemy", "H main weapon",
-                     "H put on armor", "blueprints", "Need2Doalchemist craft", "use firework", "Dofarm", "Domine"]
+                     "inventory", "how to play", "craft", "attack enemy", "H main weapon", "H put on armor",
+                     "blueprints", "Need2Doalchemist craft", "use firework", "Dofarm", "Domine"]
 
 craftable = ["iron armor", "gold armor", "diamond armor", "armor of undying", "armor of strength", "metal bow |",
              "legendary bow", "wooden arrow", "metal arrow", "bolt head piece", "normal crossbow bolt",
              "explosive crossbow bolt", "electric crossbow bolt", "staff of healing", "staff of emerged power",
              "staff of power", "sticks", "cosmonium ingot", "magical sword", "armor shell", "battery", "firework",
-             "cooked potato", "sharp sword", "sharpening stone", "glass", "glass bottle"]
+             "cooked potato", "sharp sword", "sharpening stone", "glass", "glass bottle", "iron bar", "gold bar",
+             "diamond"]
 
 alchemy = ["weak health potion", "strong health potion", "strength potion", "poison potion"]
+
+farm = [sand, elf_leaf, wood, heal_flower]
+
+mine = []
 
 
 def crafting():
@@ -1072,8 +1087,7 @@ def crafting():
                                 current_character.inventory.pop(armor_shell)
                                 print("You no longer have armor shells in your inventory.")
                             print("You have used 10 cosmonium ore and 15 armor shell.")
-                            print("You have created the ARMOR OF UNDYING. type in 'armor of undying description' in "
-                                  "the command.")
+                            print("You have created the ARMOR OF UNDYING. type in 'armor of undying' in the command.")
                         else:
                             print("You don't have enough materials for this item. You either don't have 10 cosmonium "
                                   "ore or 15 armor shells.")
@@ -1113,7 +1127,7 @@ def crafting():
                       "shells.")
         if item_crafting == "iron armor":
             if iron_bar and armor_shell in current_character.inventory:
-                if iron_bar.amount >= 5 and armor_shell.amount >= 10:
+                if iron_bar.amount >= str(5) and armor_shell.amount >= 10:
                     if iron_armor not in current_character.inventory:
                         current_character.inventory.append(iron_armor)
                     iron_armor.amount += 1
@@ -1126,8 +1140,7 @@ def crafting():
                         current_character.inventory.pop(armor_shell)
                         print("You no longer have armor shells in your inventory.")
                     print("You no longer have 5 iron bars and 10 armor shells.")
-                    print("You have crafted iron armor. Type in 'iron armor'in the command to see what it does and its "
-                          "stats.")
+                    print("You have crafted iron armor. For more info, type in 'iron armor'in the command.")
                 else:
                     print("You don't have enough materials for this item. You either don't have 5 iron bars or 10 "
                           "shells.")
@@ -1135,7 +1148,7 @@ def crafting():
                 print("You don't have the materials for this item. You either don't have iron bars or armor shells.")
         if item_crafting == "gold armor":
             if gold_bar and armor_shell in current_character.inventory:
-                if gold_bar.amount >= 5 and armor_shell.amount >= 10:
+                if gold_bar.amount >= str(5) and armor_shell.amount >= 10:
                     if gold_armor not in current_character.inventory:
                         current_character.inventory.append(gold_armor)
                     gold_armor.amount += 1
@@ -1157,7 +1170,7 @@ def crafting():
                 print("You don't have the materials for this item. You either don't have gold bars or armor shells.")
         if item_crafting == "diamond armor":
             if diamond and armor_glue and armor_shell in current_character.inventory:
-                if diamond.amount >= 5 and armor_shell.amount >= 10:
+                if diamond.amount >= str(5) and armor_shell.amount >= 10:
                     if diamond_armor not in current_character.inventory:
                         current_character.inventory.append(diamond_armor)
                     diamond_armor.amount += 1
@@ -1171,8 +1184,7 @@ def crafting():
                         print("You don't have a bottle of armor glue.")
                     print("You no longer have 10 diamonds and the bottle of armor glue.")
                     print("You crafted diamond armor. But the glue still needs to dry. For more info, type 'inventory' "
-                          "and then \n"
-                          "'diamond armor' in the command.")
+                          "in the command.")
                 else:
                     print("You don't have enough materials for this item. You either don't have 5 diamonds or 10 armor "
                           "shells.")
@@ -1182,7 +1194,7 @@ def crafting():
                       "armor shells.")
         if item_crafting == "metal bow":
             if iron_bar and broken_bow in current_character.inventory:
-                if iron_bar.amount >= 5:
+                if iron_bar.amount >= str(5):
                     if metal_bow not in current_character.inventory:
                         current_character.inventory.append(metal_bow)
                     metal_bow.amount += 1
@@ -1193,34 +1205,32 @@ def crafting():
                         current_character.inventory.pop(iron_bar)
                         print("You no longer have iron bars in your inventory.")
                     print("You no longer have the broken bow and 5 iron bars.")
-                    print("You crafted a metal bow. For more info, type 'inventory' and then 'metal bow' in the "
-                          "command.")
+                    print("You crafted a metal bow. For more info, type 'inventory' in the command.")
                 else:
                     print("You don't have enough material for this item.You either don't have 5 iron bars and a broken "
                           "bow.")
             else:
                 print("You don't have the materials for this item. You either don't have iron bars or a broken bow.")
         if item_crafting == "legendary bow":
-            if "metal bow" and "cosmonium ingot" and "iron bar" in current_character.inventory:
-                if cosmonium_ingot.amount >= str(6) and iron_bar.amount >= 3:
-                    if "LEGENDARY BOW" not in current_character.inventory:
-                        current_character.inventory.append("LEGENDARY BOW")
+            if metal_bow and cosmonium_ingot and iron_bar in current_character.inventory:
+                if cosmonium_ingot.amount >= str(6) and iron_bar.amount >= str(3):
+                    if legendary_bow not in current_character.inventory:
+                        current_character.inventory.append(legendary_bow)
                     legendary_bow.amount += 1
                     metal_bow.amount -= 1
-                    current_character.inventory.pop("metal bow")
+                    current_character.inventory.pop(metal_bow)
                     cosmonium_ingot.amount -= 6
-                    current_character.inventory.pop("cosmonium ingot")
+                    current_character.inventory.pop(cosmonium_ingot)
                     if cosmonium_ingot.amount == 0:
-                        current_character.inventory.pop("cosmonium ingot")
+                        current_character.inventory.pop(cosmonium_ingot)
                         print("You no longer have cosmonium ingots in your inventory.")
                     iron_bar.amount -= 3
                     if iron_bar.amount == 0:
-                        current_character.inventory.pop("iron bar")
+                        current_character.inventory.pop(iron_bar)
                         print("You no longer have iron bars in your inventory.")
                     print("You no longer have the iron bar and the 3 cosmonium ingots.")
-                    print("You made a legendary item. You made the legendary bow. For more info, type 'inventory' and "
-                          "then \n"
-                          "'legendary bow' in the command.")
+                    print("You made a legendary item. You made the legendary bow. For more info, type 'inventory' in "
+                          "the command.")
                 else:
                     print("You don't have the materials for this item. You either don't have 6 cosmonium ingots or 3 "
                           "iron bars.")
@@ -1229,7 +1239,7 @@ def crafting():
                       "or iron \n"
                       "bars.")
         if item_crafting == "wooden arrow":
-            if "sticks" and "stone" in current_character.inventory:
+            if sticks and stone in current_character.inventory:
                 wooden_arrow_amount = input("How many wooden arrows do you want to craft? ")
                 amount_wa_1 = sticks.amount - stone.amount
                 amount_wa_2 = stone.amount - sticks.amount
@@ -1239,26 +1249,25 @@ def crafting():
                 if amount_wa_2 > 0:
                     possible_wa = sticks.amount
                 if possible_wa <= wooden_arrow_amount:
-                    if "wooden arrow" not in current_character.inventory:
-                        current_character.inventory.append("wooden arrow")
+                    if wooden_arrow not in current_character.inventory:
+                        current_character.inventory.append(wooden_arrow)
                     wooden_arrow.amount += possible_wa
                     sticks.amount -= possible_wa
                     if sticks.amount == 0:
-                        current_character.inventory.pop("sticks")
+                        current_character.inventory.pop(sticks)
                         print("You no longer have sticks in your inventory.")
                     stone.amount -= possible_wa
                     if stone.amount == 0:
-                        current_character.inventory.pop("stone")
+                        current_character.inventory.pop(stone)
                         print("You no longer hve stones in your inventory.")
                     print("You no longer %s sticks and stone" % possible_wa)
-                    print("You crafted %s wooden arrows. For more info, type 'inventory' and then 'wooden arrow' in "
-                          "the command." % possible_wa)
+                    print("You crafted %s wooden arrows. For more info, type 'inventory' in the command." % possible_wa)
                 else:
                     print("You are asking for more than what you can craft.")
             else:
                 print("You don't have the materials for this item. You either don't have sticks or stones.")
         if item_crafting == "metal arrow":
-            if "iron bar" and "sticks" in current_character.inventory:
+            if iron_bar and sticks in current_character.inventory:
                 metal_arrow_amount = input("How many metal arrows do you want to craft? ")
                 amount_ma_1 = iron_bar.amount - sticks.amount
                 amount_ma_2 = sticks.amount - iron_bar.amount
@@ -1268,36 +1277,35 @@ def crafting():
                 if amount_ma_2 > 0:
                     possible_ma = iron_bar.amount
                 if possible_ma <= metal_arrow_amount:
-                    if "metal arrow" not in current_character.inventory:
-                        current_character.inventory.append("metal arrow")
+                    if metal_arrow not in current_character.inventory:
+                        current_character.inventory.append(metal_arrow)
                     metal_arrow.amount += possible_ma
                     sticks.amount -= metal_arrow_amount
                     if sticks.amount == 0:
-                        current_character.inventory.pop("sticks")
+                        current_character.inventory.pop(sticks)
                         print("You no longer have sticks in your inventory.")
                     iron_bar.amount -= metal_arrow_amount
                     if iron_bar.amount == 0:
-                        current_character.inventory.pop("iron bar")
+                        current_character.inventory.pop(iron_bar)
                         print("You no longer have iron bars in your inventory.")
                     print("You no longer have %s sticks and iron bars." % possible_ma)
-                    print("You crafted %s metal arrows. For more info, type 'inventory' and then 'metal arrow' in the "
-                          "command." % possible_ma)
+                    print("You crafted %s metal arrows. For more info, type 'inventory' in the command." % possible_ma)
                 else:
                     print("You are asking for more than what you can craft.")
             else:
                 print("You don't have the materials for this item. You either don't have iron bars or sticks.")
         if item_crafting == "bolt head piece":
-            if "iron bar" and "bolt head piece" in current_character.inventory:
-                if "bolt head piece blueprint" in current_character.blueprint:
+            if iron_bar and bolt_head_piece in current_character.inventory:
+                if bolt_head_piece_blueprint in current_character.blueprint:
                     bolt_head_piece_amount = input("How many bolt head pieces do you want to craft? ")
                     possible_bhp = iron_bar.amount
                     if bolt_head_piece_amount <= possible_bhp:
-                        if "bolt head piece" not in current_character.inventory:
-                            current_character.inventory.append("bolt head piece")
+                        if bolt_head_piece not in current_character.inventory:
+                            current_character.inventory.append(bolt_head_piece)
                         bolt_head_piece.amount += bolt_head_piece_amount
                         iron_bar.amount -= bolt_head_piece_amount
                         if iron_bar.amount == 0:
-                            current_character.inventory.pop("iron bar")
+                            current_character.inventory.pop(iron_bar)
                             print("You no longer have iron bars in your inventory.")
                         print("You no longer have %s iron bars." % possible_bhp)
                         print("You crafted %s bolt heads. For more info, type 'inventory' and then 'bolt head' in the "
@@ -1310,7 +1318,7 @@ def crafting():
                 print("You don't have the materials for this item. You either don't have iron bars or bolt head "
                       "pieces.")
         if item_crafting == "normal crossbow bolt":
-            if "bolt head piece" and "sticks" in current_character.inventory:
+            if bolt_head_piece and sticks in current_character.inventory:
                 normal_crossbow_bolt_amount = input("How many normal crossbow bolt do you want to craft? ")
                 amount_ncb_1 = bolt_head_piece.amount - sticks.amount
                 amount_ncb_2 = sticks.amount - bolt_head_piece.amount
@@ -1320,27 +1328,26 @@ def crafting():
                 if amount_ncb_2 > 0:
                     possible_ncb = bolt_head_piece.amount
                 if possible_ncb <= normal_crossbow_bolt_amount:
-                    if "normal crossbow bolt" not in current_character.inventory:
-                        current_character.inventory.append("normal crossbow bolt")
+                    if normal_crossbow_bolt not in current_character.inventory:
+                        current_character.inventory.append(normal_crossbow_bolt)
                     normal_crossbow_bolt.amount += possible_ncb
                     bolt_head_piece.amount -= normal_crossbow_bolt_amount
                     if bolt_head_piece.amount == 0:
-                        current_character.inventory.pop("bolt head piece")
+                        current_character.inventory.pop(bolt_head_piece)
                         print("You no longer have bolt head pieces in your inventory.")
                     sticks.amount -= normal_crossbow_bolt_amount
                     if sticks.amount == 0:
-                        current_character.inventory.pop("sticks")
+                        current_character.inventory.pop(sticks)
                         print("You no longer have sticks in your inventory.")
                     print("You no longer have %s sticks and bolt head pieces." % possible_ncb)
-                    print("You craft %s normal crossbow bolt. For more info, type 'inventory' and then 'normal "
-                          "crossbow bolt' in the \n"
+                    print("You craft %s normal crossbow bolt. For more info, type 'inventory' in the "
                           "command." % possible_ncb)
                 else:
                     print("You are asking for more than what you can craft.")
             else:
                 print("You don't have the materials for this item. You either don't have bolt head pieces or sticks.")
         if item_crafting == "explosive crossbow bolt":
-            if "normal crossbow bolt" and "gunpowder" in current_character.inventory:
+            if normal_crossbow_bolt and gunpowder in current_character.inventory:
                 explosive_crossbow_bolt_amount = input("How many explosive crossbow bolt do you want to craft? ")
                 amount_ecb_1 = explosive_crossbow_bolt.amount - gunpowder.amount
                 amount_ecb_2 = gunpowder.amount - explosive_crossbow_bolt.amount
@@ -1350,28 +1357,27 @@ def crafting():
                 if amount_ecb_2 > 0:
                     possible_ecb = explosive_crossbow_bolt.amount
                 if possible_ecb <= explosive_crossbow_bolt_amount:
-                    if "explosive crossbow bolt" not in current_character.inventory:
-                        current_character.inventory.append("EXPLOSIVE CROSSBOW BOLT")
+                    if explosive_crossbow_bolt not in current_character.inventory:
+                        current_character.inventory.append(explosive_crossbow_bolt)
                     explosive_crossbow_bolt.amount += explosive_crossbow_bolt_amount
                     normal_crossbow_bolt.amount -= explosive_crossbow_bolt_amount
                     if normal_crossbow_bolt.amount == 0:
-                        current_character.inventory.pop("normal crossbow bolt")
+                        current_character.inventory.pop(normal_crossbow_bolt)
                         print("You no longer have normal crossbow bolts in your inventory.")
                     gunpowder.amount -= explosive_crossbow_bolt_amount
                     if gunpowder.amount == 0:
-                        current_character.inventory.pop("gunpowder")
+                        current_character.inventory.pop(gunpowder)
                         print("You no longer have gunpowder in your inventory.")
                     print("You no longer have %s normal crossbow bolt and gunpowder." % possible_ecb)
-                    print("You crafted %s legendary explosive crossbow bolt. For more info, type 'inventory' and then "
-                          "'EXPLOSIVE \n"
-                          "X-BOW BOLT' in the command." % possible_ecb)
+                    print("You crafted %s legendary explosive crossbow bolt. For more info, type 'inventory' in the "
+                          "command." % possible_ecb)
                 else:
                     print("You are asking for more than what you can craft.")
             else:
                 print("You don't have the materials for this item. You either don't have normal crossbow bolt or "
                       "gunpowder.")
         if item_crafting == "electric crossbow bolt":
-            if "normal crossbow bolt" and "battery" in current_character.inventory:
+            if normal_crossbow_bolt and battery in current_character.inventory:
                 electric_crossbow_bolt_amount = input("How many electric crossbow bolt do you want to craft? ")
                 amount_excb_1 = normal_crossbow_bolt.amount - battery.amount
                 amount_excb_2 = battery.amount - normal_crossbow_bolt.amount
@@ -1381,74 +1387,76 @@ def crafting():
                 if amount_excb_2 > 0:
                     possible_excb = normal_crossbow_bolt.amount
                 if possible_excb <= electric_crossbow_bolt_amount:
-                    if "electric crossbow bolt" not in current_character.inventory:
-                        current_character.inventory.append("ELECTRIC CROSSBOW BOLT")
+                    if electric_crossbow_bolt not in current_character.inventory:
+                        current_character.inventory.append(electric_crossbow_bolt)
                     electric_crossbow_bolt.amount += electric_crossbow_bolt_amount
                     normal_crossbow_bolt.amount -= electric_crossbow_bolt_amount
                     if normal_crossbow_bolt.amount == 0:
-                        current_character.inventory.pop("normal crossbow bolt")
+                        current_character.inventory.pop(normal_crossbow_bolt)
                         print("You no longer have normal crossbow bolt in your inventory.")
                     battery.amount -= electric_crossbow_bolt_amount
                     if battery.amount == 0:
                         print("You no longer have battery power.")
                     print("You no longer have %s normal crossbow bolt and battery power." % possible_excb)
-                    print("You crafted %s legendary electric crossbow bolt. For more info, type 'inventory' and then "
-                          "'ELECTRIC \n"
-                          "CROSSBOW BOLT' in the command" % possible_excb)
+                    print("You crafted %s legendary electric crossbow bolt. For more info, type 'inventory' in the "
+                          "command" % possible_excb)
                 else:
                     print("You are asking for more than what you can craft.")
             else:
                 print("You don't have the materials for this item. You either don't have normal crossbow bolts or \n"
                       "battery power.")
         if item_crafting == "staff of healing":
-            if "staff of healing blueprint" in current_character.blueprint:
-                if "STAFF OF HEALING" not in current_character.inventory:
-                    if "sticks" and "cosmonium ingot" in current_character.inventory:
-                        if sticks.amount >= 10 and cosmonium_ingot.amount >= str(10):
-                            current_character.inventory.append("staff of healing")
-                            staff_of_healing.amount += 1
-                            sticks.amount -= 10
-                            if sticks.amount == 0:
-                                current_character.inventory.pop("sticks")
-                                print("You no longer have sticks in your inventory.")
-                            cosmonium_ingot.amount -= 10
-                            if cosmonium_ingot.amount == 0:
-                                current_character.inventory.pop("cosmonium ingots")
-                                print("You no longer have cosmonium ingots in your inventory.")
-                            print("You no longer have 10 sticks and 10 cosmonium ingots.")
-                            print("You crafted a legendary item. You crafted the staff of healing. For more info, type "
-                                  "in 'inventory' and \n"
-                                  "then 'staff of healing' in the command.")
+            if staff_of_healing_blueprint in current_character.blueprint:
+                if staff_of_healing not in current_character.inventory:
+                    if sticks and cosmonium_ingot in current_character.inventory:
+                        if not staff_of_healing.one_crafted:
+                            if sticks.amount >= 10 and cosmonium_ingot.amount >= str(10):
+                                current_character.inventory.append(staff_of_healing)
+                                staff_of_healing.amount += 1
+                                sticks.amount -= 10
+                                if sticks.amount == 0:
+                                    current_character.inventory.pop(sticks)
+                                    print("You no longer have sticks in your inventory.")
+                                cosmonium_ingot.amount -= 10
+                                if cosmonium_ingot.amount == 0:
+                                    current_character.inventory.pop(cosmonium_ingot)
+                                    print("You no longer have cosmonium ingots in your inventory.")
+                                print("You no longer have 10 sticks and 10 cosmonium ingots.")
+                                print("You crafted a legendary item. You crafted the staff of healing. For more info, "
+                                      "type in 'inventory' in the \n"
+                                      "command.")
+                            else:
+                                print("You don't have enough materials for this item. You either don't have 10 sticks "
+                                      "or 10 cosmonium ingots.")
                         else:
-                            print("You don't have enough materials for this item. You either don't have 10 sticks or "
-                                  "10 cosmonium ingots.")
+                            print("You can only craft this item once. Sorry :(")
                     else:
                         print("You don't have the materials for this item. You either don't have sticks or cosmonium "
                               "ore.")
                 else:
-                    print("You already have this item in your inventory. You can only craft it once.")
+                    print("You already have this item in your inventory. You can only craft it once. Sorry :(")
             else:
                 print("You do not have the blueprint.")
         if item_crafting == "staff of emerged power":
-            if "staff of emerged power blueprint" in current_character.blueprint:
-                if "STAFF OF EMERGED POWER" not in current_character.inventory:
-                    if "sticks" and "cosmonium ingot" in current_character.inventory:
+            if staff_of_emerged_power_blueprint in current_character.blueprint:
+                if staff_of_emerged_power not in current_character.inventory:
+                    if sticks and cosmonium_ingot in current_character.inventory:
                         if not staff_of_emerged_power.one_crafted:
                             if sticks.amount >= 10 and cosmonium_ingot.amount >= str(15):
-                                current_character.inventory.append("STAFF OF EMERGED POWER")
+                                current_character.inventory.append(staff_of_emerged_power)
                                 staff_of_emerged_power.amount += 1
                                 sticks.amount -= 10
                                 if sticks.amount == 0:
-                                    current_character.inventory.pop("sticks")
+                                    current_character.inventory.pop(sticks)
                                     print("You no longer have sticks in your inventory.")
                                 cosmonium_ingot.amount -= 15
                                 if cosmonium_ingot.amount == 0:
-                                    current_character.inventory.pop("cosmonium ingot")
+                                    current_character.inventory.pop(cosmonium_ingot)
                                     print("You no longer have cosmonium ingots in your inventory.")
                                 print("You no longer have 10 sticks and 15 cosmonium ingots.")
                                 print("You crafted a legendary item. You crafted the staff of emerged power. For more "
                                       "info, type in 'inventory' \n"
-                                      "and then 'staff of emerged power' in the command.")
+                                      "in the command.")
                             else:
                                 print("You don't have enough materials for this item. You either don't have 10 sticks "
                                       "or \n"
@@ -1462,131 +1470,131 @@ def crafting():
                     print("You already have this item in your inventory. You can only have 1 in your inventory.")
             else:
                 print("You do not have a blueprint.")
-        if item_crafting == "staff of power":
-            if "staff of power blueprint" in current_character.blueprint:
+        if item_crafting == "staff of armor":
+            if staff_of_armor in current_character.blueprint:
                 if "STAFF OF ARMOR" not in current_character.inventory:
                     if "sticks" and "armor shell" in current_character.inventory:
-                        if sticks.amount >= 10 and armor_shell.amount >= 10:
-                            current_character.inventory.append("STAFF OF POWER")
-                            staff_of_armor.amount += 1
-                            sticks.amount -= 10
-                            if sticks.amount == 0:
-                                current_character.inventory.pop("sticks")
-                                print("You no longer have sticks in your inventory.")
-                            armor_shell.amount -= 10
-                            if armor_shell.amount == 0:
-                                current_character.inventory.pop("armor shell")
-                                print("You no longer have armor shells in your inventory.")
-                            print("You no longer have 10 sticks and 10 armor shells.")
-                            print("You crafted a legendary item. You crafted the STAFF OF POWER. For more info, type "
-                                  "in 'inventory' and then \n"
-                                  "'staff of power' in the command.")
+                        if not staff_of_armor.one_crafted:
+                            if sticks.amount >= 10 and armor_shell.amount >= 10:
+                                current_character.inventory.append("STAFF OF POWER")
+                                staff_of_armor.amount += 1
+                                sticks.amount -= 10
+                                if sticks.amount == 0:
+                                    current_character.inventory.pop("sticks")
+                                    print("You no longer have sticks in your inventory.")
+                                armor_shell.amount -= 10
+                                if armor_shell.amount == 0:
+                                    current_character.inventory.pop("armor shell")
+                                    print("You no longer have armor shells in your inventory.")
+                                print("You no longer have 10 sticks and 10 armor shells.")
+                                print("You crafted a legendary item. You crafted the STAFF OF POWER. For more info, "
+                                      "type in 'inventory' in the \n"
+                                      "command.")
+                            else:
+                                print("You do not have enough for this item. You either don't have 10 sticks or 10 "
+                                      "armor shells.")
                         else:
-                            print("You do not have enough for this item. You either don't have 10 sticks or 10 armor "
-                                  " shells.")
+                            print("You can only craft this item once. Sorry :(")
                     else:
                         print("You don't have the materials for this item. You either don't have sticks or armor "
                               "shells.")
                 else:
                     print("You already have this item in your inventory. You can only have craft it once.")
+            else:
+                print("You don't have the blueprint.")
         if item_crafting == "sticks":
-            if "wood" in current_character.inventory:
+            if wood in current_character.inventory:
                 sticks_amount = input("How many sticks do you want to craft? (Reminder: You must tell how many wood "
                                       "you want to use). ")
                 wood_used = sticks_amount
                 possible_s = wood.amount
                 if possible_s <= sticks_amount:
-                    if "sticks" not in current_character.inventory:
-                        current_character.inventory.append("sticks")
+                    if sticks not in current_character.inventory:
+                        current_character.inventory.append(sticks)
                     sticks.amount = possible_s * 4
                     wood.amount -= sticks.amount
                     if wood.amount == 0:
-                        current_character.inventory.pop("wood")
+                        current_character.inventory.pop(wood)
                         print("You no longer have wood in your inventory.")
                     print("You no longer have %s wood." % wood_used)
-                    print("You crafted %s sticks. For more info, type in 'inventory' and then 'sticks' in the "
-                          "command." % possible_s)
+                    print("You crafted %s sticks. For more info, type in 'inventory' in the command." % possible_s)
                 else:
                     print("You are asking for more than what you can craft.")
             else:
                 print("You don't have the materials for this item. You don't have wood in your inventory.")
         if item_crafting == "cosmonium ingot":
-            if "cosmonium ore" in current_character.inventory:
+            if cosmonium_ore in current_character.inventory:
                 cosmonium_ingot_amount = input("How many cosmonium ingots do you want to craft? (Reminder: You must "
                                                "tell how many cosmonium ore you are going \n"
                                                "to use. Every cosmonium ore is 2 cosmonium ingots). ")
                 cosmonium_ore_used = cosmonium_ingot_amount
                 possible_ci = cosmonium_ore.amount
                 if possible_ci <= cosmonium_ingot_amount:
-                    if "cosmonium ingot" not in current_character.inventory:
-                        current_character.inventory.append("cosmonium ingot")
+                    if cosmonium_ingot not in current_character.inventory:
+                        current_character.inventory.append(cosmonium_ingot)
                     cosmonium_ingot.amount = cosmonium_ingot_amount * 2
                     cosmonium_ore.amount -= cosmonium_ingot_amount
                     if cosmonium_ore.amount == 0:
-                        current_character.inventory.pop("cosmonium ore")
+                        current_character.inventory.pop(cosmonium_ore)
                         print("You no longer have cosmonium ore in your inventory.")
                     print("You no longer have %s cosmonium ore." % cosmonium_ore_used)
-                    print("You crafted %s cosmonium ingots. For more info, type in 'inventory' and then 'cosmonium "
-                          "ingot' in the \n"
+                    print("You crafted %s cosmonium ingots. For more info, type in 'inventory' in the "
                           "command." % possible_ci)
                 else:
                     print("You are asking for more than what you can craft.")
             else:
                 print("You don't have the material for this item.")
         if item_crafting == "magical sword":
-            if "magical stone" and "sharp sword" in current_character.inventory:
-                if "magical sword" not in current_character.inventory:
-                    current_character.inventory.append("magical sword")
+            if magical_stone and sharp_sword in current_character.inventory:
+                if magical_sword not in current_character.inventory:
+                    current_character.inventory.append(magical_sword)
                     magical_sword.amount += 1
                     magical_stone.amount -= 1
                     if magical_stone.amount == 0:
-                        current_character.inventory.pop("magical stone")
+                        current_character.inventory.pop(magical_stone)
                         print("You no longer have magical stones in your inventory.")
                     sharp_sword.amount -= 1
                     if sharp_sword.amount == 0:
-                        current_character.inventory.pop("stone sword")
+                        current_character.inventory.pop(sharp_sword)
                         print("You no longer have stone swords in your inventory.")
                 print("You no longer have a magical stone sword and a stone sword.")
-                print("You crafted a magical sword. For more info, type 'inventory' and then 'magical sword' in the "
-                      "command.")
+                print("You crafted a magical sword. For more info, type 'inventory' in the command.")
             else:
                 print("You don't have the materials for this item.")
         if item_crafting == "armor shell":
-            if "iron bar" in current_character.inventory:
+            if iron_bar in current_character.inventory:
                 armor_shell_amount = input("How many armor shells do you want to craft? ")
                 possible_as = iron_bar.amount
                 if possible_as <= armor_shell_amount:
                     if "armor shell" not in current_character.inventory:
-                        current_character.inventory.append("armor shell")
+                        current_character.inventory.append(armor_shell)
                     armor_shell.amount += armor_shell_amount
                     iron_bar.amount -= armor_shell_amount
                     if iron_bar.amount == 0:
-                        current_character.inventory.pop("iron bar")
+                        current_character.inventory.pop(iron_bar)
                         print("You no longer have iron bars in your inventory.")
                     print("You no longer have %s iron bars." % possible_as)
-                    print("You crafted %s armor shells. For more info, type in 'inventory' and then 'armor shell' in "
-                          "the command.")
+                    print("You crafted %s armor shells. For more info, type in 'inventory' in the command.")
                 else:
                     print("You are asking for more than what you can craft.")
             else:
                 print("You don't have the material for this item. You do not have iron bars.")
         if item_crafting == "battery":
-            if "wire" and "armor shell" in current_character.inventory:
-                if "battery" not in current_character.inventory:
+            if wire and armor_shell in current_character.inventory:
+                if battery not in current_character.inventory:
                     if wire.amount >= 10 and armor_shell.amount >= 5:
-                        current_character.inventory.append("battery")
+                        current_character.inventory.append(battery)
                         battery.amount += 1
                         wire.amount -= 10
                         if wire.amount == 0:
-                            current_character.inventory.pop("wire")
+                            current_character.inventory.pop(wire)
                             print("You no longer have any wires in your inventory.")
                         armor_shell.amount -= 5
                         if armor_shell.amount == 0:
-                            current_character.inventory.pop("armor shell")
+                            current_character.inventory.pop(armor_shell)
                             print("You no longer have any armor shells in your inventory.")
                         print("You no longer have 10 wires and 5 armor shell ")
-                        print("You crafted a battery. For more info, type in 'inventory' and then 'battery' in the "
-                              "command.")
+                        print("You crafted a battery. For more info, type in 'inventory' in the command.")
                     else:
                         print("You don't have enough materials for this item. You either don't have 10 wires or 5 "
                               "armor shells.")
@@ -1595,7 +1603,7 @@ def crafting():
             else:
                 print("You don't have the materials to craft this item. You either don't have wires or armor shells.")
         if item_crafting == "firework":
-            if "gunpowder" and "armor shell" in current_character.inventory:
+            if gunpowder and armor_shell in current_character.inventory:
                 firework_amount = input("How many fireworks do you want to craft? ")
                 amount_f_1 = gunpowder.amount - armor_shell.amount
                 amount_f_2 = armor_shell.amount - gunpowder.amount
@@ -1605,20 +1613,19 @@ def crafting():
                 if amount_f_2 > 0:
                     possible_f = gunpowder.amount
                 if possible_f <= firework_amount:
-                    if "firework" not in current_character.inventory:
-                        current_character.inventory.append("firework")
+                    if firework not in current_character.inventory:
+                        current_character.inventory.append(firework)
                     firework.amount += firework_amount
                     gunpowder.amount -= firework_amount
                     if gunpowder.amount == 0:
-                        current_character.inventory.pop("gunpowder")
+                        current_character.inventory.pop(gunpowder)
                         print("You no longer have gunpowder in your inventory.")
                     armor_shell.amount -= firework_amount
                     if armor_shell == 0:
-                        current_character.inventory.pop("armor shell")
+                        current_character.inventory.pop(armor_shell)
                         print("You no longer have armor shells in your inventory.")
                     print("You no longer have %s gunpowder and armor shell." % possible_f)
-                    print("You crafted %s fireworks. For more info, type 'inventory' and then 'firework' in the "
-                          "command." % possible_f)
+                    print("You crafted %s fireworks. For more info, type 'inventory' in the command." % possible_f)
                 else:
                     print("You are trying to craft more than you can craft.")
             else:
@@ -1626,40 +1633,35 @@ def crafting():
                       "shells in your \n"
                       "inventory.")
         if item_crafting == "cooked potato":
-            if "raw potato" and "torch" in current_character.inventory:
+            if raw_potato and torch in current_character.inventory:
                 cooked_potato_amount = input("How much raw potato do you want to use to make cooked potato? ")
                 possible_cp = raw_potato.amount
                 if possible_cp <= cooked_potato_amount:
-                    if "cooked potato" not in current_character.inventory:
-                        current_character.inventory.append("cooked potato")
+                    if cooked_potato not in current_character.inventory:
+                        current_character.inventory.append(cooked_potato)
                     cooked_potato.amount += cooked_potato_amount
                     raw_potato.amount -= cooked_potato_amount
                     if raw_potato.amount == 0:
-                        current_character.inventory.pop("raw potato")
+                        current_character.inventory.pop(raw_potato)
                         print("You no longer have raw potatoes.")
                     print("Yo no longer have %s raw potato" % cooked_potato_amount)
-                    print("You crafted %s cooked potatoes. For more info, type 'inventory' and then 'cooked potato' in "
-                          "the command." % cooked_potato_amount)
+                    print("You crafted %s cooked potatoes. For more info, type 'inventory' in the "
+                          "command." % cooked_potato_amount)
                 else:
                     print("You are asking for more than what you can do.")
             else:
                 print("You don't have the materials for this item. You don't have raw potatoes in your inventory.")
         if item_crafting == "sharp sword":
-            if "dull sword" and "stone" in current_character.inventory:
-                if "sharp sword" not in current_character.inventory:
-                    current_character.inventory.append("sharp sword")
+            if dull_sword and sharpening_stone in current_character.inventory:
+                if sharp_sword not in current_character.inventory:
+                    current_character.inventory.append(sharp_sword)
                     sharp_sword.amount += 1
                     dull_sword.amount -= 1
                     if dull_sword.amount == 0:
-                        current_character.inventory.pop("dull sword")
+                        current_character.inventory.pop(dull_sword)
                         print("You no longer have a dull sword in your inventory.")
-                    stone.amount -= 1
-                    if stone.amount == 0:
-                        current_character.inventory.pop("stone")
-                        print("You no longer have stones in your inventory.")
-                    print("You no longer have a dull sword and a stone.")
-                    print("You crafted a sharp sword. For more info, type 'inventory' and then 'sharp sword' in the "
-                          "command.")
+                    print("You no longer have a dull sword.")
+                    print("You crafted a sharp sword. For more info, type 'inventory'in the command.")
                 else:
                     print("You cannot craft something that is already in your inventory.")
         if item_crafting == "sharpening stone":
@@ -1672,8 +1674,7 @@ def crafting():
                             current_character.inventory.pop("stone")
                             print("You no longer have stone in your inventory.")
                         print("You no longer have 2 normal stones.")
-                        print("You crafted a sharpening stone. for more info, type 'inventory', and then 'sharpening "
-                              "stone' in the command.")
+                        print("You crafted a sharpening stone. for more info, type 'inventory' in the command.")
                     else:
                         print("You cannot craft something that is already in your inventory.")
                 else:
@@ -1694,8 +1695,7 @@ def crafting():
                         current_character.inventory.pop("sand")
                         print("You no longer have sand in your inventory.")
                     print("You no longer have %s sand." % glass_amount)
-                    print("You crafted %s glass. For more info, type 'inventory' and then 'glass' in the command"
-                          % glass_made)
+                    print("You crafted %s glass. For more info, type 'inventory' in the command." % glass_made)
                 else:
                     print("You are asking for more than what you can craft.")
             else:
@@ -1713,12 +1713,68 @@ def crafting():
                         current_character.inventory.pop("glass")
                         print("You no longer have glass in your inventory.")
                     print("You no longer have %s glass." % glass_bottle_amount)
-                    print("You crafted %s glass bottle. For more info, tye 'inventory' and then 'glass bottle' in the "
+                    print("You crafted %s glass bottle. For more info, type 'inventory' in the "
                           "command." % glass_bottle_amount)
                 else:
                     print("You are trying to craft more than what you can do.")
             else:
                 print("You do not have the materials for this item. You do not have glass.")
+        if item_crafting == "iron bar":
+            if iron_ore in current_character.inventory:
+                iron_bar_amount = input("How many iron bars do you want to craft? ")
+                possible_ib = iron_ore.amount
+                if possible_ib <= iron_bar_amount:
+                    if iron_bar not in current_character.inventory:
+                        current_character.inventory.append(iron_bar)
+                    iron_bar.amount = iron_bar_amount
+                    iron_ore_used = iron_bar_amount * 2
+                    iron_ore.amount -= iron_bar_amount * 2
+                    if iron_ore.amount == 0:
+                        current_character.inventory.pop(iron_ore)
+                        print("You no longer have iron ores in your inventory.")
+                    print("You no longer have %s iron ores." % iron_ore_used)
+                    print("You crafted %s iron bars. For more info, type 'inventory' in the command." % iron_bar_amount)
+                else:
+                    print("You are asking for more than what you can do.")
+            else:
+                print("You don't have the materials for this item. You don't have iron ores.")
+        if item_crafting == "gold bar":
+            if gold_ore in current_character.inventory:
+                gold_bar_amount = input("How many gold bars do you want to craft? ")
+                possible_gb = gold_ore.amount
+                if possible_gb <= gold_bar_amount:
+                    if gold_bar not in current_character.inventory:
+                        current_character.inventory.append(gold_bar)
+                    gold_bar.amount = gold_bar_amount
+                    gold_ore_used = gold_bar_amount * 2
+                    gold_ore.amount -= gold_bar_amount * 2
+                    if gold_ore.amount == 0:
+                        current_character.inventory.pop(gold_ore)
+                        print("You no longer have gold ores in your inventory.")
+                    print("You no longer have %s gold ores." % gold_ore_used)
+                    print("You crafted %s gold bars. For more info, type 'inventory' in the command." % gold_bar_amount)
+                else:
+                    print("You are asking for more than what you can craft.")
+            else:
+                print("You don't have materials for this item. You don't have gold ores.")
+        if item_crafting == "diamond":
+            if uncut_diamond in current_character.inventory:
+                diamond_amount = input("How many diamonds do you want to craft? ")
+                possible_d = uncut_diamond.amount
+                if possible_d <= diamond.amount:
+                    if diamond not in current_character.inventory:
+                        current_character.inventory.pop(diamond)
+                    diamond.amount = diamond_amount
+                    uncut_diamond.amount -= diamond_amount
+                    if uncut_diamond.amount == 0:
+                        current_character.inventory.pop(uncut_diamond)
+                        print("You no longer have uncut diamonds in your inventory.")
+                    print("You no longer have %s gold ores." % diamond_amount)
+                    print("You crafted %s diamonds. For more info, type 'inventory' in the command." % diamond_amount)
+                else:
+                    print("You are asking for more than what you can craft.")
+            else:
+                print("You don't have materials for this item. You don't have diamonds.")
         if item_crafting not in craftable:
             print("This item does not exist. Please try again.")
 
@@ -1743,9 +1799,7 @@ def alchemist_crafting():
                         current_character.inventory.pop(heal_flower)
                         print("You no longer have heal flowers in your inventory.")
                     print("You no longer have a glass bottle and 2 heal flowers.")
-                    print("You crafted a weak health potion. For more info, type 'inventory' and then 'weak health "
-                          "potion' in the \n"
-                          "command.")
+                    print("You crafted a weak health potion. For more info, type 'inventory' in the command.")
                 else:
                     print("you don't have enough materials for this item. You do not have 2 heal flowers.")
             else:
@@ -1766,13 +1820,12 @@ def alchemist_crafting():
                         current_character.inventory.pop(heal_flower)
                         print("You no longer have heal flowers in your inventory.")
                     print("you no longer have a glass bottle and 5 flowers.")
-                    print("You crafted a strong health potion. For more info, type 'inventory' and then 'strong health "
-                          "potion' in \n"
-                          "the command.")
+                    print("You crafted a strong health potion. For more info, type 'inventory' in the command.")
                 else:
                     print("You don't have enough materials. You need 5 heal flowers.")
             else:
-                print("You don't have the materials for this item. You either don't have glass bottles or heal flowers.")
+                print("You don't have the materials for this item. You either don't have glass bottles or heal "
+                      "flowers.")
         if potion_crafting == "strength potion":
             if glass_bottle and power_stone in current_character.inventory:
                 if strength_potion not in current_character.inventory:
@@ -1783,8 +1836,7 @@ def alchemist_crafting():
                     current_character.inventory.pop(glass_bottle)
                     print("You no longer have glass bottles in your inventory.")
                 print("You no longer have a glass bottle and a power stone.")
-                print("You crafted a strength potion. For more info, type 'inventory' and then 'strength potion' in "
-                      "the command.")
+                print("You crafted a strength potion. For more info, type 'inventory' in the command.")
             else:
                 print("You don't have the materials for this item. You either don't have glass bottles or power "
                       "stones.")
@@ -1802,8 +1854,7 @@ def alchemist_crafting():
                     if elf_leaf.amount == 0:
                         current_character.inventory.pop(elf_leaf)
                     print("You no longer have elf leafs in your inventory.")
-                    print("You crafted a poison potion. For more info, type 'inventory' and then 'poison potion' in "
-                          "the command.")
+                    print("You crafted a poison potion. For more info, type 'inventory' in the command.")
                 else:
                     print("You don't have enough materials for this item. You don't have 2 elf leaves.")
             else:
@@ -1824,13 +1875,22 @@ def other_command():
         grab = input("What item do you want to grab? ")
         if grab in current_node.item:
             print("You grabbed %s." % grab)
-            current_character.inventory.append(grab)
-            print()
-            print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-            print("Your Inventory:")
-            for item in current_character.inventory:
-                print(item.name)
-            print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+            if grab[:10] == "blueprint: ":
+                current_character.blueprint.append(grab)
+                print()
+                print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                print("Your Blueprints:")
+                for item in current_character.blueprint:
+                    print(item.name)
+                print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+            else:
+                current_character.inventory.append(grab)
+                print()
+                print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                print("Your Inventory:")
+                for item in current_character.inventory:
+                    print(item.name)
+                print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
         else:
             print("Their is nothing to take.")
     if command == "attack damage":
@@ -1864,16 +1924,7 @@ def other_command():
         print("How to play: \n"
               "You move around using North(N), East(E), South(S), and West(W). You can use commands possible to see \n"
               "a list of possible commands. The end goal is to find out why you are the only one in the current world.")
-    if command == "information":
-        info = input("Which item will you like to get the information about? ")
-        if info in current_character.inventory:
-            print()
-            print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-            print("%s information:" % info)
-            print(info)
-            print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-        else:
-            print("The item you entered is either doesn't exist or isn't in your inventory.")
+
     if command == "craft":
         crafting()
     if command == "attack enemy":
@@ -1895,6 +1946,30 @@ def other_command():
             firework.amount -= 1
             print("Boom!!")
             print("You used one firework. Hopefully you didn't attract any enemies.")
+    if command == "farm":
+        if current_node == GARDEN:
+            farm_item = random.randint(farm)
+            farm_amount = random.randint(1, 10)
+            current_character.inventory.append(farm_item)
+            farm_item.amount += farm_amount
+            print("You got %s of %s." % (farm_amount, farm_item))
+        else:
+            print("You can only use this command in the garden.")
+    if command == "mine":
+        if current_node == MINE_SHAFT:
+            if pickaxe in current_character.mining_equipment:
+                mine_item = random.randint(mine)
+                mine_amount = random.randint(1, 5)
+                current_character.inventory.append(mine_item)
+                mine_item.amount += mine_amount
+                if mine_amount == 1:
+                    print("You mined %s of %s." % (mine_amount, mine_item))
+                if mine_amount > 1:
+                    print("You mined %s of %ss." % (mine_amount, mine_item))
+            else:
+                print("You either don't have your pickaxe in mining equipment or you don't have a pickaxe at all.")
+        else:
+            print("You can only use this command in the mine shaft.")
 
 
 while current_character.alive or finished_the_game is True:

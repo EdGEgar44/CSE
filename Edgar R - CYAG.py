@@ -4,44 +4,44 @@ import random
 
 
 class Item(object):
-    def __init__(self, name, description, durability, base_durability, drop, amount):
+    def __init__(self, name, description, durability, base_durability, drop_item, amount):
         self.name = name
         self.description = description
         self.durability = durability
         self.base_durability = base_durability
-        self.drop = drop
+        self.drop_item = drop_item
         self.amount = amount
 
 
 class Enchanted(Item):
-    def __init__(self, name, description, durability, base_durability, enchanted, drop, amount):
-        super(Enchanted, self).__init__(name, description, durability, base_durability, drop, amount)
+    def __init__(self, name, description, durability, base_durability, enchanted, drop_item, amount):
+        super(Enchanted, self).__init__(name, description, durability, base_durability, drop_item, amount)
         self.enchanted = enchanted
 
 
 class Key(Item):
-    def __init__(self, name, description, durability, base_durability, door, drop, door_number, amount):
-        super(Key, self).__init__(name, description, durability, base_durability, drop, amount)
+    def __init__(self, name, description, durability, base_durability, door, drop_item, door_number, amount):
+        super(Key, self).__init__(name, description, durability, base_durability, drop_item, amount)
         self.door = door
         self.door_number = door_number
 
 
 class Edible(Item):
-    def __init__(self, name, description, durability, base_durability, drop, amount):
-        super(Edible, self).__init__(name, description, durability, base_durability, drop, amount)
+    def __init__(self, name, description, durability, base_durability, drop_item, amount):
+        super(Edible, self).__init__(name, description, durability, base_durability, drop_item, amount)
 
 
 class Armor(Item):
-    def __init__(self, name, description, durability, base_durability, drop, armor, amount, creatable):
-        super(Armor, self).__init__(name, description, durability, base_durability, drop, amount)
+    def __init__(self, name, description, durability, base_durability, drop_item, armor, amount, creatable):
+        super(Armor, self).__init__(name, description, durability, base_durability, drop_item, amount)
         self.armor = armor
         self.creatable = creatable
 
 
 class Weapons(Item):
-    def __init__(self, name, description, durability, base_durability, drop, damage, ability, crafted,
+    def __init__(self, name, description, durability, base_durability, drop_item, damage, ability, crafted,
                  amount):
-        super(Weapons, self).__init__(name, description, durability, base_durability, drop, amount)
+        super(Weapons, self).__init__(name, description, durability, base_durability, drop_item, amount)
         self.ability = ability
         self.crafted = crafted
         self.damage = damage
@@ -50,66 +50,67 @@ class Weapons(Item):
 
 
 class Potion(Edible):
-    def __init__(self, name, description, durability, base_durability, drop, duration, ability, amount):
-        super(Potion, self).__init__(name, description, durability, base_durability, drop, amount)
+    def __init__(self, name, description, durability, base_durability, drop_item, duration, ability, amount):
+        super(Potion, self).__init__(name, description, durability, base_durability, drop_item, amount)
         self.duration = duration
         self.ability = ability
 
 
 class Food(Edible):
-    def __init__(self, name, description, durability, base_durability, heal, drop, amount):
-        super(Food, self).__init__(name, description, durability, base_durability, drop, amount)
+    def __init__(self, name, description, durability, base_durability, heal, drop_item, amount):
+        super(Food, self).__init__(name, description, durability, base_durability, drop_item, amount)
         self.heal = heal
 
 
 class Lowhealth(Food):
-    def __init__(self, name, description, durability, base_durability, heal, drop, amount):
-        super(Lowhealth, self).__init__(name, description, durability, base_durability, heal, drop, amount)
+    def __init__(self, name, description, durability, base_durability, heal, drop_item, amount):
+        super(Lowhealth, self).__init__(name, description, durability, base_durability, heal, drop_item, amount)
 
 
 class Maxhealth(Food):
-    def __init__(self, name, description, durability, base_durability, heal, drop, amount):
-        super(Maxhealth, self).__init__(name, description, durability, base_durability, heal, drop, amount)
+    def __init__(self, name, description, durability, base_durability, heal, drop_item, amount):
+        super(Maxhealth, self).__init__(name, description, durability, base_durability, heal, drop_item, amount)
 
 
 class Healthpot(Potion):
-    def __init__(self, name, description, durability, base_durability, drop, duration, ability, heal, amount):
-        super(Healthpot, self).__init__(name, description, durability, base_durability, drop, duration, ability, amount)
+    def __init__(self, name, description, durability, base_durability, drop_item, duration, ability, heal, amount):
+        super(Healthpot, self).__init__(name, description, durability, base_durability, drop_item, duration, ability,
+                                        amount)
         self.heal = heal
 
 
 class Strengthpot(Potion):
-    def __init__(self, name, description, durability, base_durability, duration, drop, ability, strength, amount):
-        super(Strengthpot, self).__init__(name, description, durability, base_durability, duration, drop, ability,
+    def __init__(self, name, description, durability, base_durability, duration, drop_item, ability, strength, amount):
+        super(Strengthpot, self).__init__(name, description, durability, base_durability, duration, drop_item, ability,
                                           amount)
         self.strength = strength
 
 
 class Resistancepot(Potion):
-    def __init__(self, name, description, durability, base_durability, drop, duration, ability, armor, amount):
-        super(Resistancepot, self).__init__(name, description, durability, base_durability, drop, duration, ability,
-                                            amount)
+    def __init__(self, name, description, durability, base_durability, drop_item, duration, ability, armor, amount):
+        super(Resistancepot, self).__init__(name, description, durability, base_durability, drop_item, duration,
+                                            ability, amount)
         self.armor = armor
 
 
 class Sword(Weapons):
-    def __init__(self, name, description, durability, base_durability, drop, damage, ability, crafted, amount):
-        super(Sword, self).__init__(name, description, durability, base_durability, drop, damage, ability, crafted,
+    def __init__(self, name, description, durability, base_durability, drop_item, damage, ability, crafted, amount):
+        super(Sword, self).__init__(name, description, durability, base_durability, drop_item, damage, ability, crafted,
                                     amount)
 
 
 class Bow(Weapons):
-    def __init__(self, name, description, durability, base_durability, drop, damage, distance, ability, crafted,
+    def __init__(self, name, description, durability, base_durability, drop_item, damage, distance, ability, crafted,
                  amount):
-        super(Bow, self).__init__(name, description, durability, base_durability, drop, damage, ability, crafted,
+        super(Bow, self).__init__(name, description, durability, base_durability, drop_item, damage, ability, crafted,
                                   amount)
         self.distance = distance
 
 
 class Staff(Weapons):
-    def __init__(self, name, description, durability, base_durability, drop, damage, ability, enchantment, armor,
+    def __init__(self, name, description, durability, base_durability, drop_item, damage, ability, enchantment, armor,
                  crafted, amount, one_crafted):
-        super(Staff, self).__init__(name, description, durability, base_durability, drop, damage, ability, crafted,
+        super(Staff, self).__init__(name, description, durability, base_durability, drop_item, damage, ability, crafted,
                                     amount)
         self.enchantment = enchantment
         self.armor = armor
@@ -117,15 +118,15 @@ class Staff(Weapons):
 
 
 class Ammo(Item):
-    def __init__(self, name, description, durability, base_durability, drop, amount, weapon, ability):
-        super(Ammo, self).__init__(name, description, durability, base_durability, drop, amount)
+    def __init__(self, name, description, durability, base_durability, drop_item, amount, weapon, ability):
+        super(Ammo, self).__init__(name, description, durability, base_durability, drop_item, amount)
         self.weapon = weapon
         self.ability = ability
 
 
 class EnchantBook(Enchanted):
-    def __init__(self, name, description, durability, base_durability, enchanted, drop, amount):
-        super(EnchantBook, self).__init__(name, description, durability, base_durability, enchanted, drop, amount)
+    def __init__(self, name, description, durability, base_durability, enchanted, drop_item, amount):
+        super(EnchantBook, self).__init__(name, description, durability, base_durability, enchanted, drop_item, amount)
 
 
 class Characters(object):
@@ -174,12 +175,13 @@ class Characters(object):
 
 
 class Room(object):
-    def __init__(self, name, north, east, south, west, item, repeat, description, description_2, stayed, enemies=None):
+    def __init__(self, name, north, east, south, west, item_i, repeat, description, description_2, stayed,
+                 enemies=None):
         self.name = name
         self.description = description
         self.description_2 = description_2
         self.stayed = stayed
-        self.item = item
+        self.item = item_i
         self.north = north
         self.east = east
         self.south = south
@@ -190,6 +192,56 @@ class Room(object):
     def move(self, direction):
         global current_node
         current_node = globals()[getattr(self, direction)]
+
+
+class Stickboss(Characters):
+    def __init__(self):
+        super(Stickboss, self).__init__("THE STICK BOSS", None, None, 999999, 99, 30, None, None, None,
+                                        "This boss is the stick boss. It is supper hard. It only has one weakness. "
+                                        "You can only \n"
+                                        "attack it if you make it mad.", None, False, True, None)
+
+
+class Dogboss(Characters):
+    def __init__(self):
+        super(Dogboss, self).__init__("THE DOG BOSS", None, None, 200, 40, 10, None, None, None,
+                                      "This boss is some-what hard. It has one weakness.", None, True, True, None)
+
+
+class Witchboss(Characters):
+    def __init__(self):
+        super(Witchboss, self).__init__("WITCH BOSS", None, None, 400, 45, 20, None, None, None,
+                                        "This boss is harder than the Dog boss. But easier than the boss boss. It "
+                                        "doesn't have a \n"
+                                        "weakness. You just got to fight it.", None, True, True, None)
+
+
+class Guarddogs(Characters):
+    def __init__(self):
+        super(Guarddogs, self).__init__("guard dogs", None, None, 20, 10, 30, None, None, None,
+                                        "This is a guard dog. They spawn near the dog boss.", None, True, True, None)
+
+
+class Wasp(Characters):
+    def __init__(self):
+        super(Wasp, self).__init__("wasp", None, None, 5, 10, 20, None, None, None,
+                                   "This enemies comes in herds. They may be weak, but they do a ton of damage if they "
+                                   "work together.", None, True, True, None)
+
+
+class Treearmy(Characters):
+    def __init__(self):
+        super(Treearmy, self).__init__("tree army", None, None, 100, 30, 50, None, None, None,
+                                       "These trees seem normal at first, but they have a magical property to move and "
+                                       "attack. They \n"
+                                       "would not attack, as long as you don't do anything to them.", None, False, True,
+                                       None)
+
+
+class Wonbers(Characters):
+    def __init__(self):
+        super(Wonbers, self).__init__("wonbers", None, None, 100, 50, 70, None, None, None,
+                                      "This is a wonbers. They do a lot of damage.", None, True, True, None)
 
 
 # Keys
@@ -312,7 +364,7 @@ iron_ore = Item("iron ore",
                 "This material is used to make iron bars.", 1, 1, True, 0)
 
 iron_bar = Item("iron bar",
-                "This material is used to craft armor and weapons.", 1, 1, True, 0)
+                "This material is used to craft armor and weapons.", 1, 1, True, 1)
 
 gold_ore = Item("gold ore",
                 "This material is used to make gold bars.", 1, 1, True, 0)
@@ -495,35 +547,8 @@ Gabe = Characters("Gabe", ["pickaxe", "torch", "wallet"], None, 100, 10, 20, "sw
                    "to solve the puzzle.", "You have defeated me. You may solve the riddle. But be worn. If you \n "
                    "don't solve it within your third try, you will die. So be worn."], False, True, "golden armor")
 
-current_character = Characters("John", [None], [None], 100, 0, 10, "broken bow", None, None,
+current_character = Characters("John", [], [], 100, 0, 10, "broken bow", None, None,
                                "You are yourself. Don't let anyone change that.", None, False, True, "beginner armor")
-
-# Bosses
-Stick_boss = Characters("THE STICK BOSS", None, None, 999999, 99, 30, None, None, None,
-                        "This boss is the stick boss. It is supper hard. It only has one weakness. You can only \n"
-                        "attack it if you make it mad.", None, False, True, None)
-
-Dog_boss = Characters("THE DOG BOSS", None, None, 200, 40, 10, None, None, None,
-                      "This boss is some-what hard. It has one weakness.", None, True, True, None)
-
-Witch_boss = Characters("WITCH BOSS", None, None, 400, 45, 20, None, None, None,
-                        "This boss is harder than the Dog boss. But easier than the boss boss. It doesn't have a \n"
-                        "weakness. You just got to fight it.", None, True, True, None)
-
-# Enemies
-guard_dogs = Characters("guard dogs", None, None, 20, 10, 30, None, None, None,
-                        "This is a guard dog. They spawn near the dog boss.", None, True, True, None)
-
-wasp = Characters("wasp", None, None, 5, 10, 20, None, None, None,
-                  "This enemies comes in herds. They may be weak, but they do a ton of damage if they work together.",
-                  None, True, True, None)
-
-tree_army = Characters("tree army", None, None, 100, 30, 50, None, None, None,
-                       "These trees seem normal at first, but they have a magical property to move and attack. They \n"
-                       "would not attack, as long as you don't do anything to them.", None, False, True, None)
-
-wonbers = Characters("wonbers", None, None, 100, 50, 70, None, None, None,
-                     "This is a wonbers. They do a lot of damage.", None, True, True, None)
 
 # Initialize Rooms
 BACK_MALL = Room("Back of the Mall", 'TARGET', None, 'FRONT_STORE', None, [raw_potato], False,
@@ -557,7 +582,7 @@ CAR = Room("The Car", None, 'OFFICE_D', None, 'PARKING', [], False,
            "Office Depot and to the West in the Parking lot.",
            "You are now near you car. To the East is Office Depot and to the West in the Parking lot.", False, None)
 
-PARKING = Room("Parking Lot", 'CAVE', 'CAR', 'FRONT_HOUSE', 'TRUCK', [None], False,
+PARKING = Room("Parking Lot", 'CAVE', 'CAR', 'FRONT_HOUSE', 'TRUCK', [], False,
                "You have reached the parking lot. Their are a lot of cars in the parking lot to visit the \n bat cave."
                "To the North is the bat cave, to the East is were your car is at, to the South is \n the front of a"
                "house and to the west is a taco truck.",
@@ -775,7 +800,7 @@ LEFT_MALL = Room("Left of Mall", None, None, 'ALLEYWAY', 'WALMART', [p_key_3], F
                  "You are now in the left side of the mall. To the South is the alley way and to the West is Walmart",
                  False, None)
 
-ALLEYWAY = Room("The Alleyway", 'LEFT_MALL', 'CASINO', 'GARBAGE TRUCK', None, [unbreakable_book], False,
+ALLEYWAY = Room("The Alleyway", 'LEFT_MALL', 'CASINO', 'GARBAGE_TRUCK', None, [unbreakable_book], False,
                 "You reach an alleyway. Their isn't much that is here other than a piece of paper with a \n"
                 "clown, a bear, a ballerina, and a puppet. You see that it familiar in a way but you couldn't \n"
                 "place it. To the North is the left of the mall, to the East is a Casino and to the South \n"
@@ -1065,6 +1090,9 @@ farm = [sand, elf_leaf, wood, heal_flower]
 
 mine = [uncut_diamond, cosmonium_ore, iron_ore, gold_ore, stone]
 
+blueprints = [staff_of_armor_blueprint, staff_of_emerged_power_blueprint, staff_of_healing_blueprint,
+              paper_with_writing]
+
 
 def crafting():
     item_crafting = False
@@ -1099,7 +1127,8 @@ def crafting():
             else:
                 print("You don't have the paper with writing.")
         if item_crafting == "armor of strength":
-            if strength_potion and iron_armor and armor_shell in current_character.inventory:
+            if strength_potion in current_character.inventory and iron_armor in current_character.inventory and \
+                            armor_shell in current_character.inventory:
                 if armor_shell.amount >= 5:
                     if armor_of_strength not in current_character.inventory:
                         current_character.inventory.append(armor_of_strength)
@@ -1126,7 +1155,7 @@ def crafting():
                       "or armor \n"
                       "shells.")
         if item_crafting == "iron armor":
-            if iron_bar and armor_shell in current_character.inventory:
+            if iron_bar in current_character.inventory and armor_shell in current_character.inventory:
                 if iron_bar.amount >= str(5) and armor_shell.amount >= 10:
                     if iron_armor not in current_character.inventory:
                         current_character.inventory.append(iron_armor)
@@ -1147,7 +1176,8 @@ def crafting():
             else:
                 print("You don't have the materials for this item. You either don't have iron bars or armor shells.")
         if item_crafting == "gold armor":
-            if gold_bar and armor_shell in current_character.inventory:
+            if gold_bar in current_character.inventory and armor_shell in current_character.inventory \
+                    in current_character.inventory:
                 if gold_bar.amount >= str(5) and armor_shell.amount >= 10:
                     if gold_armor not in current_character.inventory:
                         current_character.inventory.append(gold_armor)
@@ -1169,7 +1199,8 @@ def crafting():
             else:
                 print("You don't have the materials for this item. You either don't have gold bars or armor shells.")
         if item_crafting == "diamond armor":
-            if diamond and armor_glue and armor_shell in current_character.inventory:
+            if diamond in current_character.inventory and armor_glue in current_character.inventory and armor_shell \
+                    in current_character.inventory:
                 if diamond.amount >= str(5) and armor_shell.amount >= 10:
                     if diamond_armor not in current_character.inventory:
                         current_character.inventory.append(diamond_armor)
@@ -1193,7 +1224,7 @@ def crafting():
                       "glue or \n"
                       "armor shells.")
         if item_crafting == "metal bow":
-            if iron_bar and broken_bow in current_character.inventory:
+            if iron_bar in current_character.inventory and broken_bow in current_character.inventory:
                 if iron_bar.amount >= str(5):
                     if metal_bow not in current_character.inventory:
                         current_character.inventory.append(metal_bow)
@@ -1212,7 +1243,8 @@ def crafting():
             else:
                 print("You don't have the materials for this item. You either don't have iron bars or a broken bow.")
         if item_crafting == "legendary bow":
-            if metal_bow and cosmonium_ingot and iron_bar in current_character.inventory:
+            if metal_bow in current_character.inventory and cosmonium_ingot in current_character.inventory and \
+                            iron_bar in current_character.inventory:
                 if cosmonium_ingot.amount >= str(6) and iron_bar.amount >= str(3):
                     if legendary_bow not in current_character.inventory:
                         current_character.inventory.append(legendary_bow)
@@ -1239,7 +1271,7 @@ def crafting():
                       "or iron \n"
                       "bars.")
         if item_crafting == "wooden arrow":
-            if sticks and stone in current_character.inventory:
+            if sticks in current_character.inventory and stone in current_character.inventory:
                 wooden_arrow_amount = input("How many wooden arrows do you want to craft? ")
                 amount_wa_1 = sticks.amount - stone.amount
                 amount_wa_2 = stone.amount - sticks.amount
@@ -1267,10 +1299,10 @@ def crafting():
             else:
                 print("You don't have the materials for this item. You either don't have sticks or stones.")
         if item_crafting == "metal arrow":
-            if iron_bar and sticks in current_character.inventory:
+            if iron_bar in current_character.inventory and sticks in current_character.inventory:
                 metal_arrow_amount = input("How many metal arrows do you want to craft? ")
-                amount_ma_1 = iron_bar.amount - sticks.amount
-                amount_ma_2 = sticks.amount - iron_bar.amount
+                amount_ma_1 = int(iron_bar.amount) - sticks.amount
+                amount_ma_2 = sticks.amount - int(iron_bar.amount)
                 possible_ma = 0
                 if amount_ma_1 > 0:
                     possible_ma = sticks.amount
@@ -1295,8 +1327,8 @@ def crafting():
             else:
                 print("You don't have the materials for this item. You either don't have iron bars or sticks.")
         if item_crafting == "bolt head piece":
-            if iron_bar and bolt_head_piece in current_character.inventory:
-                if bolt_head_piece_blueprint in current_character.blueprint:
+            if iron_bar in current_character.inventory and bolt_head_piece in current_character.inventory:
+                if bolt_head_piece_blueprint in current_character.inventory:
                     bolt_head_piece_amount = input("How many bolt head pieces do you want to craft? ")
                     possible_bhp = iron_bar.amount
                     if bolt_head_piece_amount <= possible_bhp:
@@ -1318,7 +1350,7 @@ def crafting():
                 print("You don't have the materials for this item. You either don't have iron bars or bolt head "
                       "pieces.")
         if item_crafting == "normal crossbow bolt":
-            if bolt_head_piece and sticks in current_character.inventory:
+            if bolt_head_piece in current_character.inventory and sticks in current_character.inventory:
                 normal_crossbow_bolt_amount = input("How many normal crossbow bolt do you want to craft? ")
                 amount_ncb_1 = bolt_head_piece.amount - sticks.amount
                 amount_ncb_2 = sticks.amount - bolt_head_piece.amount
@@ -1347,7 +1379,7 @@ def crafting():
             else:
                 print("You don't have the materials for this item. You either don't have bolt head pieces or sticks.")
         if item_crafting == "explosive crossbow bolt":
-            if normal_crossbow_bolt and gunpowder in current_character.inventory:
+            if normal_crossbow_bolt in current_character.inventory and gunpowder in current_character.inventory:
                 explosive_crossbow_bolt_amount = input("How many explosive crossbow bolt do you want to craft? ")
                 amount_ecb_1 = explosive_crossbow_bolt.amount - gunpowder.amount
                 amount_ecb_2 = gunpowder.amount - explosive_crossbow_bolt.amount
@@ -1377,7 +1409,7 @@ def crafting():
                 print("You don't have the materials for this item. You either don't have normal crossbow bolt or "
                       "gunpowder.")
         if item_crafting == "electric crossbow bolt":
-            if normal_crossbow_bolt and battery in current_character.inventory:
+            if normal_crossbow_bolt in current_character.inventory and battery in current_character.inventory:
                 electric_crossbow_bolt_amount = input("How many electric crossbow bolt do you want to craft? ")
                 amount_excb_1 = normal_crossbow_bolt.amount - battery.amount
                 amount_excb_2 = battery.amount - normal_crossbow_bolt.amount
@@ -1406,9 +1438,9 @@ def crafting():
                 print("You don't have the materials for this item. You either don't have normal crossbow bolts or \n"
                       "battery power.")
         if item_crafting == "staff of healing":
-            if staff_of_healing_blueprint in current_character.blueprint:
+            if staff_of_healing_blueprint in current_character.inventory:
                 if staff_of_healing not in current_character.inventory:
-                    if sticks and cosmonium_ingot in current_character.inventory:
+                    if sticks in current_character.inventory and cosmonium_ingot in current_character.inventory:
                         if not staff_of_healing.one_crafted:
                             if sticks.amount >= 10 and cosmonium_ingot.amount >= str(10):
                                 current_character.inventory.append(staff_of_healing)
@@ -1438,9 +1470,9 @@ def crafting():
             else:
                 print("You do not have the blueprint.")
         if item_crafting == "staff of emerged power":
-            if staff_of_emerged_power_blueprint in current_character.blueprint:
+            if staff_of_emerged_power_blueprint in current_character.inventory:
                 if staff_of_emerged_power not in current_character.inventory:
-                    if sticks and cosmonium_ingot in current_character.inventory:
+                    if sticks in current_character.inventory and cosmonium_ingot in current_character.inventory:
                         if not staff_of_emerged_power.one_crafted:
                             if sticks.amount >= 10 and cosmonium_ingot.amount >= str(15):
                                 current_character.inventory.append(staff_of_emerged_power)
@@ -1471,9 +1503,9 @@ def crafting():
             else:
                 print("You do not have a blueprint.")
         if item_crafting == "staff of armor":
-            if staff_of_armor in current_character.blueprint:
+            if staff_of_armor in current_character.inventory:
                 if staff_of_armor not in current_character.inventory:
-                    if sticks and armor_shell in current_character.inventory:
+                    if sticks in current_character.inventory and armor_shell in current_character.inventory:
                         if not staff_of_armor.one_crafted:
                             if sticks.amount >= 10 and armor_shell.amount >= 10:
                                 current_character.inventory.append(staff_of_armor)
@@ -1545,7 +1577,7 @@ def crafting():
             else:
                 print("You don't have the material for this item.")
         if item_crafting == "magical sword":
-            if magical_stone and sharp_sword in current_character.inventory:
+            if magical_stone in current_character.inventory and sharp_sword in current_character.inventory:
                 if magical_sword not in current_character.inventory:
                     current_character.inventory.append(magical_sword)
                     magical_sword.amount += 1
@@ -1580,7 +1612,7 @@ def crafting():
             else:
                 print("You don't have the material for this item. You do not have iron bars.")
         if item_crafting == "battery":
-            if wire and armor_shell in current_character.inventory:
+            if wire in current_character.inventory and armor_shell in current_character.inventory:
                 if battery not in current_character.inventory:
                     if wire.amount >= 10 and armor_shell.amount >= 5:
                         current_character.inventory.append(battery)
@@ -1603,7 +1635,7 @@ def crafting():
             else:
                 print("You don't have the materials to craft this item. You either don't have wires or armor shells.")
         if item_crafting == "firework":
-            if gunpowder and armor_shell in current_character.inventory:
+            if gunpowder in current_character.inventory and armor_shell in current_character.inventory:
                 firework_amount = input("How many fireworks do you want to craft? ")
                 amount_f_1 = gunpowder.amount - armor_shell.amount
                 amount_f_2 = armor_shell.amount - gunpowder.amount
@@ -1633,7 +1665,7 @@ def crafting():
                       "shells in your \n"
                       "inventory.")
         if item_crafting == "cooked potato":
-            if raw_potato and torch in current_character.inventory:
+            if raw_potato in current_character.inventory and torch in current_character.inventory:
                 cooked_potato_amount = input("How much raw potato do you want to use to make cooked potato? ")
                 possible_cp = raw_potato.amount
                 if possible_cp <= cooked_potato_amount:
@@ -1652,7 +1684,7 @@ def crafting():
             else:
                 print("You don't have the materials for this item. You don't have raw potatoes in your inventory.")
         if item_crafting == "sharp sword":
-            if dull_sword and sharpening_stone in current_character.inventory:
+            if dull_sword in current_character.inventory and sharpening_stone in current_character.inventory:
                 if sharp_sword not in current_character.inventory:
                     current_character.inventory.append(sharp_sword)
                     sharp_sword.amount += 1
@@ -1862,125 +1894,6 @@ def alchemist_crafting():
                       "leaves.")
 
 
-def other_command():
-    if command == "jump":
-        print("Whoosh.")
-    if command == "use":
-        if len(current_character.inventory) != 0:
-            print("What")
-    if command == "armor info":
-        print("Your current armor: \n %s" % current_character.armor_type)
-        print("You have %s armor." % current_character.armor)
-    if command == "grab":
-        print("Items in current location:")
-        for item in current_node.item:
-            print(item.name)
-        grab = input("What item do you want to grab? ").lower()
-        if grab in current_node.item:
-            print("You grabbed %s." % grab)
-            if grab[:10] == "blueprint: ":
-                current_character.blueprint.append(grab)
-                print()
-                print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-                print("Your Blueprints:")
-                for item in current_character.blueprint:
-                    print(item.name)
-                print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-            else:
-                current_character.inventory.append(grab)
-                print()
-                print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-                print("Your Inventory:")
-                for item in current_character.inventory:
-                    print(item.name)
-                print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-        else:
-            print("Their is nothing to take.")
-    if command == "attack damage":
-        print()
-        print("Your Attack Damage:")
-        print(current_character.damage)
-    if command == "drop":
-        drop = input("What item do you want to drop? ")
-        if drop in current_character.inventory:
-            print("You dropped %s" % drop)
-            current_node.item.append(drop)
-            current_character.inventory.pop(drop)
-        else:
-            print("You don't have that item to drop.")
-    if command == "description":
-        print()
-        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-        print("Your Description:")
-        print(current_character.description)
-        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-    if command == "commands possible":
-        print(", ".join(commands_possible))
-    if command == "inventory":
-        print()
-        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-        print("Your Inventory:")
-        for item in current_character.inventory:
-            print(item.name)
-        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-    if command == "how to play":
-        print("How to play: \n"
-              "You move around using North(N), East(E), South(S), and West(W). You can use commands possible to see \n"
-              "a list of possible commands. The end goal is to find out why you are the only one in the current world.")
-
-    if command == "craft":
-        crafting()
-    if command == "attack enemy":
-        print("Help")
-    if command == "main weapon":
-        print("Help")
-    if command == "put on armor":
-        print("Help")
-    if command == "blueprints":
-        print()
-        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-        print("Your Blueprints:")
-        print(current_character.blueprint)
-        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-    if command == "alchemist craft":
-        alchemist_crafting()
-    if command == "use fireworks":
-        if firework.amount > 0:
-            firework.amount -= 1
-            print("Boom!!")
-            print("You used one firework. Hopefully you didn't attract any enemies.")
-    if command == "farm":
-        if current_node == GARDEN:
-            farm_item = random.randint(farm)
-            farm_amount = random.randint(1, 10)
-            current_character.inventory.append(farm_item)
-            farm_item.amount += farm_amount
-            print("You got %s of %s." % (farm_amount, farm_item))
-        else:
-            print("You can only use this command in the garden.")
-    if command == "mine":
-        if current_node == MINE_SHAFT:
-            if pickaxe in current_character.mining_equipment:
-                mine_item = random.randint(mine)
-                mine_amount = random.randint(1, 20)
-                got_it_1 = random.randint(1, 6)
-                got_it_2 = random.randint(1, 6)
-                got_it = got_it_1 + got_it_2
-                if got_it == 7:
-                    current_character.inventory.append(mine_item)
-                else:
-                    current_character.inventory.append(stone)
-                mine_item.amount += mine_amount
-                if mine_amount == 1:
-                    print("You mined %s of %s." % (mine_amount, mine_item))
-                if mine_amount > 1:
-                    print("You mined %s of %ss." % (mine_amount, mine_item))
-            else:
-                print("You either don't have your pickaxe in mining equipment or you don't have a pickaxe at all.")
-        else:
-            print("You can only use this command in the mine shaft.")
-
-
 while current_character.alive or finished_the_game is True:
     if current_node == PUZZLE_R:
         yes_no = input("Are you going to solve the question?(answer with a yes or no) ").lower()
@@ -2024,7 +1937,116 @@ while current_character.alive or finished_the_game is True:
                     print()
             else:
                 if command in commands_possible:
-                    other_command()
+                    if command == "jump":
+                        print("Whoosh.")
+                    if command == "use":
+                        if len(current_character.inventory) != 0:
+                            use_item = input("What do you want to use? ")
+                            if use_item in current_character.inventory:
+                                print()
+                    if command == "armor info":
+                        print("Your current armor: \n %s" % current_character.armor_type)
+                        print("You have %s armor." % current_character.armor)
+                    if command == "grab":
+                        print("Type again the grab command but after that put th item you want to grab. ")
+                        for items in current_node.item:
+                            print(items.name)
+                        command = input(">_")
+                        if 'grab' in command:
+                            print("Items in current location:")
+                            item_request = command[5:]
+                            for item in current_node.item:
+                                if item in current_node.item:
+                                    current_character.inventory.append(item)
+                                    print()
+                                    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                                    print("Your Inventory:")
+                                    for items in current_character.inventory:
+                                        print(items.name)
+                                        print()
+                                        print(items.description)
+                                    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                    if command == "attack damage":
+                        print()
+                        print("Your Attack Damage:")
+                        print(current_character.damage)
+                    if command == "drop":
+                        drop = input("What item do you want to drop? ")
+                        if drop in current_character.inventory:
+                            print("You dropped %s" % drop)
+                            current_node.item.append(drop)
+                            current_character.inventory.pop(drop)
+                        else:
+                            print("You don't have that item to drop.")
+                    if command == "description":
+                        print()
+                        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                        print("Your Description:")
+                        print(current_character.description)
+                        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                    if command == "commands possible":
+                        print(", ".join(commands_possible))
+                    if command == "inventory":
+                        print()
+                        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                        print("Your Inventory:")
+                        for item in current_character.inventory:
+                            print(item.name)
+                        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                    if command == "how to play":
+                        print("How to play: \n"
+                              "You move around using North(N), East(E), South(S), and West(W). You can use commands "
+                              "possible to see a list of \n"
+                              "possible commands. The end goal is to find out why you are the only one in the current "
+                              "world.")
+                    if command == "craft":
+                        crafting()
+                    if command == "attack enemy":
+                        print("Help")
+                    if command == "main weapon":
+                        print("Help")
+                    if command == "put on armor":
+                        print("Help")
+                        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                    if command == "alchemist craft":
+                        alchemist_crafting()
+                    if command == "use fireworks":
+                        if firework.amount > 0:
+                            firework.amount -= 1
+                            print("Boom!!")
+                            print("You used one firework. Hopefully you didn't attract any enemies.")
+                    if command == "farm":
+                        if current_node == GARDEN:
+                            farm_item = random.randint(farm)
+                            farm_amount = random.randint(1, 10)
+                            current_character.inventory.append(farm_item)
+                            farm_item.amount += farm_amount
+                            print("You got %s of %s." % (farm_amount, farm_item))
+                        else:
+                            print("You can only use this command in the garden.")
+                    if command == "mine":
+                        if current_node == MINE_SHAFT:
+                            if pickaxe in current_character.mining_equipment:
+                                mine_item = random.randint(mine)
+                                mine_amount = random.randint(1, 20)
+                                got_it_1 = random.randint(1, 6)
+                                got_it_2 = random.randint(1, 6)
+                                got_it = got_it_1 + got_it_2
+                                if got_it == 7:
+                                    current_character.inventory.append(mine_item)
+                                else:
+                                    current_character.inventory.append(stone)
+                                mine_item.amount += mine_amount
+                                if mine_amount == 1:
+                                    print("You mined %s of %s." % (mine_amount, mine_item))
+                                if mine_amount > 1:
+                                    print("You mined %s of %ss." % (mine_amount, mine_item))
+                            else:
+                                print(
+                                    "You either don't have your pickaxe in mining equipment or you don't have a "
+                                    "pickaxe at all.")
+                        else:
+                            print("You can only use this command in the mine shaft.")
                 else:
                     print()
                     print("command not recognized")

@@ -130,11 +130,10 @@ class EnchantBook(Enchanted):
 
 
 class Characters(object):
-    def __init__(self, name, inventory, blueprint, health, armor, damage, ranged_weapon, melee, mining_equipment,
+    def __init__(self, name, inventory, health, armor, damage, ranged_weapon, melee, mining_equipment,
                  description, diologue, hostile, alive, armor_type):
         self.name = name
         self.inventory = inventory
-        self.blueprint = blueprint
         self.health = health
         self.armor = armor
         self.damage = damage
@@ -196,7 +195,7 @@ class Room(object):
 
 class Stickboss(Characters):
     def __init__(self):
-        super(Stickboss, self).__init__("THE STICK BOSS", None, None, 999999, 99, 30, None, None, None,
+        super(Stickboss, self).__init__("THE STICK BOSS", None, 999999, 99, 30, None, None, None,
                                         "This boss is the stick boss. It is supper hard. It only has one weakness. "
                                         "You can only \n"
                                         "attack it if you make it mad.", None, False, True, None)
@@ -204,13 +203,13 @@ class Stickboss(Characters):
 
 class Dogboss(Characters):
     def __init__(self):
-        super(Dogboss, self).__init__("THE DOG BOSS", None, None, 200, 40, 10, None, None, None,
+        super(Dogboss, self).__init__("THE DOG BOSS", None, 200, 40, 10, None, None, None,
                                       "This boss is some-what hard. It has one weakness.", None, True, True, None)
 
 
 class Witchboss(Characters):
     def __init__(self):
-        super(Witchboss, self).__init__("WITCH BOSS", None, None, 400, 45, 20, None, None, None,
+        super(Witchboss, self).__init__("WITCH BOSS", None, 400, 45, 20, None, None, None,
                                         "This boss is harder than the Dog boss. But easier than the boss boss. It "
                                         "doesn't have a \n"
                                         "weakness. You just got to fight it.", None, True, True, None)
@@ -218,20 +217,20 @@ class Witchboss(Characters):
 
 class Guarddogs(Characters):
     def __init__(self):
-        super(Guarddogs, self).__init__("guard dogs", None, None, 20, 10, 30, None, None, None,
+        super(Guarddogs, self).__init__("guard dogs", None, 20, 10, 30, None, None, None,
                                         "This is a guard dog. They spawn near the dog boss.", None, True, True, None)
 
 
 class Wasp(Characters):
     def __init__(self):
-        super(Wasp, self).__init__("wasp", None, None, 5, 10, 20, None, None, None,
+        super(Wasp, self).__init__("wasp", None, 5, 10, 20, None, None, None,
                                    "This enemies comes in herds. They may be weak, but they do a ton of damage if they "
                                    "work together.", None, True, True, None)
 
 
 class Treearmy(Characters):
     def __init__(self):
-        super(Treearmy, self).__init__("tree army", None, None, 100, 30, 50, None, None, None,
+        super(Treearmy, self).__init__("tree army", None, 100, 30, 50, None, None, None,
                                        "These trees seem normal at first, but they have a magical property to move and "
                                        "attack. They \n"
                                        "would not attack, as long as you don't do anything to them.", None, False, True,
@@ -240,7 +239,7 @@ class Treearmy(Characters):
 
 class Wonbers(Characters):
     def __init__(self):
-        super(Wonbers, self).__init__("wonbers", None, None, 100, 50, 70, None, None, None,
+        super(Wonbers, self).__init__("wonbers", None, 100, 50, 70, None, None, None,
                                       "This is a wonbers. They do a lot of damage.", None, True, True, None)
 
 
@@ -538,7 +537,7 @@ elf_leaf = Item("elf leaf",
 broken_bottle = Item("broken bottle",
                      "This is a broken bottle that has broken when you tried to make a potion.", 1, 1, True, 0)
 # Characters
-Gabe = Characters("Gabe", ["pickaxe", "torch", "wallet"], None, 100, 10, 20, "sword", "pickaxe", None,
+Gabe = Characters("Gabe", ["pickaxe", "torch", "wallet"], 100, 10, 20, "sword", "pickaxe", None,
                   "The Enemies name is Gabe, he is one of the hardest people to fight. He have killed many people \n"
                   "for trying to solve the puzzle. They never got to the question so they weren't able to tell \n"
                   "people the question.",
@@ -547,7 +546,7 @@ Gabe = Characters("Gabe", ["pickaxe", "torch", "wallet"], None, 100, 10, 20, "sw
                    "to solve the puzzle.", "You have defeated me. You may solve the riddle. But be worn. If you \n "
                    "don't solve it within your third try, you will die. So be worn."], False, True, "golden armor")
 
-current_character = Characters("John", [], [], 100, 0, 10, "broken bow", None, None,
+current_character = Characters("John", [], 100, 0, 10, "broken bow", None, None,
                                "You are yourself. Don't let anyone change that.", None, False, True, "beginner armor")
 
 # Initialize Rooms
@@ -1941,11 +1940,13 @@ while current_character.alive or finished_the_game is True:
                         print("Whoosh.")
                     if command == "use":
                         if len(current_character.inventory) != 0:
+                            for item in current_character.inventory:
+                                print(item.name)
                             use_item = input("What do you want to use? ")
                             if use_item in current_character.inventory:
                                 print()
                     if command == "armor info":
-                        print("Your current armor: \n %s" % current_character.armor_type)
+                        print("Your current armor: \n%s" % current_character.armor_type)
                         print("You have %s armor." % current_character.armor)
                     if command == "grab":
                         print("Type again the grab command but after that put th item you want to grab. ")

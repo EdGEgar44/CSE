@@ -1100,7 +1100,7 @@ def crafting():
         print("".join(craftable))
         item_crafting = input("What do you want to craft?(To exit crafting table, type cancel). ").lower()
         if item_crafting == "armor of undying":
-            if paper_with_writing in current_character.blueprint:
+            if paper_with_writing in current_character.inventory:
                 if armor_of_undying not in current_character.inventory:
                     if cosmonium_ingot and armor_shell in current_character.inventory:
                         if cosmonium_ingot.amount >= str(10) and armor_shell.amount >= 15:

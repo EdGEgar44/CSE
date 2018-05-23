@@ -32,9 +32,8 @@ class Edible(Item):
 
 
 class Armor(Item):
-    def __init__(self, name, description, durability, base_durability, drop_item, armor, amount, creatable):
+    def __init__(self, name, description, durability, base_durability, drop_item, amount, creatable):
         super(Armor, self).__init__(name, description, durability, base_durability, drop_item, amount)
-        self.armor = armor
         self.creatable = creatable
 
 
@@ -264,34 +263,34 @@ p_key_4 = Key("P Key #4",
 # Armor
 beginner_armor = Armor("beginner armor",
                        "This armor is what you start of with at the beginning of the ga- I mean you start of with.",
-                       2000, 2000, False, 10, 1, False)
+                       2000, 2000, False, 1, False)
 
 leather_armor = Armor("leather armor",
-                      "This armor type is the weakest armor possible.", 20, 20, True, 30, 0, False)
+                      "This armor type is the weakest armor possible.", 20, 20, True, 0, False)
 
 wood_armor = Armor("wooden armor",
-                   "This armor is made complete made of flexible wood.", 30, 30, True, 35, 0, True)
+                   "This armor is made complete made of flexible wood.", 30, 30, True, 0, True)
 
 iron_armor = Armor("iron armor",
-                   "This armor is made of iron bars.", 45, 45, True, 50, 0, True)
+                   "This armor is made of iron bars.", 45, 45, True, 0, True)
 
 gold_armor = Armor("gold armor",
                    "This armor is made of gold bars. It is extremely heavy and it doesn't block a lot of hits.", 35, 35,
-                   True, 15, 0, True)
+                   True, 0, True)
 
 diamond_armor = Armor("diamond armor",
-                      "This armor is made from diamonds.", 150, 150, True, 85, 0, True)
+                      "This armor is made from diamonds.", 150, 150, True, 0, True)
 
 armor_of_undying = Armor("ARMOR OF UNDYING",
                          "The armor of undying will revive you when you die. But when the armor revives you, it will \n"
-                         "break and you will not have the armor anymore.", 1, 1, True, 20, 0, True)
+                         "break and you will not have the armor anymore.", 1, 1, True, 0, True)
 
 armor_of_strength = Armor("ARMOR OF STRENGTH",
                           "The armor of strength will give you extra damage. But when you attack, you will lose 5% \n"
-                          "of your base health(100).", 250, 250, True, 35, 0, True)
+                          "of your base health(100).", 250, 250, True, 0, True)
 
 armor_shell = Armor("armor shell",
-                    "This armor shell is used so that you can make armor.", 1, 1, True, 1, 0, True)
+                    "This armor shell is used so that you can make armor.", 1, 1, True, 0, True)
 
 # Extras
 candle = Item("candle",
@@ -315,10 +314,6 @@ paper_with_writing = Item("blueprint: paper with writing",
                           "come quickly. we care running out of food. You must also craft the legendary armor of \n"
                           "undying. That is if you are worth it. You can craft it using cosmonium ingots.'", 1, 1, True,
                           1)
-
-staff_of_armor_blueprint = Item("blueprint: staff of armor",
-                                "This piece of paper has a blueprint for the staff of armor. You need 10 sticks, \n"
-                                "a diamond, and a ", 1, 1, True, 1)
 
 staff_of_emerged_power_blueprint = Item("blueprint: staff of emerged power",
                                         "This is a piece of paper has a blueprint for the staff of emerged power. \n"
@@ -434,10 +429,6 @@ legendary_bow = Bow("LEGENDARY BOW",
 staff_of_healing = Staff("staff of healing",
                          "This staff is used to heal yourself.", 50, 50, True, 0, 'heal', 'heals player', 0, True, 1,
                          False)
-
-staff_of_armor = Staff("staff of armor",
-                       "This staff is used so that you can give yourself armor.", 50, 50, True, 0, 'armor giver',
-                       'armor giver', 30, True, 0, False)
 
 staff_of_emerged_power = Staff("STAFF OF EMERGED POWER",
                                "This staff can one shot anything in the game. You can only make it once in the game. \n"
@@ -752,7 +743,7 @@ BOOK_SECTION = Room("Book Section", 'WALKWAY', None, 'BACK_STORE', 'CLOTHING_SEC
                     "that is leading outside and to the West is the clothing section.", False, None)
 
 CLOTHING_SECTION = Room("Clothing Section", None, 'BOOK_SECTION', None, None,
-                        ["leather armor", "staff of armor blueprint"], False,
+                        [leather_armor,], False,
                         "You reach the clothing section. You see lines of clothes missing. The only thing you see \n"
                         "is armor that seems to fit you. It seems to be made out of chain mail armor. To the East \n"
                         "is the book section of the store.",
@@ -1089,8 +1080,16 @@ farm = [sand, elf_leaf, wood, heal_flower]
 
 mine = [uncut_diamond, cosmonium_ore, iron_ore, gold_ore, stone]
 
-blueprints = [staff_of_armor_blueprint, staff_of_emerged_power_blueprint, staff_of_healing_blueprint,
-              paper_with_writing]
+blueprints = [staff_of_emerged_power_blueprint, staff_of_healing_blueprint, paper_with_writing]
+
+usable = [weak_health_potion, strong_health_potion, strength_potion, poison_potion]
+
+armor_types = [armor_of_strength, armor_of_undying, beginner_armor, diamond_armor, gold_armor, iron_armor,
+               leather_armor, wood_armor]
+
+weapons_types = [dull_sword, sharp_sword, magical_sword, staff_of_healing, staff_of_emerged_power]
+
+ranged_types = [broken_bow, x_bow, metal_bow, legendary_bow]
 
 
 def crafting():
@@ -1501,38 +1500,6 @@ def crafting():
                     print("You already have this item in your inventory. You can only have 1 in your inventory.")
             else:
                 print("You do not have a blueprint.")
-        if item_crafting == "staff of armor":
-            if staff_of_armor in current_character.inventory:
-                if staff_of_armor not in current_character.inventory:
-                    if sticks in current_character.inventory and armor_shell in current_character.inventory:
-                        if not staff_of_armor.one_crafted:
-                            if sticks.amount >= 10 and armor_shell.amount >= 10:
-                                current_character.inventory.append(staff_of_armor)
-                                staff_of_armor.amount += 1
-                                sticks.amount -= 10
-                                if sticks.amount == 0:
-                                    current_character.inventory.pop(sticks)
-                                    print("You no longer have sticks in your inventory.")
-                                armor_shell.amount -= 10
-                                if armor_shell.amount == 0:
-                                    current_character.inventory.pop(armor_shell)
-                                    print("You no longer have armor shells in your inventory.")
-                                print("You no longer have 10 sticks and 10 armor shells.")
-                                print("You crafted a legendary item. You crafted the STAFF OF POWER. For more info, "
-                                      "type in 'inventory' in the \n"
-                                      "command.")
-                            else:
-                                print("You do not have enough for this item. You either don't have 10 sticks or 10 "
-                                      "armor shells.")
-                        else:
-                            print("You can only craft this item once. Sorry :(")
-                    else:
-                        print("You don't have the materials for this item. You either don't have sticks or armor "
-                              "shells.")
-                else:
-                    print("You already have this item in your inventory. You can only have craft it once.")
-            else:
-                print("You don't have the blueprint.")
         if item_crafting == "sticks":
             if wood in current_character.inventory:
                 sticks_amount = input("How many sticks do you want to craft? (Reminder: You must tell how many wood "
@@ -1947,7 +1914,8 @@ while current_character.alive or finished_the_game is True:
                                 print()
                     if command == "armor info":
                         print("Your current armor: \n%s" % current_character.armor_type)
-                        print("You have %s armor." % current_character.armor)
+                        print()
+                        print("To change the armor type, type in put on armor in the command.")
                     if command == "grab":
                         print("Type again the grab command but after that put th item you want to grab. ")
                         for items in current_node.item:
@@ -1967,6 +1935,11 @@ while current_character.alive or finished_the_game is True:
                                         print()
                                         print(items.description)
                                     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                                else:
+                                    print("This item is not in the room.")
+                        else:
+                            print("You forgot the grab in the beginning of the command. Try again.")
+                            print("Remember, you need to first put grab and then grab(item name) for it to work.")
                     if command == "attack damage":
                         print()
                         print("Your Attack Damage:")
@@ -2003,12 +1976,45 @@ while current_character.alive or finished_the_game is True:
                     if command == "craft":
                         crafting()
                     if command == "attack enemy":
-                        print("Help")
+                        current_character.attacking()
                     if command == "main weapon":
-                        print("Help")
+                        new_ranged_weapon_q = None
+                        for items in current_character.inventory:
+                            print(items.name)
+                        print("Please select a weapon.")
+                        new_weapon = input("What weapon would you like to use? ").lower()
+                        if new_weapon in weapon_types:
+                            if new_weapon in current_character.inventory:
+                                current_character.melee.pop(current_character.melee)
+                                current_character.melee.pop(new_weapon)
+                                print("You new melee weapon is %s." % current_character.melee)
+                            else:
+                                print("You do not have this item in your inventory. pls select another item.")
+                                print("You are going to need to do the whole process all over again.")
+                        else:
+                            print("This is not a weapon.")
+                        print("This is your ranged weapon: \n%s" % current_character.ranged_weapon)
+                        while new_ranged_weapon_q != "no":
+                            new_ranged_weapon_q = input("Would you like to change your ranged weapon too? ").lower()
+                            if new_ranged_weapon_q == "yes":
+                                for items in current_character.inventory:
+                                    print(items.names)
+                                new_ranged_weapon = input("What would you like to change your for your ranged weapon? ")
                     if command == "put on armor":
-                        print("Help")
-                        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                        for armor_types in current_character.inventory:
+                            print(armor_types.names)
+                        print("please select an armor piece.")
+                        new_armor = input("What armor would you like to put on? ")
+                        if new_armor in armor_types:
+                            if new_armor in current_character.inventory:
+                                current_character.armor_type.pop(current_character.armor_type)
+                                current_character.armor_type.append(new_armor)
+                                print("Your new armor is %s." % current_character.armor_type)
+                            else:
+                                print("You do not have this item in your inventory. pls select another item.")
+                                print("You are going to need to do the whole process all over again.")
+                        else:
+                            print("This is not an armor piece.")
                     if command == "alchemist craft":
                         alchemist_crafting()
                     if command == "use fireworks":

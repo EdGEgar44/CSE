@@ -527,8 +527,9 @@ elf_leaf = Item("elf leaf",
 
 broken_bottle = Item("broken bottle",
                      "This is a broken bottle that has broken when you tried to make a potion.", 1, 1, True, 0)
+
 # Characters
-Gabe = Characters("Gabe", ["pickaxe", "torch", "wallet"], 100, 10, 20, "sword", "pickaxe", None,
+Gabe = Characters("Gabe", [pickaxe, torch, wallet], 100, 10, 20, "sword", "pickaxe", None,
                   "The Enemies name is Gabe, he is one of the hardest people to fight. He have killed many people \n"
                   "for trying to solve the puzzle. They never got to the question so they weren't able to tell \n"
                   "people the question.",
@@ -541,7 +542,7 @@ current_character = Characters("John", [], 100, 0, 10, "broken bow", None, None,
                                "You are yourself. Don't let anyone change that.", None, False, True, "beginner armor")
 
 # Initialize Rooms
-BACK_MALL = Room("Back of the Mall", 'TARGET', None, 'FRONT_STORE', None, [raw_potato], False,
+BACK_MALL = Room("Back of the Mall", 'TARGET', None, 'FRONT_STORE', 'OREO_FACTORY', [], False,
                  "You are in the back of the mall. You wonder were you are and how you got here. You see Target to \n"
                  "North and the front of a store to the south.",
                  "You are in the back of the mall. You see Target in the North and the front of a store to the \n "
@@ -743,7 +744,7 @@ BOOK_SECTION = Room("Book Section", 'WALKWAY', None, 'BACK_STORE', 'CLOTHING_SEC
                     "that is leading outside and to the West is the clothing section.", False, None)
 
 CLOTHING_SECTION = Room("Clothing Section", None, 'BOOK_SECTION', None, None,
-                        [leather_armor,], False,
+                        [leather_armor], False,
                         "You reach the clothing section. You see lines of clothes missing. The only thing you see \n"
                         "is armor that seems to fit you. It seems to be made out of chain mail armor. To the East \n"
                         "is the book section of the store.",
@@ -1926,6 +1927,7 @@ while current_character.alive or finished_the_game is True:
                             item_request = command[5:]
                             for item in current_node.item:
                                 if item in current_node.item:
+                                    current_node.item.remove(item)
                                     current_character.inventory.append(item)
                                     print()
                                     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
@@ -1945,13 +1947,28 @@ while current_character.alive or finished_the_game is True:
                         print("Your Attack Damage:")
                         print(current_character.damage)
                     if command == "drop":
-                        drop = input("What item do you want to drop? ")
-                        if drop in current_character.inventory:
-                            print("You dropped %s" % drop)
-                            current_node.item.append(drop)
-                            current_character.inventory.pop(drop)
+                        print("Type again the grab command but after that put th item you want to grab"
+                              "(grab[item name]. ")
+                        for items in current_character.inventory:
+                            print(items.name)
+                        command = input(">_")
+                        if 'drop' in command:
+                            item_request = command[5:]
+                            for item in current_character.inventory:
+                                if item in current_character.inventory:
+                                    current_node.item.append(item)
+                                    current_character.inventory.remove(item)
+                                    print()
+                                    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                                    print("Items in current node:")
+                                    for items in current_node.item:
+                                        print(items.name)
+                                    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                                else:
+                                    print("This item is not in your inventory.")
                         else:
-                            print("You don't have that item to drop.")
+                            print("You forgot the grab in the beginning of the command. Try again.")
+                            print("Remember, you need to first put grab and then grab(item name) for it to work.")
                     if command == "description":
                         print()
                         print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
@@ -1965,7 +1982,9 @@ while current_character.alive or finished_the_game is True:
                         print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
                         print("Your Inventory:")
                         for item in current_character.inventory:
-                            print(item.name)
+                            print("You have %s of %s" % (item.amount, item.name))
+                            print()
+                            print(item.description)
                         print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
                     if command == "how to play":
                         print("How to play: \n"
@@ -1983,11 +2002,13 @@ while current_character.alive or finished_the_game is True:
                             print(items.name)
                         print("Please select a weapon.")
                         new_weapon = input("What weapon would you like to use? ").lower()
-                        if new_weapon in weapon_types:
+                        if new_weapon in weapons_types:
                             if new_weapon in current_character.inventory:
-                                current_character.melee.pop(current_character.melee)
-                                current_character.melee.pop(new_weapon)
-                                print("You new melee weapon is %s." % current_character.melee)
+                                current_character.melee.remove(current_character.melee)
+                                current_character.melee.append(new_weapon)
+                                current_character.damage = current_character.melee.damage
+                                print("Your new melee weapon is %s." % current_character.melee)
+                                print("Your attack damage is now %s." % current_character.damage)
                             else:
                                 print("You do not have this item in your inventory. pls select another item.")
                                 print("You are going to need to do the whole process all over again.")
@@ -2000,6 +2021,17 @@ while current_character.alive or finished_the_game is True:
                                 for items in current_character.inventory:
                                     print(items.names)
                                 new_ranged_weapon = input("What would you like to change your for your ranged weapon? ")
+                                if new_ranged_weapon in ranged_types:
+                                    current_character.ranged_weapon.remove(current_character.ranged_weapon)
+                                    current_character.ranged_weapon.append(new_ranged_weapon)
+                                    current_character.damage += current_character.ranged_weapon.damage
+                                    print("Your new ranged weapon is %s." % current_character.ranged_weapon)
+                                    print("Your attack damage is now %s." % current_character.damage)
+                                else:
+                                    print("You do not have this item in your inventory. pls select another item.")
+                                    print("You are going to need to do the whole process all over again.")
+                            else:
+                                print("This is not a ranged weapon.")
                     if command == "put on armor":
                         for armor_types in current_character.inventory:
                             print(armor_types.names)
@@ -2026,8 +2058,19 @@ while current_character.alive or finished_the_game is True:
                         if current_node == GARDEN:
                             farm_item = random.randint(farm)
                             farm_amount = random.randint(1, 10)
+                            got_it_1 = random.randint(1, 6)
+                            got_it_2 = random.randint(1, 6)
+                            got_it = got_it_1 + got_it_2
+                            if got_it == 7:
+                                current_character.inventory.append(farm_item)
+                            else:
+                                current_character.inventory.append(stone)
                             current_character.inventory.append(farm_item)
                             farm_item.amount += farm_amount
+                            if mine_amount == 1:
+                                print("You mined %s of %s." % (farm_amount, farm_item))
+                            if mine_amount > 1:
+                                print("You mined %s of %ss." % (farm_amount, farm_item))
                             print("You got %s of %s." % (farm_amount, farm_item))
                         else:
                             print("You can only use this command in the garden.")
@@ -2035,7 +2078,7 @@ while current_character.alive or finished_the_game is True:
                         if current_node == MINE_SHAFT:
                             if pickaxe in current_character.mining_equipment:
                                 mine_item = random.randint(mine)
-                                mine_amount = random.randint(1, 20)
+                                mine_amount = random.randint(1, 10)
                                 got_it_1 = random.randint(1, 6)
                                 got_it_2 = random.randint(1, 6)
                                 got_it = got_it_1 + got_it_2

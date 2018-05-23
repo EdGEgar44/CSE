@@ -6,9 +6,11 @@
       <w>cosmonium</w>
       <w>craftable</w>
       <w>diologue</w>
+      <w>dogboss</w>
       <w>eggrolls</w>
       <w>excb</w>
       <w>forgoten</w>
+      <w>guarddogs</w>
       <w>guessgame</w>
       <w>healthpot</w>
       <w>keyless</w>
@@ -24,12 +26,15 @@
       <w>renteria</w>
       <w>resistancepot</w>
       <w>southhouse</w>
+      <w>stickboss</w>
       <w>strengthpot</w>
       <w>terraria</w>
+      <w>treearmy</w>
       <w>walmart</w>
       <w>westhouse</w>
       <w>weverlope</w>
       <w>wiebe</w>
+      <w>witchboss</w>
     </words>
   </dictionary>
 </component>

@@ -4,43 +4,44 @@ import random
 
 
 class Item(object):
-    def __init__(self, name, description, durability, base_durability, drop_item, amount):
+    def __init__(self, name, description, durability, base_durability, drop_item, amount, heal):
         self.name = name
         self.description = description
         self.durability = durability
         self.base_durability = base_durability
         self.drop_item = drop_item
         self.amount = amount
+        self.heal = heal
 
 
 class Enchanted(Item):
-    def __init__(self, name, description, durability, base_durability, enchanted, drop_item, amount):
-        super(Enchanted, self).__init__(name, description, durability, base_durability, drop_item, amount)
+    def __init__(self, name, description, durability, base_durability, enchanted, drop_item, amount, heal):
+        super(Enchanted, self).__init__(name, description, durability, base_durability, drop_item, amount, heal)
         self.enchanted = enchanted
 
 
 class Key(Item):
-    def __init__(self, name, description, durability, base_durability, door, drop_item, door_number, amount):
-        super(Key, self).__init__(name, description, durability, base_durability, drop_item, amount)
+    def __init__(self, name, description, durability, base_durability, door, drop_item, door_number, amount, heal):
+        super(Key, self).__init__(name, description, durability, base_durability, drop_item, amount, heal)
         self.door = door
         self.door_number = door_number
 
 
 class Edible(Item):
-    def __init__(self, name, description, durability, base_durability, drop_item, amount):
-        super(Edible, self).__init__(name, description, durability, base_durability, drop_item, amount)
+    def __init__(self, name, description, durability, base_durability, drop_item, amount, heal):
+        super(Edible, self).__init__(name, description, durability, base_durability, drop_item, amount, heal)
 
 
 class Armor(Item):
-    def __init__(self, name, description, durability, base_durability, drop_item, amount, creatable):
-        super(Armor, self).__init__(name, description, durability, base_durability, drop_item, amount)
+    def __init__(self, name, description, durability, base_durability, drop_item, amount, creatable, heal):
+        super(Armor, self).__init__(name, description, durability, base_durability, drop_item, amount, heal)
         self.creatable = creatable
 
 
 class Weapons(Item):
     def __init__(self, name, description, durability, base_durability, drop_item, damage, crafted,
-                 amount):
-        super(Weapons, self).__init__(name, description, durability, base_durability, drop_item, amount)
+                 amount, heal):
+        super(Weapons, self).__init__(name, description, durability, base_durability, drop_item, amount, heal)
         self.crafted = crafted
         self.damage = damage
 
@@ -48,66 +49,58 @@ class Weapons(Item):
 
 
 class Potion(Edible):
-    def __init__(self, name, description, durability, base_durability, drop_item, heal, ability, amount):
-        super(Potion, self).__init__(name, description, durability, base_durability, drop_item, amount)
-        self.heal = heal
+    def __init__(self, name, description, durability, base_durability, drop_item, ability, amount, heal):
+        super(Potion, self).__init__(name, description, durability, base_durability, drop_item, amount, heal)
         self.ability = ability
 
 
 class Food(Edible):
-    def __init__(self, name, description, durability, base_durability, heal, drop_item, amount):
-        super(Food, self).__init__(name, description, durability, base_durability, drop_item, amount)
-        self.heal = heal
+    def __init__(self, name, description, durability, base_durability, drop_item, amount, heal):
+        super(Food, self).__init__(name, description, durability, base_durability, drop_item, amount, heal)
 
 
 class Lowhealth(Food):
-    def __init__(self, name, description, durability, base_durability, heal, drop_item, amount):
-        super(Lowhealth, self).__init__(name, description, durability, base_durability, heal, drop_item, amount)
+    def __init__(self, name, description, durability, base_durability, drop_item, amount, heal):
+        super(Lowhealth, self).__init__(name, description, durability, base_durability, drop_item, amount, heal)
 
 
 class Maxhealth(Food):
-    def __init__(self, name, description, durability, base_durability, heal, drop_item, amount):
-        super(Maxhealth, self).__init__(name, description, durability, base_durability, heal, drop_item, amount)
+    def __init__(self, name, description, durability, base_durability, drop_item, amount, heal):
+        super(Maxhealth, self).__init__(name, description, durability, base_durability, drop_item, amount, heal)
 
 
 class Healthpot(Potion):
-    def __init__(self, name, description, durability, base_durability, drop_item, duration, ability, heal, amount):
-        super(Healthpot, self).__init__(name, description, durability, base_durability, drop_item, duration, ability,
-                                        amount)
-        self.heal = heal
-
-
-class Strengthpot(Potion):
-    def __init__(self, name, description, durability, base_durability, duration, drop_item, ability, strength, amount):
-        super(Strengthpot, self).__init__(name, description, durability, base_durability, duration, drop_item, ability,
-                                          amount)
-        self.strength = strength
+    def __init__(self, name, description, durability, base_durability, drop_item, ability, amount, heal):
+        super(Healthpot, self).__init__(name, description, durability, base_durability, drop_item, ability, amount,
+                                        heal)
 
 
 class Resistancepot(Potion):
-    def __init__(self, name, description, durability, base_durability, drop_item, duration, ability, armor, amount):
+    def __init__(self, name, description, durability, base_durability, drop_item, duration, armor, amount, heal):
         super(Resistancepot, self).__init__(name, description, durability, base_durability, drop_item, duration,
-                                            ability, amount)
+                                            amount, heal)
         self.armor = armor
 
 
 class Sword(Weapons):
-    def __init__(self, name, description, durability, base_durability, drop_item, damage, crafted, amount):
-        super(Sword, self).__init__(name, description, durability, base_durability, drop_item, damage, crafted, amount)
+    def __init__(self, name, description, durability, base_durability, drop_item, damage, crafted, amount, heal):
+        super(Sword, self).__init__(name, description, durability, base_durability, drop_item, damage, crafted, amount,
+                                    heal)
 
 
 class Bow(Weapons):
     def __init__(self, name, description, durability, base_durability, drop_item, damage, distance, crafted,
-                 amount):
-        super(Bow, self).__init__(name, description, durability, base_durability, drop_item, damage, crafted, amount)
+                 amount, heal):
+        super(Bow, self).__init__(name, description, durability, base_durability, drop_item, damage, crafted, amount,
+                                  heal)
         self.distance = distance
 
 
 class Staff(Weapons):
     def __init__(self, name, description, durability, base_durability, drop_item, damage, enchantment, armor,
-                 crafted, amount, one_crafted):
+                 crafted, amount, one_crafted, heal):
         super(Staff, self).__init__(name, description, durability, base_durability, drop_item, damage, crafted,
-                                    amount)
+                                    amount, heal)
         self.enchantment = enchantment
         self.armor = armor
         self.one_crafted = one_crafted
@@ -144,7 +137,7 @@ class Characters(object):
                 if current_node == FORGOTTEN_R:
                     print(Gabe.description)
                 print()
-                continue_1 = input("What would you like to do? \n1: Attack \n2: Escape \n3: Use item \n>_")
+                continue_1 = input("What would you like to do? \n1: Attack \n2: Escape \n>_")
                 if continue_1 == "1":
                     if current_node == FORGOTTEN_R:
                         print(len(Gabe.diologue(0)))
@@ -160,6 +153,8 @@ class Characters(object):
                         print("You did %s damage." % self.damage)
                         print()
                         print("%s's health is %s." % (current_node.enemies.name, enemy_health))
+                        current_character.melee.durability -= 1
+                        current_character.ranged_weapon.durability -= 1
                     if enemy_damage == 0:
                         print("The %s missed." % current_node.enemies.name)
                         print("You didn't lose health.")
@@ -227,13 +222,6 @@ class Characters(object):
                         print("The enemy did %s damage." % enemy_damage)
                         if self.health == 0:
                             self.alive = False
-                if continue_1 == "3":
-                    for uses in current_character.inventory:
-                        if uses in usable:
-                            print(uses.name)
-                    consumable = input("What item would you like to use? ")
-                    if consumable in current_character.inventory:
-                        self.health += consumable.heal  # Help
                 else:
                     print("There aren't any enemies here.")
 
@@ -261,67 +249,64 @@ class Room(object):
 # Keys
 tr_key = Key("TR Key",
              "The TR Key seems to open a door that is locked. Which door that can be is unknown.", None, None,
-             'teleporter_R', True, 0, 1)
+             'teleporter_R', True, 0, 1, 0)
 
 p_key_1 = Key("P Key #1",
-              "The first key seems to not be the only key.", None, None, 'puzzle_R', True, 1, 1)
+              "The first key seems to not be the only key.", None, None, 'puzzle_R', True, 1, 1, 0)
 
 p_key_2 = Key("P Key #2",
-              "The second key seems to not be the only key.", None, None, 'puzzle_R', True, 1, 1)
+              "The second key seems to not be the only key.", None, None, 'puzzle_R', True, 1, 1, 0)
 
 p_key_3 = Key("P Key #3",
-              "The third key seems o not be the only key.", None, None, 'puzzle_R', True, 1, 1)
+              "The third key seems to not be the only key.", None, None, 'puzzle_R', True, 1, 1, 0)
 
 p_key_4 = Key("P Key #4",
               "The Last key seems to not be the only key. Their is a note in the back. It reads 'You must have all \n"
-              "of the keys in order to be in the puzzle room.'", None, None, 'puzzle_R', True, 1, 1)
+              "of the keys in order to be in the puzzle room.'", None, None, 'puzzle_R', True, 1, 1, 0)
 
 # Armor
 beginner_armor = Armor("beginner armor",
                        "This armor is what you start of with at the beginning of the ga- I mean you start of with.",
-                       2000, 2000, False, 1, False)
+                       2000, 2000, False, 1, False, 0)
 
 leather_armor = Armor("leather armor",
-                      "This armor type is the weakest armor possible.", 20, 20, True, 0, False)
+                      "This armor type is the weakest armor possible.", 20, 20, True, 0, False, 0)
 
 wood_armor = Armor("wooden armor",
-                   "This armor is made complete made of flexible wood.", 30, 30, True, 0, True)
+                   "This armor is made complete made of flexible wood.", 30, 30, True, 0, True, 0)
 
 iron_armor = Armor("iron armor",
-                   "This armor is made of iron bars.", 45, 45, True, 0, True)
+                   "This armor is made of iron bars.", 45, 45, True, 0, True, 0)
 
 gold_armor = Armor("gold armor",
                    "This armor is made of gold bars. It is extremely heavy and it doesn't block a lot of hits.", 35, 35,
-                   True, 0, True)
+                   True, 0, True, 0)
 
 diamond_armor = Armor("diamond armor",
-                      "This armor is made from diamonds.", 150, 150, True, 0, True)
+                      "This armor is made from diamonds.", 150, 150, True, 0, True, 0)
 
 armor_of_undying = Armor("ARMOR OF UNDYING",
                          "The armor of undying will revive you when you die. But when the armor revives you, it will \n"
-                         "break and you will not have the armor anymore.", 1, 1, True, 0, True)
+                         "break and you will not have the armor anymore.", 1, 1, True, 0, True, 0)
 
-armor_of_strength = Armor("ARMOR OF STRENGTH",
-                          "The armor of strength will give you extra damage. But when you attack, you will lose 5% \n"
-                          "of your base health(100).", 250, 250, True, 0, True)
 
 armor_shell = Armor("armor shell",
-                    "This armor shell is used so that you can make armor.", 1, 1, True, 0, True)
+                    "This armor shell is used so that you can make armor.", 1, 1, True, 0, True, 0)
 
 # Extras
 candle = Item("candle",
-              "This candle can be use so that you can burn something. But what?", 1, 1, True, 1)
+              "This candle can be use so that you can burn something. But what?", 1, 1, True, 1, 0)
 
 torch = Item("torch",
-             "This torch can be used to burn something. But what?", 1, 1, True, 1)
+             "This torch can be used to burn something. But what?", 1, 1, True, 1, 0)
 
 pickaxe = Item("a diamond pickaxe",
                "This item seams to be used to mine hard to get materials. Which material it is unknown. Maybe you \n"
-               "will find it somewhere.", 1, 1, True, 1)
+               "will find it somewhere.", 1, 1, True, 1, 0)
 
 rainbow_in_a_bottle = Healthpot("rainbow in a bottle",
                                 "The rainbow in the bottle fills you up with warmth. It is almost as if it can heal \n"
-                                "you.", 5, 5, True, 0, "heal", 20, 1)
+                                "you.", 5, 5, True, 0, 20, 20)
 
 paper_with_writing = Item("blueprint: paper with writing",
                           "The piece of paper that you found has writing in it. it reads 'You Must find the puzzle \n"
@@ -329,178 +314,172 @@ paper_with_writing = Item("blueprint: paper with writing",
                           "Trapped. we Can't find tHe exit. you must pass the test in order to free us. hope you are \n"
                           "come quickly. we care running out of food. You must also craft the legendary armor of \n"
                           "undying. That is if you are worth it. You can craft it using cosmonium ingots.'", 1, 1, True,
-                          1)
+                          1, 0)
 
 staff_of_emerged_power_blueprint = Item("blueprint: staff of emerged power",
                                         "This is a piece of paper has a blueprint for the staff of emerged power. \n"
-                                        "You need 10 sticks, 5 diamonds, and a cosmonium ingot.", 1, 1, True, 1)
+                                        "You need 10 sticks, 5 diamonds, and a cosmonium ingot.", 1, 1, True, 1, 0)
 
 staff_of_healing_blueprint = Item("Blueprint: staff of healing",
                                   "This is a piece of paper has a blueprint for the staff of healing. You need \n"
-                                  "10 sticks, 2 diamonds, and 4 cosmonium ingots.", 1, 1, True, 1)
+                                  "10 sticks, 2 diamonds, and 4 cosmonium ingots.", 1, 1, True, 1, 0)
 
 camera = Item("camera",
-              "You look at the camera. You wonder if they are any photos inside it.", 1, 1, True, 1)
+              "You look at the camera. You wonder if they are any photos inside it.", 1, 1, True, 1, 0)
 
 firework = Item("firework",
-                "Its a firework. It goes BOOM.", 1, 1, True, 0)
+                "Its a firework. It goes BOOM.", 1, 1, True, 0, 0)
 
 wallet = Item("wallet",
-              "It is a wallet with some money in it. But you don't even need it.", 1, 1, True, 1)
+              "It is a wallet with some money in it. But you don't even need it.", 1, 1, True, 1, 0)
 
 armor_glue = Item("bottle of armor glue",
-                  "This item can help make better armor.", 100, 100, True, 200)
+                  "This item can help make better armor.", 100, 100, True, 200, 0)
 
 gunpowder = Item("gunpowder",
-                 "This item will help make crossbow bolts.", 1, 1, True, 300)
+                 "This item will help make crossbow bolts.", 1, 1, True, 300, 0)
 
 battery = Item("battery",
-               "This item is used to make items or weapons have an electric conduct.", 100, 100, True, 0)
+               "This item is used to make items or weapons have an electric conduct.", 100, 100, True, 0, 0)
 
 charger = Item("charger",
-               "This item is to charge up the durability of the battery.", 200, 200, True, 0)
+               "This item is to charge up the durability of the battery.", 200, 200, True, 0, 0)
 
 wire = Item("wire",
-            "This item is used to craft batteries.", 1, 1, True, 10)
+            "This item is used to craft batteries.", 1, 1, True, 10, 0)
 
 # Materials
 iron_ore = Item("iron ore",
-                "This material is used to make iron bars.", 1, 1, True, 0)
+                "This material is used to make iron bars.", 1, 1, True, 0, 0)
 
 iron_bar = Item("iron bar",
-                "This material is used to craft armor and weapons.", 1, 1, True, 1)
+                "This material is used to craft armor and weapons.", 1, 1, True, 0, 0)
 
 gold_ore = Item("gold ore",
-                "This material is used to make gold bars.", 1, 1, True, 0)
+                "This material is used to make gold bars.", 1, 1, True, 0, 0)
 
 gold_bar = Item("gold bar",
-                "This material is used to craft armor and weapons.", 1, 1, True, 0)
+                "This material is used to craft armor and weapons.", 1, 1, True, 0, 0)
 
 uncut_diamond = Item("uncut diamond",
-                     "This material is used to make diamonds.", 1, 1, True, 0)
+                     "This material is used to make diamonds.", 1, 1, True, 0, 0)
 
 diamond = Item("diamond",
-               "This material is used to craft very strong armor and complex electronics.", 1, 1, True, 0)
+               "This material is used to craft very strong armor and complex electronics.", 1, 1, True, 0, 0)
 
 cosmonium_ore = Item("COSMONIUM ORE",
                      "This material is very hard to find. It is harder than diamond and has the power to revive you. \n"
-                     "You need to craft the cosmonium ingot.", 9, 9, True, 50)
+                     "You need to craft the cosmonium ingot.", 9, 9, True, 50, 0)
 
 cosmonium_ingot = Item("COSMONIUM INGOT",
                        "This material is hard to craft. It can be used to craft legendary or to craft unstable items.",
-                       2, 2, True, 0)
+                       2, 2, True, 0, 0)
 
 wood = Item("wood",
             "This material is the weakest material. it can be used to make sticks. One wood makes 4 sticks", 1, 1, True,
-            39)
+            39, 0)
 
 sticks = Item("sticks",
-              "This material is used to make items that need a wooden handle.", 1, 1, True, 0)
+              "This material is used to make items that need a wooden handle.", 1, 1, True, 0, 0)
 
 stone = Item("stone",
-             "This material is used to make stone parts.", 1, 1, True, 15)
+             "This material is used to make stone parts.", 1, 1, True, 15, 0)
 
 sharpening_stone = Item("sharpening stone",
                         "This stone is used so that you can sharpen tools. Has a small chance of giving durability \n"
-                        "to the tool", 40, 40, True, 0)
+                        "to the tool", 40, 40, True, 0, 0)
 
 sand = Item("sand",
-            "This is sand.", 1, 1, True, 0)
+            "This is sand.", 1, 1, True, 0, 0)
 
 magical_stone = Item("magical stone",
-                     "This material is used to make magical items.", 1, 1, True, 5)
+                     "This material is used to make magical items.", 1, 1, True, 5, 0)
 
 # Weapons
 dull_sword = Sword("dull sword",
-                   "This sword is dull.", 100, 100, True, 8, False, 1)
+                   "This sword is dull.", 100, 100, True, 8, False, 1, 0)
 
 sharp_sword = Sword("sharp sword",
-                    "This sword is so sharp, it can cut stone.", 50, 50, True, 73, True, 0)
+                    "This sword is so sharp, it can cut stone.", 50, 50, True, 73, True, 0, 0)
 
 magical_sword = Sword("MAGICAL SWORD",
-                      "This sword seems magical. It is glowing with a purple glow.", 230, 230, True, 99, True, 0)
+                      "This sword seems magical. It is glowing with a purple glow.", 230, 230, True, 99, True, 0, 0)
 
 broken_bow = Bow("broken bow",
                  "The bow is broken. you can use it but it might now do a lot of damage.", 14, 14, True, 11, 13, False,
-                 1)
+                 1, 0)
 
 x_bow = Bow("x-bow",
-            "You have a cross bar.", 300, 300, True, 46, 38, False, 1)
+            "You have a cross bar.", 300, 300, True, 46, 38, False, 1, 0)
 
 metal_bow = Bow("metal bow",
-                "The bow has been reinforced with iron.", 200, 200, True, 73, 74, True, 0)
+                "The bow has been reinforced with iron.", 200, 200, True, 73, 74, True, 0, 0)
 
 legendary_bow = Bow("LEGENDARY BOW",
-                    "This bow is a reinforced bow that has 3 enchantments with it.", 999, 999, True, 300, 235, True, 1)
+                    "This bow is a reinforced bow that has 3 enchantments with it.", 999, 999, True, 300, 235, True, 1,
+                    0)
 
 staff_of_healing = Staff("staff of healing",
-                         "This staff is used to heal yourself.", 50, 50, True, 0, 'heal', 0, True, 1,
-                         False)
+                         "This staff is used to heal yourself.", 50, 50, True, 0, 'heal', 0, True, 1, False, 50)
 
 staff_of_emerged_power = Staff("STAFF OF EMERGED POWER",
                                "This staff can one shot anything in the game. You can only make it once in the game. \n"
                                "But it only has one durability. So use it wisely.", 1, 1, True,
-                               999999999999999999999999999999999999999999999999999999, 0, True, 0, False, False)
+                               999999999999999999999999999999999999999999999999999999, 0, True, 0, False, False, 0)
 
 # Potions
 weak_health_potion = Potion("weak health potion",
-                            "This health potion gives you 20 health back.", 1, 1, True, 1, 20, 0)
+                            "This health potion gives you 20 health back.", 1, 1, True, "health", 0, 20)
 
 strong_health_potion = Potion("strong health potion",
-                              "This health potion gives you 50 health back.", 1, 1, True, 1, 40, 0)
-
-strength_potion = Potion("strength potion",
-                         "This strength potion gives you an attack boost for 30 moves.", 1, 1, True, 1, 10, 0)
+                              "This health potion gives you 50 health back.", 1, 1, True, "health", 0, 40)
 
 poison_potion = Potion("POISON IN A BOTTLE",
                        "This potion can be thrown and will poison the enemy. The poison will not kill the enemy. The \n"
-                       "enemy will do less damage and will have less health", 1, 1, True, 1, 50, 0)
+                       "enemy will do less damage and will have less health", 1, 1, True, "poison", 0, 0)
 
 # Food
 raw_potato = Food("raw potato",
-                  "You can eat this raw potato. But it looks so weird.", 1, 1, 5, True, 0)
+                  "You can eat this raw potato. But it looks so weird.", 1, 1, True, 0, 10)
 
 cooked_potato = Food("cooked potato",
-                     "This potato is cooked.", 1, 1, 15, True, 0)
+                     "This potato is cooked.", 1, 1, 15, 0, 20)
 
 potato_chip = Food("potato chips",
-                   "Its a bag of chips.", 1, 1, 20, True, 20)
+                   "Its a bag of chips.", 1, 1, 20, 10, 15)
 
 raw_meat = Food("raw meat",
-                "This is a piece of raw meat from an unknown creature.", 1, 1, 30, True, 40)
+                "This is a piece of raw meat from an unknown creature.", 1, 1, True, 40, 20)
 
 cooked_meat = Food("cooked meat",
-                   "This is a piece of cooked meat from the oven.", 1, 1, 50, True, 0)
+                   "This is a piece of cooked meat from the oven.", 1, 1, True, 0, 80)
 
 unicorn_meat = Food("UNICORN MEAT",
                     "Despite its name, it is not from a unicorn. It is just called that because it is extremely rare. "
-                    "Tho it is does \n have a little bit of a rainbow color. But it is just food dye.", 1, 1, 80, True,
-                    20)
+                    "Tho it is does \n have a little bit of a rainbow color. But it is just food dye.", 1, 1, True, 20,
+                    100)
 
 # Brewing items
 glass = Item("glass",
-             "This is sand that has been heated up to see thorough.", 1, 1, True, 0)
+             "This is sand that has been heated up to see thorough.", 1, 1, True, 0, 0)
 
 glass_bottle = Item("empty glass bottle",
-                    "This is a bottle made of glass.", 1, 1, True, 0)
+                    "This is a bottle made of glass.", 1, 1, True, 0, 0)
 
 sham_pow = Item("sham-Pow",
-                "This is a good cleaning rag.", 90, 90, True, 1)
+                "This is a good cleaning rag.", 90, 90, True, 1, 0)
 
 dirty_glass_bottle = Item("dirty glass bottle",
-                          "This is a used glass bottle.", 1, 1, True, 0)
+                          "This is a used glass bottle.", 1, 1, True, 0, 0)
 
 heal_flower = Item("heal flower",
-                   "This flower has the power to heal.", 1, 1, True, 1)
-
-power_stone = Item("power stone",
-                   "This stone has the power to give someone strength.", 1, 1, True, 0)
+                   "This flower has the power to heal.", 1, 1, True, 1, 0)
 
 elf_leaf = Item("elf leaf",
-                "this leaf has the power to give someone poison.", 1, 1, True, 0)
+                "this leaf has the power to give someone poison.", 1, 1, True, 0, 0)
 
 broken_bottle = Item("broken bottle",
-                     "This is a broken bottle that has broken when you tried to make a potion.", 1, 1, True, 0)
+                     "This is a broken bottle that has broken when you tried to make a potion.", 1, 1, True, 0, 0)
 
 # Characters
 Gabe = Characters("Gabe", [pickaxe, torch, wallet], 100, 20, "sword", "pickaxe", None,
@@ -563,7 +542,7 @@ TARGET = Room("Target", 'WALMART', 'HOME_D', 'BACK_MALL', 'OFFICE_D', [], False,
               "You are now in front of Target. Walmart is to the North, Home Depot is in the East, Office Depot is to "
               "the \nWest, and to the South is the back of the mall.", False, None)
 
-OFFICE_D = Room("Office Depot", 'BANANA', 'HOME_D', None, 'CAR', [wire], False,
+OFFICE_D = Room("Office Depot", 'BANANA', 'TARGET', None, 'CAR', [wire], False,
                 "You have entered Office Depot and didn't want to go thought because of what happened with Target. To "
                 "the West \nis Target and to the East is the left of the mall.",
                 "You are outside of Office Depot. To the West is Target and to the East is the left of the mall.",
@@ -602,7 +581,7 @@ HOME_D = Room("Home Depot", None, None, None, 'TARGET', [], False,
               "You reached outside of Home Depot. To the East is the left of mall and to the West is Target.", False,
               None)
 
-WALMART = Room("Walmart", None, 'LEFT_MALL', None, 'Target', [], False,
+WALMART = Room("Walmart", None, 'LEFT_MALL', None, 'TARGET', [], False,
                "You have reached Walmart. You don't want to go inside because it you have nothing to do in their. To "
                "the East \nis the left of mall and to the West is Target.",
                "You are now outside of walmart. To the East is the left of mall and to the West is Target.", False,
@@ -622,13 +601,13 @@ SIDE_ENTRANCE = Room("Side Entrance of the House", 'OREO_FACTORY', 'FRONT_STORE'
                      "East is the front \n"
                      "of the store, to the South is the kitchen and to the West is the hallway.", False, None)
 
-KITCHEN = Room("Kitchen", 'SIDE ENTRANCE', None, None, 'LIVING_R', [potato_chip], False,
+KITCHEN = Room("Kitchen", 'SIDE_ENTRANCE', None, None, 'LIVING_R', [potato_chip], False,
                "You have reached the kitchen. You don't see anything but a bunch of cabinets. To the North is the side "
                "entrance \nof the house and to the West is the living room.",
                "You enter the kitchen of the creepy house. To the North is the side entrance of the house and to the "
                "West is \nthe living room.", False, None)
 
-HALL = Room("The Hall", 'FRONT_HOUSE', 'SIDE _ENTRANCE', 'LIVING_R', None, [], False,
+HALL = Room("The Hall", 'FRONT_HOUSE', 'SIDE_ENTRANCE', 'LIVING_R', None, [], False,
             "You are in the hallway of the creepy house. In the hallway you can see that there is a book that seems to "
             "want \nyou are trying to do. If you know what to do that is. To the North is a door leading to the "
             "outside, to the \nEast is a door with a carpet that has an eye on it and to the South is what looks like "
@@ -678,7 +657,7 @@ DARK_R = Room("The Dark Room", 'SCARY_R', 'CORRIDOR', None, 'WEST_HOUSE', [camer
               "and to the \nWest you hear birds chirping.",
               "You entered the dark room. You wonder why they didn't have some kind of light source in the room. You "
               "hear \nscary sounds in the room to the North, to the East is the corridor and to the West you hear "
-              "birds chirping.", False, None)
+              "birds chirping.", False, guarddog)
 
 SCARY_R = Room("Scary Room", None, None, 'DARK_R', None, [p_key_2], False,
                "You enter the scary room  to find that the monitor of a computer was on. It was playing scary music "
@@ -770,7 +749,7 @@ OREO_FACTORY = Room("The Oreo Cookie Factory", None, 'BACK_MALL', 'SIDE_ENTRANCE
                     "You came back to the Oreo Factory. To the East is the back of the mall and to the South is the "
                     "side entrance to \na scary looking house.", False, None)
 
-FRONT_HOUSE = Room("The Front of the House", 'HALL', None, None, 'PARKING_LOT', [], False,
+FRONT_HOUSE = Room("The Front of the House", 'PARKING_LOT', None, 'HALL', None, [], False,
                    "You are at the front of the house. You knock on the door to see if anyone is their. No one answers "
                    "so you just \nopen the door. You see that the door isn't unlocked. You open the door, enter the "
                    "house and closed the door. To \nthe North is the parking lot and to the South is the hallway.",
@@ -802,7 +781,7 @@ CASINO = Room("The Casino", None, None, 'RESTAURANT', 'ALLEYWAY', [], False,
               "You are outside of the casino. To the South is a restaurant and to the West is the alleyway.", False,
               None)
 
-GARBAGE_TRUCK = Room("The Garbage Truck", 'ALLEYWAY', 'STAR_RESTAURANT', None, None, [paper_with_writing, armor_glue],
+GARBAGE_TRUCK = Room("The Garbage Truck", 'ALLEYWAY', 'RESTAURANT', None, None, [paper_with_writing, armor_glue],
                      False,
                      "You reached the Garbage truck. When you reach their, you see that the passenger seat s open. "
                      "You enter the \ngarbage truck and their seems to be a key of some sort. Their is also a piece of "
@@ -825,7 +804,7 @@ CORNER = Room("The Corner", 'RESTAURANT', 'CHINESE_RESTAURANT', None, None, [], 
               "You reached the corner of the of the alleyway. To the North is the 5 star restaurant and to the West is "
               "the \nchinese restaurant.", False, None)
 
-CHINESE_RESTAURANT = Room("The Abandoned Chinese Restaurant", None, None, 'CORNER', None, [], False,
+CHINESE_RESTAURANT = Room("The Abandoned Chinese Restaurant", None, None, None, 'CORNER', [], False,
                           "You reached the abandoned chinese restaurant and you go inside. You see that the their was "
                           "a lot of people that \nuse to go here because of so any tables and chairs. You see burn "
                           "marks on the wall and you wonder if their was \na fire. To the West is the corner of the 5 "
@@ -833,7 +812,7 @@ CHINESE_RESTAURANT = Room("The Abandoned Chinese Restaurant", None, None, 'CORNE
                           "You are now in the parking lot of the abandoned restaurant. To the West is the corner of "
                           "the 5 star restaurant.", False, None)
 
-TELEPORTER_R = Room("The Teleporter Room", None, None, None, 'CASINO', [], False,
+TELEPORTER_R = Room("The Teleporter Room", 'SERVER', None, None, 'CASINO', [], False,
                     "You enter the door that was floating bit because you hold the key near it stopped floating and "
                     "reached the \nfloor. You put the key in the key hole and the door opens. You take the key and you "
                     "go inside. Inside seems to \nhave a bunch of wire and a pod in the middle. The pod had a name. "
@@ -841,7 +820,7 @@ TELEPORTER_R = Room("The Teleporter Room", None, None, None, 'CASINO', [], False
                     "the West is the casino.",
                     "You are in the teleporter room. To the West is the casino.", False, None)
 
-SERVER = Room("The Server", None, None, None, 'CORRUPTED_R', [], False,
+SERVER = Room("The Server", None, 'TELEPORTER_R', None, 'CORRUPTED_R', [], False,
               "You feel dazed because of 'The Teleporter 9000'. You try to walk but you can't. Then you see a door to "
               "the west \nthat is slightly open. You see blue light flickering true the bottom of the door. But then "
               "you see that their \nis a sight that dose not very much glows. It reads: \n'YOU SHOULD NOT ENTER. IF "
@@ -882,7 +861,7 @@ COMPUTER_R = Room("Computer Room", 'STONE_LIBRARY', 'REFLECTIVE_R', None, None, 
                   "You entered the room filled with computers. To the North is door that is made out of stone. It "
                   "appears to be \nopen. To the East is the room filled with mirrors.", False, None)
 
-STONE_LIBRARY = Room("STONE_LIBRARY", None, None, 'COMPUTER_R', 'GARDEN', [], False,
+STONE_LIBRARY = Room("stone library", None, None, 'COMPUTER_R', 'GARDEN', [], False,
                      "You open the stone door. When you open the door, you see a huge library made up of stones. You "
                      "wonder why the \nstone door wasn't even locked. You go down the aile and you see that the books "
                      "are very old yet new. To the \nSouth is the computer room and to the West is a garden.",
@@ -937,7 +916,7 @@ CAVERN = Room("Cavern", 'LOOPER', 'MINE_SHAFT', None, None, [], False,
               "the \nNorth is what look like a way out of the mine shaft and to the East is the mine shaft that has "
               "the pickaxe.",
               "You are now in the cavern with rock all around you. To the North is what look like a way out of the "
-              "mine shaft \nand to the East is the mine shaft that had the pickaxe.", False, None)
+              "mine shaft \nand to the East is the mine shaft that had the pickaxe.", False, wasp)
 
 LOOPER = Room("The Looper", None, 'THRONE_R', 'CAVERN', 'RAINBOW_R', [dull_sword], False,
               "You are now in a room that is filled with side way eights. Then you remembered that side way eights is "
@@ -945,7 +924,8 @@ LOOPER = Room("The Looper", None, 'THRONE_R', 'CAVERN', 'RAINBOW_R', [dull_sword
               "throne room, to \nthe South is the cavern and to the West is a door that has rainbows all over the "
               "door.",
               "You are back to the Looper room. This sounds ironic. Does it to you? To the East is a throne room, to "
-              "the South \nis the cavern and to the West is a door that has rainbows all over the door.", False, None)
+              "the South \nis the cavern and to the West is a door that has rainbows all over the door.", False,
+              witchboss)
 
 THRONE_R = Room("Throne Room", None, 'CASTLE_KITCHEN', None, 'LOOPER', [magical_stone], False,
                 "You entered the throne room that is in the castle. You see that their is someone on one of the "
@@ -978,7 +958,7 @@ SECTION_3 = Room("Section 3", None, 'LIGHT_R', 'CASTLE_ENTRANCE', 'BLOOD_MOON_R'
                  "of a castle and to the \nWest is a door that is red and inside is very dark.",
                  "You are now in the 3-way section. To the East is the room that has blinding light inside, to the "
                  "South is the \ncastle entrance and to the West is a door that is red that is dark inside.", False,
-                 None)
+                 wonbers)
 
 CASTLE_ENTRANCE = Room("Castle Entrance", 'SECTION_3', None, 'CASTLE_KITCHEN', None, [], False,
                        "You are in the castle entrance. What are you going to do. You might find someone that can help "
@@ -995,7 +975,7 @@ LIGHT_R = Room("Light Room", None, 'BO_BO', None, 'SECTION_3', [], False,
                "a pair of \nsunglasses. You put them on and you can actually see things inside. To the East is a door "
                "that leads to a place \ncalled Bo Bo's room and to the West is a green door that leads to a 3-way "
                "section. Then you put away the \nsunglasses. Forgetting about them. Even if you are blinded.", False,
-               None)
+               Dogboss)
 
 BO_BO = Room("Bo Bo's room", 'PUZZLE_R', 'FORGOTTEN_R', None, 'LIGHT_R', [], False,
              "You finally reached the door to another room. This room was different. You have never been here before. "
@@ -1011,7 +991,7 @@ FORGOTTEN_R = Room("Forgotten Room", None, None, None, 'BO_BO', [p_key_1], False
                    "that someone has writen on it. \nYou don't understand it. But then you see a key. It has 'P KEY' "
                    "written on it. To the West is Bo BO's room.",
                    "You really like going to hidden rooms don't you know. Bet you feel nice to see this hard to find "
-                   "key. To the \nWest is Bo Bo'd room", False, None)
+                   "key. To the \nWest is Bo Bo'd room", False, treearmy)
 
 PUZZLE_R = Room("Puzzle Room", None, None, 'BO_BO', None, [], False,
                 "You enter the room that Gabe told you not to go their. 'The puzzle will be to hard' he said. You "
@@ -1020,7 +1000,7 @@ PUZZLE_R = Room("Puzzle Room", None, None, 'BO_BO', None, [], False,
                 "some newspaper, and some kindling \nwood, which would you light first?",
                 "Are you going to solve the puzzle? if you are, here is the puzzle. \nThe Puzzle: \nIf you had only "
                 "one match, and entered a dark room containing an oil lamp, some newspaper, and some kindling \nwood, "
-                "which would you light first?", False, None)
+                "which would you light first?", False, stickboss)
 
 
 end_game = "Once you have thought that the world was so easy, yet you didn't know how hard it was to survive all by \n"\
@@ -1049,18 +1029,16 @@ pass_trough = False
 
 moves = 0
 
-current_armor_on = beginner_armor
-
 commands_possible = ["jump", "H use", "armor info", "grab", "attack damage", "drop", "description", "commands possible",
-                     "inventory", "how to play", "craft", "attack enemy", "H main weapon", "H put on armor",
-                     "blueprints", "alchemist craft", "use firework", "farm", "mine"]
+                     "inventory", "how to play", "craft", "main weapon", "put on armor", "alchemist craft",
+                     "use firework", "farm", "mine"]
 
-craftable = ["iron armor", "gold armor", "diamond armor", "armor of undying", "armor of strength", "metal bow",
+craftable = ["iron armor", "gold armor", "diamond armor", "armor of undying", "metal bow",
              "legendary bow", "staff of healing", "staff of emerged power", "staff of power", "sticks",
              "cosmonium ingot", "magical sword", "armor shell", "battery", "firework", "cooked potato", "sharp sword",
              "sharpening stone", "glass", "glass bottle", "iron bar", "gold bar", "diamond", "cooked meat"]
 
-alchemy = ["weak health potion", "strong health potion", "strength potion", "poison potion"]
+alchemy = ["weak health potion", "strong health potion", "poison potion"]
 
 farm = [sand, elf_leaf, wood, heal_flower]
 
@@ -1068,11 +1046,10 @@ mine = [uncut_diamond, cosmonium_ore, iron_ore, gold_ore, stone]
 
 blueprints = [staff_of_emerged_power_blueprint, staff_of_healing_blueprint, paper_with_writing]
 
-usable = [weak_health_potion, strong_health_potion, strength_potion, poison_potion, raw_potato, cooked_potato,
+usable = [weak_health_potion, strong_health_potion, poison_potion, raw_potato, cooked_potato,
           potato_chip, raw_meat, cooked_meat, unicorn_meat]
 
-armor_types = [armor_of_strength, armor_of_undying, beginner_armor, diamond_armor, gold_armor, iron_armor,
-               leather_armor, wood_armor]
+armor_types = [armor_of_undying, beginner_armor, diamond_armor, gold_armor, iron_armor, leather_armor, wood_armor]
 
 weapons_types = [dull_sword, sharp_sword, magical_sword, staff_of_healing, staff_of_emerged_power]
 
@@ -1081,8 +1058,8 @@ ranged_types = [broken_bow, x_bow, metal_bow, legendary_bow]
 
 def crafting():
     item_crafting = False
-    while item_crafting == "cancel":
-        print("".join(craftable))
+    while item_crafting != "cancel":
+        print("\n".join(craftable))
         item_crafting = input("What do you want to craft?(To exit crafting table, type cancel). ").lower()
         if item_crafting == "armor of undying":
             if paper_with_writing in current_character.inventory:
@@ -1111,34 +1088,6 @@ def crafting():
                     print("You already have this item.")
             else:
                 print("You don't have the paper with writing.")
-        if item_crafting == "armor of strength":
-            if strength_potion in current_character.inventory and iron_armor in current_character.inventory and \
-                            armor_shell in current_character.inventory:
-                if armor_shell.amount >= 5:
-                    if armor_of_strength not in current_character.inventory:
-                        current_character.inventory.append(armor_of_strength)
-                    armor_of_strength.amount += 1
-                    strength_potion.amount -= 1
-                    if strength_potion.amount == 0:
-                        current_character.inventory.remove(strength_potion)
-                        print("You no longer have strength potions in your inventory.")
-                    iron_armor.amount -= 1
-                    if iron_armor.amount == 0:
-                        current_character.inventory.remove(iron_armor)
-                        print("You no longer have iron armor in your inventory.")
-                    armor_shell.amount -= 5
-                    if armor_shell.amount == 0:
-                        current_character.inventory.remove(armor_shell)
-                        print("You no longer have armor shells in your inventory.")
-                    print("You have used one of your strength potion, iron armor, and 5 armor shell.")
-                    print("You have created the ARMOR OF STRENGTH. For more info, type 'armor of strength' in the "
-                          "command")
-                else:
-                    print("You don't have enough materials for this item. You don't have 5 armor shell.")
-            else:
-                print("You don't have the materials for this item. You either don't have a strength potion, iron armor "
-                      "or armor \n"
-                      "shells.")
         if item_crafting == "iron armor":
             if iron_bar in current_character.inventory and armor_shell in current_character.inventory:
                 if iron_bar.amount >= str(5) and armor_shell.amount >= 10:
@@ -1596,8 +1545,7 @@ def crafting():
         if item_crafting == "cooked meat":
             if raw_meat in current_character.inventory:
                 cooked_meat_amount = input("How much raw meat do you want to use to craft cooked meat? ")
-                possible_cm = raw_meat.amount
-                if possible_cm <= cooked_meat_amount:
+                if str(raw_meat.amount) <= cooked_meat_amount:
                     if cooked_meat not in current_character.inventory:
                         current_character.inventory.append(cooked_meat)
                     cooked_meat.amount += cooked_meat_amount
@@ -1624,16 +1572,16 @@ def alchemist_crafting():
         potion_crafting = input("What potion are you going to brew?(To exit, type cancel). ").lower()
         if potion_crafting == "weak health potion":
             if glass_bottle and heal_flower in current_character.inventory:
-                if heal_flower.amount >= 2:
+                if heal_flower.amount >= int(2):
                     if "weak health potion" not in current_character.inventory:
                         current_character.inventory.append(weak_health_potion)
-                    weak_health_potion.amount += 1
-                    glass_bottle.amount -= 1
-                    if glass_bottle.amount == 0:
+                    weak_health_potion.amount += int(1)
+                    glass_bottle.amount -= int(1)
+                    if glass_bottle.amount == int(0):
                         current_character.inventory.remove(glass_bottle)
                         print("You no longer have glass bottles in your inventory.")
-                    heal_flower.amount -= 2
-                    if heal_flower.amount == 0:
+                    heal_flower.amount -= int(2)
+                    if heal_flower.amount == int(0):
                         current_character.inventory.remove(heal_flower)
                         print("You no longer have heal flowers in your inventory.")
                     print("You no longer have a glass bottle and 2 heal flowers.")
@@ -1645,16 +1593,16 @@ def alchemist_crafting():
                       "flowers.")
         if potion_crafting == "strong health potion":
             if glass_bottle and heal_flower in current_character.inventory:
-                if heal_flower.amount >= 5:
+                if heal_flower.amount >= int(5):
                     if strong_health_potion not in current_character.inventory:
                         current_character.inventory.append(strong_health_potion)
-                    strong_health_potion.amount += 1
-                    glass_bottle.amount -= 1
-                    if glass_bottle.amount == 0:
+                    strong_health_potion.amount += int(1)
+                    glass_bottle.amount -= int(1)
+                    if glass_bottle.amount == int(0):
                         current_character.inventory.remove(glass_bottle)
                         print("You no longer have glass bottles in your inventory.")
-                    heal_flower.amount -= 5
-                    if heal_flower.amount == 0:
+                    heal_flower.amount -= int(5)
+                    if heal_flower.amount == int(0):
                         current_character.inventory.remove(heal_flower)
                         print("You no longer have heal flowers in your inventory.")
                     print("you no longer have a glass bottle and 5 flowers.")
@@ -1664,32 +1612,18 @@ def alchemist_crafting():
             else:
                 print("You don't have the materials for this item. You either don't have glass bottles or heal "
                       "flowers.")
-        if potion_crafting == "strength potion":
-            if glass_bottle and power_stone in current_character.inventory:
-                if strength_potion not in current_character.inventory:
-                    current_character.inventory.append(strength_potion)
-                strength_potion.amount += 1
-                glass_bottle.amount -= 1
-                if glass_bottle.amount == 0:
-                    current_character.inventory.remove(glass_bottle)
-                    print("You no longer have glass bottles in your inventory.")
-                print("You no longer have a glass bottle and a power stone.")
-                print("You crafted a strength potion. For more info, type 'inventory' in the command.")
-            else:
-                print("You don't have the materials for this item. You either don't have glass bottles or power "
-                      "stones.")
         if potion_crafting == "poison potion":
             if glass_bottle and elf_leaf in current_character.inventory:
-                if elf_leaf.amount >= 2:
+                if elf_leaf.amount >= int(2):
                     if poison_potion not in current_character.inventory:
                         current_character.inventory.append(poison_potion)
-                    poison_potion.amount += 1
-                    glass_bottle.amount -= 1
-                    if glass_bottle.amount == 0:
+                    poison_potion.amount += int(1)
+                    glass_bottle.amount -= int(1)
+                    if glass_bottle.amount == int(0):
                         current_character.inventory.remove(glass_bottle)
                         print("You no longer have glass bottles in your inventory.")
-                    elf_leaf.amount -= 1
-                    if elf_leaf.amount == 0:
+                    elf_leaf.amount -= int(1)
+                    if elf_leaf.amount == int(0):
                         current_character.inventory.remove(elf_leaf)
                     print("You no longer have elf leafs in your inventory.")
                     print("You crafted a poison potion. For more info, type 'inventory' in the command.")
@@ -1702,19 +1636,21 @@ def alchemist_crafting():
 
 while current_character.alive or finished_the_game is True:
     if current_node == PUZZLE_R:
-        yes_no = input("Are you going to solve the question?(answer with a yes or no) ").lower()
-        if yes_no == "yes":
-            command_puzzle = input("The answer: ").lower()
-            if command_puzzle == "the match" or "match":
-                print("You got it right.")
-                print("It is the match.")
-                print("It took you %s moves" % moves)
-                print(end_game)
-                finished_the_game = True
-            else:
-                print("Command not recognized")
-        if yes_no == "no":
-            current_node = BO_BO
+        if p_key_1 in current_character.inventory and p_key_2 in current_character.inventory \
+                and p_key_3 in current_character.inventory and p_key_4 in current_character.inventory:
+            yes_no = input("Are you going to solve the question?(answer with a yes or no) ").lower()
+            if yes_no == "yes":
+                command_puzzle = input("The answer: ").lower()
+                if command_puzzle == "the match" or "match":
+                    print("You got it right.")
+                    print("It is the match.")
+                    print("It took you %s moves" % moves)
+                    print(end_game)
+                    finished_the_game = True
+                else:
+                    print("Command not recognized")
+            if yes_no == "no":
+                current_node = BO_BO
     else:
         print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
         print("MOVES: %s" % moves)
@@ -1727,223 +1663,246 @@ while current_character.alive or finished_the_game is True:
         else:
             print(current_node.description)
             current_node.again = True
-        command = input('>_').lower()
-        if command in ['quit', 'end']:
-            quit(0)
+        if current_node.enemies is not None:
+            current_character.attacking()
         else:
-            if command in short_directions:
-                pos = short_directions.index(command)
-                command = directions[pos]
-            if command in directions:
-                try:
-                    current_node.move(command)
-                    moves += 1
-                except KeyError:
-                    print("Command not recognize")
-                    print()
+            command = input('>_').lower()
+            if command in ['quit', 'end']:
+                quit(0)
             else:
-                if command in commands_possible:
-                    if command == "jump":
-                        print("Whoosh.")
-                    if command == "use":
-                        if len(current_character.inventory) != 0:
-                            for items in current_character.inventory:
-                                print(items.name)
-                            use_item = input("What do you want to use? ")
-                            if use_item in current_character.inventory:
-                                print()
-                    if command == "armor info":
-                        print("Your current armor: \n%s" % current_character.armor_type)
-                        print()
-                        print("To change the armor type, type in put on armor in the command.")
-                    if command == "grab":
-                        print("Type again the grab command but after that put th item you want to grab. ")
-                        for items in current_node.item_i:
-                            print(items.name)
-                        command = input(">_")
-                        if 'grab' in command:
-                            print("Items in current location:")
-                            item_request = command[5:]
-                            for items in current_node.item_i:
-                                if items in current_node.item_i:
-                                    current_node.item_i.remove(items)
-                                    current_character.inventory.append(items)
-                                    print()
-                                    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-                                    print("Your Inventory:")
-                                    for item in current_character.inventory:
-                                        print(item.name)
-                                        print()
-                                        print(item.description)
-                                    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-                                else:
-                                    print("This item is not in the room.")
-                        else:
-                            print("You forgot the grab in the beginning of the command. Try again.")
-                            print("Remember, you need to first put grab and then grab(item name) for it to work.")
-                    if command == "attack damage":
-                        print()
-                        print("Your Attack Damage:")
-                        print(current_character.damage)
-                    if command == "drop":
-                        print("Type again the grab command but after that put th item you want to grab"
-                              "(grab[item name]. ")
-                        for items in current_character.inventory:
-                            print(items.name)
-                        command = input(">_")
-                        if 'drop' in command:
-                            item_request = command[5:]
-                            for items in current_character.inventory:
-                                if items in current_character.inventory:
-                                    current_node.item_i.append(items)
-                                    current_character.inventory.remove(items)
-                                    print()
-                                    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-                                    print("Items in current node:")
-                                    for item in current_node.item_i:
-                                        print(item.name)
-                                    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-                                else:
-                                    print("This item is not in your inventory.")
-                        else:
-                            print("You forgot the grab in the beginning of the command. Try again.")
-                            print("Remember, you need to first put grab and then grab(item name) for it to work.")
-                    if command == "description":
-                        print()
-                        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-                        print("Your Description:")
-                        print(current_character.description)
-                        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-                    if command == "commands possible":
-                        print(", ".join(commands_possible))
-                    if command == "inventory":
-                        print()
-                        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-                        print("Your Inventory:")
-                        for items in current_character.inventory:
-                            print("You have %s of %s" % (items.amount, items.name))
-                            print()
-                            print(items.description)
-                        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-                    if command == "how to play":
-                        print("How to play: \n"
-                              "You move around using North(N), East(E), South(S), and West(W). You can use commands "
-                              "possible to see a list of \n"
-                              "possible commands. The end goal is to find out why you are the only one in the current "
-                              "world.")
-                    if command == "craft":
-                        crafting()
-                    if command == "attack enemy":
-                        if len(current_node.enemies) >= 0:
-                            current_character.attacking()
-                        else:
-                            print("There are no enemies here.")
-                    if command == "main weapon":
-                        new_ranged_weapon_q = None
-                        for items in current_character.inventory:
-                            print(items.name)
-                        print("Please select a weapon.")
-                        new_weapon = input("What weapon would you like to use? ").lower()
-                        if new_weapon in weapons_types:
-                            if new_weapon in current_character.inventory:
-                                current_character.melee.remove(current_character.melee)
-                                current_character.melee.append(new_weapon)
-                                current_character.damage = current_character.melee.damage
-                                print("Your new melee weapon is %s." % current_character.melee)
-                                print("Your attack damage is now %s." % current_character.damage)
-                            else:
-                                print("You do not have this item in your inventory. pls select another item.")
-                                print("You are going to need to do the whole process all over again.")
-                        else:
-                            print("This is not a weapon.")
-                        print("This is your ranged weapon: \n%s" % current_character.ranged_weapon)
-                        while new_ranged_weapon_q != "no":
-                            new_ranged_weapon_q = input("Would you like to change your ranged weapon too? ").lower()
-                            if new_ranged_weapon_q == "yes":
-                                for items in current_character.inventory:
-                                    print(items.names)
-                                new_ranged_weapon = input("What would you like to change your for your ranged weapon? ")
-                                if new_ranged_weapon in ranged_types:
-                                    current_character.ranged_weapon.remove(current_character.ranged_weapon)
-                                    current_character.ranged_weapon.append(new_ranged_weapon)
-                                    current_character.damage += current_character.ranged_weapon.damage
-                                    print("Your new ranged weapon is %s." % current_character.ranged_weapon)
-                                    print("Your attack damage is now %s." % current_character.damage)
-                                else:
-                                    print("You do not have this item in your inventory. pls select another item.")
-                                    print("You are going to need to do the whole process all over again.")
-                            else:
-                                current_character.damage += current_character.ranged_weapon.damage
-                    if command == "put on armor":
-                        for armor_types in current_character.inventory:
-                            print(armor_types.names)
-                        print("please select an armor piece.")
-                        new_armor = input("What armor would you like to put on? ")
-                        if new_armor in armor_types:
-                            if new_armor in current_character.inventory:
-                                current_character.armor_type.remove(current_character.armor_type)
-                                current_character.armor_type.append(new_armor)
-                                print("Your new armor is %s." % current_character.armor_type)
-                            else:
-                                print("You do not have this item in your inventory. pls select another item.")
-                                print("You are going to need to do the whole process all over again.")
-                        else:
-                            print("This is not an armor piece.")
-                    if command == "alchemist craft":
-                        alchemist_crafting()
-                    if command == "use fireworks":
-                        if firework.amount > 0:
-                            firework.amount -= 1
-                            print("Boom!!")
-                            print("You used one firework. Hopefully you didn't attract any enemies.")
-                    if command == "farm":
-                        if current_node == GARDEN:
-                            farm_item = random.randint(farm)
-                            farm_amount = random.randint(1, 10)
-                            got_it_1 = random.randint(1, 6)
-                            got_it_2 = random.randint(1, 6)
-                            got_it = got_it_1 + got_it_2
-                            if got_it == 7:
-                                if farm_item not in current_character.inventory:
-                                    current_character.inventory.append(farm_item)
-                                farm_item.amount += farm_amount
-                                if mine_amount == 1:
-                                    print("You mined %s of %s." % (farm_amount, farm_item))
-                                if mine_amount > 1:
-                                    print("You mined %s of %ss." % (farm_amount, farm_item))
-                                print("You got %s of %s." % (farm_amount, farm_item))
-                            else:
-                                print("You didn't get anything because you didn't farm correctly.")
-                        else:
-                            print("You can only use this command in the garden.")
-                    if command == "mine":
-                        if current_node == MINE_SHAFT:
-                            if pickaxe in current_character.mining_equipment:
-                                mine_item = random.randint(mine)
-                                mine_amount = random.randint(1, 10)
-                                got_it_1 = random.randint(1, 6)
-                                got_it_2 = random.randint(1, 6)
-                                got_it = got_it_1 + got_it_2
-                                if got_it == 7:
-                                    if mine_item not in current_character.inventory:
-                                        current_character.inventory.append(mine_item)
-                                    if mine_amount == 1:
-                                        print("You mined %s of %s." % (mine_amount, mine_item))
-                                    if mine_amount > 1:
-                                        print("You mined %s of %ss." % (mine_amount, mine_item))
-                                else:
-                                    mine_item = stone
-                                    if stone not in current_character.inventory:
-                                        current_character.inventory.append(stone)
-                                mine_item.amount += mine_amount
-                            else:
-                                print("You either don't have your pickaxe in mining equipment or you don't have a "
-                                      "pickaxe at all.")
-                        else:
-                            print("You can only use this command in the mine shaft.")
+                if command in short_directions:
+                    pos = short_directions.index(command)
+                    command = directions[pos]
+                if current_node == CASINO and command == "east":
+                    if tr_key in current_character.inventory:
+                        current_node = TELEPORTER_R
+                    else:
+                        print("You don't have the TR Key.")
                 else:
-                    print()
-                    print("command not recognized")
+                    if command in directions:
+                        try:
+                            current_node.move(command)
+                            moves += 1
+                        except KeyError:
+                            print("Command not recognize")
+                            print()
+                    else:
+                        if command in commands_possible:
+                            if command == "jump":
+                                print("Whoosh.")
+                            if command == "use":
+                                if len(current_character.inventory) != 0:
+                                    for items in current_character.inventory:
+                                        print(items.name)
+                                    use_item = input("What do you want to use? ")
+                                    if use_item in usable:
+                                        if use_item in current_character.inventory:
+                                            print("You used %s" % use_item)
+                                            use_item.amount -= 1
+                                            if use_item.amount == 0:
+                                                current_character.inventory.remove(use_item)
+                                            current_character.health += use_item.heal
+                                            if current_character.health > 100:
+                                                current_character.health = 100
+                                                print("You have fully healed.")
+                                        else:
+                                            print("You don't have this item in your inventory.")
+                                    else:
+                                        print("This item doesn't have a heal function.")
+                            if command == "armor info":
+                                print("Your current armor: \n%s" % current_character.armor_type)
+                                print()
+                                print("To change the armor type, type in put on armor in the command.")
+                            if command == "grab":
+                                print("Type again the grab command but after that put th item you want to grab. ")
+                                for items in current_node.item_i:
+                                    print(items.name)
+                                command = input(">_")
+                                if 'grab' in command:
+                                    print("Items in current location:")
+                                    item_request = command[5:]
+                                    for items in current_node.item_i:
+                                        if items in current_node.item_i:
+                                            current_node.item_i.remove(items)
+                                            current_character.inventory.append(items)
+                                            print()
+                                            print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                                            print("Your Inventory:")
+                                            for item in current_character.inventory:
+                                                print(item.name)
+                                                print()
+                                                print(item.description)
+                                                print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                                        else:
+                                            print("This item is not in the room.")
+                                else:
+                                    print("You forgot the grab in the beginning of the command. Try again.")
+                                    print("Remember, you need to first put grab and then grab(item name) for it to "
+                                          "work.")
+                            if command == "attack damage":
+                                print()
+                                print("Your Attack Damage:")
+                                print(current_character.damage)
+                            if command == "drop":
+                                print("Type again the grab command but after that put th item you want to grab"
+                                      "(grab[item name]. ")
+                                for items in current_character.inventory:
+                                    print(items.name)
+                                command = input(">_")
+                                if 'drop' in command:
+                                    item_request = command[5:]
+                                    for items in current_character.inventory:
+                                        if items in current_character.inventory:
+                                            current_node.item_i.append(items)
+                                            current_character.inventory.remove(items)
+                                            print()
+                                            print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                                            print("Items in current node:")
+                                            for item in current_node.item_i:
+                                                print(item.name)
+                                            print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                                        else:
+                                            print("This item is not in your inventory.")
+                                else:
+                                    print("You forgot the grab in the beginning of the command. Try again.")
+                                    print("Remember, you need to first put grab and then grab(item name) for it to "
+                                          "work.")
+                            if command == "description":
+                                print()
+                                print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                                print("Your Description:")
+                                print(current_character.description)
+                                print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                            if command == "commands possible":
+                                print(", ".join(commands_possible))
+                            if command == "inventory":
+                                print()
+                                print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                                print("Your Inventory:")
+                                for items in current_character.inventory:
+                                    print("You have %s of %s" % (items.amount, items.name))
+                                    print()
+                                    print(items.description)
+                                    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                            if command == "how to play":
+                                print("How to play: \n"
+                                      "You move around using North(N), East(E), South(S), and West(W). You can use "
+                                      "commands possible to see a list of \n"
+                                      "possible commands. The end goal is to find out why you are the only one in "
+                                      "the current world.")
+                            if command == "craft":
+                                crafting()
+                            if command == "main weapon":
+                                new_ranged_weapon_q = None
+                                for items in current_character.inventory:
+                                    print(items.name)
+                                print("Please select a weapon.")
+                                new_weapon = input("What weapon would you like to use? ").lower()
+                                if new_weapon in weapons_types:
+                                    if new_weapon in current_character.inventory:
+                                        current_character.melee.remove(current_character.melee)
+                                        current_character.melee.append(new_weapon)
+                                        current_character.damage = current_character.melee.damage
+                                        print("Your new melee weapon is %s." % current_character.melee)
+                                        print("Your attack damage is now %s." % current_character.damage)
+                                    else:
+                                        print("You do not have this item in your inventory. pls select another "
+                                              "item.")
+                                        print("You are going to need to do the whole process all over again.")
+                                else:
+                                    print("This is not a weapon.")
+                                print("This is your ranged weapon: \n%s" % current_character.ranged_weapon)
+                                while new_ranged_weapon_q != "no":
+                                    new_ranged_weapon_q = input("Would you like to change your ranged weapon "
+                                                                "too? ").lower()
+                                    if new_ranged_weapon_q == "yes":
+                                        for items in current_character.inventory:
+                                            print(items.names)
+                                        new_ranged_weapon = input("What would you like to change your for your "
+                                                                  "ranged weapon? ")
+                                        if new_ranged_weapon in ranged_types:
+                                            current_character.ranged_weapon.remove(current_character.ranged_weapon)
+                                            current_character.ranged_weapon.append(new_ranged_weapon)
+                                            current_character.damage += current_character.ranged_weapon.damage
+                                            print("Your new ranged weapon is %s." % current_character.ranged_weapon)
+                                            print("Your attack damage is now %s." % current_character.damage)
+                                        else:
+                                            print("You do not have this item in your inventory. pls select another "
+                                                  "item.")
+                                            print("You are going to need to do the whole process all over again.")
+                                    else:
+                                        current_character.damage += current_character.ranged_weapon.damage
+                            if command == "put on armor":
+                                for armor_types in current_character.inventory:
+                                    print(armor_types.names)
+                                print("please select an armor piece.")
+                                new_armor = input("What armor would you like to put on? ")
+                                if new_armor in armor_types:
+                                    if new_armor in current_character.inventory:
+                                        current_character.armor_type.remove(current_character.armor_type)
+                                        current_character.armor_type.append(new_armor)
+                                        print("Your new armor is %s." % current_character.armor_type)
+                                    else:
+                                        print("You do not have this item in your inventory. pls select another "
+                                              "item.")
+                                        print("You are going to need to do the whole process all over again.")
+                                else:
+                                    print("This is not an armor piece.")
+                            if command == "alchemist craft":
+                                alchemist_crafting()
+                            if command == "use fireworks":
+                                if firework.amount > 0:
+                                    firework.amount -= 1
+                                    print("Boom!!")
+                                    print("You used one firework. Hopefully you didn't attract any enemies.")
+                            if command == "farm":
+                                if current_node == BACK_MALL:
+                                    farm_item = random.randint(len(farm), len(farm))
+                                    farm_amount = random.randint(1, 10)
+                                    got_it_1 = random.randint(1, 6)
+                                    got_it_2 = random.randint(1, 6)
+                                    got_it = got_it_1 + got_it_2
+                                    if got_it == 7:
+                                        if farm_item not in current_character.inventory:
+                                            current_character.inventory.append(farm_item)
+                                        farm_item.amount += farm_amount
+                                        if mine_amount == 1:
+                                            print("You mined %s of %s." % (farm_amount, farm_item))
+                                        if mine_amount > 1:
+                                            print("You mined %s of %ss." % (farm_amount, farm_item))
+                                        print("You got %s of %s." % (farm_amount, farm_item))
+                                    else:
+                                        print("You didn't get anything because you didn't farm correctly.")
+                                else:
+                                    print("You can only use this command in the garden.")
+                            if command == "mine":
+                                if current_node == MINE_SHAFT:
+                                    if pickaxe in current_character.mining_equipment:
+                                        mine_item = random.randint(mine)
+                                        mine_amount = random.randint(1, 10)
+                                        got_it_1 = random.randint(1, 6)
+                                        got_it_2 = random.randint(1, 6)
+                                        got_it = got_it_1 + got_it_2
+                                        if got_it == 7:
+                                            if mine_item not in current_character.inventory:
+                                                current_character.inventory.append(mine_item)
+                                            if mine_amount == 1:
+                                                print("You mined %s of %s." % (mine_amount, mine_item))
+                                            if mine_amount > 1:
+                                                print("You mined %s of %ss." % (mine_amount, mine_item))
+                                        else:
+                                            mine_item = stone
+                                            if stone not in current_character.inventory:
+                                                current_character.inventory.append(stone)
+                                        mine_item.amount += mine_amount
+                                    else:
+                                        print("You either don't have your pickaxe in mining equipment or you don't "
+                                              "have a pickaxe at all.")
+                                else:
+                                    print("You can only use this command in the mine shaft.")
+                        else:
+                            print()
+                            print("command not recognized")
 
 if not current_character.alive:
     print("You have died.")
